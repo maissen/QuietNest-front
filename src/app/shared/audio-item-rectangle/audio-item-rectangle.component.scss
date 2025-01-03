@@ -1,0 +1,16 @@
+.item {
+
+    &__banner {
+        height: var(--audio-item-rectangle-height);
+        width: var(--audio-item-rectangle-width);
+        border-radius: 1.6rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 110%;
+        }
+    }
+}

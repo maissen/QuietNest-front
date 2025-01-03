@@ -1,17 +1,33 @@
 :root {
 
+    --navbar-zindex: 10;
     --navbar-wide-width: 0;
+
     @media all and (min-width: 1024px) {
         --navbar-wide-width: 28rem;
     }
-    --navbar-zindex: 10;
     
 
     --dynamic-content-width: calc(100vw - var(--navbar-wide-width));
-    --dynamic-content-zindex: var(--navbar-zindex - 1);
     --dynamic-content-padding: 1.3rem;
+    --dynamic-content-zindex: calc(var(--navbar-zindex) - 1);
+
     @media all and (min-width: 768px) {
         --dynamic-content-padding: 3rem;
+    }
+
+
+    --audio-item-rectangle-width: 21rem;
+    --audio-item-rectangle-height: calc(var(--audio-item-rectangle-width) * .7);
+
+    @media all and (min-width: 390px) {
+        --audio-item-rectangle-width: 22rem;
+    }
+    @media all and (min-width: 768px) {
+        --audio-item-rectangle-width: 25rem;
+    }
+    @media all and (min-width: 1200px) {
+        --audio-item-rectangle-width: 33rem;
     }
 
 }
