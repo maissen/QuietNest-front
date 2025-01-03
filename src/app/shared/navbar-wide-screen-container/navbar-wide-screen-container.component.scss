@@ -1,0 +1,11 @@
+.content {
+    
+    display: none;
+    width: var(--navbar-wide-width);
+    height: 100vh;
+
+    @media all and (min-width: 1024px) {
+        display: block;
+    }
+
+}

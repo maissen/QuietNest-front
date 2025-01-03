@@ -1,34 +1,33 @@
 <div class="content">
-    <div class="container" *ngIf="currentQuestion">
-      <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <h3>{{ currentQuestion?.question }}</h3>
-            <form>
-              <div *ngFor="let option of currentQuestion?.options">
-                <input type="checkbox" 
-                  id="{{ option.label }}" 
-                  [value]="option.label" 
-                  (change)="selectOption(option)" 
-                  hidden="true"
-                >
-                <label [for]="option.label">
-                  {{ option.label }}
-                </label>
-              </div>
-            </form>
-          </div>
+  <div class="container" *ngIf="currentQuestionIndex < data.length">
+    <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <h3>{{ data[currentQuestionIndex].question }}</h3>  <!-- Display current question -->
+
+          <!-- Display options for the current question -->
+          <form>
+            <div *ngFor="let option of data[currentQuestionIndex].options">
+              <input type="checkbox" 
+                     id="{{ option.label }}" 
+                     [value]="option.label" 
+                     (change)="selectOption(option.label)" 
+                     hidden="true">
+              <label [for]="option.label">{{ option.label }}</label>
+            </div>
+          </form>
         </div>
       </div>
-      
-      <div class="buttons">
-        <button (click)="skipAll()">Skip All</button>
-        <button (click)="nextQuestion()" [disabled]="selectedOptions.length === 0">Next</button>
-      </div>
     </div>
-  
-    <div class="container" *ngIf="!currentQuestion">
-      <carousel-ending-message></carousel-ending-message>
+
+    <div class="buttons">
+      <button (click)="skipAll()">Skip All</button>
+      <button (click)="nextQuestion()" [disabled]="selectedOptions.length === 0">Next</button>
     </div>
   </div>
-  
+
+  <!-- Message shown after completing the questions -->
+  <div class="container" *ngIf="currentQuestionIndex >= data.length">
+    <carousel-ending-message></carousel-ending-message>
+  </div>
+</div>

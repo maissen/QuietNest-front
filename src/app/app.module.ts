@@ -19,6 +19,7 @@ import { SignUpFlowComponent } from './pages/sign-up-flow/sign-up-flow.component
 import { RouterLink } from '@angular/router';
 import { CarouselEndingMessageComponent } from './pages/sign-up-flow/components/carousel-ending-message/carousel-ending-message.component';
 import { QuestionsCarouselComponent } from './pages/sign-up-flow/components/questions-carousel/questions-carousel.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { QuestionsCarouselComponent } from './pages/sign-up-flow/components/ques
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterLink
+    RouterLink,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
