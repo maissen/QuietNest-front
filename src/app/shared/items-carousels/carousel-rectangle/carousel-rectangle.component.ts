@@ -1,4 +1,4 @@
-import { Component, Input, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input, AfterViewInit, ElementRef, ViewChild, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-carousel-rectangle',
@@ -13,7 +13,7 @@ export class CarouselRectangleComponent implements AfterViewInit {
 
   canScrollPrev = false;
   canScrollNext = false;
-  scrollStep = 350;
+  scrollStep = 300;
 
   ngAfterViewInit() {
     this.checkScrollButtons(this.carouselContainerRef.nativeElement);
@@ -32,6 +32,11 @@ export class CarouselRectangleComponent implements AfterViewInit {
 
     // Recalculate button states after scrolling
     setTimeout(() => this.checkScrollButtons(container), 300); // Allow time for smooth scroll
+  }
+
+  @HostListener('window:resize')
+  onWindowResize() {
+    this.checkScrollButtons(this.carouselContainerRef.nativeElement);
   }
 
   checkScrollButtons(container: HTMLElement) {
