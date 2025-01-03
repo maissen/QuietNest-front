@@ -22,7 +22,8 @@ import { QuestionsCarouselComponent } from './pages/sign-up-flow/components/ques
 import { HttpClientModule } from '@angular/common/http';
 import { AudioItemSquareComponent } from './shared/audio-item-square/audio-item-square.component';
 import { AudioItemRectangleComponent } from './shared/audio-item-rectangle/audio-item-rectangle.component';
-import { HorizontalCarouselComponent } from './shared/items-carousels/horizontal-carousel/horizontal-carousel.component';
+import { CarouselRectangleComponent } from './shared/items-carousels/carousel-rectangle/carousel-rectangle.component';
+import { CarouselSquareComponent } from './shared/items-carousels/carousel-square/carousel-square.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { HorizontalCarouselComponent } from './shared/items-carousels/horizontal
     QuestionsCarouselComponent,
     AudioItemSquareComponent,
     AudioItemRectangleComponent,
-    HorizontalCarouselComponent
+    CarouselRectangleComponent,
+    CarouselSquareComponent
   ],
   imports: [
     BrowserModule,
