@@ -12,7 +12,7 @@ import { NotFound404Component } from './pages/not-found-404/not-found-404.compon
 
 const routes: Routes = [
   {
-    path: '', 
+    path: '',
     component: WelcomeComponent
   },
   {
@@ -26,6 +26,11 @@ const routes: Routes = [
   {
     path: 'sign-in',
     component: SignInComponent
+  },
+  {
+    path: 'home',
+    redirectTo: 'home/browse',
+    pathMatch: 'full'
   },
   {
     path: 'home',
@@ -46,10 +51,11 @@ const routes: Routes = [
     ]
   },
   {
-    path: '**', 
+    path: '**',
     component: NotFound404Component
   }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
