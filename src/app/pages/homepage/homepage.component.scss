@@ -1,15 +1,27 @@
 .content {
-    display: flex;
-    align-items: flex-start;
+    padding-left: var(--navbar-wide-width);
+    background-color: green;
+    
+    .navbar-container {
+        width: var(--navbar-wide-width);
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        border-right: 2px solid #000;
+        z-index: var(--navbar-zindex);
 
-    .nav {
-        width: var(--navbar-small-width);
-        align-self: flex-start;
+        @media all and (min-width: 1024px) {
+            --navbar-wide-width: 28rem;
+            display: block;
+        }
     }
 
     .dynamic-content {
-        width: var(--dynamic-content-width);
-        align-self: flex-start;
+        height: 100vh;
+        z-index: var(--dynamic-content-zindex);
+        padding: var(--dynamic-content-padding);
+        background-color: rosybrown;
     }
 
 }

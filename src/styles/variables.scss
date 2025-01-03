@@ -1,6 +1,17 @@
 :root {
 
-    --navbar-wide-width: 28rem;
+    --navbar-wide-width: 0;
+    @media all and (min-width: 1024px) {
+        --navbar-wide-width: 28rem;
+    }
+    --navbar-zindex: 10;
+    
+
     --dynamic-content-width: calc(100vw - var(--navbar-wide-width));
+    --dynamic-content-zindex: var(--navbar-zindex - 1);
+    --dynamic-content-padding: 1.3rem;
+    @media all and (min-width: 768px) {
+        --dynamic-content-padding: 3rem;
+    }
 
 }

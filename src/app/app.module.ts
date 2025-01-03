@@ -20,6 +20,9 @@ import { RouterLink } from '@angular/router';
 import { CarouselEndingMessageComponent } from './pages/sign-up-flow/components/carousel-ending-message/carousel-ending-message.component';
 import { QuestionsCarouselComponent } from './pages/sign-up-flow/components/questions-carousel/questions-carousel.component';
 import { HttpClientModule } from '@angular/common/http';
+import { WideRectangleCarouselComponent } from './shared/items-carousels/wide-rectangle-carousel/wide-rectangle-carousel.component';
+import { AudioItemSquareComponent } from './shared/audio-item-square/audio-item-square.component';
+import { AudioItemRectangleComponent } from './shared/audio-item-rectangle/audio-item-rectangle.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { HttpClientModule } from '@angular/common/http';
     SignUpFlowComponent,
     CarouselEndingMessageComponent,
     QuestionsCarouselComponent,
+    WideRectangleCarouselComponent,
+    AudioItemSquareComponent,
+    AudioItemRectangleComponent,
   ],
   imports: [
     BrowserModule,
