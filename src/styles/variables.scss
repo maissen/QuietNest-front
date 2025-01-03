@@ -1,0 +1,10 @@
+:root {
+
+    --navbar-small-width: 0;
+    @media all and (min-width: 1024px) {
+    }
+    --navbar-small-width: 28rem;
+    
+    --dynamic-content-width: calc(100vw - var(--navbar-small-width));
+
+}

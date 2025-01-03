@@ -1,0 +1,15 @@
+.content {
+    display: flex;
+    align-items: flex-start;
+
+    .nav {
+        width: var(--navbar-small-width);
+        align-self: flex-start;
+    }
+
+    .dynamic-content {
+        width: var(--dynamic-content-width);
+        align-self: flex-start;
+    }
+
+}
