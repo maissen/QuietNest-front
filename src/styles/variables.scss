@@ -30,4 +30,17 @@
         --audio-item-rectangle-width: 33rem;
     }
 
+
+    --audio-item-square-segment: 16rem;
+
+    @media all and (min-width: 390px) {
+        --audio-item-square-segment: 18rem;
+    }
+    @media all and (min-width: 768px) {
+        --audio-item-square-segment: 21rem;
+    }
+    @media all and (min-width: 1200px) {
+        --audio-item-square-segment: 22rem;
+    }
+
 }

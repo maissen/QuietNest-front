@@ -1,0 +1,16 @@
+.item {
+
+    &__thumb {
+        height: var(--audio-item-square-segment);
+        width: var(--audio-item-square-segment);
+        border-radius: 1.6rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            height: 110%;
+        }
+    }
+}
