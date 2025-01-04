@@ -1,1 +1,13 @@
-<p>recommended-for-you-item works!</p>
+<div class="content">
+    <div class="img_thumb">
+      <img [src]="data.imgSrc" [alt]="data.name">
+    </div>
+    <div class="info">
+      <div class="header">
+        <div class="title">{{ data.name }}</div>
+        <div class="metadata">{{ data.likes }} likes</div>
+      </div>
+      <p class="categories">{{ data.categories.join(', ') }}</p>
+    </div>
+  </div>
+  

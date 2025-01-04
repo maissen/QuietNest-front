@@ -8,5 +8,6 @@ import { Component, Input } from '@angular/core';
 export class RecommendedForYouComponent {
   @Input() title: string = '';
   @Input() data: any[] = [];
+  @Input() hasBottomBorder: boolean = false;
   
 }
