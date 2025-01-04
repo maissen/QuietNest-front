@@ -24,6 +24,8 @@ import { AudioItemSquareComponent } from './shared/audio-item-square/audio-item-
 import { AudioItemRectangleComponent } from './shared/audio-item-rectangle/audio-item-rectangle.component';
 import { CarouselRectangleComponent } from './shared/items-carousels/carousel-rectangle/carousel-rectangle.component';
 import { CarouselSquareComponent } from './shared/items-carousels/carousel-square/carousel-square.component';
+import { RecommendedForYouComponent } from './shared/recommended-for-you/recommended-for-you.component';
+import { RecommendedForYouItemComponent } from './shared/recommended-for-you-item/recommended-for-you-item.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { CarouselSquareComponent } from './shared/items-carousels/carousel-squar
     AudioItemSquareComponent,
     AudioItemRectangleComponent,
     CarouselRectangleComponent,
-    CarouselSquareComponent
+    CarouselSquareComponent,
+    RecommendedForYouComponent,
+    RecommendedForYouItemComponent
   ],
   imports: [
     BrowserModule,

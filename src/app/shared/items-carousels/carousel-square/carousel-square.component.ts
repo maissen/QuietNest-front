@@ -9,7 +9,7 @@ export class CarouselSquareComponent {
     @Input() hasBottomBorder: boolean = false;
     @ViewChild('carouselContainer') carouselContainerRef!: ElementRef;
   
-    carouselTitle: string = '';
+    @Input() carouselTitle: string = '';
   
     canScrollPrev = false;
     canScrollNext = false;
