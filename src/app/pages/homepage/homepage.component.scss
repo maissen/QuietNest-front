@@ -18,9 +18,7 @@
     }
 
     .dynamic-content {
-        height: 100vh;
         z-index: var(--dynamic-content-zindex);
-        padding: var(--dynamic-content-padding);
         background-color: rosybrown;
     }
 

@@ -6,10 +6,10 @@ import { Component, Input, AfterViewInit, ElementRef, ViewChild, HostListener } 
   styleUrls: ['./carousel-rectangle.component.scss']
 })
 export class CarouselRectangleComponent implements AfterViewInit {
-  @Input() style: number = 1;
+  @Input() hasBottomBorder: boolean = false;
   @ViewChild('carouselContainer') carouselContainerRef!: ElementRef;
 
-  carouselTitle: string = 'my carousel';
+  @Input() carouselTitle: string = '';
 
   canScrollPrev = false;
   canScrollNext = false;

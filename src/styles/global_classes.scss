@@ -6,3 +6,23 @@
         display: none; /* For Chrome, Safari, and newer Edge */
     }
 }
+
+.section-blue-bgcolor {
+    background-color: #0093E9;
+    background-image: linear-gradient(180deg, #0093E9 0%, #80D0C7 100%);
+    position: relative;
+    z-index: 1;
+
+    &::before {
+        content: '';
+        width: 100%;
+        height: 10rem;
+        background: #0093e9;
+        background: linear-gradient(top, #0093e9 70%, #0094e900 30%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateY(-100%);
+        z-index: 1;
+    }
+}

@@ -6,10 +6,10 @@ import { Component, Input, AfterViewInit, ElementRef, ViewChild, HostListener } 
   styleUrls: ['./carousel-square.component.scss']
 })
 export class CarouselSquareComponent {
-  @Input() style: number = 1;
+    @Input() hasBottomBorder: boolean = false;
     @ViewChild('carouselContainer') carouselContainerRef!: ElementRef;
   
-    carouselTitle: string = 'my carousel';
+    carouselTitle: string = '';
   
     canScrollPrev = false;
     canScrollNext = false;

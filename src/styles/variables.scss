@@ -17,6 +17,9 @@
     }
 
 
+
+    --carousel-padding-top: 1rem;
+
     --audio-item-rectangle-width: 21rem;
     --audio-item-rectangle-height: calc(var(--audio-item-rectangle-width) * .7);
 
@@ -42,5 +45,10 @@
     @media all and (min-width: 1200px) {
         --audio-item-square-segment: 22rem;
     }
+
+
+
+
+    --browse-section-header-height: 40rem;
 
 }

@@ -1,6 +1,6 @@
 .content {
     width: 100%;
-    background-color: aqua;
+    padding-top: var(--carousel-padding-top);
 
     .carousel__header {
         display: flex;
