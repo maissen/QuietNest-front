@@ -1,8 +1,8 @@
 .item {
 
     &__thumb {
-        height: var(--audio-item-square-segment);
-        width: var(--audio-item-square-segment);
+        height: var(--audio-item-segment);
+        width: var(--audio-item-segment);
         border-radius: 1.6rem;
         overflow: hidden;
         display: flex;

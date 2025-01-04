@@ -1,9 +1,10 @@
 :root {
 
     --navbar-zindex: 10;
+    --navbar-content-zindex: var(--navbar-zindex) + 1;
     --navbar-wide-width: 0;
 
-    @media all and (min-width: 1024px) {
+    @media all and (min-width: 1200px) {
         --navbar-wide-width: 28rem;
     }
     
@@ -12,40 +13,30 @@
     --dynamic-content-padding: 1.3rem;
     --dynamic-content-zindex: calc(var(--navbar-zindex) - 1);
 
-    @media all and (min-width: 768px) {
+    @media all and (min-width: 750px) {
         --dynamic-content-padding: 3rem;
     }
 
 
 
-    --carousel-padding-top: 1rem;
+    --carousel-padding-top: 1.1rem;
 
-    --audio-item-rectangle-width: 21rem;
-    --audio-item-rectangle-height: calc(var(--audio-item-rectangle-width) * .7);
+    --audio-item-segment: 14.7rem;
+    --audio-item-rectangle-height: var(--audio-item-segment);
+    --audio-item-rectangle-width: calc(var(--audio-item-rectangle-height) * 1.7);
 
-    @media all and (min-width: 390px) {
-        --audio-item-rectangle-width: 22rem;
+    @media all and (min-width: 500px) {
+        --audio-item-segment: calc(14.7rem + 1rem);
     }
-    @media all and (min-width: 768px) {
-        --audio-item-rectangle-width: 25rem;
+    @media all and (min-width: 750px) {
+        --audio-item-segment: calc(14.7rem + 2rem);
     }
-    @media all and (min-width: 1200px) {
-        --audio-item-rectangle-width: 33rem;
+    @media all and (min-width: 1000px) {
+        --audio-item-segment: calc(14.7rem + 4rem);
     }
-
-
-    --audio-item-square-segment: 16rem;
-
-    @media all and (min-width: 390px) {
-        --audio-item-square-segment: 18rem;
+    @media all and (min-width: 1400px) {
+        --audio-item-segment: calc(14.7rem + 6rem);
     }
-    @media all and (min-width: 768px) {
-        --audio-item-square-segment: 21rem;
-    }
-    @media all and (min-width: 1200px) {
-        --audio-item-square-segment: 22rem;
-    }
-
 
 
 
