@@ -5,8 +5,8 @@
     border-radius: 1.3rem;
 
     .img_thumb {
-        height: calc(var(--audio-item-rectangle-width) / 2.9);
-        width: calc(var(--audio-item-rectangle-width) / 2.9);
+        height: calc(var(--audio-item-rectangle-width) / 4);
+        width: calc(var(--audio-item-rectangle-width) / 4);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -15,6 +15,11 @@
 
         img {
             height: 100%;
+        }
+
+        @media all and (min-width: 1400px) {
+            height: calc(var(--audio-item-rectangle-width) / 3.6);
+            width: calc(var(--audio-item-rectangle-width) / 3.6);
         }
     }
 
