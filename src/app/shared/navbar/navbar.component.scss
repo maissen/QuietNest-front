@@ -1,0 +1,31 @@
+.content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--navbar-small-height);
+    background: blue;
+    z-index: var(--navbar-zindex);
+
+    @media all and (min-width: 1200px) {
+        top: 0;
+        width: var(--navbar-wide-width);
+        height: 100%;
+        display: block;
+    }
+
+    @media all and (max-width: 1200px) {
+        ul {
+            display: flex;
+            gap: 2rem;
+            list-style-type: none;
+        }
+    }
+}
+
+.active-link {
+    font-weight: bold;
+}

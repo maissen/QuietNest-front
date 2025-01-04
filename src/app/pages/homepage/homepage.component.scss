@@ -5,6 +5,7 @@
     .dynamic-content {
         z-index: var(--dynamic-content-zindex);
         background-color: rosybrown;
+        margin-bottom: var(--navbar-small-height);
     }
 
 }

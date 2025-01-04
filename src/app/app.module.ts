@@ -3,9 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarContentComponent } from './shared/navbar-content/navbar-content.component';
-import { NavbarSmallScreenContainerComponent } from './shared/navbar-small-screen-container/navbar-small-screen-container.component';
-import { NavbarWideScreenContainerComponent } from './shared/navbar-wide-screen-container/navbar-wide-screen-container.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { ExploreSectionComponent } from './pages/homepage/pages/explore-section/explore-section.component';
 import { BrowseSectionComponent } from './pages/homepage/pages/browse-section/browse-section.component';
@@ -26,13 +23,11 @@ import { CarouselRectangleComponent } from './shared/items-carousels/carousel-re
 import { CarouselSquareComponent } from './shared/items-carousels/carousel-square/carousel-square.component';
 import { RecommendedForYouComponent } from './shared/items-carousels/recommended-for-you/recommended-for-you.component';
 import { RecommendedForYouItemComponent } from './shared/recommended-for-you-item/recommended-for-you-item.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarContentComponent,
-    NavbarSmallScreenContainerComponent,
-    NavbarWideScreenContainerComponent,
     HomepageComponent,
     ExploreSectionComponent,
     BrowseSectionComponent,
@@ -50,7 +45,8 @@ import { RecommendedForYouItemComponent } from './shared/recommended-for-you-ite
     CarouselRectangleComponent,
     CarouselSquareComponent,
     RecommendedForYouComponent,
-    RecommendedForYouItemComponent
+    RecommendedForYouItemComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

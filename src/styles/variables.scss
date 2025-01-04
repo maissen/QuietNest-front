@@ -3,9 +3,16 @@
     --navbar-zindex: 10;
     --navbar-content-zindex: var(--navbar-zindex) + 1;
     --navbar-wide-width: 0;
+    --navbar-small-height: 7rem;
 
     @media all and (min-width: 1200px) {
         --navbar-wide-width: 28rem;
+    }
+    @media all and (min-width: 1200px) {
+        --navbar-small-height: 8rem;
+    }
+    @media all and (min-width: 1200px) {
+        --navbar-small-height: 0rem;
     }
     
 
