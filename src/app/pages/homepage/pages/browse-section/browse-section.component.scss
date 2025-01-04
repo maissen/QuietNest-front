@@ -1,15 +1,18 @@
 .content {
     header {
-        width: 100%;
+        width: var(--browse-section-header-width);
         height: var(--browse-section-header-height);
         position: fixed;
         top: 0;
-        left: 0;
+        right: 0;
         background-color: brown;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         z-index: 1;
         overflow: hidden;
 
-        img {width: 100%;}
+        img {height: 100%;}
     }
 
     .loaded_content {
