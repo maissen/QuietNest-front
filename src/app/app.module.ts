@@ -24,6 +24,7 @@ import { CarouselSquareComponent } from './shared/items-carousels/carousel-squar
 import { RecommendedForYouComponent } from './shared/items-carousels/recommended-for-you/recommended-for-you.component';
 import { RecommendedForYouItemComponent } from './shared/recommended-for-you-item/recommended-for-you-item.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { ScenesComponent } from './shared/scenes/scenes.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     CarouselSquareComponent,
     RecommendedForYouComponent,
     RecommendedForYouItemComponent,
-    NavbarComponent
+    NavbarComponent,
+    ScenesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,16 @@
 .content {
+
+    .scenes {
+        background: darkgoldenrod;
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        z-index: 2;
+
+        button {
+        }
+    }
+
     header {
         width: var(--browse-section-header-width);
         height: var(--browse-section-header-height);

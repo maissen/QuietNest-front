@@ -9,6 +9,7 @@ import { BrowseSectionComponent } from './pages/homepage/pages/browse-section/br
 import { ExploreSectionComponent } from './pages/homepage/pages/explore-section/explore-section.component';
 import { ProfileSectionComponent } from './pages/homepage/pages/profile-section/profile-section.component';
 import { NotFound404Component } from './pages/not-found-404/not-found-404.component';
+import { ScenesComponent } from './shared/scenes/scenes.component';
 
 const routes: Routes = [
   {
@@ -38,7 +39,13 @@ const routes: Routes = [
     children: [
       {
         path: 'browse',
-        component: BrowseSectionComponent
+        component: BrowseSectionComponent,
+        children: [
+          {
+            path: 'scenes',
+            component: ScenesComponent
+          }
+        ]
       },
       {
         path: 'explore',
@@ -47,7 +54,7 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileSectionComponent
-      },
+      }
     ]
   },
   {
@@ -55,6 +62,7 @@ const routes: Routes = [
     component: NotFound404Component
   }
 ];
+
 
 
 @NgModule({
