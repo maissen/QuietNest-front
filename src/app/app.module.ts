@@ -29,6 +29,7 @@ import { AudioItemComponent } from './pages/create-section/components/audio-item
 import { ExploreByCategoryComponent } from './pages/explore-section/components/explore-by-category/explore-by-category.component';
 import { ExploreByTimeComponent } from './pages/explore-section/components/explore-by-time/explore-by-time.component';
 import { SearchSectionComponent } from './pages/search-section/search-section.component';
+import { PlayingAudioBannerComponent } from './shared/playing-audio-banner/playing-audio-banner.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { SearchSectionComponent } from './pages/search-section/search-section.co
     AudioItemComponent,
     ExploreByCategoryComponent,
     ExploreByTimeComponent,
-    SearchSectionComponent
+    SearchSectionComponent,
+    PlayingAudioBannerComponent
   ],
   imports: [
     BrowserModule,

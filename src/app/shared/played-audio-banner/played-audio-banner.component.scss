@@ -1,0 +1,9 @@
+.content {
+    position: fixed;
+    bottom: var(--navbar-small-height);
+    height: var(--played-audio-banner-height);
+    width: 100vw;
+    left: 0;
+    background-color: darkorange;
+    z-index: calc(var(--navbar-zindex) + 1);
+}
