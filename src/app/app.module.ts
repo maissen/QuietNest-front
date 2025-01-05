@@ -28,6 +28,7 @@ import { CreateSectionComponent } from './pages/create-section/create-section.co
 import { AudioItemComponent } from './pages/create-section/components/audio-item/audio-item.component';
 import { ExploreByCategoryComponent } from './pages/explore-section/components/explore-by-category/explore-by-category.component';
 import { ExploreByTimeComponent } from './pages/explore-section/components/explore-by-time/explore-by-time.component';
+import { SearchSectionComponent } from './pages/search-section/search-section.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ExploreByTimeComponent } from './pages/explore-section/components/explo
     CreateSectionComponent,
     AudioItemComponent,
     ExploreByCategoryComponent,
-    ExploreByTimeComponent
+    ExploreByTimeComponent,
+    SearchSectionComponent
   ],
   imports: [
     BrowserModule,

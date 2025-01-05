@@ -10,6 +10,7 @@ import { ProfileSectionComponent } from './pages/profile-section/profile-section
 import { NotFound404Component } from './pages/not-found-404/not-found-404.component';
 import { ScenesSectionComponent } from './pages/scenes-section/scenes-section.component';
 import { CreateSectionComponent } from './pages/create-section/create-section.component';
+import { SearchSectionComponent } from './pages/search-section/search-section.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileSectionComponent
+      },
+      {
+        path: 'search',
+        component: SearchSectionComponent
       }
     ]
   },
