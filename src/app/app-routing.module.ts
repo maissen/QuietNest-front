@@ -4,12 +4,11 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { SignUpFlowComponent } from './pages/sign-up-flow/sign-up-flow.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
-import { HomepageComponent } from './pages/homepage/homepage.component';
-import { BrowseSectionComponent } from './pages/homepage/pages/browse-section/browse-section.component';
-import { ExploreSectionComponent } from './pages/homepage/pages/explore-section/explore-section.component';
-import { ProfileSectionComponent } from './pages/homepage/pages/profile-section/profile-section.component';
+import { BrowseSectionComponent } from './pages/browse-section/browse-section.component';
+import { ExploreSectionComponent } from './pages/explore-section/explore-section.component';
+import { ProfileSectionComponent } from './pages/profile-section/profile-section.component';
 import { NotFound404Component } from './pages/not-found-404/not-found-404.component';
-import { ScenesSectionComponent } from './pages/homepage/pages/scenes-section/scenes-section.component';
+import { ScenesSectionComponent } from './pages/scenes-section/scenes-section.component';
 
 const routes: Routes = [
   {
@@ -29,13 +28,12 @@ const routes: Routes = [
     component: SignInComponent
   },
   {
-    path: 'home',
-    redirectTo: 'home/browse',
+    path: 'app',
+    redirectTo: 'app/browse',
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    component: HomepageComponent,
+    path: 'app',
     children: [
       {
         path: 'browse',

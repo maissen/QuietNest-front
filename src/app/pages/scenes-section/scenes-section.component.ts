@@ -11,6 +11,6 @@ export class ScenesSectionComponent {
   constructor(private router: Router){};
 
   undoLink() {
-    this.router.navigate(['home/']);
+    this.router.navigate(['app/']);
   }
 }
