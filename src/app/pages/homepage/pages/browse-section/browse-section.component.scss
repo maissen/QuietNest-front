@@ -1,16 +1,5 @@
 .content {
 
-    .scenes {
-        background: darkgoldenrod;
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
-        z-index: 2;
-
-        button {
-        }
-    }
-
     header {
         width: var(--browse-section-header-width);
         height: var(--browse-section-header-height);
@@ -21,13 +10,25 @@
         background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXVxZ2NpdHQ1bXU5ZG5wenNiYjJtcTI2ZWN6OGd2YjlpanFxOG55diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5xtDarsUgCwZMXqcVQA/giphy.webp');
         background-position: center;
         background-size: cover;
-        display: flex;
-        align-items: start;
-        justify-content: center;
         z-index: 1;
         overflow: hidden;
 
         img {height: 100%;}
+
+        .toolbar {
+            height: 100%;
+            width: 100%;
+            background-color: green;
+            display: flex;
+            align-items: start;
+            justify-content: end;
+            padding: var(--dynamic-content-padding);
+
+            
+            button.openScenesSection {
+
+            }
+        }
     }
 
     .loaded_content {

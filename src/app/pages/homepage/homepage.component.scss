@@ -1,8 +1,8 @@
 .content {
     padding-left: var(--navbar-wide-width);
-    background-color: green;
 
     .dynamic-content {
+        position: relative;
         z-index: var(--dynamic-content-zindex);
         background-color: rosybrown;
         margin-bottom: var(--navbar-small-height);

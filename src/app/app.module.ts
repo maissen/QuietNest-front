@@ -24,7 +24,7 @@ import { CarouselSquareComponent } from './shared/items-carousels/carousel-squar
 import { RecommendedForYouComponent } from './shared/items-carousels/recommended-for-you/recommended-for-you.component';
 import { RecommendedForYouItemComponent } from './shared/recommended-for-you-item/recommended-for-you-item.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { ScenesComponent } from './shared/scenes/scenes.component';
+import { ScenesSectionComponent } from './pages/homepage/pages/scenes-section/scenes-section.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ import { ScenesComponent } from './shared/scenes/scenes.component';
     RecommendedForYouComponent,
     RecommendedForYouItemComponent,
     NavbarComponent,
-    ScenesComponent
+    ScenesSectionComponent
   ],
   imports: [
     BrowserModule,

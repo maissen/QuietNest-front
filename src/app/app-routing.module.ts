@@ -9,7 +9,7 @@ import { BrowseSectionComponent } from './pages/homepage/pages/browse-section/br
 import { ExploreSectionComponent } from './pages/homepage/pages/explore-section/explore-section.component';
 import { ProfileSectionComponent } from './pages/homepage/pages/profile-section/profile-section.component';
 import { NotFound404Component } from './pages/not-found-404/not-found-404.component';
-import { ScenesComponent } from './shared/scenes/scenes.component';
+import { ScenesSectionComponent } from './pages/homepage/pages/scenes-section/scenes-section.component';
 
 const routes: Routes = [
   {
@@ -39,13 +39,11 @@ const routes: Routes = [
     children: [
       {
         path: 'browse',
-        component: BrowseSectionComponent,
-        children: [
-          {
-            path: 'scenes',
-            component: ScenesComponent
-          }
-        ]
+        component: BrowseSectionComponent
+      },
+      {
+        path: 'scenes',
+        component: ScenesSectionComponent
       },
       {
         path: 'explore',
@@ -70,26 +68,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-// {
-//     path: 'home',
-//     redirectTo: 'home/browse',
-//     pathMatch: 'full'
-// },
-// {
-//     path: 'home',
-//     children: [
-//         {
-//             path: 'browse',
-//             component: BrowseSectionComponent
-//         },
-//         {
-//             path: 'explore',
-//             component: ExploreSectionComponent
-//         },
-//         {
-//             path: 'profile',
-//             component: ProfileSectionComponent
-//         },
-//     ]
-// },  
