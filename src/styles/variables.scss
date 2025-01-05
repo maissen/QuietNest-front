@@ -66,4 +66,16 @@
         --browse-section-header-height: calc(28rem + 11rem);
     }
 
+
+
+    --create-section-audio-item-segment: 6rem;
+    @media all and (min-width: 400px) {
+        --create-section-audio-item-segment: calc(6rem + 1rem);
+    }
+    @media all and (min-width: 750px) {
+        --create-section-audio-item-segment: calc(6rem + 1.5rem);
+    }
+    @media all and (min-width: 1400px) {
+        --create-section-audio-item-segment: calc(6rem + 2.5rem);
+    }
 }

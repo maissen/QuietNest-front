@@ -1,0 +1,22 @@
+.content {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    margin: auto;
+
+    .icon_thumb {
+        height: var(--create-section-audio-item-segment);
+        width: var(--create-section-audio-item-segment);
+        border-radius: 50%;
+        background-color: green;
+    }
+
+    .title {
+
+    }
+
+    input[type="range"] {
+        width: var(--create-section-audio-item-segment);
+    }
+}

@@ -25,6 +25,7 @@ import { RecommendedForYouItemComponent } from './shared/recommended-for-you-ite
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ScenesSectionComponent } from './pages/scenes-section/scenes-section.component';
 import { CreateSectionComponent } from './pages/create-section/create-section.component';
+import { AudioItemComponent } from './pages/create-section/components/audio-item/audio-item.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CreateSectionComponent } from './pages/create-section/create-section.co
     RecommendedForYouItemComponent,
     NavbarComponent,
     ScenesSectionComponent,
-    CreateSectionComponent
+    CreateSectionComponent,
+    AudioItemComponent
   ],
   imports: [
     BrowserModule,
