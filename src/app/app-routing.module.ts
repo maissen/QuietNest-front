@@ -9,6 +9,7 @@ import { ExploreSectionComponent } from './pages/explore-section/explore-section
 import { ProfileSectionComponent } from './pages/profile-section/profile-section.component';
 import { NotFound404Component } from './pages/not-found-404/not-found-404.component';
 import { ScenesSectionComponent } from './pages/scenes-section/scenes-section.component';
+import { CreateSectionComponent } from './pages/create-section/create-section.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
       {
         path: 'explore',
         component: ExploreSectionComponent
+      },
+      {
+        path: 'create',
+        component: CreateSectionComponent
       },
       {
         path: 'profile',
