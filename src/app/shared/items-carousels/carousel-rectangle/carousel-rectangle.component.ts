@@ -1,4 +1,4 @@
-import { Component, Input, AfterViewInit, ElementRef, ViewChild, HostListener } from '@angular/core';
+import { Component, Input, AfterViewInit, ElementRef, ViewChild, HostListener, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-carousel-rectangle',
@@ -7,16 +7,18 @@ import { Component, Input, AfterViewInit, ElementRef, ViewChild, HostListener } 
 })
 export class CarouselRectangleComponent implements AfterViewInit {
   @Input() hasBottomBorder: boolean = false;
-  @ViewChild('carouselContainer') carouselContainerRef!: ElementRef;
-
   @Input() carouselTitle: string = '';
+  @ViewChild('carouselContainer') carouselContainerRef!: ElementRef;
 
   canScrollPrev = false;
   canScrollNext = false;
   scrollStep = 300;
 
+  constructor(private cdr: ChangeDetectorRef) {}
+
   ngAfterViewInit() {
-    this.checkScrollButtons(this.carouselContainerRef.nativeElement);
+    // Use setTimeout to avoid ExpressionChangedAfterItHasBeenCheckedError
+    setTimeout(() => this.checkScrollButtons(this.carouselContainerRef.nativeElement));
   }
 
   scrollCarousel(container: HTMLElement, direction: 'prev' | 'next') {
@@ -42,7 +44,6 @@ export class CarouselRectangleComponent implements AfterViewInit {
   checkScrollButtons(container: HTMLElement) {
     const totalScrollableWidth = container.scrollWidth - container.clientWidth;
 
-    // Update button states based on scroll position and content
     this.canScrollPrev = container.scrollLeft > 0;
     this.canScrollNext = container.scrollLeft < totalScrollableWidth;
 
@@ -51,5 +52,8 @@ export class CarouselRectangleComponent implements AfterViewInit {
       this.canScrollPrev = false;
       this.canScrollNext = false;
     }
+
+    // Trigger change detection to ensure UI updates
+    this.cdr.detectChanges();
   }
 }
