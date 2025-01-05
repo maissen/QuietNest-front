@@ -1,1 +1,15 @@
-<p>explore-section works!</p>
+<div class="content">
+    <div class="header">
+        <p class="title">Discover More</p>
+        <input type="text" name="Filter results" id="">
+    </div>
+
+    <div class="loaded_content">
+        <app-carousel-square [carouselTitle]="'Today\'s picks'" [hasBottomBorder]="true"></app-carousel-square>
+    
+        <app-explore-by-category></app-explore-by-category>
+        <app-carousel-rectangle [carouselTitle]="'Top authors'"></app-carousel-rectangle>
+        <app-explore-by-time></app-explore-by-time>
+        <app-carousel-rectangle [carouselTitle]="'New and networthy'"></app-carousel-rectangle>
+    </div>
+</div>

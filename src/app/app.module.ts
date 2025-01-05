@@ -26,6 +26,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ScenesSectionComponent } from './pages/scenes-section/scenes-section.component';
 import { CreateSectionComponent } from './pages/create-section/create-section.component';
 import { AudioItemComponent } from './pages/create-section/components/audio-item/audio-item.component';
+import { ExploreByCategoryComponent } from './pages/explore-section/components/explore-by-category/explore-by-category.component';
+import { ExploreByTimeComponent } from './pages/explore-section/components/explore-by-time/explore-by-time.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { AudioItemComponent } from './pages/create-section/components/audio-item
     NavbarComponent,
     ScenesSectionComponent,
     CreateSectionComponent,
-    AudioItemComponent
+    AudioItemComponent,
+    ExploreByCategoryComponent,
+    ExploreByTimeComponent
   ],
   imports: [
     BrowserModule,

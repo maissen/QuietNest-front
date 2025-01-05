@@ -1,0 +1,20 @@
+<div class="content">
+    <div class="controls">
+      <h3>Explore By Time</h3>
+      <div *ngIf="canScrollLeft || canScrollRight" class="btns">
+        <button (click)="scrollLeft()" [disabled]="!canScrollLeft">prev</button>
+        <button (click)="scrollRight()" [disabled]="!canScrollRight">next</button>
+      </div>
+    </div>
+  
+    <ul class="categories_list hide-scrollbar" #categoriesList>
+      <li>5 min</li>
+      <li>10 min</li>
+      <li>15 min</li>
+      <li>20 min</li>
+      <li>30 min</li>
+      <li>45 min</li>
+      <li>60 min</li>
+      <li>1 hr+</li>
+    </ul>
+</div>
