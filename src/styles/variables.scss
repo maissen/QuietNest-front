@@ -53,17 +53,17 @@
         --browse-section-header-height: calc(28rem + 2rem);
     }
     @media all and (min-width: 750px) {
-        --browse-section-header-height: calc(28rem + 6rem);
-    }
-    @media all and (min-width: 1000px) {
         --browse-section-header-height: calc(28rem + 8rem);
     }
+    @media all and (min-width: 1000px) {
+        --browse-section-header-height: calc(28rem + 11rem);
+    }
     @media all and (min-width: 1200px) {
-        --browse-section-header-height: calc(28rem + 9rem);
+        --browse-section-header-height: calc(28rem + 13rem);
         --browse-section-header-width: calc(100% - var(--navbar-wide-width));
     }
     @media all and (min-width: 1400px) {
-        --browse-section-header-height: calc(28rem + 11rem);
+        --browse-section-header-height: calc(28rem + 16rem);
     }
 
 

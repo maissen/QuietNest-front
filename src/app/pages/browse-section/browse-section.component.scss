@@ -13,15 +13,19 @@
         z-index: 1;
         overflow: hidden;
 
-        img {height: 100%;}
+        .bg_scene {width: 100%;}
 
         .toolbar {
             height: 100%;
             width: 100%;
             display: flex;
-            align-items: start;
-            justify-content: end;
-            padding: var(--dynamic-content-padding);
+            align-items: flex-start;
+            justify-content: flex-end;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 2;
+            // padding: var(--dynamic-content-padding);
 
             
             button.openScenesSection {

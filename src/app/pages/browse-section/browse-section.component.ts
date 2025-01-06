@@ -24,11 +24,11 @@ export class BrowseSectionComponent implements OnInit, AfterViewInit{
       }
     );
 
-    // this.currentScene = this.scenesService.getCurrentScene();
+    this.currentScene = this.scenesService.getCurrentScene();
   }
 
   ngAfterViewInit(): void {
-    // console.log('from browse section, current scene : ' + this.currentScene.name);
+    console.log('browse comp, current scene : ' + this.currentScene.name);
       
   }
 
