@@ -21,4 +21,8 @@ export class PlayingAudioBannerComponent {
       }
     });
   }
+
+  clearPlayingAudio() {
+    this.playingAudioService.clearSelectedAudioData();
+  }
 }

@@ -1,5 +1,5 @@
 <div class="content" *ngIf="selectedAudioData">
   <p>Currently playing audio: {{ selectedAudioData.audio }}</p>
 
-  <button>Close</button>
+  <button (click)="clearPlayingAudio()">Close</button>
 </div>
