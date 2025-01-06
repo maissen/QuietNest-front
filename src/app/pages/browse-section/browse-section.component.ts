@@ -7,7 +7,7 @@ import { ScenesSectionService } from 'src/app/services/scenes-section.service';
   templateUrl: './browse-section.component.html',
   styleUrls: ['./browse-section.component.scss']
 })
-export class BrowseSectionComponent implements OnInit, AfterViewInit{
+export class BrowseSectionComponent implements OnInit{
 
   audios: any[] = [];
   currentScene: any;
@@ -18,18 +18,20 @@ export class BrowseSectionComponent implements OnInit, AfterViewInit{
   ){};
 
   ngOnInit(): void {
-    this.audioService.getAudioData().subscribe(
-      (data) => {
-        if(data) this.audios = data;
+    this.audioService.getAudioData().subscribe(data => {
+      if (data) this.audios = data;
+    });
+  
+    // Subscribe to currentScene updates
+    this.scenesService.getCurrentScene().subscribe(currentScene => {
+      if (currentScene) {
+        this.currentScene = currentScene;
+        console.log('browse comp, current scene:', currentScene.name);
+      } else {
+        console.log('browse comp, current scene is undefined');
       }
-    );
-
-    this.currentScene = this.scenesService.getCurrentScene();
+    });
   }
 
-  ngAfterViewInit(): void {
-    console.log('browse comp, current scene : ' + this.currentScene.name);
-      
-  }
 
 }

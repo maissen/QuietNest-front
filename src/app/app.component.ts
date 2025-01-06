@@ -17,30 +17,29 @@ export class AppComponent implements OnInit {
     private playingAudioService: PlayingAudioService,
     private router: Router,
     private scenesService: ScenesSectionService
-  ) {}
+  ) {
+    
+  }
 
   ngOnInit() {
-
-    console.clear()
-
+    console.clear();
+  
     // Subscribe to the BehaviorSubject to track changes dynamically
     this.playingAudioService.selectedAudioData$.subscribe(data => {
       this.isPlayingAudio = data !== null; // Update isPlayingAudio based on the presence of data
     });
-
-    // Check the initial URL
+  
     this.checkIfUrlEndsWithApp();
-
-    // Subscribe to URL changes and check if the URL ends with /app/...
+  
     this.router.events.subscribe(() => {
       this.checkIfUrlEndsWithApp();
     });
-
-    // Set default scene and log the result
+  
     this.scenesService.setDefaultScene().subscribe(defaultScene => {
-      console.log('app comp, Default scene set:', defaultScene.name);  // Check if the default scene is set successfully
+      console.log('app comp, Default scene set:', defaultScene?.name);
     });
   }
+  
 
   checkIfUrlEndsWithApp() {
     const currentUrl = this.router.url;
