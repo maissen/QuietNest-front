@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, HostListener, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CreateSectionService } from 'src/app/services/create-section.service';
+import { ScenesSectionService } from 'src/app/services/scenes-section.service';
 
 @Component({
   selector: 'app-create-section',
@@ -12,13 +13,28 @@ export class CreateSectionComponent implements AfterViewInit, OnInit {
   canScrollLeft = false;
   canScrollRight = true;
   categories: any[] = [];
+  currentScene: any;
 
   constructor(
     private createSectionService: CreateSectionService,
-    private cdr: ChangeDetectorRef // Inject ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private scenesServices: ScenesSectionService
   ) {}
 
   ngOnInit(): void {
+
+    this.scenesServices.getCurrentScene().subscribe(
+      (scene) => {
+        this.currentScene = scene;
+        if (this.currentScene) {
+          // console.log('create comp, Current scene:', this.currentScene.name);
+        }
+      },
+      (error) => {
+        console.error('Error fetching current scene:', error);
+      }
+    );
+
     this.fetchCategories();
   }
 

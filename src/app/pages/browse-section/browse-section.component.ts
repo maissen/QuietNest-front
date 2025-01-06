@@ -25,7 +25,7 @@ export class BrowseSectionComponent implements OnInit{
     this.scenesService.getCurrentScene().subscribe(currentScene => {
       if (currentScene) {
         this.currentScene = currentScene;
-        console.log('browse comp, current scene:', currentScene.avgColor);
+        // console.log('browse comp, current scene:', currentScene.avgColor);
       } else {
         // console.log('browse comp, current scene is undefined');
       }

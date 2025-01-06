@@ -33,7 +33,7 @@ export class ScenesSectionComponent implements OnInit {
       (scene) => {
         this.currentScene = scene;
         if (this.currentScene) {
-          console.log('scenes comp, Current scene:', this.currentScene.name);
+          // console.log('scenes comp, Current scene:', this.currentScene.name);
         }
       },
       (error) => {
