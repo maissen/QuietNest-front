@@ -28,7 +28,11 @@
             [audiosList]="audios"
         ></app-carousel-square>
         
-        <app-recommended-for-you [title]="'Recommended For You'"></app-recommended-for-you>
+        <app-recommended-for-you 
+            [title]="'Recommended For You'" 
+            [data]="audios"
+        ></app-recommended-for-you>
+
         <app-carousel-square 
             [carouselTitle]="'Recently Liked'"
             [audiosList]="audios"

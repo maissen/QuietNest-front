@@ -15,7 +15,7 @@ export class BrowseSectionComponent implements OnInit{
   ngOnInit(): void {
       this.audioService.getAudioData().subscribe(
         (data) => {
-          if(data) this.audios = data;
+          if(data) this.audios = data; // returns 18 items
         }
       )
   }
