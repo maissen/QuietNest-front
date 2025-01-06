@@ -9,7 +9,11 @@
 
     </header>
 
-    <div class="loaded_content section-blue-bgcolor">
+    <div 
+        class="loaded_content" 
+        [ngStyle]="{'background-color': currentScene?.avgColor}"
+    >
+
         <app-carousel-rectangle 
             [hasBottomBorder]="false" 
             [carouselTitle]="'Popular on Quiet Nest'"
