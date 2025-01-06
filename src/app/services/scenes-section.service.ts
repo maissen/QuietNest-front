@@ -7,10 +7,20 @@ import { Observable } from 'rxjs';
 })
 export class ScenesSectionService {
   private url = 'http://localhost:2003/api/scenes';
+  private currentScene: any = {};
 
   constructor(private http: HttpClient) { }
 
   getScenes(): Observable<any> {
     return this.http.get<any>(this.url);
   }
+
+  setCurrentScene(scene: any): void {
+    this.currentScene = scene;
+  }
+
+  getCurrentScene(): any {
+    return this.currentScene;
+  }
 }
+

@@ -4,14 +4,12 @@
 
     <div class="loaded-content">
         <ng-container *ngFor="let scene of scenes">
-            <div class="scene-item">
+            <div class="scene-item" (click)="selectScene(scene)">
                 <div class="img_thumb">
-                    <img [src]="scene.imgUrl">
+                    <img [src]="scene.imgUrl" alt="Scene Image">
                 </div>
                 <p class="name">{{scene.name}}</p>
             </div>
         </ng-container>
-        
     </div>
-
 </div>
