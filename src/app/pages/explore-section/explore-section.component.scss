@@ -6,11 +6,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        position: sticky;
-        top: 0;
-        left: 0;
         padding: 1.5rem var(--dynamic-content-padding);
-        z-index: var(--navbar-zindex);
 
         .title {
             margin: 0;

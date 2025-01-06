@@ -30,6 +30,7 @@ import { ExploreByCategoryComponent } from './pages/explore-section/components/e
 import { ExploreByTimeComponent } from './pages/explore-section/components/explore-by-time/explore-by-time.component';
 import { SearchSectionComponent } from './pages/search-section/search-section.component';
 import { PlayingAudioBannerComponent } from './shared/playing-audio-banner/playing-audio-banner.component';
+import { BgVideoComponent } from './shared/bg-video/bg-video.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { PlayingAudioBannerComponent } from './shared/playing-audio-banner/playi
     ExploreByCategoryComponent,
     ExploreByTimeComponent,
     SearchSectionComponent,
-    PlayingAudioBannerComponent
+    PlayingAudioBannerComponent,
+    BgVideoComponent
   ],
   imports: [
     BrowserModule,

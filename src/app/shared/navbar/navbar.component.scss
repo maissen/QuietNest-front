@@ -7,7 +7,9 @@
     left: 0;
     width: 100%;
     height: var(--navbar-small-height);
-    background: blue;
+    backdrop-filter: blur(15px);
+    background-color: #00000062;
+    color: white;
     z-index: var(--navbar-zindex);
 
     @media all and (min-width: 1200px) {

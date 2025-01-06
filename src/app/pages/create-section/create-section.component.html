@@ -1,6 +1,9 @@
-<div class="content" [ngStyle]="{'background-color': currentScene?.avgColor}">
+<div class="content" [ngStyle]="{'background-color': currentScene?.avgColor + '80'}">
 
-    <div class="categories_header" [ngStyle]="{'background-color': currentScene?.avgColor}">
+  <app-bg-video></app-bg-video>
+
+    <!-- <div class="categories_header" [ngStyle]="{'background-color': currentScene?.avgColor}"> -->
+    <div class="categories_header">
         <div class="controls">
           <h3>Categories</h3>
           <div *ngIf="canScrollLeft || canScrollRight" class="btns">

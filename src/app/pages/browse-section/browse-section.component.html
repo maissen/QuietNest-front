@@ -1,19 +1,18 @@
 <div class="content">
+
+    <app-bg-video></app-bg-video>
+    
     <header>
-        <img [src]="currentScene?.imgUrl" class="bg_scene">
-
-
-        <div class="toolbar">
-            <button class="openScenesSection" routerLink="/app/scenes">Scenes</button>
-        </div>
-
+        <img [src]="currentScene?.imgUrl" class="bg_scene" draggable="false">
     </header>
 
-    <div 
-        class="loaded_content" 
-        [ngStyle]="{'background-color': currentScene?.avgColor}"
-    >
+    <div class="toolbar">
+        <!-- <button class="openScenesSection">Full screen</button> -->
+        <!-- <button class="openScenesSection" routerLink="/app/search">Search</button> -->
+        <button class="openScenesSection" routerLink="/app/scenes">Scenes</button>
+    </div>
 
+    <div class="loaded_content" [ngStyle]="{'background-color': bgColor}">
         <app-carousel-rectangle 
             [hasBottomBorder]="false" 
             [carouselTitle]="'Popular on Quiet Nest'"

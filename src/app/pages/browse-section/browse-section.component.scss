@@ -1,42 +1,39 @@
 .content {
+    position: relative;
 
     header {
-        width: var(--browse-section-header-width);
         height: var(--browse-section-header-height);
-        position: fixed;
-        top: 0;
-        right: 0;
-        // background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXVxZ2NpdHQ1bXU5ZG5wenNiYjJtcTI2ZWN6OGd2YjlpanFxOG55diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5xtDarsUgCwZMXqcVQA/giphy.webp');
-        background-position: center;
-        background-size: cover;
-        z-index: 1;
         overflow: hidden;
+        background-color: red;
 
-        .bg_scene {width: 100%;}
 
-        .toolbar {
-            height: 100%;
+        .bg_scene {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: var(--browse-section-header-height);
             width: 100%;
-            display: flex;
-            align-items: flex-start;
-            justify-content: flex-end;
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            z-index: 2;
-            // padding: var(--dynamic-content-padding);
-
-            
-            button.openScenesSection {
-
-            }
+            z-index: 0;
         }
     }
 
-    .loaded_content {
-        margin-top: var(--browse-section-header-height);
+    
+    .toolbar {
+        
+        @media all and (max-width: 500px) {
+            position: absolute;
+            top: var(--dynamic-content-padding);
+            right: var(--dynamic-content-padding);
+            padding: 0;
+        }
+        
+        display: flex;
+        justify-content: flex-end;
         padding: var(--dynamic-content-padding);
+    }
+
+    .loaded_content {
         position: relative;
-        z-index: 2;
+        padding: var(--dynamic-content-padding);
     }
 }
