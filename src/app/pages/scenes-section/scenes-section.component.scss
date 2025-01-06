@@ -14,11 +14,11 @@
         .scene-item {
             height: 9rem;
             width: 9rem;
-            background-color: goldenrod;
             margin: auto;
             overflow: hidden;
             border-radius: 1rem;
             position: relative;
+            border: .2rem solid transparent;
 
             .img_thumb {
                 height: 100%;
@@ -61,8 +61,10 @@
             row-gap: 2.5rem;
         }
 
-        
-
     }
 
+}
+
+.scene-item-active {
+    border-color: #FFF !important;
 }

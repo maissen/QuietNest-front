@@ -20,6 +20,9 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+
+    console.clear()
+
     // Subscribe to the BehaviorSubject to track changes dynamically
     this.playingAudioService.selectedAudioData$.subscribe(data => {
       this.isPlayingAudio = data !== null; // Update isPlayingAudio based on the presence of data
@@ -35,7 +38,7 @@ export class AppComponent implements OnInit {
 
     // Set default scene and log the result
     this.scenesService.setDefaultScene().subscribe(defaultScene => {
-      console.log('Default scene set:', defaultScene);  // Check if the default scene is set successfully
+      console.log('app comp, Default scene set:', defaultScene.name);  // Check if the default scene is set successfully
     });
   }
 

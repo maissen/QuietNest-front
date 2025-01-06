@@ -9,6 +9,7 @@ import { ScenesSectionService } from 'src/app/services/scenes-section.service';
 })
 export class ScenesSectionComponent implements OnInit {
   scenes: any[] = [];
+  currentScene: any;
 
   constructor(
     private router: Router,
@@ -20,7 +21,10 @@ export class ScenesSectionComponent implements OnInit {
       (data) => {
         if (data) {
           this.scenes = data;
-          console.log('Scenes section successfully fetched data');
+          console.log('scenes comp, Scenes section successfully fetched data');
+
+          this.currentScene = this.scenesServices.getCurrentScene();
+          console.log('current scene : ' + this.currentScene.name);
         }
       }
     );
@@ -32,6 +36,7 @@ export class ScenesSectionComponent implements OnInit {
 
   selectScene(scene: any): void {
     this.scenesServices.setCurrentScene(scene);
-    console.log('Scene selected:', scene);
+    this.currentScene = scene;
+    console.log('Scene selected:', scene.name);
   }
 }
