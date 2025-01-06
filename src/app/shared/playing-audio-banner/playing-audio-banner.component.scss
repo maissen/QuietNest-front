@@ -1,11 +1,10 @@
 .content {
     position: fixed;
+    left: 0;
     bottom: var(--navbar-small-height);
     height: var(--playing-audio-banner-height);
     padding: var(--dynamic-content-padding);
     width: 100%;
-    left: 0;
-    bottom: 0;
     background-color: darkorange;
     display: flex;
     justify-content: space-between;

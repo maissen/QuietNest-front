@@ -18,11 +18,16 @@ export class PlayingAudioService {
   }
 
   getSelectedAudioData() {
+    console.log(this.audioData.value);
     return this.audioData.value;
   }
 
   clearSelectedAudioData() {
     this.audioData.next(null); //? Properly notify subscribers with a `null` value
     console.log('after clearance : ' + this.audioData.value);
+  }
+
+  isPlaying() {
+    return this.audioData != null;
   }
 }

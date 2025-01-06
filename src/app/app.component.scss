@@ -1,11 +1,12 @@
 .content {
-    padding-left: var(--navbar-wide-width);
 
     .dynamic-content {
+        min-height: calc(100vh - var(--navbar-small-height));
+        margin-bottom: var(--navbar-small-height);
+        padding-left: var(--navbar-wide-width);
         position: relative;
         z-index: var(--dynamic-content-zindex);
         background-color: rosybrown;
-        margin-bottom: var(--navbar-small-height);
     }
 
 }

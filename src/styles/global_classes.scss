@@ -26,3 +26,12 @@
         z-index: 1;
     }
 }
+
+//? for app.component -> .dynamic-content
+.add-spacing-for-navbar { 
+    padding-left: var(--navbar-wide-width);
+}
+
+.add-margin-bottom-for-playing-audio-banner {
+    margin-bottom: calc(var(--playing-audio-banner-height) + var(--navbar-small-height)) !important;
+}
