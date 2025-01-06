@@ -10,160 +10,24 @@
         </div>
       
         <ul class="categories_list hide-scrollbar" #categoriesList>
-          <li>category one</li>
-          <li>category two</li>
-          <li>category three</li>
-          <li>category four</li>
-          <li>category five</li>
-          <li>category six</li>
-          <li>category seven</li>
-          <li>category eight</li>
-          <li>category nine</li>
-          <li>category ten</li>
+          <a *ngFor="let category of categories">{{category.name}}</a>
         </ul>
       </div>
       
       
 
     <div class="loaded_content">
-        <div class="category_unit">
-            <div class="title">Enviroment</div>
+
+        <div class="category_unit" *ngFor="let category of categories">
+
+            <div class="title">{{category.name}}</div>
+
             <div class="audio_items">
                 
-                <div class="item">
-                    <p class="name">Caffee shop</p>
+                <div class="item" *ngFor="let item of category.items;">
+                    <p class="name">{{item.name}}</p>
                     <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
-                </div>
-                <div class="item">
-                    <p class="name">Caffee shop</p>
-                    <div class="icon_thumb"></div>
-                    <input type="range" min="0" max="100" step="5   ">
+                    <input type="range" min="0" max="100" step="5">
                 </div>
 
             </div>

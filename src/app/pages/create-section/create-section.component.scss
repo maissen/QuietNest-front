@@ -29,12 +29,13 @@
             scroll-behavior: smooth;
         }
         
-        .categories_list li {
+        .categories_list a {
             flex: 0 0 auto;
             padding: 0.5rem 1rem;
             background-color: #f5f5f5;
             border-radius: 4px;
             white-space: nowrap;
+            text-decoration: none;
         }
     }
 
@@ -44,6 +45,7 @@
 
         .category_unit {
             border: 1px solid white;
+            margin-bottom: 5rem;
 
             .title {
                 margin-bottom: 2rem;

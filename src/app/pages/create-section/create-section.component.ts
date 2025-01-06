@@ -1,19 +1,45 @@
-import { Component, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, HostListener, OnInit, ChangeDetectorRef } from '@angular/core';
+import { CreateSectionService } from 'src/app/services/create-section.service';
 
 @Component({
   selector: 'app-create-section',
   templateUrl: './create-section.component.html',
   styleUrls: ['./create-section.component.scss']
 })
-export class CreateSectionComponent implements AfterViewInit {
+export class CreateSectionComponent implements AfterViewInit, OnInit {
   @ViewChild('categoriesList') categoriesList!: ElementRef<HTMLUListElement>;
 
   canScrollLeft = false;
   canScrollRight = true;
+  categories: any[] = [];
+
+  constructor(
+    private createSectionService: CreateSectionService,
+    private cdr: ChangeDetectorRef // Inject ChangeDetectorRef
+  ) {}
+
+  ngOnInit(): void {
+    this.fetchCategories();
+  }
+
+  fetchCategories() {
+    this.createSectionService.getCategories().subscribe(
+      (data) => {
+        this.categories = data;
+        console.log('Create section successfully fetched Data:', this.categories);
+      },
+      (error) => {
+        console.error('Error fetching categories:', error);
+      }
+    );
+  }
 
   ngAfterViewInit() {
     this.updateScrollButtons();
     this.categoriesList.nativeElement.addEventListener('scroll', () => this.updateScrollButtons());
+
+    // Manually trigger change detection after the view is initialized
+    this.cdr.detectChanges();
   }
 
   @HostListener('window:resize')
