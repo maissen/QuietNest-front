@@ -1,4 +1,17 @@
 <div class="content">
     <p>Scenes-section work!</p>
     <button (click)="undoLink()">Close</button>
+
+    <div class="loaded-content">
+        <ng-container *ngFor="let scene of scenes">
+            <div class="scene-item">
+                <div class="img_thumb">
+                    <img [src]="scene.imgUrl">
+                </div>
+                <p class="name">{{scene.name}}</p>
+            </div>
+        </ng-container>
+        
+    </div>
+
 </div>

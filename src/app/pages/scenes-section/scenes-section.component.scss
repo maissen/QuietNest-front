@@ -4,7 +4,65 @@
     background-color: #003391;
     padding: var(--dynamic-content-padding);
 
-    button {
+    .loaded-content {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 2.5rem;
+        column-gap: 1.5rem;
+
+        .scene-item {
+            height: 9rem;
+            width: 9rem;
+            background-color: goldenrod;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 1rem;
+            position: relative;
+
+            .img_thumb {
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 0;
+
+                img {height: 100%;}
+            }
+
+            .name {
+                position: absolute;
+                z-index: 1;
+                backdrop-filter: blur(5px);
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                margin: 0;
+                padding: 1rem .5rem;
+            }
+
+            @media all and (min-width: 500px) {
+                height: 11rem;
+                width: 11rem;
+            }
+            @media all and (min-width: 650px) {
+                height: 13rem;
+                width: 13rem;
+            }
+        }
+
+        @media all and (min-width: 750px) {
+            grid-template-columns: repeat(4, 1fr);
+            row-gap: 2.5rem;
+        }
+        @media all and (min-width: 1400px) {
+            grid-template-columns: repeat(6, 1fr);
+            row-gap: 2.5rem;
+        }
+
+        
+
     }
 
 }

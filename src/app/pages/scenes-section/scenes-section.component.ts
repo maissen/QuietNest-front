@@ -1,14 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ScenesSectionService } from 'src/app/services/scenes-section.service';
 
 @Component({
   selector: 'app-scenes-section',
   templateUrl: './scenes-section.component.html',
   styleUrls: ['./scenes-section.component.scss']
 })
-export class ScenesSectionComponent {
+export class ScenesSectionComponent implements OnInit{
 
-  constructor(private router: Router){};
+  scenes: any[] = [];
+
+  constructor(
+    private router: Router,
+    private scenesServices: ScenesSectionService
+  ){};
+
+  ngOnInit(): void {
+    this.scenesServices.getScenes().subscribe(
+      (data) => {
+        if(data) {
+          this.scenes = data;
+          console.log('scenes section successfully fetched data');
+        }
+      }
+    )
+  }
 
   undoLink() {
     this.router.navigate(['app/']);
