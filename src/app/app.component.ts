@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayingAudioService } from './services/playing-audio.service';
 import { Router } from '@angular/router';
+import { ScenesSectionService } from './services/scenes-section.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private playingAudioService: PlayingAudioService,
-    private router: Router
+    private router: Router,
+    private scenesService: ScenesSectionService
   ) {}
 
   ngOnInit() {
@@ -29,6 +31,11 @@ export class AppComponent implements OnInit {
     // Subscribe to URL changes and check if the URL ends with /app/...
     this.router.events.subscribe(() => {
       this.checkIfUrlEndsWithApp();
+    });
+
+    // Set default scene and log the result
+    this.scenesService.setDefaultScene().subscribe(defaultScene => {
+      console.log('Default scene set:', defaultScene);  // Check if the default scene is set successfully
     });
   }
 

@@ -9,7 +9,6 @@ import { map } from 'rxjs/operators';
 export class ScenesSectionService {
   private url = 'http://localhost:2003/api/scenes';
   private currentScene: any = {};
-  private defaultScene: any = null;
 
   constructor(private http: HttpClient) { }
 
@@ -26,18 +25,13 @@ export class ScenesSectionService {
   }
 
   setDefaultScene(): Observable<any> {
-    if (this.defaultScene) {
-      return new Observable(observer => {
-        observer.next(this.defaultScene);
-        observer.complete();
-      });
-    } else {
-      return this.http.get<any>(this.url).pipe(
-        map(scenes => {
-          this.defaultScene = scenes[0];
-          return this.defaultScene;
-        })
-      );
-    }
+    return this.http.get<any>(this.url).pipe(
+      map(scenes => {
+        if (scenes && scenes.length > 0) {
+          this.currentScene = scenes[0];
+        }
+        return this.currentScene;
+      })
+    );
   }
 }
