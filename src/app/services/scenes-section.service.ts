@@ -8,32 +8,34 @@ import { map } from 'rxjs/operators';
 })
 export class ScenesSectionService {
   private url = 'http://localhost:2003/api/scenes';
+  private defaultSceneApi = 'http://localhost:2003/api/default-scene';
   private currentSceneSubject = new BehaviorSubject<any>(null);
 
-  constructor(private http: HttpClient) {}
+  private defaultScene: any = null;
+
+  constructor(private http: HttpClient) {
+    this.http.get<any>(this.defaultSceneApi).subscribe(
+      (scene) => {
+        this.defaultScene = scene;
+        this.currentSceneSubject.next(scene); // Emit the default scene to the BehaviorSubject
+        console.log('Default scene loaded:', scene);
+      },
+      (error) => {
+        console.error('Error loading default scene:', error);
+      }
+    );
+  }
 
   getScenes(): Observable<any> {
     return this.http.get<any>(this.url);
   }
 
   setCurrentScene(scene: any): void {
-    this.currentSceneSubject.next(scene); // Emit the new value
+    this.currentSceneSubject.next(scene);
   }
 
   getCurrentScene(): Observable<any> {
-    return this.currentSceneSubject.asObservable(); // Return as observable
+    return this.currentSceneSubject.asObservable();
   }
 
-  setDefaultScene(): Observable<any> {
-    return this.http.get<any>(this.url).pipe(
-      map(scenes => {
-        if (scenes && scenes.length > 0) {
-          const defaultScene = scenes[0];
-          this.currentSceneSubject.next(defaultScene); // Emit the default scene
-          return defaultScene;
-        }
-        return null;
-      })
-    );
-  }
 }

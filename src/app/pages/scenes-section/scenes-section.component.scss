@@ -1,7 +1,6 @@
 .content {
     width: 100%;
     min-height: calc(100vh - var(--navbar-small-height));
-    background-color: #003391;
     padding: var(--dynamic-content-padding);
 
     .loaded-content {

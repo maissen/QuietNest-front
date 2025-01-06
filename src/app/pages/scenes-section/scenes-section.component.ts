@@ -21,11 +21,23 @@ export class ScenesSectionComponent implements OnInit {
       (data) => {
         if (data) {
           this.scenes = data;
-          console.log('scenes comp, Scenes section successfully fetched data');
-
-          this.currentScene = this.scenesServices.getCurrentScene();
-          console.log('current scene : ' + this.currentScene.name);
+          console.log('Scenes section successfully fetched data');
         }
+      },
+      (error) => {
+        console.error('Error fetching scenes:', error);
+      }
+    );
+
+    this.scenesServices.getCurrentScene().subscribe(
+      (scene) => {
+        this.currentScene = scene;
+        if (this.currentScene) {
+          console.log('scenes comp, Current scene:', this.currentScene.name);
+        }
+      },
+      (error) => {
+        console.error('Error fetching current scene:', error);
       }
     );
   }

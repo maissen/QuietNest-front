@@ -22,13 +22,12 @@ export class BrowseSectionComponent implements OnInit{
       if (data) this.audios = data;
     });
   
-    // Subscribe to currentScene updates
     this.scenesService.getCurrentScene().subscribe(currentScene => {
       if (currentScene) {
         this.currentScene = currentScene;
-        console.log('browse comp, current scene:', currentScene.name);
+        // console.log('browse comp, current scene:', currentScene.name);
       } else {
-        console.log('browse comp, current scene is undefined');
+        // console.log('browse comp, current scene is undefined');
       }
     });
   }

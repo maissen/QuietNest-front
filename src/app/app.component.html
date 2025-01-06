@@ -5,7 +5,14 @@
     </ng-container>
     <app-playing-audio-banner></app-playing-audio-banner>
     
-    <div [ngClass]="{'dynamic-content': true, 'add-spacing-for-navbar': showNavbar, 'add-margin-bottom-for-playing-audio-banner': isPlayingAudio}">
+    <div 
+        [ngClass]="{
+            'dynamic-content': true, 
+            'add-spacing-for-navbar': showNavbar, 
+            'add-margin-bottom-for-playing-audio-banner': isPlayingAudio
+        }"
+        [ngStyle]="{'background-color': avgcolor}"            
+        >
         <router-outlet></router-outlet>
     </div>
 

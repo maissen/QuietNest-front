@@ -6,7 +6,6 @@
         position: fixed;
         top: 0;
         right: 0;
-        background-color: brown;
         // background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXVxZ2NpdHQ1bXU5ZG5wenNiYjJtcTI2ZWN6OGd2YjlpanFxOG55diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5xtDarsUgCwZMXqcVQA/giphy.webp');
         background-position: center;
         background-size: cover;
@@ -35,8 +34,9 @@
     }
 
     .loaded_content {
-        background-color: aquamarine;
         margin-top: var(--browse-section-header-height);
         padding: var(--dynamic-content-padding);
+        position: relative;
+        z-index: 2;
     }
 }

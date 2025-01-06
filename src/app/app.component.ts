@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   title = 'quietNest-front';
   showNavbar: boolean = false;
   isPlayingAudio: boolean = false;
+  avgcolor: string = 'darkgreen';
 
   constructor(
     private playingAudioService: PlayingAudioService,
@@ -35,9 +36,6 @@ export class AppComponent implements OnInit {
       this.checkIfUrlEndsWithApp();
     });
   
-    this.scenesService.setDefaultScene().subscribe(defaultScene => {
-      console.log('app comp, Default scene set:', defaultScene?.name);
-    });
   }
   
 
