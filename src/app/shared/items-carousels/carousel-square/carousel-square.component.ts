@@ -6,6 +6,7 @@ import { Component, Input, AfterViewInit, ElementRef, ViewChild, HostListener, C
   styleUrls: ['./carousel-square.component.scss']
 })
 export class CarouselSquareComponent implements AfterViewInit {
+  @Input() audiosList: any[] = [];
   @Input() hasBottomBorder: boolean = false;
   @Input() carouselTitle: string = '';
   @ViewChild('carouselContainer') carouselContainerRef!: ElementRef;

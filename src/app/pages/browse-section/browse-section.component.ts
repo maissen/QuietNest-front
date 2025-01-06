@@ -8,12 +8,14 @@ import { AudioService } from 'src/app/services/audio.service';
 })
 export class BrowseSectionComponent implements OnInit{
 
+  audios: any[] = [];
+
   constructor(private audioService: AudioService){};
 
   ngOnInit(): void {
       this.audioService.getAudioData().subscribe(
         (data) => {
-          console.log(data);
+          if(data) this.audios = data;
         }
       )
   }

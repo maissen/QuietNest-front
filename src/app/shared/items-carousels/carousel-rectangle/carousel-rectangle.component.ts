@@ -1,4 +1,4 @@
-import { Component, Input, AfterViewInit, ElementRef, ViewChild, HostListener, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, AfterViewInit, ElementRef, ViewChild, HostListener, ChangeDetectorRef, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-carousel-rectangle',
@@ -6,6 +6,7 @@ import { Component, Input, AfterViewInit, ElementRef, ViewChild, HostListener, C
   styleUrls: ['./carousel-rectangle.component.scss']
 })
 export class CarouselRectangleComponent implements AfterViewInit {
+  @Input() audiosList: any[] = [];
   @Input() hasBottomBorder: boolean = false;
   @Input() carouselTitle: string = '';
   @ViewChild('carouselContainer') carouselContainerRef!: ElementRef;

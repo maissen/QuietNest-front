@@ -5,11 +5,25 @@
     </div>
 
     <div class="loaded_content">
-        <app-carousel-square [carouselTitle]="'Today\'s picks'" [hasBottomBorder]="true"></app-carousel-square>
+        <app-carousel-square 
+            [hasBottomBorder]="true" 
+            [carouselTitle]="'today\'s Picks'"
+            [audiosList]="audios"
+        ></app-carousel-square>
     
         <app-explore-by-category></app-explore-by-category>
-        <app-carousel-rectangle [carouselTitle]="'Top authors'"></app-carousel-rectangle>
+
+        <app-carousel-rectangle 
+            [hasBottomBorder]="true" 
+            [carouselTitle]="'Top Authors'"
+            [audiosList]="audios"
+        ></app-carousel-rectangle>
+
         <app-explore-by-time></app-explore-by-time>
-        <app-carousel-rectangle [carouselTitle]="'New and networthy'"></app-carousel-rectangle>
+        <app-carousel-rectangle 
+            [hasBottomBorder]="true" 
+            [carouselTitle]="'New and Networthy'"
+            [audiosList]="audios"
+        ></app-carousel-rectangle>
     </div>
 </div>
