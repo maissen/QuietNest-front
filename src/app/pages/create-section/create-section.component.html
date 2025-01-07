@@ -26,6 +26,26 @@
   </div>
 
   <div class="loaded_content">
+
+    <!--! to display only active sounds in a custom category -->
+    <div class="category_unit" *ngIf="logicService.getActiveSounds().length > 0">
+      <div>
+        <div class="title">Crrently Enjoying</div>
+        <div class="audio_items">
+          <div 
+            class="item" 
+            *ngFor="let sound of logicService.getActiveSounds()"
+            [ngClass]="{'active': sound.isActive}"
+            (click)="logicService.toggleSound(sound)"
+          >
+            <p class="name">{{ sound.name }}</p>
+            <div class="icon_thumb blurry-bg" [ngStyle]="{ 'border-color': sound.isActive ? '#FFF' : 'transparent' }"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--! to display fetched categories and sounds -->
     <div class="category_unit" *ngFor="let category of logicService.getActiveCategories()">
       <div>
         <div class="title">{{ category.name }}</div>

@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CreateSectionLogicService {
   categories: any[] = [];
+
   private api_get_all_categories = 'http://localhost:2003/api/create-section/categories';
   // private api_activate_category = 'http://localhost:2003/api/create-section/activate-category/';
   // private api_desactivate_category = 'http://localhost:2003/api/create-section/desactivate-category/';
@@ -56,6 +57,14 @@ export class CreateSectionLogicService {
   getActiveCategories(): any[] {
     const activeCategories = this.categories.filter((category) => category.isActive);
     return activeCategories.length > 0 ? activeCategories : this.getAllCategories();
+  }
+
+  getActiveSounds(): any[] {
+    const activeSounds = this.categories
+      .flatMap((category: any) => category.items)
+      .filter((sound: any) => sound.isActive);
+  
+    return activeSounds;
   }
 
   toggleSound(sound: any): void {
