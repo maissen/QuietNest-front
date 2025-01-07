@@ -15,9 +15,8 @@ export class CreateSectionComponent implements AfterViewInit, OnInit {
   categories: any[] = [];
   currentScene: any;
 
-
-  activeFiltersButtons: number[] = []; 
-
+  activeFiltersButtons: number[] = [];
+  activeSoundsList: any[] = []; // List of active .item divs
 
   constructor(
     private createSectionService: CreateSectionService,
@@ -26,7 +25,6 @@ export class CreateSectionComponent implements AfterViewInit, OnInit {
   ) {}
 
   ngOnInit(): void {
-
     this.scenesServices.getCurrentScene().subscribe(
       (scene) => {
         this.currentScene = scene;
@@ -56,16 +54,27 @@ export class CreateSectionComponent implements AfterViewInit, OnInit {
 
   toggleFilter(categoryId: number): void {
     const index = this.activeFiltersButtons.indexOf(categoryId);
-  
+
     if (index === -1) {
       this.activeFiltersButtons.push(categoryId);
     } else {
       this.activeFiltersButtons.splice(index, 1);
     }
-  
+
     console.log('Active Filters:', this.activeFiltersButtons);
   }
-  
+
+  toggleSound(item: any): void {
+    const index = this.activeSoundsList.indexOf(item);
+
+    if (index === -1) {
+      this.activeSoundsList.push(item);
+    } else {
+      this.activeSoundsList.splice(index, 1);
+    }
+
+    console.log('Active Sounds List:', this.activeSoundsList);
+  }
 
   ngAfterViewInit() {
     this.updateScrollButtons();

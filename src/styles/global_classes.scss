@@ -25,6 +25,11 @@
     }
 }
 
+.blurry-bg {
+    backdrop-filter: blur(15px);
+    background-color: #00000062;
+}
+
 //? for app.component -> .dynamic-content
 .add-spacing-for-navbar { 
     padding-left: var(--navbar-wide-width);

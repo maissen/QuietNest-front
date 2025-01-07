@@ -74,20 +74,21 @@
                     border: 1px solid black;
                     margin: auto;
 
-                    .title {
-
-                    }
-
                     .icon_thumb {
                         height: var(--create-section-audio-item-segment);
                         width: var(--create-section-audio-item-segment);
-                        border-radius: 50%;
-                        background-color: green;
+                        border-radius: 1rem;
                         margin-bottom: 2rem;
+                        color: white;
+                        border: .2rem solid transparent;
                     }
 
                     input[type="range"] {
                         width: var(--create-section-audio-item-segment);
+                    }
+
+                    &.active {
+                        .icon_thumb {border-color: white;}
                     }
                 }
             }

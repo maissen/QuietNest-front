@@ -32,9 +32,15 @@
       <ng-template #showFilter>
         <div class="title">{{ category.name }}</div>
         <div class="audio_items">
-          <div class="item" *ngFor="let item of category.items;">
+          <div 
+            class="item" 
+            *ngFor="let item of category.items;" 
+            [class.active]="activeSoundsList.includes(item)"
+            (click)="toggleSound(item)">
             <p class="name">{{ item.name }}</p>
-            <div class="icon_thumb"></div>
+            <div class="icon_thumb blurry-bg">
+              <i class="fa-solid fa-house"></i>
+            </div>
             <input type="range" min="0" max="100" step="5">
           </div>
         </div>
