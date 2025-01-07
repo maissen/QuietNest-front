@@ -15,6 +15,10 @@ export class CreateSectionComponent implements AfterViewInit, OnInit {
   categories: any[] = [];
   currentScene: any;
 
+
+  activeFiltersButtons: number[] = []; 
+
+
   constructor(
     private createSectionService: CreateSectionService,
     private cdr: ChangeDetectorRef,
@@ -49,6 +53,19 @@ export class CreateSectionComponent implements AfterViewInit, OnInit {
       }
     );
   }
+
+  toggleFilter(categoryId: number): void {
+    const index = this.activeFiltersButtons.indexOf(categoryId);
+  
+    if (index === -1) {
+      this.activeFiltersButtons.push(categoryId);
+    } else {
+      this.activeFiltersButtons.splice(index, 1);
+    }
+  
+    console.log('Active Filters:', this.activeFiltersButtons);
+  }
+  
 
   ngAfterViewInit() {
     this.updateScrollButtons();
