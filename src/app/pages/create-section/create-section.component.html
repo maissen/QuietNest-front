@@ -28,25 +28,24 @@
     <div class="category_unit" *ngFor="let category of logicService.getActiveCategories()">
       <div>
         <div class="title">{{ category.name }}</div>
-        <div class="audio_items">
-          <div class="item" *ngFor="let sound of category.items;">
-            <p class="name">{{ sound.name }} {{sound.isActive}}</p>
+        <div class="audio_items" *ngIf="category.items && category.items.length > 0">
+          <div class="item" *ngFor="let sound of category.items">
+            <p class="name">{{ sound.name }} {{ sound.isActive }}</p>
             <div 
               class="icon_thumb blurry-bg"
               [ngStyle]="{
-                'border-color': sound.isActive ? '#FFF' : 'transparent'
-              }"  
-            >
-              <i class="fa-solid fa-house"></i>
+                'border-color': sound.isActive ? '#FFF' : 'transparent',
+              }">
             </div>
-
-            <i class="fa-solid fa-house"></i>
-            <!-- <input type="range" min="0" max="100" step="5"> -->
           </div>
+        </div>
+        <div *ngIf="!category.items || category.items.length === 0">
+          <p>No sounds available in this category.</p>
         </div>
       </div>
     </div>
   </div>
+  
   
 
 </div>

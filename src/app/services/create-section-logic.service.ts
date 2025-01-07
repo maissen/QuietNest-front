@@ -10,20 +10,35 @@ export class CreateSectionLogicService {
   private api_get_all_categories = 'http://localhost:2003/api/create-section/categories';
   private api_activate_category = 'http://localhost:2003/api/create-section/activate-category/';
   private api_desactivate_category = 'http://localhost:2003/api/create-section/desactivate-category/';
+  private api_get_ctgr_sounds = 'http://localhost:2003/api/create-section/get-sounds/';
 
   constructor(private http: HttpClient) {}
 
-  // Fetch categories from API
   getCategoriesFromApi(): void {
     this.http.get<any[]>(this.api_get_all_categories).subscribe(
       (categories) => {
-        this.setCategories(categories);
-        console.log('Categories fetched successfully:', categories);
+        const categoryRequests = categories.map((category) => 
+          this.getSoundsByCategoryId(category.id).toPromise().then((sounds) => {
+            category.items = sounds;
+          })
+        );
+
+        // Wait for all requests to finish
+        Promise.all(categoryRequests).then(() => {
+          this.setCategories(categories);
+          console.log('Categories and sounds fetched successfully:', categories);
+        }).catch((error) => {
+          console.error('Error fetching sounds for categories:', error);
+        });
       },
       (error) => {
         console.error('Error fetching categories:', error);
       }
     );
+  }
+
+  getSoundsByCategoryId(categoryId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.api_get_ctgr_sounds}${categoryId}`);
   }
 
   private setCategories(categories: any[]): void {
