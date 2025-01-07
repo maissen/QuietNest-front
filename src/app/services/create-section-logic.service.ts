@@ -11,6 +11,8 @@ export class CreateSectionLogicService {
   private api_activate_category = 'http://localhost:2003/api/create-section/activate-category/';
   private api_desactivate_category = 'http://localhost:2003/api/create-section/desactivate-category/';
   private api_get_ctgr_sounds = 'http://localhost:2003/api/create-section/get-sounds/';
+  private api_activate_sound = 'http://localhost:2003/api/create-section/activate-audio/';
+  private api_desactivate_sound = 'http://localhost:2003/api/create-section/desactivate-audio/';
 
   constructor(private http: HttpClient) {}
 
@@ -71,21 +73,21 @@ export class CreateSectionLogicService {
     return activeCategories.length > 0 ? activeCategories : this.getAllCategories();
   }
 
-  // Toggle sound activation within a category
-  toggleSound(categoryId: number, soundId: number): void {
-    const category = this.categories.find((cat) => cat.id === categoryId);
-    if (category) {
-      const sound = category.items.find((item: any) => item.id === soundId);
-      if (sound) {
-        const newIsActiveState = !sound.isActive; // Toggle the state of the sound
-        sound.isActive = newIsActiveState;
-        const state = newIsActiveState ? 'activated' : 'deactivated';
+  toggleSound(sound: any): void {
+    const apiUrl = sound.isActive 
+      ? `${this.api_desactivate_sound + sound.id}` 
+      : `${this.api_activate_sound + sound.id}`;
+  
+    this.http.patch(apiUrl, {}).subscribe(
+      () => {
+        sound.isActive = !sound.isActive;
+        const state = sound.isActive ? 'activated' : 'deactivated';
         console.log(`Sound ${sound.name} ${state}.`);
-      } else {
-        console.error(`Sound with id ${soundId} not found in category ${category.name}.`);
+      },
+      (error) => {
+        console.error('Error updating sound:', error);
       }
-    } else {
-      console.error(`Category with id ${categoryId} not found.`);
-    }
+    );
   }
+  
 }

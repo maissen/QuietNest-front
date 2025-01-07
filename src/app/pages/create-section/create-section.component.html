@@ -29,8 +29,8 @@
       <div>
         <div class="title">{{ category.name }}</div>
         <div class="audio_items" *ngIf="category.items && category.items.length > 0">
-          <div class="item" *ngFor="let sound of category.items">
-            <p class="name">{{ sound.name }} {{ sound.isActive }}</p>
+          <div class="item" *ngFor="let sound of category.items" (click)="logicService.toggleSound(sound)">
+            <p class="name">{{ sound.name }}</p>
             <div 
               class="icon_thumb blurry-bg"
               [ngStyle]="{
