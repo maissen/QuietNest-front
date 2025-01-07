@@ -8,15 +8,17 @@ import { Observable } from 'rxjs';
 export class CreateSectionLogicService {
   categories: any[] = [];
   private api_get_all_categories = 'http://localhost:2003/api/create-section/categories';
-  private api_activate_category = 'http://localhost:2003/api/create-section/activate-category/';
-  private api_desactivate_category = 'http://localhost:2003/api/create-section/desactivate-category/';
+  // private api_activate_category = 'http://localhost:2003/api/create-section/activate-category/';
+  // private api_desactivate_category = 'http://localhost:2003/api/create-section/desactivate-category/';
   private api_get_ctgr_sounds = 'http://localhost:2003/api/create-section/get-sounds/';
   private api_activate_sound = 'http://localhost:2003/api/create-section/activate-audio/';
   private api_desactivate_sound = 'http://localhost:2003/api/create-section/desactivate-audio/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.getCategoriesFromApi();
+  }
 
-  getCategoriesFromApi(): void {
+  private getCategoriesFromApi(): void {
     this.http.get<any[]>(this.api_get_all_categories).subscribe(
       (categories) => {
         const categoryRequests = categories.map((category) => 
@@ -50,23 +52,6 @@ export class CreateSectionLogicService {
   getAllCategories(): any[] {
     return this.categories;
   }
-
-  toggleCategory(category: any): void {
-    const apiUrl = category.isActive 
-      ? `${this.api_desactivate_category}${category.id}` 
-      : `${this.api_activate_category}${category.id}`;
-  
-    this.http.patch(apiUrl, {}).subscribe(() => {
-        category.isActive = !category.isActive;
-        const state = category.isActive ? 'activated' : 'deactivated';
-        console.log(`Category ${category.name} ${state}.`);
-      },
-      (error) => {
-        console.error('Error updating category:', error);
-      }
-    );
-  }
-  
 
   getActiveCategories(): any[] {
     const activeCategories = this.categories.filter((category) => category.isActive);

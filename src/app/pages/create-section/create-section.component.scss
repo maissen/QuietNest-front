@@ -32,14 +32,15 @@
         .categories_list button {
             flex: 0 0 auto;
             padding: 0.5rem 1rem;
-            background-color: #f5f5f5;
             border-radius: 4px;
             white-space: nowrap;
             text-decoration: none;
             border: none;
+            color: lightgray;
 
             &.active {
                 background-color: white !important;
+                color: black;
             }
         }
     }

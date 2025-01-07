@@ -1,5 +1,4 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
-import { CreateSectionService } from 'src/app/services/create-section.service';
 import { ScenesSectionService } from 'src/app/services/scenes-section.service';
 import { CreateSectionLogicService } from 'src/app/services/create-section-logic.service';
 
@@ -11,7 +10,7 @@ import { CreateSectionLogicService } from 'src/app/services/create-section-logic
 export class CreateSectionComponent implements OnInit {
   @ViewChild('categoriesList') categoriesList!: ElementRef<HTMLUListElement>;
 
-  categories: any[] = [];
+  activeCategories: any[] = [];
   currentScene: any;
 
   constructor(
@@ -29,7 +28,25 @@ export class CreateSectionComponent implements OnInit {
       }
     );
 
-    this.logicService.getCategoriesFromApi();
+    this.resetCategoryFilter();
   }
 
+  toggleCategory(category: any): void {
+    const index = this.activeCategories.indexOf(category);
+
+    if (index === -1) {
+      this.activeCategories.push(category);
+      category.isActive = true;
+    } else {
+      this.activeCategories.splice(index, 1);
+      category.isActive = false;
+    }
+  }
+
+  resetCategoryFilter(): void {
+    this.activeCategories = [];
+    this.logicService.getAllCategories().forEach(category => {
+      category.isActive = false;
+    });
+  }
 }
