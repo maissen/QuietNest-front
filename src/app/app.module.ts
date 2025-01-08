@@ -31,6 +31,7 @@ import { ExploreByTimeComponent } from './pages/explore-section/components/explo
 import { SearchSectionComponent } from './pages/search-section/search-section.component';
 import { PlayingAudioBannerComponent } from './shared/playing-audio-banner/playing-audio-banner.component';
 import { BgVideoComponent } from './shared/bg-video/bg-video.component';
+import { BottomSheetComponent } from './shared/navbar/components/bottom-sheet/bottom-sheet.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { BgVideoComponent } from './shared/bg-video/bg-video.component';
     ExploreByTimeComponent,
     SearchSectionComponent,
     PlayingAudioBannerComponent,
-    BgVideoComponent
+    BgVideoComponent,
+    BottomSheetComponent
   ],
   imports: [
     BrowserModule,

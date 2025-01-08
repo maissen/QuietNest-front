@@ -9,9 +9,6 @@
         --navbar-wide-width: 28rem;
     }
     @media all and (min-width: 1200px) {
-        --navbar-small-height: 8rem;
-    }
-    @media all and (min-width: 1200px) {
         --navbar-small-height: 0rem;
     }
     
@@ -66,4 +63,8 @@
 
 
     --playing-audio-banner-height: 8rem;
+
+
+    --bottom-sheet-height: 7rem;
+
 }
