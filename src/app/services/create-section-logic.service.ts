@@ -18,7 +18,6 @@ export class CreateSectionLogicService {
 
   constructor(
     private http: HttpClient,
-    private bottomSheetService: BottomSheetService
   ) {
     this.getCategoriesFromApi();
   }
@@ -68,6 +67,12 @@ export class CreateSectionLogicService {
     return activeSounds;
   }
 
+  clearActiveSounds(): void {
+    this.getActiveSounds().forEach(element => {
+      this.toggleSound(element);
+    });
+  }
+
   toggleSound(sound: any): void {
     const apiUrl = sound.isActive 
       ? `${this.api_desactivate_sound + sound.id}` 
@@ -83,6 +88,8 @@ export class CreateSectionLogicService {
         console.error('Error updating sound:', error);
       }
     );
+
+    
   }
   
 }

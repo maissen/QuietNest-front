@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { PlayingAudioService } from './playing-audio.service';
 import { filter } from 'rxjs/operators';
+import { CreateSectionLogicService } from './create-section-logic.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class BottomSheetService {
 
   constructor(
     private router: Router,
-    private playingAudioService: PlayingAudioService
+    private playingAudioService: PlayingAudioService,
+    private createSectionLogic: CreateSectionLogicService
   ) {
     this.initResizeListener();
     this.subscribeToRouterEvents();
@@ -22,12 +24,24 @@ export class BottomSheetService {
   getExpandSheetContent(): boolean { return this.expandConent }
 
   toggleExpandSheetContent() { 
-    this.expandConent = !this.expandConent
-    if(this.getScreenWidth() < 500 ) {
+    this.expandConent = !this.expandConent;
+  
+    // Update the body overflow based on the expandContent state
+    if (this.expandConent && this.createSectionLogic.getActiveSounds().length > 0) {
       document.body.style.overflowY = 'hidden';
-      if(!this.expandConent) document.body.style.overflowY = 'scroll'; 
+    } else {
+      document.body.style.overflowY = 'scroll';
     }
+  
+    // Log the updated overflow value
+    this.toggleDocumentScroll();
   }
+  
+  toggleDocumentScroll() {
+    const overflow = window.getComputedStyle(document.body).overflowY;
+    console.log(overflow);
+  }
+  
 
   private initResizeListener(): void {
     window.addEventListener('resize', this.onResize);
@@ -52,8 +66,8 @@ export class BottomSheetService {
     return this.screenWidth >= 500 && this.isCreateSection();
   }
 
-  showBottomSheetsmall(): boolean {
-    return this.screenWidth <= 500 && this.isCreateSection() && true;
+  showBottomSheetSmall(): boolean {
+    return this.screenWidth < 500 && this.isCreateSection();
   }
 
   showPlayingAudioBanner(): boolean {
@@ -65,5 +79,7 @@ export class BottomSheetService {
   }
 
   getScreenWidth(): number { return this.screenWidth }
+
+  
 
 }

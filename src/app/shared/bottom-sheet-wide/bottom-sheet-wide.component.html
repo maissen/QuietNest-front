@@ -1,4 +1,5 @@
 <div 
+    *ngIf="bottomSheetService.showBottomSheetWide() && createSectionLogic.getActiveSounds().length > 0"
     class="bg_layer" 
     [ngClass]="{'showUp': bottomSheetService.getExpandSheetContent()}"
     (click)="bottomSheetService.toggleExpandSheetContent()"
@@ -20,7 +21,6 @@
             </div>
             <div class="actions">
                 <div class="action expand" (click)="bottomSheetService.toggleExpandSheetContent()">x</div>
-                <div class="action like">L</div>
                 <div class="action play">P</div>
             </div>
         </div>

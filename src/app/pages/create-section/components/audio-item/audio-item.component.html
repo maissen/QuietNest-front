@@ -1,5 +1,5 @@
-<div class="content" (click)="logicService.toggleSound(audio); ">
+<div class="content" (click)="logicService.toggleSound(audio); checkBottomSheedExpandContent()">
     <p class="name">{{audio.name}}</p>
     <div class="icon_thumb blurry-bg" [ngStyle]="{ 'border-color': audio.isActive ? '#FFF' : 'transparent' }"></div>
-    <input type="range" min="0" max="100" step="5   ">
+    <input type="range" min="0" max="10" step="5" [value]="audio.volume">
 </div>

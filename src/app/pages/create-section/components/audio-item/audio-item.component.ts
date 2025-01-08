@@ -15,6 +15,12 @@ export class AudioItemComponent {
     public bottomSheetService: BottomSheetService,
     public logicService: CreateSectionLogicService
   ) {}
+
+  checkBottomSheedExpandContent() {
+    if(this.logicService.getActiveSounds().length == 0) {
+      this.bottomSheetService.expandConent = false;
+    }
+  }
   
 
 }

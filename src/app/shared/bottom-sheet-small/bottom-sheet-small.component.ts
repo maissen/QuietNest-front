@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BottomSheetService } from 'src/app/services/bottom-sheet.service';
+import { CreateSectionLogicService } from 'src/app/services/create-section-logic.service';
 
 @Component({
   selector: 'app-bottom-sheet-small',
@@ -9,7 +10,8 @@ import { BottomSheetService } from 'src/app/services/bottom-sheet.service';
 export class BottomSheetSmallComponent {
 
   constructor(
-    public bottomSheetService: BottomSheetService
+    public bottomSheetService: BottomSheetService,
+    public createSectionLogic: CreateSectionLogicService
   ) {}
-
+  
 }

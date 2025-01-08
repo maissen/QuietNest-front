@@ -2,9 +2,71 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rosybrown;
     padding: var(--bottom-sheet-wide-padding);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    .header {
+      width: 100%;
+      height: var(--bottom-sheet-header-height);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .elements {
+        width: 100%;
+        min-height: calc(var(--bottom-sheet-body-height) - var(--bottom-sheet-header-height));
+        max-height: calc(var(--bottom-sheet-body-height) - var(--bottom-sheet-header-height));
+        overflow-y: auto;
+
+        .audio {
+            --segment-height: 6rem;
+          
+            width: 100%;
+            height: var(--segment-height);
+            background-color: darkmagenta;
+            margin: auto;
+            margin-bottom: 1rem;
+          
+            display: flex; /* Make .audio a flexbox */
+            align-items: center;
+          
+            .icon {
+              flex: 0 0 var(--segment-height); /* Prevent resizing */
+              height: var(--segment-height);
+              width: var(--segment-height);
+              background-color: darkgreen;
+            }
+          
+            .volume {
+              flex: 1; /* Take up the remaining space */
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+          
+              input[type='range'] {
+                width: 90%;
+              }
+            }
+          
+            .action {
+              flex: 0 0 var(--segment-height); /* Prevent resizing */
+              height: var(--segment-height);
+              width: var(--segment-height);
+              background-color: darkgreen;
+              color: white;
+            }
+
+            .systemVolume {
+              flex: 0 0 var(--segment-height); /* Prevent resizing */
+              height: var(--segment-height);
+              width: var(--segment-height);
+              background-color: darkgreen;
+            }
+        }
+          
+    }
 }
