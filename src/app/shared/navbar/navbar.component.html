@@ -1,9 +1,9 @@
 <div 
     class="content blurry-bg"
-    [ngClass]="{'border-radius': showHideComponents.showBottomSheetsmall()}"
+    [ngClass]="{'border-radius': bottomSheetService.showBottomSheetsmall()}"
 >
 
-    <div class="bottom-sheet" *ngIf="showHideComponents.showBottomSheetsmall()">
+    <div class="bottom-sheet" *ngIf="bottomSheetService.showBottomSheetsmall()">
         <div class="notch">notch</div>
         <app-bottom-sheet></app-bottom-sheet>
     </div>

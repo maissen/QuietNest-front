@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ShowHideComponentsService } from 'src/app/services/show-hide-components.service';
+import { BottomSheetService } from 'src/app/services/bottom-sheet.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +9,7 @@ import { ShowHideComponentsService } from 'src/app/services/show-hide-components
 export class NavbarComponent {
 
   constructor(
-    public showHideComponents: ShowHideComponentsService
+    public bottomSheetService: BottomSheetService
   ) {}
 
 }

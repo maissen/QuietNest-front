@@ -4,11 +4,11 @@
         <app-navbar></app-navbar>
     </ng-container>
 
-    <div *ngIf="showHideComponents.showPlayingAudioBanner()">
+    <div *ngIf="bottomSheetService.showPlayingAudioBanner()">
         <app-playing-audio-banner></app-playing-audio-banner>
     </div>
     
-    <div class="bottom-sheet-wide" *ngIf="showHideComponents.showBottomSheetWide()">
+    <div class="bottom-sheet-wide" *ngIf="bottomSheetService.showBottomSheetWide()">
         <app-bottom-sheet-wide></app-bottom-sheet-wide>
     </div>
 

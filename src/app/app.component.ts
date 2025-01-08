@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayingAudioService } from './services/playing-audio.service';
 import { Router } from '@angular/router';
-import { ShowHideComponentsService } from './services/show-hide-components.service';
+import { BottomSheetService } from './services/bottom-sheet.service';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +14,8 @@ export class AppComponent implements OnInit {
   avgcolor: string = 'darkgreen';
 
   constructor(
-    private playingAudioService: PlayingAudioService,
     private router: Router,
-    public showHideComponents: ShowHideComponentsService
+    public bottomSheetService: BottomSheetService
   ) {
     
   }

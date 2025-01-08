@@ -6,8 +6,7 @@ import { filter } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class ShowHideComponentsService {
-
+export class BottomSheetService {
   screenWidth: number = window.innerWidth;
   soundsArePlaying: boolean = false; //? for active sounds in create section
   private currentUrl: string = '';
@@ -17,12 +16,7 @@ export class ShowHideComponentsService {
     private playingAudioService: PlayingAudioService
   ) {
     this.initResizeListener();
-
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: any) => {
-      this.currentUrl = event.url;
-    });
+    this.subscribeToRouterEvents();
   }
 
   private initResizeListener(): void {
@@ -33,12 +27,22 @@ export class ShowHideComponentsService {
     this.screenWidth = window.innerWidth;
   }
 
-  showBottomSheetWide(): boolean {
-    return this.screenWidth > 500 && this.isCreateSection() && this.soundsArePlaying;
+  private subscribeToRouterEvents(): void {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: any) => {
+      this.currentUrl = event.url;
+    });
   }
+
+  showBottomSheetWide(): boolean {
+    return this.screenWidth > 500 && this.isCreateSection() && true;
+  }
+
   showBottomSheetsmall(): boolean {
     return this.screenWidth <= 500 && this.isCreateSection() && this.soundsArePlaying;
   }
+
   showPlayingAudioBanner(): boolean {
     return !this.isCreateSection() && this.playingAudioService.isPlaying();
   }
