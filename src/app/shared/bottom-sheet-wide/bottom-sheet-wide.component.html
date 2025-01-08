@@ -1,14 +1,24 @@
 <div class="content blurry-bg" *ngIf="bottomSheetService.showBottomSheetWide() && createSectionLogic.getActiveSounds().length > 0">
-    <div class="info">
-        <p>
-            {{createSectionLogic.getActiveSounds().length}} 
-            {{createSectionLogic.getActiveSounds().length > 1 ? 'sounds' : 'sound'}}
-        </p>
-        <div class="timer">Timer desabled</div>
-    </div>
-    <div class="actions">
-        <div class="action like"></div>
-        <div class="action clock"></div>
-        <div class="action play"></div>
+    <div class="main">
+        
+        <div class="body" [ngClass]="{'expand_body': expandConent}">
+
+        </div>
+
+        <div class="header">
+            <div class="info">
+                <p>
+                    {{createSectionLogic.getActiveSounds().length}} 
+                    {{createSectionLogic.getActiveSounds().length > 1 ? 'sounds' : 'sound'}}
+                </p>
+                <div class="timer">Timer desabled</div>
+            </div>
+            <div class="actions">
+                <div class="action expand" (click)="expandBody()"></div>
+                <div class="action like"></div>
+                <div class="action play"></div>
+            </div>
+        </div>
+
     </div>
 </div>

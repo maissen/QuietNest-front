@@ -10,11 +10,15 @@ import { CreateSectionLogicService } from 'src/app/services/create-section-logic
 export class BottomSheetWideComponent {
 
   activeSounds: any[] = [];
+  expandConent: boolean = false;
 
   constructor(
     public bottomSheetService: BottomSheetService,
     public createSectionLogic: CreateSectionLogicService,
   ) {}
   
+  expandBody() {
+    this.expandConent = !this.expandConent;
+  }
 
 }
