@@ -6,12 +6,12 @@
     width: 60vw;
     height: var(--bottom-sheet-wide-height);
     border-radius: 1rem;
-    background-color: wheat;    
     border-radius: calc(var(--bottom-sheet-wide-height) / 2);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: var(--bottom-sheet-wide-padding);
+    color: #FFF;
     z-index: var(--navbar-zindex);
 
     .info {
