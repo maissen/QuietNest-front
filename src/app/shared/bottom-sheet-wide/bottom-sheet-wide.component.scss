@@ -35,6 +35,7 @@
     
 
     .main {
+
         .header {
             width: 100%;
             display: flex;
@@ -77,6 +78,7 @@
             width: 100%;
             height: 0;
             overflow: hidden;
+            position: relative;
         }
         .expand_body {
             height: var(--bottom-sheet-body-height) !important;

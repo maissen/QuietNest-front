@@ -7,7 +7,7 @@
     <div class="main">
         
         <div class="body" [ngClass]="{'expand_body': bottomSheetService.getExpandSheetContent()}">
-
+            <app-bottom-sheet-content></app-bottom-sheet-content>
         </div>
 
         <div class="header">
@@ -19,9 +19,9 @@
                 <div class="timer">Timer desabled</div>
             </div>
             <div class="actions">
-                <div class="action expand" (click)="bottomSheetService.toggleExpandSheetContent()"></div>
-                <div class="action like"></div>
-                <div class="action play"></div>
+                <div class="action expand" (click)="bottomSheetService.toggleExpandSheetContent()">x</div>
+                <div class="action like">L</div>
+                <div class="action play">P</div>
             </div>
         </div>
 

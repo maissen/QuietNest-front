@@ -33,6 +33,7 @@ import { PlayingAudioBannerComponent } from './shared/playing-audio-banner/playi
 import { BgVideoComponent } from './shared/bg-video/bg-video.component';
 import { BottomSheetWideComponent } from './shared/bottom-sheet-wide/bottom-sheet-wide.component';
 import { BottomSheetSmallComponent } from './shared/bottom-sheet-small/bottom-sheet-small.component';
+import { BottomSheetContentComponent } from './shared/bottom-sheet-content/bottom-sheet-content.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { BottomSheetSmallComponent } from './shared/bottom-sheet-small/bottom-sh
     PlayingAudioBannerComponent,
     BgVideoComponent,
     BottomSheetWideComponent,
-    BottomSheetSmallComponent
+    BottomSheetSmallComponent,
+    BottomSheetContentComponent
   ],
   imports: [
     BrowserModule,
