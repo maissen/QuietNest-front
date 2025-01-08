@@ -20,7 +20,14 @@ export class BottomSheetService {
   }
 
   getExpandSheetContent(): boolean { return this.expandConent }
-  toggleExpandSheetContent() { this.expandConent = !this.expandConent }
+
+  toggleExpandSheetContent() { 
+    this.expandConent = !this.expandConent
+    if(this.getScreenWidth() < 500 ) {
+      document.body.style.overflowY = 'hidden';
+      if(!this.expandConent) document.body.style.overflowY = 'scroll'; 
+    }
+  }
 
   private initResizeListener(): void {
     window.addEventListener('resize', this.onResize);
@@ -28,6 +35,9 @@ export class BottomSheetService {
 
   private onResize = (): void => {
     this.screenWidth = window.innerWidth;
+    if(this.getScreenWidth() >= 500 ) {
+      document.body.style.overflowY = 'auto';
+    }
   }
 
   private subscribeToRouterEvents(): void {
@@ -39,7 +49,7 @@ export class BottomSheetService {
   }
 
   showBottomSheetWide(): boolean {
-    return this.screenWidth > 500 && this.isCreateSection() && true;
+    return this.screenWidth >= 500 && this.isCreateSection();
   }
 
   showBottomSheetsmall(): boolean {
@@ -50,7 +60,7 @@ export class BottomSheetService {
     return !this.isCreateSection() && this.playingAudioService.isPlaying();
   }
 
-  private isCreateSection(): boolean {
+  isCreateSection(): boolean {
     return this.currentUrl.startsWith('/app/create');
   }
 

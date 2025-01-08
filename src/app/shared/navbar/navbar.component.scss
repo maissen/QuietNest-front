@@ -12,6 +12,8 @@
         width: 100%;
         border: none;
         height: var(--navbar-small-height);
+        background: transparent;
+        color: white;
 
         @media all and (min-width: 500px) {
             display: none;
