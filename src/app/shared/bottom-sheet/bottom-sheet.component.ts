@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-bottom-sheet',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./bottom-sheet.component.scss']
 })
 export class BottomSheetComponent {
-
+  
 }

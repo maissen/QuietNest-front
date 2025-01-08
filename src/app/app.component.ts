@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PlayingAudioService } from './services/playing-audio.service';
 import { Router } from '@angular/router';
 import { ScenesSectionService } from './services/scenes-section.service';
+import { ShowHideElementsService } from './services/show-hide-elements.service';
 
 @Component({
   selector: 'app-root',
@@ -17,14 +18,12 @@ export class AppComponent implements OnInit {
   constructor(
     private playingAudioService: PlayingAudioService,
     private router: Router,
-    private scenesService: ScenesSectionService
+    public showItems: ShowHideElementsService
   ) {
     
   }
 
   ngOnInit() {
-    console.clear();
-  
     // Subscribe to the BehaviorSubject to track changes dynamically
     this.playingAudioService.selectedAudioData$.subscribe(data => {
       this.isPlayingAudio = data !== null; // Update isPlayingAudio based on the presence of data
@@ -38,7 +37,6 @@ export class AppComponent implements OnInit {
   
   }
   
-
   checkIfUrlEndsWithApp() {
     const currentUrl = this.router.url;
     this.showNavbar = currentUrl.startsWith('/app/');

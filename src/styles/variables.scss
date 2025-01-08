@@ -65,6 +65,8 @@
     --playing-audio-banner-height: 8rem;
 
 
-    --bottom-sheet-height: 7rem;
-
+    --bottom-sheet-header-height: 7rem;
+    --bottom-sheet-body-height: 29rem;
+    --bottom-sheet-top-notch-height: 1.3rem;
+    --bottom-sheet-height: calc(var(--bottom-sheet-header-height) + var(--bottom-sheet-body-height) + var(--dynamic-content-padding)*2 + var(--bottom-sheet-top-notch-height));
 }

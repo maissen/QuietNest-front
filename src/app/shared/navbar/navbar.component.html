@@ -1,6 +1,12 @@
-<div class="content blurry-bg">
+<div 
+    class="content blurry-bg"
+    [ngClass]="{'border-radius': showItems.showBottomSheetsmall()}"
+>
 
-    <app-bottom-sheet></app-bottom-sheet>
+    <div class="bottom-sheet" *ngIf="showItems.showBottomSheetsmall()">
+        <div class="notch">notch</div>
+        <app-bottom-sheet></app-bottom-sheet>
+    </div>
 
     <ul>
         <li routerLink="/app/browse" routerLinkActive="active-link">Browse</li>

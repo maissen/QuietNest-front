@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ShowHideElementsService } from 'src/app/services/show-hide-elements.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+
+  constructor(
+    public showItems: ShowHideElementsService
+  ) {}
 
 }

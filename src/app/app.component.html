@@ -3,8 +3,15 @@
     <ng-container *ngIf="showNavbar">
         <app-navbar></app-navbar>
     </ng-container>
-    <app-playing-audio-banner></app-playing-audio-banner>
+
+    <div *ngIf="!showItems.showBottomSheetWide() && !showItems.showBottomSheetsmall()">
+        <app-playing-audio-banner></app-playing-audio-banner>
+    </div>
     
+    <div class="bottom-sheet-wide" *ngIf="showItems.showBottomSheetWide()">
+        <app-bottom-sheet-wide></app-bottom-sheet-wide>
+    </div>
+
     <div 
         [ngClass]="{
             'dynamic-content': true, 
@@ -12,6 +19,7 @@
             'add-margin-bottom-for-playing-audio-banner': isPlayingAudio
         }"
     >
+
         <router-outlet></router-outlet>
     </div>
 
