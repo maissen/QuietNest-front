@@ -8,6 +8,7 @@ import { filter } from 'rxjs/operators';
 })
 export class BottomSheetService {
   screenWidth: number = window.innerWidth;
+  expandConent: boolean = false;
   private currentUrl: string = '';
 
   constructor(
@@ -17,6 +18,9 @@ export class BottomSheetService {
     this.initResizeListener();
     this.subscribeToRouterEvents();
   }
+
+  getExpandSheetContent(): boolean { return this.expandConent }
+  toggleExpandSheetContent() { this.expandConent = !this.expandConent }
 
   private initResizeListener(): void {
     window.addEventListener('resize', this.onResize);
@@ -49,5 +53,7 @@ export class BottomSheetService {
   private isCreateSection(): boolean {
     return this.currentUrl.startsWith('/app/create');
   }
+
+  getScreenWidth(): number { return this.screenWidth }
 
 }

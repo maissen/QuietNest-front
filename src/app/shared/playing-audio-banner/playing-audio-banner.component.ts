@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BottomSheetService } from 'src/app/services/bottom-sheet.service';
 import { PlayingAudioService } from 'src/app/services/playing-audio.service';
 
 @Component({
@@ -7,9 +8,11 @@ import { PlayingAudioService } from 'src/app/services/playing-audio.service';
   styleUrls: ['./playing-audio-banner.component.scss']
 })
 export class PlayingAudioBannerComponent {
-  // selectedAudioData: any = null;  // This will store the audio data directly
 
-  constructor(public playingAudioService: PlayingAudioService) {}
+  constructor(
+    public playingAudioService: PlayingAudioService,
+    public bottomSheetService: BottomSheetService
+  ) {}
 
   ngOnInit() {
     

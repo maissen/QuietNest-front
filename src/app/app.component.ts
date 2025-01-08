@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     public bottomSheetService: BottomSheetService,
-    public createSectionService: CreateSectionLogicService
+    public createSectionService: CreateSectionLogicService,
   ) {
     
   }

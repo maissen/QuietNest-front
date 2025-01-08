@@ -31,8 +31,8 @@ import { ExploreByTimeComponent } from './pages/explore-section/components/explo
 import { SearchSectionComponent } from './pages/search-section/search-section.component';
 import { PlayingAudioBannerComponent } from './shared/playing-audio-banner/playing-audio-banner.component';
 import { BgVideoComponent } from './shared/bg-video/bg-video.component';
-import { BottomSheetComponent } from './shared/bottom-sheet/bottom-sheet.component';
 import { BottomSheetWideComponent } from './shared/bottom-sheet-wide/bottom-sheet-wide.component';
+import { BottomSheetSmallComponent } from './shared/bottom-sheet-small/bottom-sheet-small.component';
 
 @NgModule({
   declarations: [
@@ -63,8 +63,8 @@ import { BottomSheetWideComponent } from './shared/bottom-sheet-wide/bottom-shee
     SearchSectionComponent,
     PlayingAudioBannerComponent,
     BgVideoComponent,
-    BottomSheetComponent,
-    BottomSheetWideComponent
+    BottomSheetWideComponent,
+    BottomSheetSmallComponent
   ],
   imports: [
     BrowserModule,

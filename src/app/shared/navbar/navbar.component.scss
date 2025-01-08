@@ -6,6 +6,18 @@
     width: 100%;
     height: auto;
     color: white;
+
+    
+    .bottom_sheet_button_small {
+        width: 100%;
+        border: none;
+        height: var(--navbar-small-height);
+
+        @media all and (min-width: 500px) {
+            display: none;
+        }
+    }
+
     
     ul {
         padding: var(--dynamic-content-padding);
@@ -21,37 +33,14 @@
     }
 
     @media all and (min-width: 1200px) {
-        top: 0;
         width: var(--navbar-wide-width);
         height: 100vh;
     }
 
     @media all and (max-width: 500px) {
         overflow: hidden;
-
-        &:hover {
-            .bottom-sheet {
-                height: var(--bottom-sheet-height);
-            }
-        }
-
     }
 
-    .bottom-sheet {
-        padding: var(--dynamic-content-padding);
-        height: calc(var(--bottom-sheet-header-height) + var(--bottom-sheet-top-notch-height) + var(--dynamic-content-padding));
-        width: 100%;
-        background-color: blue;
-        transition: height .5s;
-        overflow: hidden;
-
-        .notch {
-            position: absolute;
-            top: var(--dynamic-content-padding);
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-    }
 }
 
 .active-link {

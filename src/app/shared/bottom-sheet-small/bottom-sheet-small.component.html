@@ -1,0 +1,11 @@
+<div 
+    class="bg_layer" 
+    [ngClass]="{'showUp': bottomSheetService.getExpandSheetContent()}"
+    (click)="bottomSheetService.toggleExpandSheetContent()"
+></div>
+
+<div class="content" [ngClass]="{'showUp': bottomSheetService.getExpandSheetContent()}">
+
+
+
+</div>

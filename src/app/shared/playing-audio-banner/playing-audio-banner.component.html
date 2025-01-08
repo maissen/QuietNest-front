@@ -1,4 +1,4 @@
-<div class="content" *ngIf="playingAudioService.isPlaying()">
+<div class="content" *ngIf="playingAudioService.isPlaying() && bottomSheetService.showPlayingAudioBanner()">
   <p>Currently playing audio: {{ playingAudioService.getSelectedAudioData().audio }}</p>
 
   <button (click)="playingAudioService.clearSelectedAudioData()">Close</button>

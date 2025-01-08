@@ -4,11 +4,9 @@
         <app-navbar></app-navbar>
     </ng-container>
 
-    <div *ngIf="bottomSheetService.showPlayingAudioBanner()">
-        <app-playing-audio-banner></app-playing-audio-banner>
-    </div>
+    <app-playing-audio-banner></app-playing-audio-banner>
+    <app-bottom-sheet-small></app-bottom-sheet-small>
     
-
     <div 
         class="add-bottom-spacing-for-playing-audio-banner"
         [ngClass]="{
@@ -16,7 +14,7 @@
             'add-spacing-for-navbar': showNavbar, 
         }"
     >
-    <app-bottom-sheet-wide></app-bottom-sheet-wide>
+        <app-bottom-sheet-wide></app-bottom-sheet-wide>
 
         <router-outlet></router-outlet>
     </div>

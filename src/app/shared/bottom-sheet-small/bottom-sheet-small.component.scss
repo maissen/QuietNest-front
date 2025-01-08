@@ -1,0 +1,30 @@
+.bg_layer {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #0000003d;
+    z-index: -1;
+
+    &.showUp {
+        z-index: calc(var(--navbar-zindex) + 1);
+    }
+}
+
+.content {
+    height: 50rem;
+    width: 100%;
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    background-color: blue;
+    border-top-left-radius: 2.5rem;
+    border-top-right-radius: 2.5rem;
+    transition: bottom .3s;
+    z-index: calc(var(--navbar-zindex) + 2);   
+    
+    &.showUp {
+        bottom: 0;
+    }
+}

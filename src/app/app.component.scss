@@ -1,5 +1,6 @@
 .content {
     position: relative;
+    z-index: 1;
 
     .dynamic-content {
         min-height: calc(100vh - var(--navbar-small-height));
@@ -7,6 +8,17 @@
         padding-left: var(--navbar-wide-width);
         position: relative;
         z-index: var(--dynamic-content-zindex);
+    }
+
+    .bottom_sheet_bglayer {
+        height: calc(100vh - var(--navbar-small-height) - var(--bottom-sheet-body-height) - var(--bottom-sheet-header-height) - var(--dynamic-content-padding)*2 - var(--bottom-sheet-top-notch-height));
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: var(--navbar-zindex);
+        background-color: rgba(0, 0, 0, 0.26);
+        display: none;
     }
 
 }

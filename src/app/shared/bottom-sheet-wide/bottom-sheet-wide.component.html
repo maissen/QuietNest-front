@@ -1,7 +1,7 @@
 <div class="content blurry-bg" *ngIf="bottomSheetService.showBottomSheetWide() && createSectionLogic.getActiveSounds().length > 0">
     <div class="main">
         
-        <div class="body" [ngClass]="{'expand_body': expandConent}">
+        <div class="body" [ngClass]="{'expand_body': bottomSheetService.getExpandSheetContent()}">
 
         </div>
 
@@ -14,7 +14,7 @@
                 <div class="timer">Timer desabled</div>
             </div>
             <div class="actions">
-                <div class="action expand" (click)="expandBody()"></div>
+                <div class="action expand" (click)="bottomSheetService.toggleExpandSheetContent()"></div>
                 <div class="action like"></div>
                 <div class="action play"></div>
             </div>
