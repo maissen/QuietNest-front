@@ -8,7 +8,6 @@ import { filter } from 'rxjs/operators';
 })
 export class BottomSheetService {
   screenWidth: number = window.innerWidth;
-  soundsArePlaying: boolean = false; //? for active sounds in create section
   private currentUrl: string = '';
 
   constructor(
@@ -40,7 +39,7 @@ export class BottomSheetService {
   }
 
   showBottomSheetsmall(): boolean {
-    return this.screenWidth <= 500 && this.isCreateSection() && this.soundsArePlaying;
+    return this.screenWidth <= 500 && this.isCreateSection() && true;
   }
 
   showPlayingAudioBanner(): boolean {
@@ -50,4 +49,5 @@ export class BottomSheetService {
   private isCreateSection(): boolean {
     return this.currentUrl.startsWith('/app/create');
   }
+
 }

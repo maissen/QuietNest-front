@@ -1,5 +1,5 @@
-<div class="content">
-    <p class="name">Caffee shop</p>
-    <div class="icon_thumb"></div>
+<div class="content" (click)="logicService.toggleSound(audio); ">
+    <p class="name">{{audio.name}}</p>
+    <div class="icon_thumb blurry-bg" [ngStyle]="{ 'border-color': audio.isActive ? '#FFF' : 'transparent' }"></div>
     <input type="range" min="0" max="100" step="5   ">
 </div>

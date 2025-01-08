@@ -9,16 +9,4 @@
         z-index: var(--dynamic-content-zindex);
     }
 
-    .bottom-sheet-wide {
-        position: fixed;
-        bottom: calc(var(--navbar-small-height) + 1.5rem);
-        left: 50%;
-        transform: translateX(-50%);
-        width: 60vw;
-        height: var(--navbar-small-height);
-        border-radius: 1rem;
-        background-color: wheat;    
-        z-index: calc(var(--navbar-zindex) + 10);
-    }
-
 }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BottomSheetService } from 'src/app/services/bottom-sheet.service';
+import { CreateSectionLogicService } from 'src/app/services/create-section-logic.service';
 
 @Component({
   selector: 'app-bottom-sheet-wide',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./bottom-sheet-wide.component.scss']
 })
 export class BottomSheetWideComponent {
+
+  activeSounds: any[] = [];
+
+  constructor(
+    public bottomSheetService: BottomSheetService,
+    public createSectionLogic: CreateSectionLogicService,
+  ) {}
+  
 
 }

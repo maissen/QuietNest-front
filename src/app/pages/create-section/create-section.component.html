@@ -6,6 +6,7 @@
       <h3>Categories</h3>
     </div>
 
+    <!--! to display Fetched categories filtering bar -->
     <ul class="categories_list hide-scrollbar" #categoriesList>
       <button 
         class="blurry-bg"
@@ -32,15 +33,7 @@
       <div>
         <div class="title">Crrently Enjoying</div>
         <div class="audio_items">
-          <div 
-            class="item" 
-            *ngFor="let sound of logicService.getActiveSounds()"
-            [ngClass]="{'active': sound.isActive}"
-            (click)="logicService.toggleSound(sound)"
-          >
-            <p class="name">{{ sound.name }}</p>
-            <div class="icon_thumb blurry-bg" [ngStyle]="{ 'border-color': sound.isActive ? '#FFF' : 'transparent' }"></div>
-          </div>
+          <app-audio-item *ngFor="let sound of logicService.getActiveSounds()" [audio]="sound"></app-audio-item>
         </div>
       </div>
     </div>
@@ -50,15 +43,7 @@
       <div>
         <div class="title">{{ category.name }}</div>
         <div class="audio_items" *ngIf="category.items && category.items.length > 0">
-          <div 
-            class="item" 
-            *ngFor="let sound of category.items"
-            [ngClass]="{'active': sound.isActive}"
-            (click)="logicService.toggleSound(sound)"
-          >
-            <p class="name">{{ sound.name }}</p>
-            <div class="icon_thumb blurry-bg" [ngStyle]="{ 'border-color': sound.isActive ? '#FFF' : 'transparent' }"></div>
-          </div>
+          <app-audio-item *ngFor="let sound of category.items" [audio]="sound"></app-audio-item>
         </div>
         <div *ngIf="!category.items || category.items.length === 0">
           <p>No sounds available in this category.</p>

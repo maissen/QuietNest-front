@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BottomSheetService } from './services/bottom-sheet.service';
+import { CreateSectionLogicService } from './services/create-section-logic.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public bottomSheetService: BottomSheetService
+    public bottomSheetService: BottomSheetService,
+    public createSectionService: CreateSectionLogicService
   ) {
     
   }

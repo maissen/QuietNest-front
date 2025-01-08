@@ -1,2 +1,14 @@
-<div class="content">
+<div class="content" *ngIf="bottomSheetService.showBottomSheetWide() && createSectionLogic.getActiveSounds().length > 0">
+    <div class="info">
+        <p>
+            {{createSectionLogic.getActiveSounds().length}} 
+            {{createSectionLogic.getActiveSounds().length > 1 ? 'sounds' : 'sound'}}
+        </p>
+        <div class="timer">Timer desabled</div>
+    </div>
+    <div class="actions">
+        <div class="action like"></div>
+        <div class="action clock"></div>
+        <div class="action play"></div>
+    </div>
 </div>

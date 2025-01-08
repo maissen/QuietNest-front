@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { BottomSheetService } from './bottom-sheet.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,10 @@ export class CreateSectionLogicService {
   private api_activate_sound = 'http://localhost:2003/api/create-section/activate-audio/';
   private api_desactivate_sound = 'http://localhost:2003/api/create-section/desactivate-audio/';
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private bottomSheetService: BottomSheetService
+  ) {
     this.getCategoriesFromApi();
   }
 
@@ -60,10 +64,7 @@ export class CreateSectionLogicService {
   }
 
   getActiveSounds(): any[] {
-    const activeSounds = this.categories
-      .flatMap((category: any) => category.items)
-      .filter((sound: any) => sound.isActive);
-  
+    const activeSounds = this.categories.flatMap((category: any) => category.items).filter((sound: any) => sound.isActive);
     return activeSounds;
   }
 
