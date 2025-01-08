@@ -11,15 +11,17 @@ export class AudioItemSquareComponent {
   img_src: string = 'https://media.4-paws.org/d/2/5/f/d25ff020556e4b5eae747c55576f3b50886c0b90/cut%20cat%20serhio%2002-1813x1811-720x719.jpg';
     
   
-    constructor(private playingAudioService: PlayingAudioService) {}
+    constructor(
+      private playingAudioService: PlayingAudioService,
+    ) {}
   
     ngOnInit(): void {
       // console.log(this.audio)
     }
   
-    // Method to handle the click event and send data to the service
     onAudioClick() {
       const audioData = { audio: this.audio.audioTitle };
       this.playingAudioService.setSelectedAudioData(audioData);
+      this.playingAudioService.isPlaying()
     }
 }

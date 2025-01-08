@@ -7,22 +7,12 @@ import { PlayingAudioService } from 'src/app/services/playing-audio.service';
   styleUrls: ['./playing-audio-banner.component.scss']
 })
 export class PlayingAudioBannerComponent {
-  selectedAudioData: any = {};  // This will store the audio data directly
+  // selectedAudioData: any = null;  // This will store the audio data directly
 
-  constructor(private playingAudioService: PlayingAudioService) {}
+  constructor(public playingAudioService: PlayingAudioService) {}
 
   ngOnInit() {
-    // Subscribe to the audio data and update the component when the data changes
-    this.playingAudioService.selectedAudioData$.subscribe(audioData => {
-      this.selectedAudioData = audioData;
-      if (this.selectedAudioData) {
-        // Do something with the data, for example, update the component's view
-        // console.log('Currently selected audio:', this.selectedAudioData);
-      }
-    });
+    
   }
 
-  clearPlayingAudio() {
-    this.playingAudioService.clearSelectedAudioData();
-  }
 }

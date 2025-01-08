@@ -11,15 +11,18 @@ export class AudioItemRectangleComponent implements OnInit{
   img_src: string = 'https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg';
   
 
-  constructor(private playingAudioService: PlayingAudioService) {}
+  constructor(
+    private playingAudioService: PlayingAudioService,
+  ) {}
 
   ngOnInit(): void {
     // console.log(this.audio)
   }
 
-  // Method to handle the click event and send data to the service
   onAudioClick() {
     const audioData = { audio: this.audio.audioTitle };
     this.playingAudioService.setSelectedAudioData(audioData);
+    this.playingAudioService.isPlaying()
+
   }
 }

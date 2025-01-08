@@ -6,28 +6,26 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class PlayingAudioService {
   //? Create a BehaviorSubject to hold the audio data (can be any type, for example, an object)
-  private audioData = new BehaviorSubject<any>(null);
-  selectedAudioData$ = this.audioData.asObservable();
+  private audioData: any = null;
 
   constructor() {}
 
   //? Method to set the selected audio data
-  setSelectedAudioData(audioData: any) {
-    this.audioData.next(audioData);
-    console.log(this.audioData.value);
+  setSelectedAudioData(audio: any) {
+    this.audioData = audio;
+    console.log(this.audioData);
   }
 
-  getSelectedAudioData() {
-    console.log(this.audioData.value);
-    return this.audioData.value;
+  getSelectedAudioData(): any {
+    return this.audioData;
   }
 
   clearSelectedAudioData() {
-    this.audioData.next(null); //? Properly notify subscribers with a `null` value
-    console.log('after clearance : ' + this.audioData.value);
+    this.audioData = null;
+    console.log('after clearance : ' + this.audioData);
   }
 
   isPlaying() {
-    return this.audioData != null;
+    return this.audioData;
   }
 }

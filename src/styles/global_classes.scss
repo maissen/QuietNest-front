@@ -7,24 +7,6 @@
     }
 }
 
-.section-blue-bgcolor {
-    position: relative;
-    z-index: 1;
-
-    &::before {
-        content: '';
-        width: 100%;
-        height: 10rem;
-        background: #0093e9;
-        background: linear-gradient(to top, #0094e900, #0094e900 );
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: translateY(-100%);
-        z-index: 1;
-    }
-}
-
 .blurry-bg {
     backdrop-filter: blur(15px);
     background-color: #00000062;
@@ -35,6 +17,6 @@
     padding-left: var(--navbar-wide-width);
 }
 
-.add-margin-bottom-for-playing-audio-banner {
+.add-bottom-spacing-for-playing-audio-banner {
     margin-bottom: calc(var(--playing-audio-banner-height) + var(--navbar-small-height)) !important;
 }
