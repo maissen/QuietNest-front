@@ -13,7 +13,7 @@
         <app-carousel-square 
             [hasBottomBorder]="true" 
             [carouselTitle]="'today\'s Picks'"
-            [audiosList]="audios"
+            [audiosList]="service.getAllSpeches()"
         ></app-carousel-square>
     
         <app-explore-by-category></app-explore-by-category>
@@ -21,14 +21,15 @@
         <app-carousel-rectangle 
             [hasBottomBorder]="true" 
             [carouselTitle]="'Top Authors'"
-            [audiosList]="audios"
+            [audiosList]="service.getAllSpeches()"
         ></app-carousel-rectangle>
 
         <app-explore-by-time></app-explore-by-time>
+        
         <app-carousel-rectangle 
             [hasBottomBorder]="true" 
             [carouselTitle]="'New and Networthy'"
-            [audiosList]="audios"
+            [audiosList]="service.getAllSpeches()"
         ></app-carousel-rectangle>
     </div>
 </div>
