@@ -1,4 +1,4 @@
-<div class="content" [ngStyle]="{'background-color': currentScene?.avgColor + '80'}">
+<div class="content" [ngStyle]="{'background-color': false + '80'}">
   <app-bg-video></app-bg-video>
 
   <div class="categories_header">
@@ -10,16 +10,14 @@
     <ul class="categories_list hide-scrollbar" #categoriesList>
       <button 
         class="blurry-bg"
-        [ngClass]="{'active': activeCategories.length === 0}"
-        (click)="resetCategoryFilter()"
+        [ngClass]="{'active': true}"
       >
         All
       </button>
       <button
-        *ngFor="let category of logicService.getAllCategories()"
+        *ngFor="let category of service.getCategoriesAndSounds()"
         class="blurry-bg"
         [ngClass]="{'active': category.isActive}"
-        (click)="toggleCategory(category)"
       >
         {{ category.name }}
       </button>
@@ -29,7 +27,7 @@
   <div class="loaded_content">
 
     <!--! to display fetched categories and sounds -->
-    <div class="category_unit" *ngFor="let category of logicService.getActiveCategories()">
+    <div class="category_unit" *ngFor="let category of service.getCategoriesAndSounds()">
       <div>
         <div class="title">{{ category.name }}</div>
         <div class="audio_items" *ngIf="category.items && category.items.length > 0">
