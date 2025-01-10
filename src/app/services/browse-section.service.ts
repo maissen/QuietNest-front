@@ -1,41 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
 import { ScenesService } from './scenes.service';
+import { SpeechesService } from './speeches.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BrowseSectionService {
 
-  private api_get_all_speeches = 'http://localhost:2003/api/get-speeches';
-
-  private speechesList: any[] = [];
-
   constructor(
-    private http: HttpClient,
-    private scenesService: ScenesService
-  ) { 
-    this.fetchSpeeches();
-  }
-
-  private fetchSpeeches() {
-    this.http.get<any[]>(this.api_get_all_speeches)
-    .pipe(
-      map(data => data || []),
-      catchError(err => {
-        console.error('Failed to fetch scenes', err);
-        return of([]);
-      })
-    )
-    .subscribe(data => {
-      this.speechesList = data;
-    });
-  }
+    private scenesService: ScenesService,
+    private speechService: SpeechesService
+  ) { }
 
   getSpeechesList() {
-    return this.speechesList;
+    return this.speechService.getAllSpeches();
   }
 
   getActiveScene() {
