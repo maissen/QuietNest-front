@@ -5,10 +5,29 @@
     height: var(--playing-audio-banner-height);
     padding: var(--dynamic-content-padding);
     width: 100%;
-    background-color: darkorange;
+    background-color: wheat;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: calc(var(--navbar-zindex) + 1);
+
+    .info {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        .img_thumb {
+            height: calc(var(--playing-audio-banner-height) * .75);
+            width: calc(var(--playing-audio-banner-height) * .75);
+            background-color: orangered;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {height: 100%;}
+        }
+    }
     
 }

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AudioService {
 
-  private apiUrl = 'http://localhost:2003/api/audios-data';
+  private apiUrl = 'http://localhost:2003/api/get-sounds';
 
   constructor(private http: HttpClient) { }
 

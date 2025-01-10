@@ -9,7 +9,7 @@ import { BottomSheetService } from './bottom-sheet.service';
 export class CreateSectionLogicService {
   categories: any[] = [];
 
-  private api_get_all_categories = 'http://localhost:2003/api/create-section/categories';
+  private api_get_all_categories = 'http://localhost:2003/api/get-sounds-categories';
   // private api_activate_category = 'http://localhost:2003/api/create-section/activate-category/';
   // private api_desactivate_category = 'http://localhost:2003/api/create-section/desactivate-category/';
   private api_get_ctgr_sounds = 'http://localhost:2003/api/create-section/get-sounds/';

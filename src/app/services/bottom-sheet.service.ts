@@ -80,6 +80,4 @@ export class BottomSheetService {
 
   getScreenWidth(): number { return this.screenWidth }
 
-  
-
 }

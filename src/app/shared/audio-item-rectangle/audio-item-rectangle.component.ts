@@ -20,8 +20,7 @@ export class AudioItemRectangleComponent implements OnInit{
   }
 
   onAudioClick() {
-    const audioData = { audio: this.audio.audioTitle };
-    this.playingAudioService.setSelectedAudioData(audioData);
+    this.playingAudioService.setSelectedAudioData(this.audio);
     this.playingAudioService.isPlaying()
 
   }
