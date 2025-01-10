@@ -3,7 +3,7 @@
     <app-bg-video></app-bg-video>
     
     <header>
-        <img [src]="currentScene?.imgUrl" class="bg_scene" draggable="false">
+        <img [src]="service.getActiveScene()" class="bg_scene" draggable="false">
     </header>
 
     <div class="toolbar">
@@ -16,29 +16,29 @@
         <app-carousel-rectangle 
             [hasBottomBorder]="false" 
             [carouselTitle]="'Popular on Quiet Nest'"
-            [audiosList]="audios"
+            [audiosList]="service.getSpeechesList()"
         ></app-carousel-rectangle>
 
         <app-carousel-rectangle 
             [hasBottomBorder]="true" 
             [carouselTitle]="''"
-            [audiosList]="audios"
+            [audiosList]="service.getSpeechesList()"
         ></app-carousel-rectangle>
 
         <app-carousel-square 
             [hasBottomBorder]="true" 
             [carouselTitle]="'Recently Watched'"
-            [audiosList]="audios"
+            [audiosList]="service.getSpeechesList()"
         ></app-carousel-square>
         
         <app-recommended-for-you 
             [title]="'Recommended For You'" 
-            [data]="audios"
+            [data]="service.getSpeechesList()"
         ></app-recommended-for-you>
 
         <app-carousel-square 
             [carouselTitle]="'Recently Liked'"
-            [audiosList]="audios"
+            [audiosList]="service.getSpeechesList()"
         ></app-carousel-square>
     </div>
 </div>
