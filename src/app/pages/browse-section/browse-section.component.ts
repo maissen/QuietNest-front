@@ -10,6 +10,7 @@ export class BrowseSectionComponent implements OnInit {
 
   activeScene: any;
   showSceneBtn: boolean = true;
+  
 
   constructor(
     public service: BrowseSectionService
@@ -19,6 +20,10 @@ export class BrowseSectionComponent implements OnInit {
     this.updateLayout();
 
     this.subscribeToActiveScene();
+  }
+  
+  get allNarrators(): any[] {
+    return this.service.getAllNarrators();
   }
 
   private subscribeToActiveScene(): void {
