@@ -6,14 +6,19 @@ import { ScenesService } from 'src/app/services/scenes.service';
   templateUrl: './bg-video.component.html',
   styleUrls: ['./bg-video.component.scss']
 })
-export class BgVideoComponent {
+export class BgVideoComponent implements OnInit {
 
-  constructor(private scenesService: ScenesService) {
+  activeScene: any = null;
 
-  };
+  constructor(private scenesService: ScenesService) { }
 
-  getActiveScene(): any {
-    return this.scenesService.getActiveScene();
+  ngOnInit(): void {
+    this.subscribeToActiveScene();
   }
 
+  private subscribeToActiveScene(): void {
+    this.scenesService.getActiveScene().subscribe(scene => {
+      this.activeScene = scene;
+    });
+  }
 }

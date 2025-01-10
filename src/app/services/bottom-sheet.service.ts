@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { PlayingAudioService } from './playing-audio.service';
 import { filter } from 'rxjs/operators';
-import { CreateSectionLogicService } from './create-section-logic.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,6 @@ export class BottomSheetService {
   constructor(
     private router: Router,
     private playingAudioService: PlayingAudioService,
-    private createSectionLogic: CreateSectionLogicService
   ) {
     this.initResizeListener();
     this.subscribeToRouterEvents();
@@ -26,12 +24,12 @@ export class BottomSheetService {
   toggleExpandSheetContent() { 
     this.expandConent = !this.expandConent;
   
-    // Update the body overflow based on the expandContent state
-    if (this.expandConent && this.createSectionLogic.getActiveSounds().length > 0) {
-      document.body.style.overflowY = 'hidden';
-    } else {
-      document.body.style.overflowY = 'scroll';
-    }
+    // // Update the body overflow based on the expandContent state
+    // if (this.expandConent && this.createSectionLogic.getActiveSounds().length > 0) {
+    //   document.body.style.overflowY = 'hidden';
+    // } else {
+    //   document.body.style.overflowY = 'scroll';
+    // }
   
     // Log the updated overflow value
     this.toggleDocumentScroll();

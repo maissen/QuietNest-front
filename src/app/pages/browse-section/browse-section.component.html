@@ -3,16 +3,14 @@
     <app-bg-video></app-bg-video>
     
     <header>
-        <img [src]="service.getActiveScene()" class="bg_scene" draggable="false">
+        <img [src]="activeScene?.img" class="bg_scene" draggable="false">
     </header>
 
     <div class="toolbar">
-        <!-- <button class="openScenesSection">Full screen</button> -->
-        <!-- <button class="openScenesSection" routerLink="/app/search">Search</button> -->
         <button class="openScenesSection" routerLink="/app/scenes">Scenes</button>
     </div>
 
-    <div class="loaded_content" [ngStyle]="{'background-color': bgColor}">
+    <div class="loaded_content" [ngStyle]="{'background-color': activeScene?.avgColor}">
         <app-carousel-rectangle 
             [hasBottomBorder]="false" 
             [carouselTitle]="'Popular on Quiet Nest'"

@@ -1,4 +1,4 @@
 <div class="bg_video">
-    <img [src]="getActiveScene().imgUrl" draggable="false">
-    <div class="overlay" [ngStyle]="{'background-color': getActiveScene().avgColor + 'cc'}"></div>
+    <img [src]="activeScene?.img" draggable="false">
+    <div class="overlay" [ngStyle]="{'background-color': activeScene?.avgColor + 'cc'}"></div>
 </div>

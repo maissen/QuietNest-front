@@ -20,7 +20,7 @@ export class AudioItemSquareComponent {
     }
   
     onAudioClick() {
-      const audioData = { audio: this.audio.audioTitle };
+      const audioData = { audio: this.audio.name };
       this.playingAudioService.setSelectedAudioData(audioData);
       this.playingAudioService.isPlaying()
     }

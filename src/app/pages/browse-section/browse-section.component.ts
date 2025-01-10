@@ -8,9 +8,7 @@ import { BrowseSectionService } from 'src/app/services/browse-section.service';
 })
 export class BrowseSectionComponent implements OnInit {
 
-  audios: any[] = [];
-  currentScene: any;
-  bgColor: string = '';
+  activeScene: any;
   showSceneBtn: boolean = true;
 
   constructor(
@@ -19,6 +17,14 @@ export class BrowseSectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateLayout();
+
+    this.subscribeToActiveScene();
+  }
+
+  private subscribeToActiveScene(): void {
+    this.service.getActiveScene().subscribe(scene => {
+      this.activeScene = scene;
+    });
   }
 
   @HostListener('window:resize', [])
@@ -33,10 +39,8 @@ export class BrowseSectionComponent implements OnInit {
   private updateLayout(): void {
     const screenWidth = this.getScreenWidth();
     if (screenWidth >= 500) {
-      this.bgColor = '';
       this.showSceneBtn = false;
     } else {
-      this.bgColor = this.currentScene?.avgColor || '';
       this.showSceneBtn = true;
     }
   }

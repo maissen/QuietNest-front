@@ -1,10 +1,9 @@
 <div
-    *ngIf="bottomSheetService.showBottomSheetWide() && createSectionLogic.getActiveSounds().length > 0"
     class="bg_layer" 
     [ngClass]="{'showUp': bottomSheetService.getExpandSheetContent()}"
     (click)="bottomSheetService.toggleExpandSheetContent()"
 ></div>
 
-<div class="content blurry-bg" *ngIf="bottomSheetService.showBottomSheetWide() && createSectionLogic.getActiveSounds().length > 0" [ngClass]="{'showUp': bottomSheetService.getExpandSheetContent()}">
+<div class="content blurry-bg" *ngIf="bottomSheetService.showBottomSheetWide()">
 
 </div>

@@ -1,6 +1,4 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
-import { ScenesSectionService } from 'src/app/services/scenes-section.service';
-import { CreateSectionLogicService } from 'src/app/services/create-section-logic.service';
 import { CreateSectionService } from 'src/app/services/create-section.service';
 
 @Component({

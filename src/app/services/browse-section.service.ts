@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ScenesService } from './scenes.service';
 import { SpeechesService } from './speeches.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,11 @@ export class BrowseSectionService {
     private speechService: SpeechesService
   ) { }
 
-  getSpeechesList() {
+  getSpeechesList(): any[] {
     return this.speechService.getAllSpeches();
   }
 
-  getActiveScene() {
+  getActiveScene(): Observable<any> {
     return this.scenesService.getActiveScene();
   }
 }
