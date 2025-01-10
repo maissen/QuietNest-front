@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { AudioService } from 'src/app/services/audio.service';
+import { BrowseSectionService } from 'src/app/services/browse-section.service';
 import { ScenesSectionService } from 'src/app/services/scenes-section.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class BrowseSectionComponent implements OnInit {
 
   constructor(
     private audioService: AudioService,
-    private scenesService: ScenesSectionService
+    private scenesService: ScenesSectionService,
+    private service: BrowseSectionService
   ) { }
 
   ngOnInit(): void {
