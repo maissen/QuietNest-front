@@ -1,13 +1,13 @@
-<div class="content">
+<div class="content" (click)="displaySpeechBanner()">
     <div class="img_thumb">
-      <img [src]="'https://st3.depositphotos.com/18630962/31856/i/450/depositphotos_318568256-stock-photo-huai-mae-kamin-waterfall-srinakarin.jpg'" [alt]="data.name">
+      <img [src]="data.img" [alt]="data.name">
     </div>
     <div class="info">
       <div class="header">
-        <div class="title">{{ data }}</div>
+        <div class="title">{{ data.name }}</div>
         <div class="metadata">{{ data.likes }} likes</div>
       </div>
-      <p class="categories">{{ data.categories}}</p>
+      <p class="categories">{{ categoriesService.getCategoryById(data).name }} | {{narratorsService.getNarratorById(data).name }}</p>
     </div>
   </div>
   
