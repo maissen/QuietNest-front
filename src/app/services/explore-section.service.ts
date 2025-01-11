@@ -11,6 +11,6 @@ export class ExploreSectionService {
   ) { }
 
   getAllSpeches(): any[] {
-    return this.speechService.getAllSpeches();
+    return this.speechService.getAllSpeeches();
   }
 }

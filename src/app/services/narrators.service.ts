@@ -1,28 +1,23 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NarratorsService {
 
-  private api_get_all_narrators = "http://localhost:2003/api/get-all-narrators";
+  public api_get_all_narrators = "http://localhost:2003/api/get-all-narrators";
+  private allNarrators: any[] = [];
 
-  private narratorsSubject = new BehaviorSubject<any[]>([]);
 
-  constructor(private http: HttpClient) {
-    this.fetchAllNarrators();
+  setAllnarrators(list: any[]) {
+    this.allNarrators = list;
   }
 
-  private fetchAllNarrators(): void {
-    this.http.get<any[]>(this.api_get_all_narrators).subscribe({
-      next: (narrators) => this.narratorsSubject.next(narrators),
-      error: (err) => console.error('Failed to fetch narrators:', err)
-    });
+  getAllNarrators(): any[] {
+    return this.allNarrators;
   }
 
-  allNarratorsList(): Observable<any[]> {
-    return this.narratorsSubject.asObservable();
+  getNarratorById(speech: any): any {
+    return this.getAllNarrators().find(narrator => narrator.id == speech.narrator_id);
   }
 }

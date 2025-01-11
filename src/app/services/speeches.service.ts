@@ -8,7 +8,7 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class SpeechesService {
 
-  private api_get_all_speeches = 'http://localhost:2003/api/get-all-speeches';
+  public api_get_all_speeches = 'http://localhost:2003/api/get-all-speeches';
 
   private allSpeches: any[] = [];
 
@@ -32,7 +32,7 @@ export class SpeechesService {
     });
   }
 
-  getAllSpeches() {
+  getAllSpeeches() {
     return this.allSpeches;
   }
 }

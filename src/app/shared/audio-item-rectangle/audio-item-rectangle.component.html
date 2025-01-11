@@ -1,11 +1,10 @@
 <div class="item" (click)="onAudioClick()">
-    <div class="item__banner">
-      <img [src]="audio.img">
-    </div>
-    <div class="item__info">
-      <p class="name">{{ audio.name }}</p>
-      <p class="categories">{{ audio.category_id }}</p>
-      <p class="author">{{ audio.narrator_id }}</p>
-    </div>
+  <div class="item__banner">
+    <img [src]="audio.img">
   </div>
-  
+  <div class="item__info">
+    <p class="name">{{ audio.name }}</p>
+    <p class="author">{{ narratorsService.getNarratorById(audio).name }}</p>
+    <p class="categories">{{ categoriesService.getCategoryById(audio).name }}</p>
+  </div>
+</div>
