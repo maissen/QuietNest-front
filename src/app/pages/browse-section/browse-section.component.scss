@@ -4,8 +4,6 @@
     header {
         height: var(--browse-section-header-height);
         overflow: hidden;
-        background-color: red;
-
 
         .bg_scene {
             position: fixed;
@@ -19,6 +17,7 @@
 
     
     .toolbar {
+        background-color: gray;
         
         @media all and (max-width: 500px) {
             position: absolute;

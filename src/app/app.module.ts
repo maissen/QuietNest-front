@@ -29,11 +29,11 @@ import { AudioItemComponent } from './pages/create-section/components/audio-item
 import { ExploreByCategoryComponent } from './pages/explore-section/components/explore-by-category/explore-by-category.component';
 import { ExploreByTimeComponent } from './pages/explore-section/components/explore-by-time/explore-by-time.component';
 import { SearchSectionComponent } from './pages/search-section/search-section.component';
-import { PlayingAudioBannerComponent } from './shared/playing-audio-banner/playing-audio-banner.component';
 import { BgVideoComponent } from './shared/bg-video/bg-video.component';
 import { BottomSheetWideComponent } from './shared/bottom-sheet-wide/bottom-sheet-wide.component';
 import { BottomSheetSmallComponent } from './shared/bottom-sheet-small/bottom-sheet-small.component';
 import { BottomSheetContentComponent } from './shared/bottom-sheet-content/bottom-sheet-content.component';
+import { PlayingSpeechBannerComponent } from './shared/playing-speech-banner/playing-speech-banner.component';
 
 @NgModule({
   declarations: [
@@ -62,11 +62,11 @@ import { BottomSheetContentComponent } from './shared/bottom-sheet-content/botto
     ExploreByCategoryComponent,
     ExploreByTimeComponent,
     SearchSectionComponent,
-    PlayingAudioBannerComponent,
     BgVideoComponent,
     BottomSheetWideComponent,
     BottomSheetSmallComponent,
-    BottomSheetContentComponent
+    BottomSheetContentComponent,
+    PlayingSpeechBannerComponent
   ],
   imports: [
     BrowserModule,

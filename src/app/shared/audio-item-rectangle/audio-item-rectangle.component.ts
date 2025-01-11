@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { NarratorsService } from 'src/app/services/narrators.service';
-import { PlayingAudioService } from 'src/app/services/playing-audio.service';
+import { PlayingSpeechService } from 'src/app/services/playing-speech.service';
 
 @Component({
   selector: 'app-audio-item-rectangle',
@@ -12,13 +12,13 @@ export class AudioItemRectangleComponent {
   @Input() audio: any;
 
   constructor(
-    private playingAudioService: PlayingAudioService,
+    private playingSpeechService: PlayingSpeechService,
     public narratorsService: NarratorsService,
     public categoriesService: CategoriesService
   ) { }
 
   onAudioClick() {
-    this.playingAudioService.setSelectedAudioData(this.audio);
-    this.playingAudioService.isPlaying();
+    this.playingSpeechService.setSelectedAudioData(this.audio);
+    this.playingSpeechService.isPlaying();
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { PlayingAudioService } from './playing-audio.service';
 import { filter } from 'rxjs/operators';
+import { PlayingSpeechService } from './playing-speech.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class BottomSheetService {
 
   constructor(
     private router: Router,
-    private playingAudioService: PlayingAudioService,
+    private playingSpeechService: PlayingSpeechService,
   ) {
     this.initResizeListener();
     this.subscribeToRouterEvents();
@@ -69,7 +69,7 @@ export class BottomSheetService {
   }
 
   showPlayingAudioBanner(): boolean {
-    return !this.isCreateSection() && this.playingAudioService.isPlaying();
+    return !this.isCreateSection() && this.playingSpeechService.isPlaying();
   }
 
   isCreateSection(): boolean {

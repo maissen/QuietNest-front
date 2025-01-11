@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { NarratorsService } from 'src/app/services/narrators.service';
-import { PlayingAudioService } from 'src/app/services/playing-audio.service';
+import { PlayingSpeechService } from 'src/app/services/playing-speech.service';
 
 @Component({
   selector: 'app-audio-item-square',
@@ -12,7 +12,7 @@ export class AudioItemSquareComponent {
   @Input() audio: any;
   
     constructor(
-      private playingAudioService: PlayingAudioService,
+      private playingSpeechService: PlayingSpeechService,
       public narratorsService: NarratorsService,
       public categoriesService: CategoriesService
     ) {}
@@ -23,7 +23,7 @@ export class AudioItemSquareComponent {
   
     onAudioClick() {
       const audioData = { audio: this.audio.name };
-      this.playingAudioService.setSelectedAudioData(audioData);
-      this.playingAudioService.isPlaying()
+      this.playingSpeechService.setSelectedAudioData(audioData);
+      this.playingSpeechService.isPlaying()
     }
 }

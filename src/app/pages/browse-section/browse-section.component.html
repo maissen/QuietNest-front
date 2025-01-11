@@ -10,7 +10,7 @@
         <button class="openScenesSection" routerLink="/app/scenes">Scenes</button>
     </div>
 
-    <div class="loaded_content" [ngStyle]="{'background-color': activeScene?.avgColor}">
+    <div class="loaded_content add-bottom-spacing-for-playing-speech-banner" [ngStyle]="{'background-color': activeScene?.avgColor}">
         <app-carousel-rectangle 
             [hasBottomBorder]="false" 
             [carouselTitle]="'Popular on Quiet Nest'"
