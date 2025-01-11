@@ -5,12 +5,13 @@ import { SoundsService } from './sounds.service';
   providedIn: 'root'
 })
 export class CreateSectionService {
+  constructor(private soundsService: SoundsService) {}
 
-  constructor(
-    private soundsService: SoundsService
-  ) {}
+  getCategories(): any[] {
+    return this.soundsService.getCategories();
+  }
 
-  getCategoriesAndSounds(): any[] {
-    return this.soundsService.getCategoriesAndSounds();
+  getSoundsOfCategory(category: any): any[] {
+    return this.soundsService.getSounds().filter(sound => sound.sound_category_id === category.id);
   }
 }

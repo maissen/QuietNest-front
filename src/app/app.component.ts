@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { CategoriesService } from './services/categories.service';
 import { NarratorsService } from './services/narrators.service';
 import { ScenesService } from './services/scenes.service';
+import { SoundsService } from './services/sounds.service';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ export class AppComponent implements OnInit {
     private http: HttpClient,
     private categoriesService: CategoriesService,
     private narratorsService: NarratorsService,
-    private scenesService: ScenesService
+    private scenesService: ScenesService,
+    private soundsService: SoundsService
   ) { }
 
   ngOnInit() {
@@ -48,6 +50,15 @@ export class AppComponent implements OnInit {
     this.http.get<any[]>(this.scenesService.api_get_all_scenes).subscribe(allScenes => {
       this.scenesService.setScenesList(allScenes);
     });
+    
+    //! Fetch all sounds and their categories
+    this.http.get<any[]>(this.soundsService.apiGetAllSounds()).subscribe(sounds => {
+      this.soundsService.setSounds(sounds);
+      this.http.get<any[]>(this.soundsService.apiGetSoundsCategories()).subscribe(categories => {
+        this.soundsService.setCategories(categories);
+      });
+    });
+    
   
   }
   
