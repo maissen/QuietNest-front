@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { SoundsService } from './sounds.service';
 import { PlayingSpeechService } from './playing-speech.service';
 
@@ -14,9 +15,18 @@ export class CreateSectionService {
 
   constructor(
     private soundsService: SoundsService,
-    private playingSpeechService: PlayingSpeechService
+    private playingSpeechService: PlayingSpeechService,
+    private router: Router
   ) {
     this.initResizeListener();
+    this.updateCurrentUrl();
+  }
+
+  // Update the current URL whenever it changes
+  private updateCurrentUrl(): void {
+    this.router.events.subscribe(() => {
+      this.currentUrl = this.router.url;
+    });
   }
 
   // Toggle the sound in the active list
@@ -28,7 +38,10 @@ export class CreateSectionService {
     } else {
       this.activeSounds.splice(index, 1);
     }
-    console.log(this.getActiveSounds());
+
+    if (this.activeSounds.length === 0) {
+      this.toggleExpandSheetContent();
+    }
   }
 
   // Get all active sounds
@@ -48,7 +61,7 @@ export class CreateSectionService {
 
   // Get whether the bottom sheet should be wide
   showBottomSheetWide(): boolean {
-    return this.screenWidth >= 500 && this.getActiveSounds().length > 0;
+    return this.screenWidth >= 500 && this.getActiveSounds().length > 0 && this.isCreateSection();
   }
 
   // Get whether the bottom sheet should be small
@@ -63,19 +76,16 @@ export class CreateSectionService {
 
   // Toggle content expansion
   toggleExpandSheetContent() {
-    this.expandContent = !this.expandContent;
-    this.toggleDocumentScroll();
+    if (this.activeSounds.length > 0) {
+      this.expandContent = !this.expandContent;
+    } else {
+      this.expandContent = false;
+    }
   }
 
   // Get the current expansion state of the sheet
   getExpandSheetContent(): boolean {
     return this.expandContent;
-  }
-
-  // Toggle the scroll behavior for document
-  toggleDocumentScroll() {
-    const overflow = window.getComputedStyle(document.body).overflowY;
-    console.log(overflow);
   }
 
   // Initialize resize listener to adjust the screen width
@@ -99,5 +109,12 @@ export class CreateSectionService {
   // Get the current screen width
   getScreenWidth(): number {
     return this.screenWidth;
+  }
+
+  // Clear all active sounds
+  clearActiveSounds(): void {
+    this.activeSounds = [];
+    this.toggleExpandSheetContent();
+    console.log('All active sounds cleared:', this.getActiveSounds());
   }
 }

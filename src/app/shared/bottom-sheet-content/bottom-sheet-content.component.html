@@ -3,16 +3,16 @@
         <button>like</button>
         <div>
             <button>Set timer</button>
-            <button>clear all</button>
+            <button (click)="createSectionService.clearActiveSounds()">clear all</button>
         </div>
     </div>
     <div class="elements hide-scrollbar">
 
-        <!-- <div class="audio" *ngFor="let item of createSectionLogic.getActiveSounds()">
+        <div class="audio" *ngFor="let item of createSectionService.getActiveSounds()">
             <div class="icon"></div>
             <div class="volume">{{item.name}}</div>
-            <button class="action" (click)="createSectionLogic.toggleSound(item)">x</button>
-        </div> -->
+            <button class="action" (click)="createSectionService.toggleActiveSound(item)">x</button>
+        </div>
 
         <!--! for adjusting device's volume -->
         <div class="audio">
