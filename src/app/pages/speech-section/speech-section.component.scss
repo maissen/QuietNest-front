@@ -1,17 +1,83 @@
 .content {
-    height: calc(100vh - var(--navbar-small-height));
-    width: 100%;
-    // background-color: royalblue;
-    position: relative;
-    z-index: calc(var(--nabvar-zindex) - 1);
+    --controls-height: var(--navbar-small-height);
 
     .bg_img {
-        height: 100vh;
-        width: 100vw;
-        background-color: wheat;
+        height: 110vh;
         position: fixed;
         top: 0;
-        left: 0;
+        left: 50%;
+        transform: translateX(-50%);
         z-index: calc(var(--nabvar-zindex) - 2);
+
+        @media all and (min-width: 1600px) {
+            width: 100vw;
+            height: auto;
+            top: 50%;
+            transform: translateY(-50%) translateX(0);
+            left: 0;
+        }
     }
+
+    .loaded_content {
+        height: calc(100vh - var(--navbar-small-height));
+        width: 100%;
+        background-color: #0000006b;
+        position: relative;
+        z-index: calc(var(--nabvar-zindex) - 1);
+        color: white;
+        padding: var(--dynamic-content-padding);
+        padding-bottom: calc(var(--navbar-small-height) + var(--controls-height));
+        padding-top: 6rem;
+
+        header {
+            width: 100%;
+            max-width: 50rem;
+            
+            .narrator {
+                width: 100%;
+                // background-color: darkmagenta;
+                display: flex;
+                gap: 2rem;
+                padding: 1.3rem;
+
+                &__pic {
+                    height: 5rem;
+                    width: 5rem;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    img { height: 100%; }
+                }
+
+                p { margin: 0;}
+            }
+        }
+
+        main {
+            width: 100%;
+            background-color: rgba(0, 100, 0, 0.705);
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .controls {
+            width: 100vw;
+            height: var(--controls-height);
+            background-color: rgb(0, 113, 133);
+            position: fixed;
+            bottom: calc(var(--navbar-small-height));
+            left: 0;
+        }
+    }
+}
+
+
+button.close_section {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: var(--nabvar-zindex);
 }

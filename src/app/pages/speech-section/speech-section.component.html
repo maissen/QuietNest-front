@@ -1,3 +1,30 @@
-<div class="content">
-    <img src="" alt="" class="bg_img">
+
+<div class="content" *ngIf="service.getSelectedSpeechData() != null">
+    <img [src]="service.getSelectedSpeechData().img" class="bg_img">
+
+    <div class="loaded_content">
+        <header>
+            <div class="title">{{service.getSelectedSpeechData().name}}</div>
+            <div *ngIf="service.getSelectedSpeechData().description" class="description">{{service.getSelectedSpeechData().description}}</div>
+            <div class="narrator">
+                <div class="narrator__pic">
+                    <img [src]="service.getSelectedSpeechData().narrator.img">
+                </div>
+                <div class="narrator__info">
+                    <p>{{service.getSelectedSpeechData().narrator.name}}</p>
+                    <p>{{service.getSelectedSpeechData().narrator.description}}</p>
+                    <p>{{service.getSelectedSpeechData().narrator.likes}}</p>
+                </div>
+            </div>
+        </header>
+        <!-- <main>
+
+        </main> -->
+        <div class="controls">
+            
+        </div>
+    </div>
+
 </div>
+
+<button class="close_section" routerLink="/app/browse/">Close</button>
