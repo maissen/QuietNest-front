@@ -11,7 +11,7 @@ export class AudioItemComponent {
   @Input() sound: any;
 
   constructor(
-    private createSectionService: CreateSectionService
+    public createSectionService: CreateSectionService
   ) {}
 
   toggleSound(sound: any) {

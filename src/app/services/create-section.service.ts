@@ -48,7 +48,7 @@ export class CreateSectionService {
 
   // Get whether the bottom sheet should be wide
   showBottomSheetWide(): boolean {
-    return this.screenWidth >= 500 && this.isCreateSection() && this.activeSounds.length > 0;
+    return this.screenWidth >= 500 && this.getActiveSounds().length > 0;
   }
 
   // Get whether the bottom sheet should be small
@@ -63,8 +63,6 @@ export class CreateSectionService {
 
   // Toggle content expansion
   toggleExpandSheetContent() {
-    console.log('toggled');
-    alert('Toggled');  // Add a quick alert to check if it's being triggered.
     this.expandContent = !this.expandContent;
     this.toggleDocumentScroll();
   }
