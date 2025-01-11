@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { BottomSheetService } from 'src/app/services/bottom-sheet.service';
+import { CreateSectionService } from 'src/app/services/create-section.service';
 
 @Component({
   selector: 'app-audio-item',
@@ -8,15 +9,18 @@ import { BottomSheetService } from 'src/app/services/bottom-sheet.service';
 })
 export class AudioItemComponent {
 
-  @Input() audio: any;
+  @Input() sound: any;
 
   constructor(
     public bottomSheetService: BottomSheetService,
+    private createSectionService: CreateSectionService
   ) {}
 
-  checkBottomSheedExpandContent() {
-    
+  toggleSound(sound: any) {
+    this.createSectionService.toggleActiveSound(sound);
   }
-  
 
+  isActive(): boolean {
+    return this.createSectionService.getActiveSounds().includes(this.sound);
+  }
 }
