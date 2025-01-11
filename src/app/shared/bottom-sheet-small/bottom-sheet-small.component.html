@@ -1,9 +1,9 @@
 <div
     class="bg_layer" 
-    [ngClass]="{'showUp': bottomSheetService.getExpandSheetContent()}"
-    (click)="bottomSheetService.toggleExpandSheetContent()"
+    [ngClass]="{'showUp': service.getExpandSheetContent()}"
+    (click)="service.toggleExpandSheetContent()"
 ></div>
 
-<div class="content blurry-bg" *ngIf="bottomSheetService.showBottomSheetWide()">
+<div class="content blurry-bg" *ngIf="service.showBottomSheetWide()">
 
 </div>

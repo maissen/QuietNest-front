@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BottomSheetService } from 'src/app/services/bottom-sheet.service';
+import { CreateSectionService } from 'src/app/services/create-section.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +9,7 @@ import { BottomSheetService } from 'src/app/services/bottom-sheet.service';
 export class NavbarComponent {
 
   constructor(
-    public bottomSheetService: BottomSheetService,
+    public service: CreateSectionService
   ) {}
 
 }

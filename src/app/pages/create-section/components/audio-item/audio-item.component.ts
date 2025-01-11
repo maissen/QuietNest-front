@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { BottomSheetService } from 'src/app/services/bottom-sheet.service';
 import { CreateSectionService } from 'src/app/services/create-section.service';
 
 @Component({
@@ -12,7 +11,6 @@ export class AudioItemComponent {
   @Input() sound: any;
 
   constructor(
-    public bottomSheetService: BottomSheetService,
     private createSectionService: CreateSectionService
   ) {}
 

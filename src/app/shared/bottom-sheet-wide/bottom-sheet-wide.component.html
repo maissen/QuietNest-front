@@ -1,13 +1,13 @@
 <div 
-    *ngIf="bottomSheetService.showBottomSheetWide()"
+    *ngIf="service.showBottomSheetWide()"
     class="bg_layer" 
-    [ngClass]="{'showUp': bottomSheetService.getExpandSheetContent()}"
-    (click)="bottomSheetService.toggleExpandSheetContent()"
+    [ngClass]="{'showUp': service.getExpandSheetContent()}"
+    (click)="service.toggleExpandSheetContent()"
 ></div>
-<div class="content blurry-bg" *ngIf="bottomSheetService.showBottomSheetWide()">
+<div class="content blurry-bg" *ngIf="service.showBottomSheetWide()">
     <div class="main">
         
-        <div class="body" [ngClass]="{'expand_body': bottomSheetService.getExpandSheetContent()}">
+        <div class="body" [ngClass]="{'expand_body': service.getExpandSheetContent()}">
             <app-bottom-sheet-content></app-bottom-sheet-content>
         </div>
 
@@ -18,7 +18,7 @@
                 <div class="timer">Timer desabled</div>
             </div>
             <div class="actions">
-                <div class="action expand" (click)="bottomSheetService.toggleExpandSheetContent()">x</div>
+                <div class="action expand" (click)="service.toggleExpandSheetContent()">x</div>
                 <div class="action play">P</div>
             </div>
         </div>

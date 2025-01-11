@@ -1,8 +1,8 @@
-<div class="content blurry-bg" [ngClass]="{'border-radius': bottomSheetService.getScreenWidth() < 500 && bottomSheetService.isCreateSection()}">
+<div class="content blurry-bg" [ngClass]="{'border-radius': service.getScreenWidth() < 500 && service.isCreateSection()}">
 
     <button 
         class="bottom_sheet_button_small" 
-        (click)="bottomSheetService.toggleExpandSheetContent()"
+        (click)="service.toggleExpandSheetContent()"
     >Expand</button>
 
     <ul>

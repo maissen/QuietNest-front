@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BottomSheetService } from './services/bottom-sheet.service';
 import { HttpClient } from '@angular/common/http';
 import { CategoriesService } from './services/categories.service';
 import { NarratorsService } from './services/narrators.service';
@@ -20,7 +19,6 @@ export class AppComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public bottomSheetService: BottomSheetService,
     private http: HttpClient,
     private categoriesService: CategoriesService,
     private narratorsService: NarratorsService,
