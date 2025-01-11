@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BottomSheetService } from 'src/app/services/bottom-sheet.service';
 import { PlayingSpeechService } from 'src/app/services/playing-speech.service';
 
@@ -10,7 +10,7 @@ import { PlayingSpeechService } from 'src/app/services/playing-speech.service';
 export class PlayingSpeechBannerComponent {
 
   constructor(
-    public playingSpeechService: PlayingSpeechService,
+    public service: PlayingSpeechService,
     public bottomSheetService: BottomSheetService
   ) {}
 

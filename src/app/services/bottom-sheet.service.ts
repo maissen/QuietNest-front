@@ -68,7 +68,7 @@ export class BottomSheetService {
     return this.screenWidth < 500 && this.isCreateSection();
   }
 
-  showPlayingAudioBanner(): boolean {
+  showPlayingSpeechBanner(): boolean {
     return !this.isCreateSection() && this.playingSpeechService.isPlaying();
   }
 

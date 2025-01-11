@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { NarratorsService } from 'src/app/services/narrators.service';
 import { PlayingSpeechService } from 'src/app/services/playing-speech.service';
@@ -17,8 +17,8 @@ export class AudioItemRectangleComponent {
     public categoriesService: CategoriesService
   ) { }
 
-  onAudioClick() {
-    this.playingSpeechService.setSelectedAudioData(this.audio);
+  displaySpeechBanner() {
+    this.playingSpeechService.setSelectedSpeechData(this.audio);
     this.playingSpeechService.isPlaying();
   }
 }

@@ -1,30 +1,40 @@
 import { Injectable } from '@angular/core';
+import { SpeechesService } from './speeches.service';
+import { CategoriesService } from './categories.service';
+import { NarratorsService } from './narrators.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlayingSpeechService {
-  //? Create a BehaviorSubject to hold the audio data (can be any type, for example, an object)
-  private audioData: any = null;
+  private speech: any = null;
 
-  constructor() {}
+  constructor(
+    private categoriesService: CategoriesService,
+    private narratorseService: NarratorsService
+  ) {}
 
-  //? Method to set the selected audio data
-  setSelectedAudioData(audio: any) {
-    this.audioData = audio;
-    console.log(this.audioData);
+  setSelectedSpeechData(speech: any) {
+    this.speech = speech;
+    this.speech.narrator = this.narratorseService.getNarratorById(this.speech);
+    this.speech.category = this.categoriesService.getCategoryById(this.speech);
+    console.log(this.speech);
   }
 
-  getSelectedAudioData(): any {
-    return this.audioData;
+  getSpeech(): any { 
+    return this.speech;
   }
 
-  clearSelectedAudioData() {
-    this.audioData = null;
-    console.log('after clearance : ' + this.audioData);
+  getSelectedSpeechData(): any {
+    return this.speech;
+  }
+
+  clearSelectedSpeechData() {
+    this.speech = null;
+    console.log('after clearance : ' + this.speech);
   }
 
   isPlaying() {
-    return this.audioData;
+    return this.speech;
   }
 }

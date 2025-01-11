@@ -1,16 +1,17 @@
-<div class="content" *ngIf="playingSpeechService.isPlaying() && bottomSheetService.showPlayingAudioBanner()">
-    <!-- <p>Currently playing audio: {{ playingSpeechService.getSelectedAudioData().name }}</p> -->
-  
+<div class="content" *ngIf="service.isPlaying() && bottomSheetService.showPlayingSpeechBanner()">
     <div class="info">
       <div class="img_thumb">
-        <img [src]="playingSpeechService.getSelectedAudioData().img? '' : 'https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg'">
+        <img [src]="service.getSelectedSpeechData().img">
       </div>
       <div class="description">
-        <p class="title">{{playingSpeechService.getSelectedAudioData().name}}</p>
-        <div class="categories"></div>
+        <p class="title">{{service.getSelectedSpeechData().name}}</p>
+        <small class="cat_narrator">{{service.getSelectedSpeechData().category.name}} | {{service.getSelectedSpeechData().narrator.name}}</small>
       </div>
     </div>
   
-    <button (click)="playingSpeechService.clearSelectedAudioData()">Close</button>
+    <div class="actions">
+      <button (click)="service.clearSelectedSpeechData()">Close</button>
+      <button>Like</button>
+    </div>
   </div>
   

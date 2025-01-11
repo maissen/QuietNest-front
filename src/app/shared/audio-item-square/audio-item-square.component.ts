@@ -11,19 +11,14 @@ import { PlayingSpeechService } from 'src/app/services/playing-speech.service';
 export class AudioItemSquareComponent {
   @Input() audio: any;
   
-    constructor(
-      private playingSpeechService: PlayingSpeechService,
-      public narratorsService: NarratorsService,
-      public categoriesService: CategoriesService
-    ) {}
-  
-    ngOnInit(): void {
-      
-    }
-  
-    onAudioClick() {
-      const audioData = { audio: this.audio.name };
-      this.playingSpeechService.setSelectedAudioData(audioData);
-      this.playingSpeechService.isPlaying()
-    }
+  constructor(
+    private playingSpeechService: PlayingSpeechService,
+    public narratorsService: NarratorsService,
+    public categoriesService: CategoriesService
+  ) {}
+
+  displaySpeechBanner() {
+    this.playingSpeechService.setSelectedSpeechData(this.audio);
+    this.playingSpeechService.isPlaying();
+  }
 }
