@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { BrowseSectionService } from 'src/app/services/browse-section.service';
+import { ScenesService } from 'src/app/services/scenes.service';
 
 @Component({
   selector: 'app-browse-section',
@@ -8,22 +9,15 @@ import { BrowseSectionService } from 'src/app/services/browse-section.service';
 })
 export class BrowseSectionComponent implements OnInit {
 
-  activeScene: any;
-  showSceneBtn: boolean = true;
+  showBgVideo: boolean = true;
 
   constructor(
     public service: BrowseSectionService,
+    public scenesService: ScenesService
   ) { }
 
   ngOnInit(): void {
     this.updateLayout();
-    this.subscribeToActiveScene();
-  }
-
-  private subscribeToActiveScene(): void {
-    this.service.getActiveScene().subscribe(scene => {
-      this.activeScene = scene;
-    });
   }
 
   @HostListener('window:resize', [])
@@ -38,9 +32,9 @@ export class BrowseSectionComponent implements OnInit {
   private updateLayout(): void {
     const screenWidth = this.getScreenWidth();
     if (screenWidth >= 500) {
-      this.showSceneBtn = false;
+      this.showBgVideo = false;
     } else {
-      this.showSceneBtn = true;
+      this.showBgVideo = true;
     }
   }
 }

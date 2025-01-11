@@ -4,6 +4,7 @@ import { BottomSheetService } from './services/bottom-sheet.service';
 import { HttpClient } from '@angular/common/http';
 import { CategoriesService } from './services/categories.service';
 import { NarratorsService } from './services/narrators.service';
+import { ScenesService } from './services/scenes.service';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,8 @@ export class AppComponent implements OnInit {
     public bottomSheetService: BottomSheetService,
     private http: HttpClient,
     private categoriesService: CategoriesService,
-    private narratorsService: NarratorsService
+    private narratorsService: NarratorsService,
+    private scenesService: ScenesService
   ) { }
 
   ngOnInit() {
@@ -32,14 +34,19 @@ export class AppComponent implements OnInit {
       this.checkIfUrlEndsWithApp();
     });
 
-    //! get all categories
+    //! Fetch all categories
     this.http.get<any[]>(this.categoriesService.api_get_all_categories).subscribe(categories => {
       this.categoriesService.setAllCategories(categories);
     });
 
-    //! get al narrators
+    //! Fetch al narrators
     this.http.get<any[]>(this.narratorsService.api_get_all_narrators).subscribe(categories => {
       this.narratorsService.setAllnarrators(categories);
+    });
+
+    //! Fetch al scenes
+    this.http.get<any[]>(this.scenesService.api_get_all_scenes).subscribe(allScenes => {
+      this.scenesService.setScenesList(allScenes);
     });
   
   }

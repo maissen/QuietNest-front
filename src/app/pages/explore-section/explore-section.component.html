@@ -2,14 +2,12 @@
 
     <app-bg-video></app-bg-video>
 
-
-    <!-- <div class="header" [ngStyle]="{'background-color': currentScene?.avgColor}"> -->
     <div class="header">
         <p class="title">Discover More</p>
         <button routerLink="/app/search">Search</button>
     </div>
 
-    <div class="loaded_content">
+    <div class="loaded_content add-bottom-spacing-for-playing-speech-banner">
         <app-carousel-square 
             [hasBottomBorder]="true" 
             [carouselTitle]="'today\'s Picks'"

@@ -9,12 +9,11 @@
             <div 
                 class="scene-item" 
                 [ngClass]="{'scene-item': true, 'scene-item-active': scene.id == currentScene.id}"
-                (click)="selectScene(scene)"
             >
                 <div class="img_thumb">
-                    <img [src]="scene.imgUrl" alt="Scene Image">
+                    <img [src]="scenesServices.getActiveScene().img" alt="Scene Image">
                 </div>
-                <p class="name">{{scene.name}}</p>
+                <p class="name">{{scenesServices.getActiveScene().name}}</p>
             </div>
         </ng-container>
     </div>
