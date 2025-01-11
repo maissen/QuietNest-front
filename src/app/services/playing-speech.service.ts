@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { SpeechesService } from './speeches.service';
 import { CategoriesService } from './categories.service';
 import { NarratorsService } from './narrators.service';
 

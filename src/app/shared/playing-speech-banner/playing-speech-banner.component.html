@@ -1,4 +1,4 @@
-<div class="content" *ngIf="service.isPlaying() && createSectionService.showPlayingSpeechBanner()">
+<div class="content" *ngIf="service.isPlaying() && createSectionService.showPlayingSpeechBanner() && !hideBanner">
     <div class="info">
       <div class="img_thumb">
         <img [src]="service.getSelectedSpeechData().img">
