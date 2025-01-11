@@ -75,11 +75,18 @@ export class CreateSectionService {
   }
 
   // Toggle content expansion
-  toggleExpandSheetContent() {
+  toggleExpandSheetContent(): void {
     if (this.activeSounds.length > 0) {
-      this.expandContent = !this.expandContent;
+        this.expandContent = !this.expandContent;
+
+        if (this.expandContent) {
+            document.body.style.overflowY = 'hidden';
+        } else {
+            document.body.style.overflowY = 'auto';
+        }
     } else {
-      this.expandContent = false;
+        this.expandContent = false;
+        document.body.style.overflowY = 'auto';
     }
   }
 

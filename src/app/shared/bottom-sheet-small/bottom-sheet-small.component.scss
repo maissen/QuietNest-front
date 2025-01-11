@@ -4,10 +4,11 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    background-color: transparent;
+    transition:background .3s linear;
     z-index: -1;
 
     &.showUp {
+        background-color: #0000003f;
         z-index: calc(var(--navbar-zindex) + 1);
     }
 
@@ -20,18 +21,21 @@
     height: 50rem;
     width: 100%;
     position: fixed;
-    bottom: -100%;
+    bottom: 0;
     left: 0;
+    transform: translateY(100%); // Ensure this matches the initial state
     border-top-left-radius: 2.5rem;
     border-top-right-radius: 2.5rem;
-    transition: bottom .3s;
+    transition: .3s cubic-bezier(0,.06,.28,.99);
+    transition: transform 0.3s ease-in-out; // Smooth transition for transform
     z-index: calc(var(--navbar-zindex) + 2);   
-    
+
     &.showUp {
-        bottom: 0;
+        transform: translateY(0);
     }
 
     @media all and (min-width: 500px) {
         display: none;
     }
 }
+

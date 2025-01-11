@@ -4,6 +4,9 @@
     (click)="service.toggleExpandSheetContent()"
 ></div>
 
-<div class="content blurry-bg" *ngIf="service.showBottomSheetWide()">
-
+<div 
+    class="content blurry-bg" 
+    [ngClass]="{'showUp': service.getExpandSheetContent()}"
+>
+    <app-bottom-sheet-content></app-bottom-sheet-content>
 </div>
