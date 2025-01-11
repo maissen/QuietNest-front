@@ -11,6 +11,8 @@ import { NotFound404Component } from './pages/not-found-404/not-found-404.compon
 import { ScenesSectionComponent } from './pages/scenes-section/scenes-section.component';
 import { CreateSectionComponent } from './pages/create-section/create-section.component';
 import { SearchSectionComponent } from './pages/search-section/search-section.component';
+import { SpeechSectionComponent } from './pages/speech-section/speech-section.component';
+import { PlaylistSectionComponent } from './pages/playlist-section/playlist-section.component';
 
 const routes: Routes = [
   {
@@ -60,6 +62,14 @@ const routes: Routes = [
       {
         path: 'search',
         component: SearchSectionComponent
+      },
+      {
+        path: 'speech/:id',
+        component: SpeechSectionComponent
+      },
+      {
+        path: 'playlist/:id',
+        component: PlaylistSectionComponent
       }
     ]
   },

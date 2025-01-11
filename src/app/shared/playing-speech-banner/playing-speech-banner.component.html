@@ -12,6 +12,8 @@
     <div class="actions">
       <button (click)="service.clearSelectedSpeechData()">Close</button>
       <button>Like</button>
+      <button *ngIf="service.getSelectedSpeechData().type == 'speech'" [routerLink]="'/app/speech/' + service.getSelectedSpeechData().id">expand</button>
+      <button *ngIf="service.getSelectedSpeechData().type == 'playlist'" [routerLink]="'/app/playlist/' + service.getSelectedSpeechData().id">expand</button>
     </div>
   </div>
   

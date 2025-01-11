@@ -34,6 +34,8 @@ import { BottomSheetWideComponent } from './shared/bottom-sheet-wide/bottom-shee
 import { BottomSheetSmallComponent } from './shared/bottom-sheet-small/bottom-sheet-small.component';
 import { BottomSheetContentComponent } from './shared/bottom-sheet-content/bottom-sheet-content.component';
 import { PlayingSpeechBannerComponent } from './shared/playing-speech-banner/playing-speech-banner.component';
+import { SpeechSectionComponent } from './pages/speech-section/speech-section.component';
+import { PlaylistSectionComponent } from './pages/playlist-section/playlist-section.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import { PlayingSpeechBannerComponent } from './shared/playing-speech-banner/pla
     BottomSheetWideComponent,
     BottomSheetSmallComponent,
     BottomSheetContentComponent,
-    PlayingSpeechBannerComponent
+    PlayingSpeechBannerComponent,
+    SpeechSectionComponent,
+    PlaylistSectionComponent
   ],
   imports: [
     BrowserModule,
