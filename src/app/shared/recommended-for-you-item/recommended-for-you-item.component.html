@@ -8,6 +8,7 @@
         <div class="metadata">{{ data.likes }} likes</div>
       </div>
       <p class="categories">{{ categoriesService.getCategoryById(data).name }} | {{narratorsService.getNarratorById(data).name }}</p>
+      <span *ngIf="playingSpeechService.getSelectedSpeechData()?.id == data.id">(Playing)</span> 
     </div>
   </div>
   

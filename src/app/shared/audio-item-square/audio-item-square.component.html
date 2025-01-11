@@ -3,7 +3,7 @@
     <img [src]="audio.img">
   </div>
   <div class="item__info">
-    <p class="name">{{ audio.name }}</p>
+    <p class="name">{{ audio.name }} <span *ngIf="playingSpeechService.getSelectedSpeechData()?.id == audio.id">(Playing)</span> </p>
     <p class="author">{{ narratorsService.getNarratorById(audio).name }}</p>
     <p class="categories">{{ categoriesService.getCategoryById(audio).name }}</p>
   </div>

@@ -12,7 +12,7 @@ export class AudioItemRectangleComponent {
   @Input() audio: any;
 
   constructor(
-    private playingSpeechService: PlayingSpeechService,
+    public playingSpeechService: PlayingSpeechService,
     public narratorsService: NarratorsService,
     public categoriesService: CategoriesService
   ) { }
