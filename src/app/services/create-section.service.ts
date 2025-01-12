@@ -54,6 +54,8 @@ export class CreateSectionService {
         sound.volume = volume;
       }
     })
+
+    console.log(activeSound.name + ',Volume updated ' + activeSound.volume)
   }
 
   // Get all active sounds

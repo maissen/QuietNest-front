@@ -22,5 +22,6 @@ export class AudioItemComponent {
     this.audioRef.nativeElement.volume = volume / 10;
 
     this.createSectionService.updateActiveSoundVolume(this.sound, volume);
+    console.log('volume of ' + this.sound.name + ' is being updated.');
   }
 }

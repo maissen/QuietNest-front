@@ -7,8 +7,7 @@
         </div>
     </div>
     <div class="elements hide-scrollbar">
-
-        <div class="sound" *ngFor="let sound of data">
+        <div class="sound" *ngFor="let sound of data; let i = index">
             <div class="label">
                 <div class="icon">
                     <i class="fa-solid fa-music"></i>
@@ -16,18 +15,13 @@
                 <span class="name">{{sound.name}}</span>
             </div>
                 
-            <input class="volume" type="range" min="0" max="10" [value]="sound.volume">
+            <input class="volume" type="range" min="0" max="10" [value]="sound.volume" (input)="updateVolume(i, $event)">
+
             <div class="action" (click)="createSectionService.toggleActiveSound(sound)">
                 <i class="fa-solid fa-xmark"></i>
             </div>
-        </div>
 
-        <!--! for adjusting device's volume -->
-        <div class="audio">
-            <div class="icon"></div>
-            <div class="volume">Device</div>
-            <div class="systemVolume"></div>
+            <audio *ngIf="createSectionService.isSoundActive(sound)" #audio [src]="sound.link" loop></audio>
         </div>
-
     </div>
 </div>
