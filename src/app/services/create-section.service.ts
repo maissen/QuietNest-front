@@ -44,6 +44,14 @@ export class CreateSectionService {
     }
   }
 
+  updateActiveSoundVolume(activeSound: any, volume: number) {
+    this.getActiveSounds().filter((sound) => {
+      if(sound.id == activeSound.id) {
+        sound.volume = volume;
+      }
+    })
+  }
+
   // Get all active sounds
   getActiveSounds(): any[] {
     return this.activeSounds;

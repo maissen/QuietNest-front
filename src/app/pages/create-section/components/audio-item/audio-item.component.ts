@@ -23,6 +23,7 @@ export class AudioItemComponent {
     } else {
       this.audioRef.nativeElement.play();
     }
+    console.log(sound)
   }
 
   isActive(): boolean {
@@ -32,5 +33,7 @@ export class AudioItemComponent {
   updateVolume(event: Event): void {
     const volume = (event.target as HTMLInputElement).valueAsNumber;
     this.audioRef.nativeElement.volume = volume / 10;
+
+    this.createSectionService.updateActiveSoundVolume(this.sound, volume);
   }
 }
