@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     private http: HttpClient,
     private categoriesService: CategoriesService,
     private narratorsService: NarratorsService,
-    private scenesService: ScenesService,
+    public scenesService: ScenesService,
     private soundsService: SoundsService
   ) { }
 

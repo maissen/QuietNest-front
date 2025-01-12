@@ -6,11 +6,25 @@
         (click)="service.toggleExpandSheetContent()"
     >Expand</button>
 
-    <ul>
-        <li routerLink="/app/browse" routerLinkActive="active-link">Browse</li>
-        <li routerLink="/app/create" routerLinkActive="active-link">Create</li>
-        <li routerLink="/app/explore" routerLinkActive="active-link">Explore</li>
-        <li routerLink="/app/profile" routerLinkActive="active-link">Profile</li>
+    <h1 class="title cormorant-font"><span>Quiet</span> Nest</h1>
+
+    <ul class="links">
+        <li routerLink="/app/browse" routerLinkActive="active-link">
+            <i class="fa-solid fa-house"></i>
+            <span>Browse</span>
+        </li>
+        <li routerLink="/app/create" routerLinkActive="active-link">
+            <i class="fa-solid fa-music"></i>
+            <span>Create</span>
+        </li>
+        <li routerLink="/app/explore" routerLinkActive="active-link">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Explore</span>
+        </li>
+        <li routerLink="/app/profile" routerLinkActive="active-link">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </li>
     </ul>
 
 </div>
