@@ -14,6 +14,14 @@
         All
       </button>
       <button
+        *ngIf="service.getActiveSounds().length > 0"
+        class="blurry-bg"
+        [ngClass]="{'active': activeCategories.includes('active-sounds')}"
+        (click)="toggleCategory('active-sounds')"
+      >
+        Currently Enjoying
+      </button>
+      <button
         *ngFor="let category of service.getCategories()"
         class="blurry-bg"
         [ngClass]="{'active': activeCategories.includes(category)}"
@@ -25,6 +33,24 @@
   </div>
 
   <div class="loaded_content add-bottom-spacing-for-playing-speech-banner">
+    <div
+      class="category_unit"
+      *ngIf="activeCategories.includes('active-sounds')"
+    >
+      <div>
+        <div class="title">Currently Enjoying</div>
+        <div class="audio_items">
+          <app-audio-item
+            *ngFor="let sound of service.getActiveSounds()"
+            [sound]="sound"
+          ></app-audio-item>
+        </div>
+        <div *ngIf="service.getActiveSounds().length === 0">
+          <p>No sounds currently being enjoyed.</p>
+        </div>
+      </div>
+    </div>
+
     <div
       class="category_unit"
       *ngFor="let category of service.getCategories()"

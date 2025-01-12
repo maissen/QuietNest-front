@@ -58,6 +58,7 @@ export class CreateSectionService {
       if (audioElement) {
         if (this.pauseActiveSounds) {
           audioElement.pause();
+          console.log(id + ' is paused')
         } 
         else {
           audioElement.play();

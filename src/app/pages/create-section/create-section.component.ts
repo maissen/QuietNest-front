@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CreateSectionService } from 'src/app/services/create-section.service';
 
 @Component({
@@ -14,9 +14,14 @@ export class CreateSectionComponent {
   toggleCategory(category: any): void {
     if (category === 'All') {
       this.activeCategories = [];
+    } else if (category === 'active-sounds') {
+      this.activeCategories = ['active-sounds'];
     } else {
-      const index = this.activeCategories.indexOf(category);
+      if (this.activeCategories.includes('active-sounds')) {
+        this.activeCategories = [];
+      }
 
+      const index = this.activeCategories.indexOf(category);
       if (index === -1) {
         this.activeCategories.push(category);
       } else {
@@ -26,14 +31,9 @@ export class CreateSectionComponent {
   }
 
   isCategoryActive(category: any): boolean {
-    return this.activeCategories.length === 0 || this.activeCategories.includes(category);
+    return (
+      this.activeCategories.length === 0 ||
+      this.activeCategories.includes(category)
+    );
   }
-
-  getFilteredSounds(category: any): any[] {
-    if (this.activeCategories.length === 0 || this.activeCategories.includes(category)) {
-      return this.service.getSoundsOfCategory(category);
-    }
-    return [];
-  }
-  
 }

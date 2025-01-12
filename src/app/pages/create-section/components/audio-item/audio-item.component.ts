@@ -14,6 +14,5 @@ export class AudioItemComponent {
   toggleSound(sound: any): void {
     this.createSectionService.toggleActiveSound(sound);
     this.createSectionService.toggleActiveSoundIDRef('#sound-audio-' + sound.id);
-    console.log(sound)
   }
 }
