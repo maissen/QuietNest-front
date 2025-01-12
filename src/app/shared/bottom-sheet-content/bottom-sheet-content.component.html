@@ -8,10 +8,10 @@
     </div>
     <div class="elements hide-scrollbar">
 
-        <div class="audio" *ngFor="let item of createSectionService.getActiveSounds()">
+        <div class="audio" *ngFor="let sound of createSectionService.getActiveSounds()">
             <div class="icon"></div>
-            <div class="volume">{{item.name}}</div>
-            <button class="action" (click)="createSectionService.toggleActiveSound(item)">x</button>
+            <div class="volume">{{sound.name}}</div>
+            <button class="action" (click)="createSectionService.toggleActiveSound(sound)">x</button>
         </div>
 
         <!--! for adjusting device's volume -->

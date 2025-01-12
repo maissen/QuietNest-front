@@ -13,21 +13,8 @@ export class AudioItemComponent {
   constructor(public createSectionService: CreateSectionService) {}
 
   toggleSound(sound: any): void {
-    const isCurrentlyActive = this.isActive();
     this.createSectionService.toggleActiveSound(sound);
-
-    // Handle audio playback
-    if (isCurrentlyActive) {
-      this.audioRef.nativeElement.pause();
-      this.audioRef.nativeElement.currentTime = 0;
-    } else {
-      this.audioRef.nativeElement.play();
-    }
     console.log(sound)
-  }
-
-  isActive(): boolean {
-    return this.createSectionService.getActiveSounds().includes(this.sound);
   }
 
   updateVolume(event: Event): void {

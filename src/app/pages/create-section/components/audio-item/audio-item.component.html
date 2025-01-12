@@ -3,10 +3,10 @@
           <p class="name text-center">{{ sound.name }}</p>
           <div
           class="icon_thumb blurry-bg"
-          [ngStyle]="{ 'border-color': isActive() ? '#FFF' : 'transparent' }">
+          [ngStyle]="{ 'border-color': createSectionService.isSoundActive(sound) ? '#FFF' : 'transparent' }">
           </div>
      </div>
-     <input type="range" min="0" max="10" step="1" [value]="sound.volume" (input)="updateVolume($event)">
-     <audio #audio [src]="sound.link" loop></audio>
+     <input *ngIf="createSectionService.isSoundActive(sound)" type="range" min="0" max="10" step="1" [value]="sound.volume" (input)="updateVolume($event)">
+     <audio *ngIf="createSectionService.isSoundActive(sound)" #audio [src]="sound.link" loop autoplay></audio>
    </div>
    

@@ -44,6 +44,10 @@ export class CreateSectionService {
     }
   }
 
+  isSoundActive(sound: any): boolean {
+    return this.getActiveSounds().includes(sound);
+  }
+
   updateActiveSoundVolume(activeSound: any, volume: number) {
     this.getActiveSounds().filter((sound) => {
       if(sound.id == activeSound.id) {
