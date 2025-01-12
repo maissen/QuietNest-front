@@ -19,7 +19,7 @@ export class AudioItemComponent {
     // Handle audio playback
     if (isCurrentlyActive) {
       this.audioRef.nativeElement.pause();
-      this.audioRef.nativeElement.currentTime = 0; // Reset audio
+      this.audioRef.nativeElement.currentTime = 0;
     } else {
       this.audioRef.nativeElement.play();
     }
@@ -31,6 +31,6 @@ export class AudioItemComponent {
 
   updateVolume(event: Event): void {
     const volume = (event.target as HTMLInputElement).valueAsNumber;
-    this.audioRef.nativeElement.volume = volume / 10; // Normalize to 0–1
+    this.audioRef.nativeElement.volume = volume / 10;
   }
 }

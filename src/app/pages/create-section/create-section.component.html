@@ -28,17 +28,17 @@
     <div
       class="category_unit"
       *ngFor="let category of service.getCategories()"
-      [hidden]="!isCategoryActive(category)"
+      [ngStyle]="{ display: isCategoryActive(category) ? 'block' : 'none' }"
     >
       <div>
         <div class="title">{{ category.name }}</div>
         <div class="audio_items">
           <app-audio-item
-            *ngFor="let sound of getFilteredSounds(category)"
+            *ngFor="let sound of service.getSoundsOfCategory(category)"
             [sound]="sound"
           ></app-audio-item>
         </div>
-        <div *ngIf="getFilteredSounds(category).length === 0">
+        <div *ngIf="service.getSoundsOfCategory(category).length === 0">
           <p>No sounds available in this category.</p>
         </div>
       </div>
