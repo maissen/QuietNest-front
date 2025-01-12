@@ -8,7 +8,7 @@
     <div class="main">
         
         <div class="body" [ngClass]="{'expand_body': service.getExpandSheetContent()}">
-            <app-bottom-sheet-content></app-bottom-sheet-content>
+            <app-bottom-sheet-content [data]="service.getActiveSounds()"></app-bottom-sheet-content>
         </div>
 
         <div class="header">

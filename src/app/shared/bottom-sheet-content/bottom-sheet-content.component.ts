@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CreateSectionService } from 'src/app/services/create-section.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { CreateSectionService } from 'src/app/services/create-section.service';
   styleUrls: ['./bottom-sheet-content.component.scss']
 })
 export class BottomSheetContentComponent {
+
+  @Input() data: any[] = [];
 
   constructor(
     public createSectionService: CreateSectionService

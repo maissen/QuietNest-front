@@ -8,5 +8,5 @@
     class="content blurry-bg" 
     [ngClass]="{'showUp': service.getExpandSheetContent()}"
 >
-    <app-bottom-sheet-content></app-bottom-sheet-content>
+    <app-bottom-sheet-content [data]="service.getActiveSounds()"></app-bottom-sheet-content>
 </div>

@@ -72,13 +72,4 @@
 
     --bottom-sheet-wide-padding: 1.5rem;
     --bottom-sheet-wide-height: calc(5.5rem + var(--bottom-sheet-wide-padding));
-    @media all and (min-width: 650px) {
-        --bottom-sheet-body-height: 33rem;
-    }
-    @media all and (min-width: 900px) {
-        --bottom-sheet-body-height: 36rem;
-    }
-    @media all and (min-width: 900px) {
-        --bottom-sheet-body-height: 40rem;
-    }
 }
