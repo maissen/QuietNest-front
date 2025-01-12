@@ -1,0 +1,10 @@
+<div class="content">
+    <div class="title">Log In to Quiet Nest</div>
+    <form (submit)="login()">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" [(ngModel)]="email">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" [(ngModel)]="password">
+        <input type="submit" value="Log in">
+    </form>
+</div>

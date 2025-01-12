@@ -8,8 +8,6 @@ import { BrowseSectionComponent } from './pages/browse-section/browse-section.co
 import { HomeSectionComponent } from './pages/home-section/home-section.component';
 import { ProfileSectionComponent } from './pages/profile-section/profile-section.component';
 import { NotFound404Component } from './pages/not-found-404/not-found-404.component';
-import { SignInComponent } from './pages/sign-in/sign-in.component';
-import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { SignUpFlowComponent } from './pages/sign-up-flow/sign-up-flow.component';
 import { RouterLink } from '@angular/router';
@@ -36,6 +34,9 @@ import { BottomSheetContentComponent } from './shared/bottom-sheet-content/botto
 import { PlayingSpeechBannerComponent } from './shared/playing-speech-banner/playing-speech-banner.component';
 import { SpeechSectionComponent } from './pages/speech-section/speech-section.component';
 import { PlaylistSectionComponent } from './pages/playlist-section/playlist-section.component';
+import { LoginSectionComponent } from './pages/login-section/login-section.component';
+import { RegisterSectionComponent } from './pages/register-section/register-section.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -45,8 +46,6 @@ import { PlaylistSectionComponent } from './pages/playlist-section/playlist-sect
     HomeSectionComponent,
     ProfileSectionComponent,
     NotFound404Component,
-    SignInComponent,
-    SignUpComponent,
     WelcomeComponent,
     SignUpFlowComponent,
     CarouselEndingMessageComponent,
@@ -70,13 +69,16 @@ import { PlaylistSectionComponent } from './pages/playlist-section/playlist-sect
     BottomSheetContentComponent,
     PlayingSpeechBannerComponent,
     SpeechSectionComponent,
-    PlaylistSectionComponent
+    PlaylistSectionComponent,
+    LoginSectionComponent,
+    RegisterSectionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterLink,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
