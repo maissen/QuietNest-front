@@ -8,12 +8,10 @@ import { ScenesSectionService } from 'src/app/services/scenes-section.service';
   styleUrls: ['./scenes-section.component.scss']
 })
 export class ScenesSectionComponent {
-  scenes: any[] = [];
-  currentScene: any;
 
   constructor(
     private router: Router,
-    public scenesServices: ScenesSectionService
+    public service: ScenesSectionService
   ) {}
 
   undoLink() {
