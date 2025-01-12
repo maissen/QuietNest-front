@@ -8,20 +8,12 @@ import { CreateSectionService } from 'src/app/services/create-section.service';
 })
 export class AudioItemComponent {
   @Input() sound: any;
-  @ViewChild('audio', { static: false }) audioRef!: ElementRef<HTMLAudioElement>;
 
   constructor(public createSectionService: CreateSectionService) {}
 
   toggleSound(sound: any): void {
     this.createSectionService.toggleActiveSound(sound);
+    this.createSectionService.toggleActiveSoundIDRef('#sound-audio-' + sound.id);
     console.log(sound)
-  }
-
-  updateVolume(event: Event): void {
-    const volume = (event.target as HTMLInputElement).valueAsNumber;
-    this.audioRef.nativeElement.volume = volume / 10;
-
-    this.createSectionService.updateActiveSoundVolume(this.sound, volume);
-    console.log('volume of ' + this.sound.name + ' is being updated.');
   }
 }

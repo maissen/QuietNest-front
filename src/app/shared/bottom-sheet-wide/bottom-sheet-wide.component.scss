@@ -61,14 +61,19 @@
                 gap: 1rem;
         
                 .action {
-                    height: calc(var(--bottom-sheet-wide-height) * .7);
-                    width: calc(var(--bottom-sheet-wide-height) * .7);
-                    background: green;
+                    height: calc(var(--bottom-sheet-wide-height) * 0.7);
+                    width: calc(var(--bottom-sheet-wide-height) * 0.7);
                     border-radius: 50%;
-
-                    &.expand {
-                        cursor: pointer;
-                    }
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    transition: transform 0.5s ease;
+                    transform: rotateZ(0deg);
+                }
+                    
+                .rotateBtn { 
+                    transform: rotateZ(180deg);
                 }
             }
         }

@@ -9,6 +9,9 @@ import { PlayingSpeechService } from './playing-speech.service';
 export class CreateSectionService {
 
   private activeSounds: any[] = [];
+  private pauseActiveSounds: boolean = false;
+  private ActiveSoundIDRefs: string[] = [];
+
   screenWidth: number = window.innerWidth;
   expandContent: boolean = false;
   private currentUrl: string = '';
@@ -22,12 +25,47 @@ export class CreateSectionService {
     this.updateCurrentUrl();
   }
 
+  toggleActiveSoundIDRef(idref: string): void {
+    const index = this.ActiveSoundIDRefs.indexOf(idref);
+    
+    if (index === -1) {
+      this.ActiveSoundIDRefs.push(idref);
+    } else {
+      this.ActiveSoundIDRefs.splice(index, 1);
+    }
+
+    console.log(this.ActiveSoundIDRefs);
+  }
+  
+
   // Update the current URL whenever it changes
   private updateCurrentUrl(): void {
     this.router.events.subscribe(() => {
       this.currentUrl = this.router.url;
     });
   }
+
+  getPauseActiveSounds(): boolean {
+    return this.pauseActiveSounds;
+  }
+
+  togglePauseActiveSounds(): void {
+    this.pauseActiveSounds = !this.pauseActiveSounds;
+  
+    this.ActiveSoundIDRefs.forEach(id => {
+      const audioElement = document.querySelector<HTMLAudioElement>(id);
+      
+      if (audioElement) {
+        if (this.pauseActiveSounds) {
+          audioElement.pause();
+        } 
+        else {
+          audioElement.play();
+        }
+      }
+    });
+  }
+  
 
   // Toggle the sound in the active list
   toggleActiveSound(sound: any): void {

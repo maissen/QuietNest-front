@@ -6,7 +6,7 @@
           [ngStyle]="{ 'border-color': createSectionService.isSoundActive(sound) ? '#FFF' : 'transparent' }">
           </div>
      </div>
-     <input *ngIf="createSectionService.isSoundActive(sound)" type="range" min="0" max="10" step="1" [value]="sound.volume" (input)="updateVolume($event)">
-     <audio *ngIf="createSectionService.isSoundActive(sound)" #audio [src]="sound.link" loop autoplay></audio>
+     <input *ngIf="createSectionService.isSoundActive(sound)" type="range" min="0" max="10" step="1" [value]="sound.volume">
+     <audio *ngIf="createSectionService.isSoundActive(sound)" [id]="'sound-audio-'+sound.id" [src]="sound.link" loop [autoplay]="!createSectionService.getPauseActiveSounds()"></audio>
    </div>
    
