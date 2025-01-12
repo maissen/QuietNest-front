@@ -43,9 +43,9 @@
                 font-weight: bold;
                 transition: .3s;
                 padding: .6rem 1.5rem;
-                height: calc(var(--navbar-small-height) * .7);
-                width: calc(var(--navbar-small-height) * .7);
-                border-radius: 50%;
+                height: calc(var(--navbar-small-height) * .6);
+                width: calc(var(--navbar-small-height) * .6);
+                border-radius: 25%;
 
                 span { display: none; }
 
@@ -85,6 +85,7 @@
                 li {
                     height: auto;
                     width: auto;
+                    padding: .9rem 1.7rem;
                     border-radius: 1.5rem;
                     span { display: block; }
                 }
