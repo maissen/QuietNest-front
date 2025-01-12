@@ -1,8 +1,12 @@
-<div class="content" (click)="toggleSound(sound);">
-    <p class="name">{{sound.name}}</p>
-    <div class="icon_thumb blurry-bg" 
-         [ngStyle]="{ 'border-color': isActive() ? '#FFF' : 'transparent' }">
-    </div>
-    <input type="range" min="0" max="10" step="1" [value]="sound.volume">
-  </div>
-  
+<div class="content">
+     <div (click)="toggleSound(sound)">
+          <p class="name text-center">{{ sound.name }}</p>
+          <div
+          class="icon_thumb blurry-bg"
+          [ngStyle]="{ 'border-color': isActive() ? '#FFF' : 'transparent' }">
+          </div>
+     </div>
+     <input type="range" min="0" max="10" step="1" [value]="sound.volume" (input)="updateVolume($event)">
+     <audio #audio [src]="sound.link" loop></audio>
+   </div>
+   
