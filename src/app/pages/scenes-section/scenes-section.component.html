@@ -2,17 +2,20 @@
     
     <app-bg-video></app-bg-video>
 
-    <button (click)="undoLink()">Close</button>
+    <div class="title">
+        <p>Choose Your Favorite Scene</p>
+        <app-btn-rectangle [icon]="'fa-solid fa-x'" [text]="'close'" (click)="undoLink()"></app-btn-rectangle>
+    </div>
+    
+    <hr>
 
     <div class="loaded-content">
         <ng-container *ngFor="let scene of service.getAllScenes()">
             <div 
                 class="scene-item" 
-                [ngClass]="{'scene-item': true, 'scene-item-active': scene.id == service.getActiveScene().id}"
+                [ngClass]="{'scene-item-active': scene.id == service.getActiveScene().id}"
             >
-                <div class="img_thumb">
-                    <img [src]="scene.img" alt="Scene Image">
-                </div>
+                <img [src]="scene.img" alt="Scene Image">
                 <p class="name">{{scene.name}}</p>
             </div>
         </ng-container>
