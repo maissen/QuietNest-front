@@ -1,10 +1,20 @@
-<div class="item" (click)="displaySpeechBanner()">
+<div class="item">
   <div class="item__thumb">
-    <img [src]="audio.img">
+    <img [src]="soundMixture.img">
+    <!-- <div class="playing_banner blurry-bg" *ngIf="playingSpeechService.getSelectedSpeechData()?.id == speech.id">
+      <i class="fa-solid fa-headphones"></i>
+      Currently Enjoying
+    </div> -->
   </div>
   <div class="item__info">
-    <p class="name">{{ audio.name }} <span *ngIf="playingSpeechService.getSelectedSpeechData()?.id == audio.id">(Playing)</span> </p>
-    <p class="author">{{ narratorsService.getNarratorById(audio).name }}</p>
-    <p class="categories">{{ categoriesService.getCategoryById(audio).name }}</p>
+    <p class="name">{{ soundMixture.name }}sd fqs qsdf sd </p>
+    <div class="likes_plays_badges">
+      <div class="item blurry-bg">
+        <i class="fa-solid fa-heart"></i> <span class="number">{{ soundMixture.likes }}</span>
+      </div>
+      <div class="item blurry-bg">
+        <i class="fa-solid fa-user"></i> <span class="number">{{ soundMixture.playing_nbr }}</span>
+      </div>
+    </div>
   </div>
 </div>

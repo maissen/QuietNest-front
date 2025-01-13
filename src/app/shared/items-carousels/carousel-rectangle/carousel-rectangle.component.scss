@@ -23,25 +23,6 @@
             align-items: center;
             height: 100%;
             gap: 1rem;
-
-            button {
-               background-color: royalblue;
-               color: white;
-               border: none;
-               border-radius: 4px;
-               cursor: pointer;
-               font-size: 2rem;
-               transition: background-color 0.3s;
-           }
-        }
-        
-        .btns button:disabled {
-            background-color: lightgray;
-            cursor: not-allowed;
-        }
-        
-        .btns button:not(:disabled):hover {
-            background-color: dodgerblue;
         }
         
     }
@@ -50,10 +31,5 @@
         display: flex;
         overflow-x: scroll;
         gap: 2rem;
-
-        app-audio-item-rectangle {
-            flex-shrink: 0;
-            flex-grow: 0;
-        }
     }
 }

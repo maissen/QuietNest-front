@@ -9,16 +9,11 @@ import { PlayingSpeechService } from 'src/app/services/playing-speech.service';
   styleUrls: ['./audio-item-square.component.scss']
 })
 export class AudioItemSquareComponent {
-  @Input() audio: any;
+  @Input() soundMixture: any;
   
   constructor(
     public playingSpeechService: PlayingSpeechService,
     public narratorsService: NarratorsService,
     public categoriesService: CategoriesService
   ) {}
-
-  displaySpeechBanner() {
-    this.playingSpeechService.setSelectedSpeechData(this.audio);
-    this.playingSpeechService.isPlaying();
-  }
 }

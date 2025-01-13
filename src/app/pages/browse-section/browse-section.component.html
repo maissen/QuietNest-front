@@ -21,14 +21,13 @@
 
         <app-carousel-rectangle 
             [hasBottomBorder]="true" 
-            [carouselTitle]="''"
+            [carouselTitle]="'Our playlists'"
             [speeches]="service.getAllSpeeches()"
         ></app-carousel-rectangle>
 
         <app-carousel-square 
-            [hasBottomBorder]="true" 
-            [carouselTitle]="'Recently Watched'"
-            [audiosList]="service.getAllSpeeches()"
+            [carouselTitle]="'Enjoy our sound mixtures'"
+            [speeches]="service.getAllSpeeches()"
         ></app-carousel-square>
         
         <app-recommended-for-you 
@@ -36,9 +35,9 @@
             [data]="service.getAllSpeeches()"
         ></app-recommended-for-you>
 
-        <app-carousel-square 
-            [carouselTitle]="'Recently Liked'"
-            [audiosList]="service.getAllSpeeches()"
-        ></app-carousel-square>
+        <app-carousel-rectangle 
+            [carouselTitle]="'Recently Enjoyed'"
+            [speeches]="service.getAllSpeeches()"
+        ></app-carousel-rectangle>
     </div>
 </div>
