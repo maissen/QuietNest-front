@@ -1,18 +1,59 @@
 .content {
     position: relative;
+    --bg-video-small-height: 20rem;
 
-    .bg_scene {
+    .bg-video-wide {
+        display: none;
+    }
+
+    @media all and (min-width: 400px) {
+        --bg-video-small-height: 27rem;
+    }
+
+    @media all and (min-width: 500px) {
+        --bg-video-small-height: 0;
+
+        .bg-video-wide {
+            display: block;
+        }
+    }
+
+    .bg-video-small {
+        height: var(--bg-video-small-height);
+        width: 100%;
+        overflow: hidden;
         position: fixed;
         top: 0;
-        right: 0;
-        height: var(--browse-section-header-height);
-        width: 100%;
-        z-index: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: var(--currentSceneImg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        img {
+            height: var(--bg-video-small-height);
+            width: auto;
+
+            @media all and (min-width: 300) {
+                width: 100%;
+                height: auto;
+            }
+        }
     }
 
     .loaded_content {
         position: relative;
         padding: var(--dynamic-content-padding);
+        z-index: 2;
+        margin-top: var(--bg-video-small-height);
+        background-color: var(--avgColor);
+
+        @media all and (min-width: 500px) {
+            background-color: transparent;
+        }
 
         .title {
             font-size: 3rem;
@@ -21,6 +62,7 @@
             font-weight: bold;
             letter-spacing: .1rem;
             color: #FFF;
+            margin-right: 6rem;
         }
 
         .scenes_btn {

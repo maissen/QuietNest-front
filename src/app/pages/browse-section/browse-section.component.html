@@ -1,15 +1,11 @@
 <div class="content">
 
-    <app-bg-video></app-bg-video>
+    <app-bg-video class="bg-video"></app-bg-video>
     
+    <div class="bg-video-small"></div>
 
-    <!-- <div class="toolbar">
-        <app-btn-round [routerLink]="'/app/scenes'" [icon]="'fa-solid fa-mountain-sun'"></app-btn-round>
-    </div> -->
-
-    <div class="loaded_content add-bottom-spacing-for-playing-speech-banner" [ngStyle]="{'background-color': showBgVideo? scenesService.getActiveScene()?.avgColor: 'transparent'}">
+    <div class="loaded_content add-bottom-spacing-for-playing-speech-banner">
         
-        <!-- <img [src]="scenesService.getActiveScene()?.img" class="bg_scene" draggable="false"> -->
         <div class="title">Good Afternoon</div>
         <app-btn-rectangle class="scenes_btn rectangle" [routerLink]="'/app/scenes'" [text]="'Scenes'" [icon]="'fa-solid fa-mountain-sun'"></app-btn-rectangle>
         <app-btn-round class="scenes_btn round" [routerLink]="'/app/scenes'" [icon]="'fa-solid fa-mountain-sun'"></app-btn-round>
