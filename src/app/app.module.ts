@@ -77,7 +77,7 @@ import { BtnRoundSmallComponent } from './shared/buttons/btn-round-small/btn-rou
     RegisterSectionComponent,
     BtnRectangleComponent,
     BtnRoundComponent,
-    BtnRoundSmallComponent
+    BtnRoundSmallComponent,
   ],
   imports: [
     BrowserModule,

@@ -25,9 +25,6 @@
     padding-bottom: calc(var(--playing-speech-banner-height) + var(--navbar-small-height) + 2rem) !important;
 }
 
-
-
-
 .custom-scrollbar {
   --sb-thumb-color: #6BAF8D;
   --sb-track-color: transparent;
@@ -57,4 +54,57 @@
 }
 
   
+
+.range-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 25rem;
+}
+
+.range-slider:focus {
+  outline: none;
+}
+
+.range-slider::-webkit-slider-runnable-track {
+  background-color: #0000004f;
+  border-radius: 0.5rem;
+  height: 0.2rem;
+}
+
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -0.4rem;
+  background-color: #d9dadb;
+  border-radius: 50%;
+  height: 1rem;
+  width: 1rem;
+}
+
+.range-slider:focus::-webkit-slider-thumb {
+  outline: 0.3rem solid #d9dadb;
+  outline-offset: 0.125rem;
+}
+
+.range-slider::-moz-range-track {
+  background-color: #0000004f;
+  border-radius: 0.5rem;
+  height: 0.5rem; /* Matches the WebKit track height */
+}
+
+.range-slider::-moz-range-thumb {
+  background-color: #d9dadb;
+  border: none;
+  border-radius: 50%;
+  height: 1rem;
+  width: 1rem;
+}
+
+.range-slider:focus::-moz-range-thumb {
+  outline: 0.3rem solid #0000004f;
+  outline-offset: 0.125rem;
+}
+
   

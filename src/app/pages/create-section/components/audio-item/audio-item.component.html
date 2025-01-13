@@ -1,12 +1,17 @@
 <div class="content">
-     <div (click)="toggleSound(sound)">
-          <p class="name text-center">{{ sound.name }}</p>
+     <div  class="item">
           <div
-          class="icon_thumb blurry-bg"
-          [ngStyle]="{ 'border-color': createSectionService.isSoundActive(sound) ? '#FFF' : 'transparent' }">
+               class="icon_thumb blurry-bg"
+               [ngClass]="{'activeSound': createSectionService.isSoundActive(sound)}"
+               (click)="toggleSound(sound)"
+          >
+               <i class="fa-solid fa-car"></i>
           </div>
+          <p class="name text-center">
+               <span *ngIf="!createSectionService.isSoundActive(sound)">{{ sound.name }}</span>
+               <input class="range-slider" *ngIf="createSectionService.isSoundActive(sound)" [ngClass]="{'showUp': createSectionService.isSoundActive(sound)}" type="range" min="0" max="10" step="1" [value]="sound.volume">
+          </p>
      </div>
-     <input *ngIf="createSectionService.isSoundActive(sound)" type="range" min="0" max="10" step="1" [value]="sound.volume">
      <audio *ngIf="createSectionService.isSoundActive(sound)" [id]="'sound-audio-'+sound.id" [src]="sound.link" loop [autoplay]="!createSectionService.getPauseActiveSounds()"></audio>
-   </div>
+</div>
    

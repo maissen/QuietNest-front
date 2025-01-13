@@ -2,16 +2,27 @@
   <app-bg-video></app-bg-video>
 
   <div class="categories_header">
-    <div class="controls">
-      <h3>Categories</h3>
+    <div class="header">
+      <p class="title">Categories</p>
+      <div class="btns">
+        <app-btn-round-small 
+          [icon]="'fa-solid fa-angle-left'" 
+          (click)="scrollCategoriesList('left')">
+        </app-btn-round-small>
+        <app-btn-round-small 
+          [icon]="'fa-solid fa-angle-right'" 
+          (click)="scrollCategoriesList('right')">
+        </app-btn-round-small>
+      </div>
     </div>
-    <ul class="categories_list hide-scrollbar">
+    <ul #categoriesList class="categories_list hide-scrollbar">
       <button
         class="blurry-bg"
         [ngClass]="{'active': activeCategories.length === 0}"
         (click)="toggleCategory('All')"
       >
-        All
+        <i class="fa-solid fa-house-chimney"></i>
+        <span>All</span>
       </button>
       <button
         *ngIf="service.getActiveSounds().length > 0"
@@ -19,7 +30,8 @@
         [ngClass]="{'active': activeCategories.includes('active-sounds')}"
         (click)="toggleCategory('active-sounds')"
       >
-        Currently Enjoying
+        <i class="fa-solid fa-heart"></i>
+        <span>Currently Enjoying</span>
       </button>
       <button
         *ngFor="let category of service.getCategories()"
@@ -27,7 +39,8 @@
         [ngClass]="{'active': activeCategories.includes(category)}"
         (click)="toggleCategory(category)"
       >
-        {{ category.name }}
+        <i [classList]="category.icon" ></i>
+        <span>{{ category.name }}</span>
       </button>
     </ul>
   </div>

@@ -7,7 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class BtnRoundSmallComponent {
 
-  @Input() routerLink: string = '/app';
   @Input() icon: string = '';
 
 }

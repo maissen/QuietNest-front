@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CreateSectionService } from 'src/app/services/create-section.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { CreateSectionService } from 'src/app/services/create-section.service';
   styleUrls: ['./create-section.component.scss'],
 })
 export class CreateSectionComponent {
+  @ViewChild('categoriesList', { static: true }) categoriesList!: ElementRef;
   activeCategories: any[] = [];
 
   constructor(public service: CreateSectionService) {}
@@ -35,5 +36,12 @@ export class CreateSectionComponent {
       this.activeCategories.length === 0 ||
       this.activeCategories.includes(category)
     );
+  }
+
+  scrollCategoriesList(direction: 'left' | 'right'): void {
+    const scrollStep = 150;
+    const scrollContainer = this.categoriesList.nativeElement;
+    const scrollAmount = direction === 'right' ? scrollStep : -scrollStep;
+    scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   }
 }
