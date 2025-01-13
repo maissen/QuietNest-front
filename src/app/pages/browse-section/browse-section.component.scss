@@ -1,6 +1,6 @@
 .content {
     position: relative;
-    --bg-video-small-height: 20rem;
+    --bg-video-small-height: 27rem;
 
     .bg-video-wide {
         display: none;
@@ -32,24 +32,27 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-
-        img {
-            height: var(--bg-video-small-height);
-            width: auto;
-
-            @media all and (min-width: 300) {
-                width: 100%;
-                height: auto;
-            }
-        }
-    }
+        transition: transform 0.3s ease-out;
+    }    
 
     .loaded_content {
         position: relative;
         padding: var(--dynamic-content-padding);
         z-index: 2;
-        margin-top: var(--bg-video-small-height);
         background-color: var(--avgColor);
+        margin-top: var(--bg-video-small-height);
+
+        
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: translateY(-100%);
+            height: 4rem; 
+            width: 100%;
+            background: linear-gradient(0deg, var(--avgColor) 36%, #00000000 100%);
+        }
 
         @media all and (min-width: 500px) {
             background-color: transparent;
