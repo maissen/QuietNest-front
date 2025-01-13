@@ -37,6 +37,7 @@ import { PlaylistSectionComponent } from './pages/playlist-section/playlist-sect
 import { LoginSectionComponent } from './pages/login-section/login-section.component';
 import { RegisterSectionComponent } from './pages/register-section/register-section.component';
 import { FormsModule } from '@angular/forms';
+import { BtnRectangleComponent } from './shared/buttons/btn-rectangle/btn-rectangle.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { FormsModule } from '@angular/forms';
     SpeechSectionComponent,
     PlaylistSectionComponent,
     LoginSectionComponent,
-    RegisterSectionComponent
+    RegisterSectionComponent,
+    BtnRectangleComponent
   ],
   imports: [
     BrowserModule,

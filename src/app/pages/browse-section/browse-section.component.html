@@ -7,7 +7,8 @@
     </header>
 
     <div class="toolbar" [ngStyle]="{'background-color': showBgVideo? scenesService.getActiveScene()?.avgColor: 'transparent'}">
-        <button class="openScenesSection" routerLink="/app/scenes">Scenes</button>
+        <!-- <button class="openScenesSection" routerLink="/app/scenes">Scenes</button> -->
+        <app-btn-rectangle [routerLink]="'/app/scenes'" [text]="'Scenes'" [icon]="'fa-solid fa-mountain-sun'"></app-btn-rectangle>
     </div>
 
     <div class="loaded_content add-bottom-spacing-for-playing-speech-banner" [ngStyle]="{'background-color': showBgVideo? scenesService.getActiveScene()?.avgColor: 'transparent'}">
