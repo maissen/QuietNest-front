@@ -101,8 +101,7 @@
 
             &:hover,
             &.liked {
-                background-color: #9e9194;
-                color: var(--avgColor);
+                background-color: var(--avgColor);
             }
         }
         .like,

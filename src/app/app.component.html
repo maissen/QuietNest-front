@@ -1,4 +1,7 @@
-<div class="content" [style]="'--avgColor:' + scenesService.getActiveScene()?.avgColor">
+<div 
+  class="content" 
+  [style]="'--avgColor:' + scenesService.getActiveScene()?.avgColor + '; --avgColorlighter:' + scenesService.getActiveScene()?.avgColor + '42'">
+
 
     <ng-container *ngIf="showNavbar">
         <app-navbar></app-navbar>
