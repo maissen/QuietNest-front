@@ -1,17 +1,84 @@
 .item {
     cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: var(--speech-item-rectangle-width);
+    margin-bottom: 1.2rem;
 
     &__thumb {
-        height: var(--audio-item-rectangle-height);
-        width: var(--audio-item-rectangle-width);
-        border-radius: 1.6rem;
+        height: var(--speech-item-rectangle-height);
+        width: var(--speech-item-rectangle-width);
+        border-radius: .7rem;
         overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
 
         img {
             width: 110%;
         }
+
+        .playing_banner {
+            position: absolute;
+            left: .6rem;
+            top: .6rem;
+            font-size: .7em;
+            padding: .5rem .9rem;
+            border-radius: 1.5rem;
+            letter-spacing: .1rem;
+
+            i {
+                margin-right: .5rem;
+            }
+        }   
     }
+
+    &__info {
+        padding-top: 1.5rem;
+        width: 100%;
+    
+        .name {
+            margin: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: var(--speech-item-rectangle-width);
+        }
+    
+        .cat_narrator {
+            display: flex;
+            gap: .8rem;
+            font-size: .8em;
+            margin-bottom: 1rem;
+
+            p {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                width: auto;
+                max-width: var(--speech-item-rectangle-width);
+                margin: 0;
+            }
+        }
+
+        .likes_plays_badges {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: .6rem;
+            font-size: .7em;
+
+            .item {
+                width: auto;
+                display: flex;
+                align-items: center;
+                padding: .5rem 1rem;
+                border-radius: 1.4rem;
+                gap: .7rem;
+            }
+        }
+    }
+    
 }

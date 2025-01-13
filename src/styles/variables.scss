@@ -25,29 +25,29 @@
 
     --carousel-padding-top: 1.1rem;
 
-    --audio-item-segment: 14.7rem;
-    --audio-item-rectangle-height: var(--audio-item-segment);
-    --audio-item-rectangle-width: calc(var(--audio-item-rectangle-height) * 1.7);
+    --speech-item-segment: 11.7rem;
+    --speech-item-rectangle-height: var(--speech-item-segment);
+    --speech-item-rectangle-width: calc(var(--speech-item-rectangle-height) * 1.7);
 
     @media all and (min-width: 500px) {
-        --audio-item-segment: calc(14.7rem + 1rem);
+        --speech-item-segment: calc(11.7rem + 1rem);
     }
     @media all and (min-width: 750px) {
-        --audio-item-segment: calc(14.7rem + 2rem);
+        --speech-item-segment: calc(11.7rem + 1.5rem);
     }
     @media all and (min-width: 1000px) {
-        --audio-item-segment: calc(14.7rem + 4rem);
+        --speech-item-segment: calc(11.7rem + 3.5rem);
     }
     @media all and (min-width: 1400px) {
-        --audio-item-segment: calc(14.7rem + 6rem);
+        --speech-item-segment: calc(11.7rem + 5.5rem);
     }
 
 
 
-    --browse-section-header-height: 28rem;
-    --browse-section-header-width: 100%;
+    --browse-section-scene-display-height: 28rem;
+    --browse-section-scene-display-width: 100%;
     @media all and (min-width: 500px) {
-        --browse-section-header-height: 0;
+        --browse-section-scene-display-height: 0;
     }
 
     --create-section-audio-item-segment: 6rem;

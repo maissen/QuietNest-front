@@ -1,37 +1,51 @@
 .content {
     position: relative;
 
-    header {
+    .bg_scene {
+        position: fixed;
+        top: 0;
+        right: 0;
         height: var(--browse-section-header-height);
-        overflow: hidden;
-
-        .bg_scene {
-            position: fixed;
-            top: 0;
-            right: 0;
-            height: var(--browse-section-header-height);
-            width: 100%;
-            z-index: 0;
-        }
-    }
-
-    
-    .toolbar {
-        
-        @media all and (max-width: 500px) {
-            position: absolute;
-            top: var(--dynamic-content-padding);
-            right: var(--dynamic-content-padding);
-            padding: 0;
-        }
-        
-        display: flex;
-        justify-content: flex-end;
-        padding: var(--dynamic-content-padding);
+        width: 100%;
+        z-index: 0;
     }
 
     .loaded_content {
         position: relative;
         padding: var(--dynamic-content-padding);
+
+        .title {
+            font-size: 3rem;
+            font-family: serif;
+            margin-bottom: 6rem;
+            font-weight: bold;
+            letter-spacing: .1rem;
+            color: #FFF;
+        }
+
+        .scenes_btn {
+            position: absolute;
+            right: var(--dynamic-content-padding);
+            top: var(--dynamic-content-padding);
+
+            &.rectangle {
+                display: none;
+            }
+
+            &.round {
+                display: block;
+            }
+
+            @media all and (min-width: 750px) {
+                &.rectangle {
+                    display: block;
+                }
+    
+                &.round {
+                    display: none;
+                }
+            }
+        }
+
     }
 }

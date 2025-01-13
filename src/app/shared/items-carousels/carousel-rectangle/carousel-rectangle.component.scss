@@ -1,23 +1,38 @@
 .content {
     width: 100%;
     padding-top: var(--carousel-padding-top);
+    margin-bottom: 3rem;
+    color: #d9dadb;
 
     .carousel__header {
         display: flex;
         justify-content: space-between;
+        margin-bottom: 1.5rem;
 
         .carousel_title {
-
+            font-size: 2rem;
+            margin: 0;
+            margin-right: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .btns button {
-            background-color: royalblue;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 2rem;
-            transition: background-color 0.3s;
+        .btns{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            gap: 1rem;
+
+            button {
+               background-color: royalblue;
+               color: white;
+               border: none;
+               border-radius: 4px;
+               cursor: pointer;
+               font-size: 2rem;
+               transition: background-color 0.3s;
+           }
         }
         
         .btns button:disabled {
@@ -33,7 +48,7 @@
 
     .carousel__items_container {
         display: flex;
-        overflow-x: auto;
+        overflow-x: scroll;
         gap: 2rem;
 
         app-audio-item-rectangle {

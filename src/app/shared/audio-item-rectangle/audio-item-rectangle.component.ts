@@ -9,7 +9,7 @@ import { PlayingSpeechService } from 'src/app/services/playing-speech.service';
   styleUrls: ['./audio-item-rectangle.component.scss']
 })
 export class AudioItemRectangleComponent {
-  @Input() audio: any;
+  @Input() speech: any;
 
   constructor(
     public playingSpeechService: PlayingSpeechService,
@@ -18,7 +18,7 @@ export class AudioItemRectangleComponent {
   ) { }
 
   displaySpeechBanner() {
-    this.playingSpeechService.setSelectedSpeechData(this.audio);
+    this.playingSpeechService.setSelectedSpeechData(this.speech);
     this.playingSpeechService.isPlaying();
   }
 }
