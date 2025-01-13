@@ -39,6 +39,7 @@ import { RegisterSectionComponent } from './pages/register-section/register-sect
 import { FormsModule } from '@angular/forms';
 import { BtnRectangleComponent } from './shared/buttons/btn-rectangle/btn-rectangle.component';
 import { BtnRoundComponent } from './shared/buttons/btn-round/btn-round.component';
+import { BtnRoundSmallComponent } from './shared/buttons/btn-round-small/btn-round-small.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { BtnRoundComponent } from './shared/buttons/btn-round/btn-round.componen
     LoginSectionComponent,
     RegisterSectionComponent,
     BtnRectangleComponent,
-    BtnRoundComponent
+    BtnRoundComponent,
+    BtnRoundSmallComponent
   ],
   imports: [
     BrowserModule,
