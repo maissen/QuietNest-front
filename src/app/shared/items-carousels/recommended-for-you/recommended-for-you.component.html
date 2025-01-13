@@ -1,5 +1,11 @@
 <div class="content">
-    <p class="title">{{ title }}</p>
+    <div class="carousel__header">
+        <p class="carousel_title">{{ title }}</p>
+        <div class="btns">
+            <app-btn-round [icon]="'fa-solid fa-angle-left'"  data-bs-target="#recommendationCarousel" data-bs-slide="prev"></app-btn-round>
+            <app-btn-round [icon]="'fa-solid fa-angle-right'" data-bs-target="#recommendationCarousel" data-bs-slide="next"></app-btn-round>
+        </div>
+    </div>
 
     <div id="recommendationCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
         <div class="carousel-inner">
@@ -13,16 +19,6 @@
                 </div>
             </ng-container>
         </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#recommendationCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#recommendationCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-    </div>
 
     <hr *ngIf="hasBottomBorder">
 </div>

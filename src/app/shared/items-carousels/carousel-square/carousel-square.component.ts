@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-carousel-square',
@@ -13,8 +13,6 @@ export class CarouselSquareComponent {
   @ViewChild('carouselContainer') carouselContainerRef!: ElementRef;
 
   scrollStep = 300;
-
-  constructor(private cdr: ChangeDetectorRef) {}
 
   scrollCarousel(container: HTMLElement, direction: 'prev' | 'next') {
     const newScrollPosition =

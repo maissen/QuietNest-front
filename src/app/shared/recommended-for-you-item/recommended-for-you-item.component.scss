@@ -1,13 +1,13 @@
 .content {
     display: flex;
     padding: 1.3rem;
-    background-color: #0000005d;
     border-radius: 1.3rem;
     cursor: pointer;
+    color: #d9dadb;
 
     .img_thumb {
-        height: calc(var(--audio-item-rectangle-width) / 4);
-        width: calc(var(--audio-item-rectangle-width) / 4);
+        height: calc(var(--speech-item-segment) / 1.9);
+        width: calc(var(--speech-item-segment) / 1.9);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -17,23 +17,19 @@
         img {
             height: 100%;
         }
-
-        @media all and (min-width: 1400px) {
-            height: calc(var(--audio-item-rectangle-width) / 3.6);
-            width: calc(var(--audio-item-rectangle-width) / 3.6);
-        }
     }
 
     .info {
         flex: 1;
-        padding: 1rem;
+        padding: 0 1rem;
+        padding-right: 4rem;
         display: flex;
         flex-direction: column;
-        justify-content: left;
+        justify-content: flex-start;
+        position: relative;
 
-        .header {
-            display: flex;
-            justify-content: space-between;
+        .narrator {
+            margin: 0;
         }
     }
 }

@@ -1,14 +1,41 @@
 .content {
     padding-top: var(--carousel-padding-top);
     padding-bottom: var(--carousel-padding-top);
+    color: #d9dadb;
+
+    .carousel__header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+
+        .carousel_title {
+            font-size: 2rem;
+            margin: 0;
+            margin-right: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btns{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            gap: 1rem;
+        }
+    }
 
     .items {
         display: grid;
         gap: 1.5rem;
         grid-template-columns: 1fr;
 
-        @media all and (min-width: 800px) {
+        @media all and (min-width: 670px) {
             grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media all and (min-width: 1500px) {
+            grid-template-columns: repeat(3, 1fr);
         }
     }
 }
