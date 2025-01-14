@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { BrowseSectionService } from 'src/app/services/browse-section.service';
+import { PlaylistsService } from 'src/app/services/playlists.service';
 import { ScenesService } from 'src/app/services/scenes.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class BrowseSectionComponent {
 
   constructor(
     public service: BrowseSectionService,
-    public scenesService: ScenesService
+    public scenesService: ScenesService,
+    public playlistsService: PlaylistsService
   ) {}
 
   @HostListener('window:scroll', ['$event'])
