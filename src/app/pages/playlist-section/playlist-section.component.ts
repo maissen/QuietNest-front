@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PlayingSpeechService } from 'src/app/services/playing-speech.service';
 
 @Component({
   selector: 'app-playlist-section',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./playlist-section.component.scss']
 })
 export class PlaylistSectionComponent {
+
+  constructor(
+    public service: PlayingSpeechService
+  ) {}
 
 }

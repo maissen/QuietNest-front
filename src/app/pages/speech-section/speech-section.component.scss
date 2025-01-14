@@ -28,7 +28,7 @@
         width: 100%;
         position: relative;
         z-index: calc(var(--nabvar-zindex) - 1);
-        color: white;
+        color: #FFF;
         padding: var(--dynamic-content-padding);
         padding-bottom: calc(var(--navbar-small-height) + var(--controls-height));
         padding-top: 6rem;
@@ -40,7 +40,7 @@
             height: 3rem;
             width: 3rem;
             border-radius: 50%;
-            color: white;
+            color: #FFF;
             position: absolute;
             top: var(--dynamic-content-padding);
             left: var(--dynamic-content-padding);
@@ -133,7 +133,7 @@
                         border-radius: 50%;
                         border: none;
                         background-color: transparent;
-                        color: white;
+                        color: #FFF;
                         transition: .3s;
 
                         &:hover {
