@@ -5,7 +5,7 @@
                [ngClass]="{'activeSound': createSectionService.isSoundActive(sound)}"
                (click)="toggleSound(sound)"
           >
-               <i class="fa-solid fa-car"></i>
+               <i [class]="sound.icon"></i>
           </div>
           <p class="name text-center">
                <span *ngIf="!createSectionService.isSoundActive(sound)">{{ sound.name }}</span>
