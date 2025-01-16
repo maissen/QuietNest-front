@@ -11,6 +11,7 @@ import { SearchSectionComponent } from './pages/search-section/search-section.co
 import { SpeechSectionComponent } from './pages/speech-section/speech-section.component';
 import { PlaylistSectionComponent } from './pages/playlist-section/playlist-section.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -61,15 +62,14 @@ const routes: Routes = [
         path: 'playlist/:id',
         component: PlaylistSectionComponent
       }
-    ]
+    ],
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
     component: NotFound404Component
   }
 ];
-
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
