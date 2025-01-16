@@ -36,7 +36,7 @@ export class SpeechesService {
     return this.allSpeches;
   }
 
-  getSpeechById(speech_id: number): any {
-    return this.getAllSpeeches().find(speech => speech.id == speech_id);
+  getSpeechById(speechID: number): any {
+    return this.getAllSpeeches().find(speech => speech.id == speechID);
   }
 }

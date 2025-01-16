@@ -39,21 +39,25 @@ export class AppComponent implements OnInit {
     //! Fetch all categories
     this.http.get<any[]>(this.categoriesService.api_get_all_categories).subscribe(categories => {
       this.categoriesService.setAllCategories(categories);
+      console.log(this.categoriesService.getAllCategories())
     });
 
     //! Fetch al narrators
     this.http.get<any[]>(this.narratorsService.api_get_all_narrators).subscribe(categories => {
       this.narratorsService.setAllnarrators(categories);
+      console.log(this.narratorsService.getAllNarrators());
     });
 
     //! Fetch al scenes
     this.http.get<any[]>(this.scenesService.api_get_all_scenes).subscribe(allScenes => {
       this.scenesService.setScenesList(allScenes);
+      console.log(this.scenesService.getScenesList());
     });
 
     //! Fetch al playlists
     this.http.get<any[]>(this.playListsService.api_all_playlists).subscribe(allPlaylists => {
       this.playListsService.setPlayLists(allPlaylists);
+      console.log(this.playListsService.getPlaylists());
     });
     
     //! Fetch all sounds and their categories
