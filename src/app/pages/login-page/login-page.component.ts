@@ -33,7 +33,6 @@ export class LoginPageComponent implements OnInit{
       this.user.createUser(this.firstName, this.lastName).subscribe(
         (response) => {
           this.user.setUser(response);
-          console.log('User is saved:', this.user.getUser());
           this.router.navigate(['/app']);
         },
         (error) => {

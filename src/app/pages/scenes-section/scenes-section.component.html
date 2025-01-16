@@ -13,7 +13,8 @@
         <ng-container *ngFor="let scene of service.getAllScenes()">
             <div 
                 class="scene-item" 
-                [ngClass]="{'scene-item-active': scene.id == service.getActiveScene().id}"
+                [ngClass]="{'scene-item-active': scene.id == user.getUser().sceneID}"
+                (click)="updateUserScene(scene)"
             >
                 <img [src]="scene.img" alt="Scene Image">
                 <p class="name">{{scene.name}}</p>
