@@ -13,19 +13,22 @@ export class ScenesService {
 
   setScenesList(list: any[]) {
     this.scenesList = list;
-    this.setActiveScene(this.scenesList.find((scene: any) => scene.isActive == 1));
   }
 
   getScenesList(): any[] {
     return this.scenesList;
   }  
 
-  private setActiveScene(scene: any) {
+  setActiveScene(scene: any) {
     this.activeScene = scene;
+    console.log('active scene is set:', this.getActiveScene());
   }
 
   getActiveScene(): any {
     return this.activeScene;
   }
 
+  getSceneByID(sceneID: number): any {
+    return this.scenesList.find(scene => scene.id === sceneID);
+  }
 }

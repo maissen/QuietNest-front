@@ -6,6 +6,7 @@ import { NarratorsService } from './services/narrators.service';
 import { ScenesService } from './services/scenes.service';
 import { SoundsService } from './services/sounds.service';
 import { PlaylistsService } from './services/playlists.service';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -25,12 +26,14 @@ export class AppComponent implements OnInit {
     private narratorsService: NarratorsService,
     public scenesService: ScenesService,
     private soundsService: SoundsService,
-    private playListsService: PlaylistsService
+    private playListsService: PlaylistsService,
+    public user: UserService
   ) { }
 
   ngOnInit() {
   
     this.checkIfUrlEndsWithApp();
+    
   
     this.router.events.subscribe(() => {
       this.checkIfUrlEndsWithApp();
@@ -39,19 +42,32 @@ export class AppComponent implements OnInit {
     //! Fetch all categories
     this.http.get<any[]>(this.categoriesService.api_get_all_categories).subscribe(categories => {
       this.categoriesService.setAllCategories(categories);
-      console.log(this.categoriesService.getAllCategories())
+      // console.log(this.categoriesService.getAllCategories())
     });
 
     //! Fetch al narrators
     this.http.get<any[]>(this.narratorsService.api_get_all_narrators).subscribe(categories => {
       this.narratorsService.setAllnarrators(categories);
-      console.log(this.narratorsService.getAllNarrators());
+      // console.log(this.narratorsService.getAllNarrators());
     });
 
     //! Fetch al scenes
     this.http.get<any[]>(this.scenesService.api_get_all_scenes).subscribe(allScenes => {
       this.scenesService.setScenesList(allScenes);
-      console.log(this.scenesService.getScenesList());
+      // console.log(this.scenesService.getScenesList());
+
+      if (this.user.getUser() !== null) {
+        const userSceneID = this.user.getUser().sceneID;
+        const scene = this.scenesService.getSceneByID(userSceneID);
+        console.log('user is found; his scene id : ' + this.user.getUser().sceneID);
+        console.log('scene to set : ' + scene.id)
+        if (scene) {
+          this.scenesService.setActiveScene(scene);
+        } 
+        else {
+          console.warn(`No scene found with ID: ${userSceneID}`);
+        }
+      }
     });
 
     //! Fetch al playlists

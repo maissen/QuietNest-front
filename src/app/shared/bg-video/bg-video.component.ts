@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ScenesService } from 'src/app/services/scenes.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-bg-video',
@@ -8,6 +9,9 @@ import { ScenesService } from 'src/app/services/scenes.service';
 })
 export class BgVideoComponent {
 
-  constructor(public scenesService: ScenesService) {}
+  constructor(
+    public scenesService: ScenesService,
+    public user: UserService
+  ) {}
 
 }

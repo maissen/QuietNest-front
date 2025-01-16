@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 export class ProfileSectionComponent {
 
   constructor(
-    private user: UserService,
+    public user: UserService,
     private router: Router
   ) {}
 

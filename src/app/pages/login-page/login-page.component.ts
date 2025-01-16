@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ScenesService } from 'src/app/services/scenes.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class LoginPageComponent implements OnInit{
 
   constructor(
     private router: Router, 
-    private user: UserService
+    private user: UserService,
+    private sceneseService: ScenesService
   ) {}
 
   ngOnInit(): void {

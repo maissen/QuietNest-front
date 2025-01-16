@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ScenesSectionService } from 'src/app/services/scenes-section.service';
+import { ScenesService } from 'src/app/services/scenes.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class ScenesSectionComponent {
   constructor(
     private router: Router,
     public service: ScenesSectionService,
+    private scenesService: ScenesService,
     public user: UserService
   ) {}
 
@@ -28,6 +30,7 @@ export class ScenesSectionComponent {
     this.user.updateUserScene(userId, scene.id).subscribe(
       (response) => {
         this.user.setUser(response);
+        this.scenesService.setActiveScene(scene);
       },
       (error) => {
         console.error('Error updating scene:', error);
