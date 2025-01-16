@@ -23,7 +23,6 @@ export class SpeechesService {
     private narratorsService: NarratorsService
   ) {}
 
-  // Fetch and Set Speeches
   setSpeeches(list: any[]) {
     this.allSpeches = list;
   }
@@ -36,7 +35,6 @@ export class SpeechesService {
     return this.getAllSpeeches().find(speech => speech.id === speechID);
   }
 
-  // Likes and User Interaction
   getSpeechLikesNbr(speechID: number): Observable<number> {
     return this.http.get<number>(`${this.api_speech_likes_nbr}${speechID}`).pipe(
       map(data => data),
@@ -74,11 +72,11 @@ export class SpeechesService {
     );
   }
 
-  // Playing Speech Logic
   setSelectedSpeechData(speech: any) {
     this.selectedSpeech = speech;
     this.selectedSpeech.narrator = this.narratorsService.getNarratorById(this.selectedSpeech);
     this.selectedSpeech.category = this.categoriesService.getCategoryById(this.selectedSpeech);
+    // console.log(this.getSelectedSpeechData())
   }
 
   getSpeech(): any {

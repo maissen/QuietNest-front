@@ -21,7 +21,7 @@ export class ScenesService {
 
   setActiveScene(scene: any) {
     this.activeScene = scene;
-    console.log('active scene is set:', this.getActiveScene());
+    console.log('active scene is set:');
   }
 
   getActiveScene(): any {

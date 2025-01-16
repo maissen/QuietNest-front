@@ -35,7 +35,7 @@ export class UserService {
     this.clearUser();
     console.log('user clear');
     localStorage.setItem('quiet_nest_dear_user', JSON.stringify(user));
-    console.log('user set : ', this.getUser());
+    console.log('user set : ');
   }
 
   getUser(): any {

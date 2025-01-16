@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppService } from 'src/app/services/app.service';
 import { ScenesService } from 'src/app/services/scenes.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -15,7 +16,8 @@ export class LoginPageComponent implements OnInit{
   constructor(
     private router: Router, 
     private user: UserService,
-    private sceneseService: ScenesService
+    private sceneseService: ScenesService,
+    private appServie: AppService
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +38,7 @@ export class LoginPageComponent implements OnInit{
         (response) => {
           this.user.setUser(response);
           this.router.navigate(['/app']);
+          // this.appServie.loadAllAppData();
         },
         (error) => {
           console.error('Error creating user:', error);

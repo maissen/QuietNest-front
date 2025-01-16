@@ -36,7 +36,7 @@ export class PlayingSpeechBannerComponent {
     
     this.service.userLikesSpeech(speech.id, userID).subscribe(response => {
   
-      // After the like action, fetch the updated number of likes
+      // fetch the updated number of likes
       this.service.getSpeechLikesNbr(speech.id).subscribe(likes => {
         speech.likes = likes;
         console.log(`Speech ID ${speech.id} has ${likes} likes.`);
@@ -44,23 +44,11 @@ export class PlayingSpeechBannerComponent {
         console.error('Error fetching likes count:', error);
       });
 
-      this.checkLikeStatus();
+      speech.liked = !speech.liked;
 
     }, 
     error => {
       console.error('Error liking speech:', error);
-    });
-  }
-
-  checkLikeStatus() {
-    let speechID = this.service.getSelectedSpeechData().id;
-    let userID = this.user.getUser().id;
-    this.service.didUserLikeSpeech(userID ,speechID).subscribe(liked => {
-      if (liked) {
-        this.didUserLikeThisSpeech = true;
-      } else {
-        this.didUserLikeThisSpeech = false;
-      }
     });
   }
   
