@@ -35,16 +35,6 @@ export class SpeechesService {
     return this.getAllSpeeches().find(speech => speech.id === speechID);
   }
 
-  getSpeechLikesNbr(speechID: number): Observable<number> {
-    return this.http.get<number>(`${this.api_speech_likes_nbr}${speechID}`).pipe(
-      map(data => data),
-      catchError(err => {
-        console.error('Failed to fetch likes count for speech:', err);
-        return of(0);
-      })
-    );
-  }
-
   userLikesSpeech(speechID: number, userID: string): Observable<any> {
     const requestBody = { speechID, userID };
 
@@ -56,18 +46,6 @@ export class SpeechesService {
       catchError(err => {
         console.error('Failed to like speech:', err);
         return of({ success: false, error: err });
-      })
-    );
-  }
-
-  didUserLikeSpeech(userID: string, speechID: number): Observable<boolean> {
-    const url = `${this.api_did_user_like_this_speech}${userID}/${speechID}`;
-
-    return this.http.get<boolean>(url).pipe(
-      map(response => response),
-      catchError(err => {
-        console.error('Failed to check like status:', err);
-        return of(false); // fallback
       })
     );
   }
@@ -89,7 +67,6 @@ export class SpeechesService {
 
   clearSelectedSpeechData() {
     this.selectedSpeech = null;
-    console.log('after clearance : ' + this.selectedSpeech);
   }
 
   isPlaying(): any {

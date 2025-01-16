@@ -45,7 +45,7 @@ export class AppService {
           this.scenesService.setActiveScene(scene);
 
           //! Fetch al narrators
-          this.http.get<any[]>(this.narratorsService.api_get_all_narrators).subscribe(categories => {
+          this.http.get<any[]>(`${this.narratorsService.api_get_all_narrators}/${this.user.getUser().id}`).subscribe(categories => {
             this.narratorsService.setAllnarrators(categories);
 
             //! Fetch all categories
@@ -57,7 +57,7 @@ export class AppService {
                 this.speechesService.setSpeeches(speeches);
 
                 //! Fetch al playlists
-                this.http.get<any[]>(this.playListsService.api_all_playlists).subscribe(allPlaylists => {
+                this.http.get<any[]>(`${this.playListsService.api_all_playlists}/${this.user.getUser().id}`).subscribe(allPlaylists => {
                   this.playListsService.setPlayLists(allPlaylists);
 
                   //! Fetch all sounds and their categories

@@ -36,13 +36,12 @@ export class PlayingSpeechBannerComponent {
     
     this.service.userLikesSpeech(speech.id, userID).subscribe(response => {
   
-      // fetch the updated number of likes
-      this.service.getSpeechLikesNbr(speech.id).subscribe(likes => {
-        speech.likes = likes;
-        console.log(`Speech ID ${speech.id} has ${likes} likes.`);
-      }, error => {
-        console.error('Error fetching likes count:', error);
-      });
+      if (speech.liked) {
+        speech.likes = parseInt(speech.likes) - 1 ;
+      }
+      else {
+        speech.likes = parseInt(speech.likes) + 1 ;
+      }
 
       speech.liked = !speech.liked;
 
