@@ -10,7 +10,7 @@
         </button>
 
         <header>
-            <div class="title cormorant-font">
+            <div class="title">
                 <p>{{service.getSelectedSpeechData().name}}</p>
                 <span>Performed By</span>
             </div>
@@ -22,6 +22,18 @@
                 <div class="narrator__info">
                     <p>{{service.getSelectedSpeechData().narrator.name}}</p>
                     <p>{{service.getSelectedSpeechData().narrator.description}}</p>
+                    <div class="actions">
+                        <button class="action like">
+                            <i class="fa-solid fa-heart"></i>
+                            {{service.getSelectedSpeechData().narrator.likes}}
+                            <span>Likes {{ service.getSelectedSpeechData().narrator.name.split(' ')[0] }}</span>
+                        </button>
+                        <button class="action">
+                            <i class="fa-solid fa-book"></i>
+                            {{service.getSelectedSpeechData().narrator.speeches_nbr}}
+                            <span>Available speeches</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </header>
