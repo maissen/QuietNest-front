@@ -31,14 +31,22 @@ export class PlayingSpeechBannerComponent {
     this.hideBanner = url.startsWith('/app/speech/') || url.startsWith('/app/playlist/');
   }
 
-  likeSpeech(speechID: number) {
+  likeSpeech() {
     let userID = this.user.getUser().id;
-    this.speechesService.userLikesSpeech(speechID, userID).subscribe(response => {
-      if (response.success) {
-        console.log('Speech liked successfully:', response);
-      } else {
-        console.error('Failed to like speech:', response.error);
-      }
+    let speech = this.service.getSelectedSpeechData();
+    
+    this.speechesService.userLikesSpeech(speech.id, userID).subscribe(response => {
+  
+      // After the like action, fetch the updated number of likes
+      this.speechesService.getSpeechLikesNbr(speech.id).subscribe(likes => {
+        speech.likes = likes; // Update the speech's likes count
+        console.log(`Speech ID ${speech.id} has ${likes} likes.`);
+      }, error => {
+        console.error('Error fetching likes count:', error);
+      });
+    }, error => {
+      console.error('Error liking speech:', error);
     });
   }
+  
 }

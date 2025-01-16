@@ -7,6 +7,7 @@ import { ScenesService } from './services/scenes.service';
 import { SoundsService } from './services/sounds.service';
 import { PlaylistsService } from './services/playlists.service';
 import { UserService } from './services/user.service';
+import { SpeechesService } from './services/speeches.service';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,8 @@ export class AppComponent implements OnInit {
     public scenesService: ScenesService,
     private soundsService: SoundsService,
     private playListsService: PlaylistsService,
-    public user: UserService
+    public user: UserService,
+    private speechesService: SpeechesService
   ) { }
 
   ngOnInit() {
@@ -39,22 +41,9 @@ export class AppComponent implements OnInit {
       this.checkIfUrlEndsWithApp();
     });
 
-    //! Fetch all categories
-    this.http.get<any[]>(this.categoriesService.api_get_all_categories).subscribe(categories => {
-      this.categoriesService.setAllCategories(categories);
-      // console.log(this.categoriesService.getAllCategories())
-    });
-
-    //! Fetch al narrators
-    this.http.get<any[]>(this.narratorsService.api_get_all_narrators).subscribe(categories => {
-      this.narratorsService.setAllnarrators(categories);
-      // console.log(this.narratorsService.getAllNarrators());
-    });
-
     //! Fetch al scenes
     this.http.get<any[]>(this.scenesService.api_get_all_scenes).subscribe(allScenes => {
       this.scenesService.setScenesList(allScenes);
-      // console.log(this.scenesService.getScenesList());
 
       if (this.user.getUser() !== null) {
         const userSceneID = this.user.getUser().sceneID;
@@ -70,10 +59,19 @@ export class AppComponent implements OnInit {
       }
     });
 
+    //! Fetch all categories
+    this.http.get<any[]>(this.categoriesService.api_get_all_categories).subscribe(categories => {
+      this.categoriesService.setAllCategories(categories);
+    });
+
+    //! Fetch al narrators
+    this.http.get<any[]>(this.narratorsService.api_get_all_narrators).subscribe(categories => {
+      this.narratorsService.setAllnarrators(categories);
+    });
+
     //! Fetch al playlists
     this.http.get<any[]>(this.playListsService.api_all_playlists).subscribe(allPlaylists => {
       this.playListsService.setPlayLists(allPlaylists);
-      console.log(this.playListsService.getPlaylists());
     });
     
     //! Fetch all sounds and their categories
@@ -82,6 +80,12 @@ export class AppComponent implements OnInit {
       this.http.get<any[]>(this.soundsService.apiGetSoundsCategories()).subscribe(categories => {
         this.soundsService.setCategories(categories);
       });
+    });
+
+
+    //! Fetch all speeches 
+    this.http.get<any[]>(this.speechesService.api_get_all_speeches).subscribe(speeches => {
+      this.speechesService.setSpeeches(speeches);
     });
     
   

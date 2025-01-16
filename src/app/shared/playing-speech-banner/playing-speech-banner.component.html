@@ -24,7 +24,7 @@
   </div>
 
   <div class="actions">
-    <button class="like" (click)="likeSpeech(service.getSelectedSpeechData().id)">
+    <button class="like" (click)="likeSpeech()">
       <i class="fa-solid fa-heart"></i>
     </button>
     <button *ngIf="service.getSelectedSpeechData().type == 'speech'" [routerLink]="'/app/speech/' + service.getSelectedSpeechData().id">
