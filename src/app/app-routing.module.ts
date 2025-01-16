@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
-import { SignUpFlowComponent } from './pages/sign-up-flow/sign-up-flow.component';
 import { BrowseSectionComponent } from './pages/browse-section/browse-section.component';
 import { ExploreSectionComponent } from './pages/explore-section/explore-section.component';
 import { ProfileSectionComponent } from './pages/profile-section/profile-section.component';
@@ -11,8 +10,7 @@ import { CreateSectionComponent } from './pages/create-section/create-section.co
 import { SearchSectionComponent } from './pages/search-section/search-section.component';
 import { SpeechSectionComponent } from './pages/speech-section/speech-section.component';
 import { PlaylistSectionComponent } from './pages/playlist-section/playlist-section.component';
-import { LoginSectionComponent } from './pages/login-section/login-section.component';
-import { RegisterSectionComponent } from './pages/register-section/register-section.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 const routes: Routes = [
   {
@@ -20,16 +18,8 @@ const routes: Routes = [
     component: WelcomeComponent
   },
   {
-    path: 'sign-up-flow',
-    component: SignUpFlowComponent
-  },
-  {
-    path: 'log-in',
-    component: LoginSectionComponent
-  },
-  {
-    path: 'register',
-    component: RegisterSectionComponent
+    path: 'login',
+    component: LoginPageComponent
   },
   {
     path: 'app',

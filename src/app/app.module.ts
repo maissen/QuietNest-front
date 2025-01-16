@@ -9,10 +9,7 @@ import { HomeSectionComponent } from './pages/home-section/home-section.componen
 import { ProfileSectionComponent } from './pages/profile-section/profile-section.component';
 import { NotFound404Component } from './pages/not-found-404/not-found-404.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
-import { SignUpFlowComponent } from './pages/sign-up-flow/sign-up-flow.component';
 import { RouterLink } from '@angular/router';
-import { CarouselEndingMessageComponent } from './pages/sign-up-flow/components/carousel-ending-message/carousel-ending-message.component';
-import { QuestionsCarouselComponent } from './pages/sign-up-flow/components/questions-carousel/questions-carousel.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AudioItemSquareComponent } from './shared/audio-item-square/audio-item-square.component';
 import { AudioItemRectangleComponent } from './shared/audio-item-rectangle/audio-item-rectangle.component';
@@ -34,12 +31,11 @@ import { BottomSheetContentComponent } from './shared/bottom-sheet-content/botto
 import { PlayingSpeechBannerComponent } from './shared/playing-speech-banner/playing-speech-banner.component';
 import { SpeechSectionComponent } from './pages/speech-section/speech-section.component';
 import { PlaylistSectionComponent } from './pages/playlist-section/playlist-section.component';
-import { LoginSectionComponent } from './pages/login-section/login-section.component';
-import { RegisterSectionComponent } from './pages/register-section/register-section.component';
 import { FormsModule } from '@angular/forms';
 import { BtnRectangleComponent } from './shared/buttons/btn-rectangle/btn-rectangle.component';
 import { BtnRoundComponent } from './shared/buttons/btn-round/btn-round.component';
 import { BtnRoundSmallComponent } from './shared/buttons/btn-round-small/btn-round-small.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -50,9 +46,6 @@ import { BtnRoundSmallComponent } from './shared/buttons/btn-round-small/btn-rou
     ProfileSectionComponent,
     NotFound404Component,
     WelcomeComponent,
-    SignUpFlowComponent,
-    CarouselEndingMessageComponent,
-    QuestionsCarouselComponent,
     AudioItemSquareComponent,
     AudioItemRectangleComponent,
     CarouselRectangleComponent,
@@ -73,11 +66,10 @@ import { BtnRoundSmallComponent } from './shared/buttons/btn-round-small/btn-rou
     PlayingSpeechBannerComponent,
     SpeechSectionComponent,
     PlaylistSectionComponent,
-    LoginSectionComponent,
-    RegisterSectionComponent,
     BtnRectangleComponent,
     BtnRoundComponent,
     BtnRoundSmallComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
