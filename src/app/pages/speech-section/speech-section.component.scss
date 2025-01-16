@@ -133,7 +133,8 @@
                                 }
                             }
 
-                            &.like:hover {
+                            &.like:hover,
+                            &.liked {
                                 i {
                                     color: red;
                                 }

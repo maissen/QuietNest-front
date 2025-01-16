@@ -23,7 +23,7 @@
                     <p>{{service.getSelectedSpeechData().narrator.name}}</p>
                     <p>{{service.getSelectedSpeechData().narrator.description}}</p>
                     <div class="actions">
-                        <button class="action like">
+                        <button class="action like" (click)="likeNarrator()" [ngClass]="{'liked': service.getSelectedSpeechData().narrator.liked}">
                             <i class="fa-solid fa-heart"></i>
                             {{service.getSelectedSpeechData().narrator.likes}}
                             <span>Likes {{ service.getSelectedSpeechData().narrator.name.split(' ')[0] }}</span>
