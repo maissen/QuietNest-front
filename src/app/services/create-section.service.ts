@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SoundsService } from './sounds.service';
-import { PlayingSpeechService } from './playing-speech.service';
+import { SpeechesService } from './speeches.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class CreateSectionService {
 
   constructor(
     private soundsService: SoundsService,
-    private playingSpeechService: PlayingSpeechService,
+    private playingSpeechService: SpeechesService,
     private router: Router
   ) {
     this.initResizeListener();

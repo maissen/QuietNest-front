@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PlayingSpeechService } from 'src/app/services/playing-speech.service';
+import { SpeechesService } from 'src/app/services/speeches.service';
 
 @Component({
   selector: 'app-speech-section',
@@ -10,7 +10,7 @@ import { PlayingSpeechService } from 'src/app/services/playing-speech.service';
 export class SpeechSectionComponent implements OnInit {
 
   constructor(
-    public service: PlayingSpeechService,
+    public service: SpeechesService,
     private router: Router
   ) {}
 

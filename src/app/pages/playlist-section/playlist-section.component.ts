@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PlayingSpeechService } from 'src/app/services/playing-speech.service';
+import { SpeechesService } from 'src/app/services/speeches.service';
 
 @Component({
   selector: 'app-playlist-section',
@@ -9,7 +9,7 @@ import { PlayingSpeechService } from 'src/app/services/playing-speech.service';
 export class PlaylistSectionComponent {
 
   constructor(
-    public service: PlayingSpeechService
+    public service: SpeechesService
   ) {}
 
 }

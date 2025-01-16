@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { NarratorsService } from 'src/app/services/narrators.service';
-import { PlayingSpeechService } from 'src/app/services/playing-speech.service';
 import { SpeechesService } from 'src/app/services/speeches.service';
 
 @Component({
@@ -16,12 +15,11 @@ export class RecommendedForYouItemComponent {
     public service: SpeechesService,
     public categoriesService: CategoriesService,
     public narratorsService: NarratorsService,
-    public playingSpeechService: PlayingSpeechService
   ) { }
 
   displaySpeechBanner() {
-    this.playingSpeechService.setSelectedSpeechData(this.data);
-    this.playingSpeechService.isPlaying();
+    this.service.setSelectedSpeechData(this.data);
+    this.service.isPlaying();
   }
 
 };

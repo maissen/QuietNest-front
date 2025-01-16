@@ -99,9 +99,12 @@
             color: #FFF;
             transition: .3s;
 
-            &:hover,
-            &.liked {
+            &:hover{
                 background-color: var(--avgColor);
+            }
+
+            &.liked {
+                color: red;
             }
         }
         .like,

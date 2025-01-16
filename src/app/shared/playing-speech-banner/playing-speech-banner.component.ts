@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CreateSectionService } from 'src/app/services/create-section.service';
-import { PlayingSpeechService } from 'src/app/services/playing-speech.service';
 import { SpeechesService } from 'src/app/services/speeches.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,12 +11,12 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class PlayingSpeechBannerComponent {
   hideBanner: boolean = false;
+  didUserLikeThisSpeech: boolean = false;
 
   constructor(
-    public service: PlayingSpeechService,
     public createSectionService: CreateSectionService,
     private router: Router,
-    private speechesService: SpeechesService,
+    public service: SpeechesService,
     private user: UserService
   ) {
     this.router.events.subscribe(() => {
@@ -35,17 +34,33 @@ export class PlayingSpeechBannerComponent {
     let userID = this.user.getUser().id;
     let speech = this.service.getSelectedSpeechData();
     
-    this.speechesService.userLikesSpeech(speech.id, userID).subscribe(response => {
+    this.service.userLikesSpeech(speech.id, userID).subscribe(response => {
   
       // After the like action, fetch the updated number of likes
-      this.speechesService.getSpeechLikesNbr(speech.id).subscribe(likes => {
-        speech.likes = likes; // Update the speech's likes count
+      this.service.getSpeechLikesNbr(speech.id).subscribe(likes => {
+        speech.likes = likes;
         console.log(`Speech ID ${speech.id} has ${likes} likes.`);
       }, error => {
         console.error('Error fetching likes count:', error);
       });
-    }, error => {
+
+      this.checkLikeStatus();
+
+    }, 
+    error => {
       console.error('Error liking speech:', error);
+    });
+  }
+
+  checkLikeStatus() {
+    let speechID = this.service.getSelectedSpeechData().id;
+    let userID = this.user.getUser().id;
+    this.service.didUserLikeSpeech(userID ,speechID).subscribe(liked => {
+      if (liked) {
+        this.didUserLikeThisSpeech = true;
+      } else {
+        this.didUserLikeThisSpeech = false;
+      }
     });
   }
   
