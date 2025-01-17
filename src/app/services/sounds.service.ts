@@ -33,4 +33,8 @@ export class SoundsService {
   getSounds(): any[] {
     return this.allSounds;
   }
+
+  getSoundsByCategory(categoryID: number): any[] {
+    return this.getSounds().filter(sound => sound.soundCategoryID == categoryID);
+  }
 }

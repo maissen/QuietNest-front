@@ -17,7 +17,6 @@ export class CreateSectionService {
   private currentUrl: string = '';
 
   constructor(
-    private soundsService: SoundsService,
     private playingSpeechService: SpeechesService,
     private router: Router
   ) {
@@ -100,16 +99,6 @@ export class CreateSectionService {
   // Get all active sounds
   getActiveSounds(): any[] {
     return this.activeSounds;
-  }
-
-  // Get all categories from sounds
-  getCategories(): any[] {
-    return this.soundsService.getCategories();
-  }
-
-  // Get sounds from a specific category
-  getSoundsOfCategory(category: any): any[] {
-    return this.soundsService.getSounds().filter(sound => sound.sound_category_id === category.id);
   }
 
   // Get whether the bottom sheet should be wide

@@ -67,6 +67,8 @@ export class AppService {
                     this.soundsService.setSounds(sounds);
                     this.http.get<any[]>(this.soundsService.apiGetSoundsCategories()).subscribe(categories => {
                       this.soundsService.setCategories(categories);
+                      console.log('categories : ' + this.soundsService.getCategories());
+                      console.log('sounds : ' + this.soundsService.getSounds())
 
                       //! Fetch all soundsmixtures and their sounds
                       this.http.get<any[]>(`${this.soundsmixturesService.api_get_all_soundsmixtures}/${this.user.getUser().id}`).subscribe(mixtures => {

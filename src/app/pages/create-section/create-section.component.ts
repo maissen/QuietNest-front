@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CreateSectionService } from 'src/app/services/create-section.service';
+import { SoundsService } from 'src/app/services/sounds.service';
 
 @Component({
   selector: 'app-create-section',
@@ -10,7 +11,10 @@ export class CreateSectionComponent {
   @ViewChild('categoriesList', { static: true }) categoriesList!: ElementRef;
   activeCategories: any[] = [];
 
-  constructor(public service: CreateSectionService) {}
+  constructor(
+    public service: CreateSectionService,
+    public soundsService: SoundsService
+  ) {}
 
   toggleCategory(category: any): void {
     if (category === 'All') {
