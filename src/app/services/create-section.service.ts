@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { SoundsService } from './sounds.service';
 import { SpeechesService } from './speeches.service';
 
 @Injectable({
@@ -9,7 +8,7 @@ import { SpeechesService } from './speeches.service';
 export class CreateSectionService {
 
   private activeSounds: any[] = [];
-  private pauseActiveSounds: boolean = false;
+  public activeSoundsPaused: boolean = false;
   private ActiveSoundIDRefs: string[] = [];
 
   screenWidth: number = window.innerWidth;
@@ -23,7 +22,7 @@ export class CreateSectionService {
     this.initResizeListener();
     this.updateCurrentUrl();
   }
-
+  
   toggleActiveSoundIDRef(idref: string): void {
     const index = this.ActiveSoundIDRefs.indexOf(idref);
     
@@ -35,7 +34,6 @@ export class CreateSectionService {
 
     console.log(this.ActiveSoundIDRefs);
   }
-  
 
   private updateCurrentUrl(): void {
     this.router.events.subscribe(() => {
@@ -44,25 +42,26 @@ export class CreateSectionService {
   }
 
   getPauseActiveSounds(): boolean {
-    return this.pauseActiveSounds;
+    return this.activeSoundsPaused;
   }
 
   togglePauseActiveSounds(): void {
-    this.pauseActiveSounds = !this.pauseActiveSounds;
+    this.activeSoundsPaused = !this.activeSoundsPaused;
   
     this.ActiveSoundIDRefs.forEach(id => {
       const audioElement = document.querySelector<HTMLAudioElement>(id);
       
       if (audioElement) {
-        if (this.pauseActiveSounds) {
+        if (this.activeSoundsPaused) {
           audioElement.pause();
-          console.log(id + ' is paused')
         } 
         else {
           audioElement.play();
         }
       }
     });
+
+    console.log(this.ActiveSoundIDRefs)
   }
   
   toggleActiveSound(sound: any): void {
@@ -89,13 +88,10 @@ export class CreateSectionService {
         const audioElement = document.querySelector(soundIDRef) as HTMLAudioElement;
         if (audioElement) {
           audioElement.volume = Math.min(Math.max(volume / 10, 0), 1); 
-          console.log(`${activeSound.name}, Volume updated to: ${audioElement.volume}`);
         }
       }
     });
   }
-
-
 
   // Get all active sounds
   getActiveSounds(): any[] {

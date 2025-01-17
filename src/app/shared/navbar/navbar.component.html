@@ -1,11 +1,5 @@
 <div class="content blurry-bg">
 
-        <!-- <button 
-            *ngIf="service.getActiveSounds().length > 0 && service.isCreateSection()"
-            class="bottom_sheet_button_small" 
-            (click)="service.toggleExpandSheetContent()"
-        >Expand</button> -->
-
     <div class="title_links">
         <h1 class="title cormorant-font"><span>Quiet</span> Nest</h1>
 
@@ -30,6 +24,20 @@
     </div>
 
     <p class="copyright text-center">© Maissen Belgacem</p>
+
+
+    <div class="create-section-sounds" style="display: none;">
+        <div *ngFor="let sound of soundsService.getSounds()">
+            <audio 
+                *ngIf="service.isSoundActive(sound)" 
+                [id]="'sound-audio-'+sound.id" 
+                [src]="sound.link" 
+                loop 
+                [autoplay]="!service.getPauseActiveSounds()"
+                [volume]="sound.volume/10"
+            ></audio>
+        </div>
+    </div>
 
 </div>
 

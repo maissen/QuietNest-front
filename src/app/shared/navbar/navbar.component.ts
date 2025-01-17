@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CreateSectionService } from 'src/app/services/create-section.service';
+import { SoundsService } from 'src/app/services/sounds.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,8 @@ import { CreateSectionService } from 'src/app/services/create-section.service';
 export class NavbarComponent {
 
   constructor(
-    public service: CreateSectionService
+    public service: CreateSectionService,
+    public soundsService: SoundsService
   ) {}
 
 }

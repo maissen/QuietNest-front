@@ -9,6 +9,7 @@ import { PlaylistsService } from './playlists.service';
 import { UserService } from './user.service';
 import { SpeechesService } from './speeches.service';
 import { SoundsmixturesService } from './soundsmixtures.service';
+import { CreateSectionService } from './create-section.service';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class AppService {
     private playListsService: PlaylistsService,
     public user: UserService,
     private speechesService: SpeechesService,
-    private soundsmixturesService: SoundsmixturesService
+    private soundsmixturesService: SoundsmixturesService,
   ) { }
 
   loadAllAppData() {
@@ -85,5 +86,5 @@ export class AppService {
       }
     });
   }
-   
+
 }
