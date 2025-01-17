@@ -1,4 +1,4 @@
-<div class="item">
+<div class="item" (click)="openMixture(soundMixture)">
   <div class="item__thumb">
     <img [src]="soundMixture.img">
   </div>
@@ -6,10 +6,7 @@
     <p class="name">{{ soundMixture.name }}</p>
     <div class="likes_plays_badges">
       <div class="item blurry-bg">
-        <i class="fa-solid fa-heart"></i> <span class="number">{{ soundMixture.likes }}</span>
-      </div>
-      <div class="item blurry-bg">
-        <i class="fa-solid fa-play"></i> <span class="number">{{ soundMixture.playing_nbr }}</span>
+        <i class="fa-solid fa-play"></i> <span class="number">{{ soundMixture.playing_nbr }} plays</span>
       </div>
     </div>
   </div>

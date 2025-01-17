@@ -30,4 +30,5 @@ export class BrowseSectionComponent {
 
     this.scaleFactor = 1 + (Math.min(scrollPosition, maxScroll) / maxScroll) * scaleIncrease;
   }
+
 }
