@@ -38,7 +38,7 @@
             </div>
         </header>
 
-        <div class="controls">
+        <div class="controls" *ngIf="service.getSpeechDurationInSeconds() > 0">
             <div class="actions">
                 <div class="action">
                 </div>
@@ -48,12 +48,16 @@
                     </button>
                 </div>
                 <div class="action">
-                    <button>
-                        <i class="fa-solid fa-play"></i>
+                    <button *ngIf="showPlay_hideReplay()" (click)="service.togglePlayPause()">
+                        <i class="fa-solid fa-play" *ngIf="!service.isSpeechPlaying"></i>
+                        <i class="fa-solid fa-pause" *ngIf="service.isSpeechPlaying"></i>
+                    </button>
+                    <button *ngIf="!showPlay_hideReplay()" (click)="service.replaySpeech()">
+                        <i class="fa-solid fa-repeat"></i>
                     </button>
                 </div>
                 <div class="action">
-                    <button>
+                    <button (click)="stopSpeech()">
                         <i class="fa-solid fa-stop"></i>
                     </button>
                 </div>

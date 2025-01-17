@@ -58,4 +58,14 @@ export class SpeechSectionComponent implements OnInit {
     } 
   }
 
+  stopSpeech(): void {
+    this.service.clearSelectedSpeechData();
+    this.router.navigate(['app/'])
+  }
+
+  showPlay_hideReplay(): boolean {
+    return this.service.getSpeechReadingLevelInSeconds() < this.service.getSpeechDurationInSeconds();
+  }
+
+
 }

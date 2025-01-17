@@ -22,6 +22,8 @@ export class SpeechesService {
   private speechReadingLevelInSeconds: number = 0;
   public html_audio: any;
 
+  public isSpeechPlaying: boolean = false;
+
   constructor(
     private http: HttpClient,
     private categoriesService: CategoriesService,
@@ -113,6 +115,8 @@ export class SpeechesService {
     this.speechDurationInSeconds = 0;
     this.speechReadingLevelInSeconds = 0;
 
+    this.isSpeechPlaying = true;
+
     this.selectedSpeech = speech;
     this.selectedSpeech.narrator = this.narratorsService.getNarratorById(this.selectedSpeech);
     this.selectedSpeech.category = this.categoriesService.getCategoryById(this.selectedSpeech);
@@ -130,6 +134,7 @@ export class SpeechesService {
 
   clearSelectedSpeechData() {
     this.selectedSpeech = null;
+    this.isSpeechPlaying = false;
   }
 
   isPlaying(): any {
@@ -139,4 +144,23 @@ export class SpeechesService {
   updatePlayingSpeechVolume(volume: number): void {
     this.getSelectedSpeechData().volume = volume;
   }
+
+  replaySpeech(): void {
+    this.html_audio.currentTime = 0;
+    this.html_audio.play()
+  }
+
+  togglePlayPause(): void {
+    if (this.html_audio) {
+      if (this.isSpeechPlaying) {
+        this.html_audio.pause();
+        this.isSpeechPlaying = false;
+      } 
+      else {
+        this.html_audio.play();
+        this.isSpeechPlaying = true;
+      }
+    } 
+  }
+
 }

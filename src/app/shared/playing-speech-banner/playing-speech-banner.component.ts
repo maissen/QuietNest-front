@@ -57,4 +57,8 @@ export class PlayingSpeechBannerComponent {
     this.service.updatePlayingSpeechVolume(volume);
   }
   
+  showPlay_hideReplay(): boolean {
+    return this.service.getSpeechReadingLevelInSeconds() < this.service.getSpeechDurationInSeconds();
+  }
+
 }
