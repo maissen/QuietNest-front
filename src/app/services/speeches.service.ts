@@ -16,11 +16,30 @@ export class SpeechesService {
   private allSpeches: any[] = [];
   private selectedSpeech: any = null;
 
+  private speechDuration: string = '00:00';
+  private speechReadingLevel: string = '00:00';
+
   constructor(
     private http: HttpClient,
     private categoriesService: CategoriesService,
     private narratorsService: NarratorsService
   ) {}
+
+  getSpeechDuration(): string {
+    return this.speechDuration;
+  }
+  
+  getSpeechReadingLevel(): string {
+    return this.speechReadingLevel;
+  }
+
+  setSpeechDuration(duration: string) {
+    this.speechDuration = duration;
+  }
+
+  setSpeechReadingLevel(level: string) {
+    this.speechReadingLevel = level;
+  }
 
   setSpeeches(list: any[]) {
     this.allSpeches = list;
@@ -65,22 +84,25 @@ export class SpeechesService {
   }
 
   setSelectedSpeechData(speech: any) {
-
-    if( this.getSelectedSpeechData() != null && speech.id != this.getSelectedSpeechData()?.id) {
+    if (this.getSelectedSpeechData() != null && speech.id != this.getSelectedSpeechData()?.id) {
       this.incrementSpeechPlayings(speech);
     }
+    
+    this.setSpeechDuration('00:00');
+    this.setSpeechReadingLevel('00:00');
 
     this.selectedSpeech = speech;
     this.selectedSpeech.narrator = this.narratorsService.getNarratorById(this.selectedSpeech);
     this.selectedSpeech.category = this.categoriesService.getCategoryById(this.selectedSpeech);
-    // console.log(this.getSelectedSpeechData())
-  }
 
-  getSpeech(): any {
+    // console.log(this.getSelectedSpeechData());
+  }  
+
+  getSelectedSpeechData(): any {
     return this.selectedSpeech;
   }
 
-  getSelectedSpeechData(): any {
+  getSpeech(): any {
     return this.selectedSpeech;
   }
 

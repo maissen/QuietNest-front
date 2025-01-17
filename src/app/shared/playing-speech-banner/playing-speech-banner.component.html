@@ -9,7 +9,7 @@
       <small class="sub_title cormorant-font">{{service.getSelectedSpeechData().category.name}} | {{service.getSelectedSpeechData().narrator.name}}</small>
     </div>
     <div class="speech_reading_level small">
-      <p class="time">2:25</p>
+      <p class="time">{{service.getSpeechReadingLevel()}}</p>
       <input 
         class="range-slider" 
         type="range" 
@@ -24,7 +24,7 @@
   </div>
   
   <div class="speech_reading_level wide">
-    <p class="time">2:25</p>
+    <p class="time">{{service.getSpeechReadingLevel()}}</p>
     <input 
         class="range-slider" 
         type="range" 

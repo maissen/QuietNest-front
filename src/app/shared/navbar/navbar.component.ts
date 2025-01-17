@@ -16,4 +16,28 @@ export class NavbarComponent {
     public speechesService: SpeechesService
   ) {}
 
+  getFetchedSpeechDuration(): void {
+    const html_audio = document.querySelector('#playing_speech_html_audio') as HTMLAudioElement;
+    html_audio.addEventListener('timeupdate', () => {
+      const currentTime = html_audio.currentTime; // Current playback time
+      const duration = html_audio.duration; // Total duration of the audio
+
+      const formattedCurrentTime = `${Math.floor(currentTime / 60)
+        .toString()
+        .padStart(2, '0')}:${Math.floor(currentTime % 60)
+        .toString()
+        .padStart(2, '0')}`;
+
+      this.speechesService.setSpeechReadingLevel(formattedCurrentTime)
+
+
+      const formattedDuration = `${Math.floor(duration / 60)
+        .toString()
+        .padStart(2, '0')}:${Math.floor(duration % 60)
+        .toString()
+        .padStart(2, '0')}`;
+
+      this.speechesService.setSpeechDuration(formattedDuration)
+    });
+  }
 }
