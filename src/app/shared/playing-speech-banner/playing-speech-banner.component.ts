@@ -50,5 +50,11 @@ export class PlayingSpeechBannerComponent {
       console.error('Error liking speech:', error);
     });
   }
+
+  updateVolume(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    let volume = parseFloat(inputElement.value);
+    this.service.updatePlayingSpeechVolume(volume);
+  }
   
 }

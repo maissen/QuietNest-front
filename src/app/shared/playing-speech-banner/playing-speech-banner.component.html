@@ -10,17 +10,31 @@
     </div>
     <div class="speech_reading_level small">
       <p class="time">2:25</p>
-      <div class="line">
-        <div class="progress"></div>
-      </div>
+      <input 
+        class="range-slider" 
+        type="range" 
+        id="speech-volume-range" 
+        min="0"
+        max="1"
+        step="0.1"
+        [value]="service.getSelectedSpeechData().volume"
+        (input)="updateVolume($event)"
+      >
     </div>
   </div>
   
   <div class="speech_reading_level wide">
     <p class="time">2:25</p>
-    <div class="line">
-      <div class="progress"></div>
-    </div>
+    <input 
+        class="range-slider" 
+        type="range" 
+        id="speech-volume-range" 
+        min="0"
+        max="1"
+        step="0.1"
+        [value]="service.getSelectedSpeechData().volume"
+        (input)="updateVolume($event)"
+      >
   </div>
 
   <div class="actions">

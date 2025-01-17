@@ -91,4 +91,8 @@ export class SpeechesService {
   isPlaying(): any {
     return this.selectedSpeech;
   }
+
+  updatePlayingSpeechVolume(volume: number): void {
+    this.getSelectedSpeechData().volume = volume;
+  }
 }
