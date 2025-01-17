@@ -9,10 +9,16 @@ import { CreateSectionService } from 'src/app/services/create-section.service';
 export class AudioItemComponent {
   @Input() sound: any;
 
-  constructor(public createSectionService: CreateSectionService) {}
+  constructor(public service: CreateSectionService) {}
 
   toggleSound(sound: any): void {
-    this.createSectionService.toggleActiveSound(sound);
-    this.createSectionService.toggleActiveSoundIDRef('#sound-audio-' + sound.id);
+    this.service.toggleActiveSound(sound);
+    this.service.toggleActiveSoundIDRef('#sound-audio-' + sound.id);
   }
+
+  updateSoundVolume(event: Event): void {
+    const volume = parseInt((event.target as HTMLInputElement).value); // Extract the value
+    this.service.updateActiveSoundVolume(this.sound, volume);
+  }
+  
 }

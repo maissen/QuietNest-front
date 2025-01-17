@@ -37,7 +37,6 @@ export class CreateSectionService {
   }
   
 
-  // Update the current URL whenever it changes
   private updateCurrentUrl(): void {
     this.router.events.subscribe(() => {
       this.currentUrl = this.router.url;
@@ -66,8 +65,6 @@ export class CreateSectionService {
     });
   }
   
-
-  // Toggle the sound in the active list
   toggleActiveSound(sound: any): void {
     const index = this.activeSounds.indexOf(sound);
 
@@ -87,14 +84,18 @@ export class CreateSectionService {
   }
 
   updateActiveSoundVolume(activeSound: any, volume: number) {
-    this.getActiveSounds().filter((sound) => {
-      if(sound.id == activeSound.id) {
-        sound.volume = volume;
+    this.ActiveSoundIDRefs.forEach((soundIDRef) => {
+      if (`#sound-audio-${activeSound.id}` === soundIDRef) {
+        const audioElement = document.querySelector(soundIDRef) as HTMLAudioElement;
+        if (audioElement) {
+          audioElement.volume = Math.min(Math.max(volume / 10, 0), 1); 
+          console.log(`${activeSound.name}, Volume updated to: ${audioElement.volume}`);
+        }
       }
-    })
-
-    console.log(activeSound.name + ',Volume updated ' + activeSound.volume)
+    });
   }
+
+
 
   // Get all active sounds
   getActiveSounds(): any[] {
