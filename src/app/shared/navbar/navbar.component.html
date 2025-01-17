@@ -51,7 +51,6 @@
             [src]="speechesService.getSelectedSpeechData().link" 
             [volume]="speechesService.getSelectedSpeechData().volume"
             autoplay 
-            loop 
             id="playing_speech_html_audio" 
             (loadeddata)="getFetchedSpeechDuration()">
         </audio>

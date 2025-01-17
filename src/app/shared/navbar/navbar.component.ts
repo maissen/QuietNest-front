@@ -19,8 +19,11 @@ export class NavbarComponent {
   getFetchedSpeechDuration(): void {
     const html_audio = document.querySelector('#playing_speech_html_audio') as HTMLAudioElement;
     html_audio.addEventListener('timeupdate', () => {
-      const currentTime = html_audio.currentTime; // Current playback time
-      const duration = html_audio.duration; // Total duration of the audio
+      const currentTime = html_audio.currentTime;
+      const duration = html_audio.duration;
+
+      this.speechesService.setSpeechDurationInSeconds(duration);
+      this.speechesService.setSpeechReadingLevelInSeconds(currentTime);
 
       const formattedCurrentTime = `${Math.floor(currentTime / 60)
         .toString()

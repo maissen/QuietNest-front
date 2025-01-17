@@ -18,6 +18,9 @@ export class SpeechesService {
 
   private speechDuration: string = '00:00';
   private speechReadingLevel: string = '00:00';
+  private speechDurationInSeconds: number = 0;
+  private speechReadingLevelInSeconds: number = 0;
+  public html_audio: any;
 
   constructor(
     private http: HttpClient,
@@ -33,6 +36,23 @@ export class SpeechesService {
     return this.speechReadingLevel;
   }
 
+  getSpeechDurationInSeconds(): number {
+    this.html_audio = document.querySelector('#playing_speech_html_audio') as HTMLAudioElement;
+    return Math.floor(this.speechDurationInSeconds);
+  }
+  
+  getSpeechReadingLevelInSeconds(): number {
+    return Math.floor(this.speechReadingLevelInSeconds);
+  }
+
+  setSpeechReadingLevelInSeconds(level: number) {
+    this.speechReadingLevelInSeconds = level;
+  }
+
+  setSpeechDurationInSeconds(duration: number) {
+    this.speechDurationInSeconds = duration;
+  }
+
   setSpeechDuration(duration: string) {
     this.speechDuration = duration;
   }
@@ -40,7 +60,7 @@ export class SpeechesService {
   setSpeechReadingLevel(level: string) {
     this.speechReadingLevel = level;
   }
-
+  
   setSpeeches(list: any[]) {
     this.allSpeches = list;
   }
@@ -90,6 +110,8 @@ export class SpeechesService {
     
     this.setSpeechDuration('00:00');
     this.setSpeechReadingLevel('00:00');
+    this.speechDurationInSeconds = 0;
+    this.speechReadingLevelInSeconds = 0;
 
     this.selectedSpeech = speech;
     this.selectedSpeech.narrator = this.narratorsService.getNarratorById(this.selectedSpeech);

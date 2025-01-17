@@ -63,7 +63,15 @@
             <div class="speech_level">
                 <div class="label">{{service.getSpeechReadingLevel()}}</div>
                 <div class="range">
-                    <input type="range" name="" min="0" max="100" value="25" class="range-slider">
+                    <input 
+                        type="range" 
+                        min="0" 
+                        step="1"
+                        [max]="service.getSpeechDurationInSeconds()" 
+                        [value]="service.getSpeechReadingLevelInSeconds()"
+                        (input)="onSeek($event)"
+                        class="range-slider"
+                    >
                 </div>
                 <div class="label">{{service.getSpeechDuration()}}</div>
             </div>

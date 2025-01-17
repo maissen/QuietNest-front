@@ -50,4 +50,12 @@ export class SpeechSectionComponent implements OnInit {
     });
   }
 
+  onSeek(event: any): void {
+    
+    if(this.service.getSpeechDurationInSeconds() > 0) {
+      let seekValue = event.target.value;
+      this.service.html_audio.currentTime = seekValue;
+    } 
+  }
+
 }
