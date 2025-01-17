@@ -104,7 +104,7 @@
                     .actions {
                         margin-top: 3rem;
                         display: flex;
-                            justify-content: center;
+                        justify-content: center;
                         gap: 1.5rem;
 
                         .action {
@@ -133,7 +133,6 @@
                                 }
                             }
 
-                            &.like:hover,
                             &.liked {
                                 i {
                                     color: red;

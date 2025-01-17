@@ -8,6 +8,7 @@ import { SoundsService } from './sounds.service';
 import { PlaylistsService } from './playlists.service';
 import { UserService } from './user.service';
 import { SpeechesService } from './speeches.service';
+import { SoundsmixturesService } from './soundsmixtures.service';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,8 @@ export class AppService {
     private soundsService: SoundsService,
     private playListsService: PlaylistsService,
     public user: UserService,
-    private speechesService: SpeechesService
+    private speechesService: SpeechesService,
+    private soundsmixturesService: SoundsmixturesService
   ) { }
 
   loadAllAppData() {
@@ -65,6 +67,11 @@ export class AppService {
                     this.soundsService.setSounds(sounds);
                     this.http.get<any[]>(this.soundsService.apiGetSoundsCategories()).subscribe(categories => {
                       this.soundsService.setCategories(categories);
+
+                      //! Fetch all soundsmixtures and their sounds
+                      this.http.get<any[]>(`${this.soundsmixturesService.api_get_all_soundsmixtures}/${this.user.getUser().id}`).subscribe(mixtures => {
+                        this.soundsmixturesService.setSoundsMixtures(mixtures);
+                      });
                     });
                   });
                 });

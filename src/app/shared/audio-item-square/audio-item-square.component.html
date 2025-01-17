@@ -1,19 +1,15 @@
 <div class="item">
   <div class="item__thumb">
     <img [src]="soundMixture.img">
-    <!-- <div class="playing_banner blurry-bg" *ngIf="playingSpeechService.getSelectedSpeechData()?.id == speech.id">
-      <i class="fa-solid fa-headphones"></i>
-      Currently Enjoying
-    </div> -->
   </div>
   <div class="item__info">
-    <p class="name">{{ soundMixture.name }}sd fqs qsdf sd </p>
+    <p class="name">{{ soundMixture.name }}</p>
     <div class="likes_plays_badges">
       <div class="item blurry-bg">
         <i class="fa-solid fa-heart"></i> <span class="number">{{ soundMixture.likes }}</span>
       </div>
       <div class="item blurry-bg">
-        <i class="fa-solid fa-user"></i> <span class="number">{{ soundMixture.playing_nbr }}</span>
+        <i class="fa-solid fa-play"></i> <span class="number">{{ soundMixture.playing_nbr }}</span>
       </div>
     </div>
   </div>

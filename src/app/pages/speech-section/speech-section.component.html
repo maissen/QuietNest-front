@@ -26,7 +26,7 @@
                         <button class="action like" (click)="likeNarrator()" [ngClass]="{'liked': service.getSelectedSpeechData().narrator.liked}">
                             <i class="fa-solid fa-heart"></i>
                             {{service.getSelectedSpeechData().narrator.likes}}
-                            <span>Likes {{ service.getSelectedSpeechData().narrator.name.split(' ')[0] }}</span>
+                            <span> {{ service.getSelectedSpeechData().narrator.likes <= 1 ? 'like to' : 'likes to' }} {{ service.getSelectedSpeechData().narrator.name.split(' ')[0] }}</span>
                         </button>
                         <button class="action">
                             <i class="fa-solid fa-book"></i>
