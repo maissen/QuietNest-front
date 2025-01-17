@@ -11,8 +11,7 @@ import { NarratorsService } from './narrators.service';
 export class SpeechesService {
   public api_get_all_speeches = 'http://localhost:2003/api/get-all-speeches';
   public api_like_speech = 'http://localhost:2003/api/like/speech/';
-  public api_speech_likes_nbr = 'http://localhost:2003/api/get-speech-likes/';
-  public api_did_user_like_this_speech = 'http://localhost:2003/api/did-user-like-this-speech/';
+  public api_increment_playingNbr = 'http://localhost:2003/api/increment-playing-nbr';
 
   private allSpeches: any[] = [];
   private selectedSpeech: any = null;
@@ -50,7 +49,27 @@ export class SpeechesService {
     );
   }
 
+  incrementSpeechPlayings(speech: any) {
+    const speechID = speech.id;
+    const requestBody = { speechID };
+
+    return this.http.post(this.api_increment_playingNbr, requestBody).subscribe({
+      next: (response) => {
+        // console.log('Playing number incremented successfully:', response);
+        speech.playing_nbr = parseInt(speech.playing_nbr) + 1;
+      },
+      error: (error) => {
+        console.error('Error incrementing playing number:', error);
+      },
+    });
+  }
+
   setSelectedSpeechData(speech: any) {
+
+    if( this.getSelectedSpeechData() != null && speech.id != this.getSelectedSpeechData()?.id) {
+      this.incrementSpeechPlayings(speech);
+    }
+
     this.selectedSpeech = speech;
     this.selectedSpeech.narrator = this.narratorsService.getNarratorById(this.selectedSpeech);
     this.selectedSpeech.category = this.categoriesService.getCategoryById(this.selectedSpeech);

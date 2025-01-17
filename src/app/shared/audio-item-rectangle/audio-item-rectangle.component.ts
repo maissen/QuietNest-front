@@ -12,13 +12,13 @@ export class AudioItemRectangleComponent {
   @Input() speech: any;
 
   constructor(
-    public playingSpeechService: SpeechesService,
+    public service: SpeechesService,
     public narratorsService: NarratorsService,
     public categoriesService: CategoriesService
   ) { }
 
   displaySpeechBanner() {
-    this.playingSpeechService.setSelectedSpeechData(this.speech);
-    this.playingSpeechService.isPlaying();
+    this.service.setSelectedSpeechData(this.speech);
+    this.service.isPlaying();
   }
 }

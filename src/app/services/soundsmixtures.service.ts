@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class SoundsmixturesService {
 
   api_get_all_soundsmixtures = 'http://localhost:2003/api/get-all-soundsmixture';
-  api_play_soundsmixture = 'http://localhost:2003/api/increment-playing-nbr';
+  api_play_soundsmixture = 'http://localhost:2003/api/soundmixture-increment-playing-nbr';
 
   private soundsmixtures: any[] = [];
 
