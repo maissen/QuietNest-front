@@ -35,6 +35,7 @@ import { BtnRoundSmallComponent } from './shared/buttons/btn-round-small/btn-rou
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { BottomSheetComponent } from './shared/bottom-sheet/bottom-sheet.component';
 import { TimerSectionComponent } from './pages/timer-section/timer-section.component';
+import { CtaBtnReviewComponent } from './shared/cta-btn-review/cta-btn-review.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { TimerSectionComponent } from './pages/timer-section/timer-section.compo
     LoginPageComponent,
     BottomSheetComponent,
     TimerSectionComponent,
+    CtaBtnReviewComponent,
   ],
   imports: [
     BrowserModule,
