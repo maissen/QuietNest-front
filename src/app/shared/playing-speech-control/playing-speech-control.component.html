@@ -1,4 +1,4 @@
-<div class="controls" *ngIf="service.getSpeechDurationInSeconds() > 0">
+<div class="controls" [ngStyle]="{'visibility: hidden': service.getSpeechDurationInSeconds() == 0}">
     <div class="actions">
         <div class="action">
         </div>

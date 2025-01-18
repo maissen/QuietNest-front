@@ -1,4 +1,4 @@
-<div class="profile-speech" *ngIf="!isPlaylistRoute()">
+<div class="profile-speech" *ngIf="!isPlaylistRoute()" [ngStyle]="{'visibility: hidden': service.getSpeechDurationInSeconds() == 0}">
     <div class="narrator__pic">
         <img [src]="service.getSelectedSpeechData()?.narrator.img">
     </div>
@@ -23,7 +23,7 @@
 </div>
 
 
-<div class="profile-playlist" *ngIf="isPlaylistRoute()">
+<div class="profile-playlist" *ngIf="isPlaylistRoute()" [ngStyle]="{'visibility: hidden': service.getSpeechDurationInSeconds() == 0}">
     <div class="info">
         <div class="pic">
             <img [src]="service.getSelectedSpeechData()?.narrator.img">
