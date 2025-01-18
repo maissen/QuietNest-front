@@ -10,5 +10,6 @@ export class BtnRectangleComponent {
   @Input() routerLink: string = '/app';
   @Input() text: string = 'Button';
   @Input() icon: string = '';
+  @Input() isRouter: boolean = true;
 
 }

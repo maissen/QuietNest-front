@@ -1,1 +1,54 @@
-<p>timer-section works!</p>
+<div class="content">
+
+    <app-btn-round-small [icon]="'fa-solid fa-angle-left'" routerLink="/app/create"></app-btn-round-small>
+
+    <app-bg-video></app-bg-video>
+
+    <div class="banner">
+
+        <p class="title">Set Timer</p>
+
+        <div class="items">
+            <div class="item">
+                <button (click)="service.incrementHours()">
+                    <i class="fa-solid fa-angle-up"></i>
+                </button>
+                <div class="number">
+                    {{service.hours}}
+                    <p class="label">Hours</p>
+                </div>
+                <button (click)="service.decrementHours()">
+                    <i class="fa-solid fa-angle-down"></i>
+                </button>
+            </div>
+            <div class="item">
+                <button (click)="service.incrementMinutes()">
+                    <i class="fa-solid fa-angle-up"></i>
+                </button>
+                <div class="number">
+                    {{service.minutes}}
+                    <p class="label">Minutes</p>
+                </div>
+                <button (click)="service.decrementMinutes()">
+                    <i class="fa-solid fa-angle-down"></i>
+                </button>
+            </div>
+            <div class="item">
+                <button (click)="service.incrementSeconds()">
+                    <i class="fa-solid fa-angle-up"></i>
+                </button>
+                <div class="number">
+                    {{service.seconds}}
+                    <p class="label">Seconds</p>
+                </div>
+                <button (click)="service.decrementSeconds()">
+                    <i class="fa-solid fa-angle-down"></i>
+                </button>
+            </div>
+        </div>
+
+        <app-btn-rectangle [text]="'Confirm'" [icon]="'fa-solid fa-clock'" [isRouter]="false" (click)="service.setTimer()"></app-btn-rectangle>
+        <app-btn-rectangle [text]="'Clear Timer'" [icon]="'fa-solid fa-x'" [isRouter]="false" (click)="service.clearTimer()"></app-btn-rectangle>
+    </div>
+
+</div>

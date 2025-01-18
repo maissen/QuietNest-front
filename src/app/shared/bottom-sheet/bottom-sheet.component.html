@@ -10,7 +10,7 @@
     class="overlay-content" 
     [ngClass]="{'showUp': service.showOverlayContent && service.getActiveSounds().length > 0}" 
 >
-    <button>
+    <button routerLink="/app/set-timer">
         <i class="fa-solid fa-clock"></i>
         Timer
     </button>
@@ -30,13 +30,13 @@
         <p>
             {{service.getActiveSounds().length}} {{service.getActiveSounds().length == 1? 'sound': 'sounds'}}
         </p>
-        <div class="timer">Timer desabled</div>
+        <div class="timer">
+            <i class="fa-regular fa-clock" *ngIf="timerService.timerInSeconds > 0"></i>
+            {{timerService.timerInSeconds > 0 ? formattedTimer : 'Timer is disabled'}}
+        </div>
     </div>
     <div class="actions">
-        <div class="action save">
-            <i class="fa-solid fa-heart"></i>
-        </div>
-        <div class="action clock">
+        <div class="action clock" routerLink="/app/set-timer">
             <i class="fa-solid fa-clock"></i>
         </div>
         <div class="action stop" (click)="service.clearActiveSounds()">

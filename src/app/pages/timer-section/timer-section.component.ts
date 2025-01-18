@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TimerService } from 'src/app/services/timer.service';
 
 @Component({
   selector: 'app-timer-section',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./timer-section.component.scss']
 })
 export class TimerSectionComponent {
+
+  constructor(
+    public service: TimerService
+  ) {}
 
 }

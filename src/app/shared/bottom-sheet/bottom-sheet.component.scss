@@ -99,6 +99,10 @@
         }
         .timer {
             font-size: .8em;
+
+            i {
+                margin-right: .5rem;
+            }
         }
     }
 
@@ -125,7 +129,6 @@
                 background-color: var(--avgColor);
             }
 
-            &.save,
             &.clock,
             &.stop {
                 display: none;
@@ -141,10 +144,6 @@
                     display: none;
                 }
             }
-        }
-            
-        .rotateBtn { 
-            transform: rotateZ(180deg);
         }
     }
 }

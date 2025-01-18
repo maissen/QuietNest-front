@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CreateSectionService } from 'src/app/services/create-section.service';
+import { TimerService } from 'src/app/services/timer.service';
 
 @Component({
   selector: 'app-bottom-sheet',
@@ -9,7 +10,11 @@ import { CreateSectionService } from 'src/app/services/create-section.service';
 export class BottomSheetComponent {
 
   constructor(
-    public service: CreateSectionService
+    public service: CreateSectionService,
+    public timerService: TimerService
   ) {}
 
+  get formattedTimer(): string {
+    return this.timerService.getFormattedCount();
+  }
 }
