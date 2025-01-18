@@ -52,8 +52,10 @@
             [volume]="speechesService.getSelectedSpeechData().volume"
             autoplay 
             id="playing_speech_html_audio" 
-            (loadeddata)="getFetchedSpeechDuration()">
+            (loadeddata)="getFetchedSpeechDuration()"
+            (ended)="onAudioEnd()">
         </audio>
+
     </div>
 
 </div>
