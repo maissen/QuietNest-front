@@ -41,10 +41,10 @@
     <button class="like" [ngClass]="{'liked': service.getSelectedSpeechData().liked == true}" (click)="likeSpeech()">
       <i class="fa-solid fa-heart"></i>
     </button>
-    <button *ngIf="service.getSelectedSpeechData().type == 'speech'" [routerLink]="'/app/speech/' + service.getSelectedSpeechData().id">
+    <button *ngIf="!playlistsService.isPlaying" [routerLink]="'/app/speech/' + service.getSelectedSpeechData().id">
       <i class="fa-solid fa-expand"></i>
     </button>
-    <button *ngIf="service.getSelectedSpeechData().type == 'playlist'" [routerLink]="'/app/playlist/' + service.getSelectedSpeechData().id">
+    <button *ngIf="playlistsService.getPlayingPlaylist() && playlistsService.isPlaying" [routerLink]="'/app/playlist/' + playlistsService.getPlayingPlaylist()?.id">
       <i class="fa-solid fa-expand"></i>
     </button>
     <button class="stop" (click)="service.clearSelectedSpeechData()">

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CreateSectionService } from 'src/app/services/create-section.service';
+import { PlaylistsService } from 'src/app/services/playlists.service';
 import { SpeechesService } from 'src/app/services/speeches.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -17,7 +18,8 @@ export class PlayingSpeechBannerComponent {
     public createSectionService: CreateSectionService,
     private router: Router,
     public service: SpeechesService,
-    private user: UserService
+    private user: UserService,
+    public playlistsService: PlaylistsService
   ) {
     this.router.events.subscribe(() => {
       this.checkRoute();
@@ -59,6 +61,10 @@ export class PlayingSpeechBannerComponent {
   
   showPlay_hideReplay(): boolean {
     return this.service.getSpeechReadingLevelInSeconds() < this.service.getSpeechDurationInSeconds();
+  }
+
+  navigate(): void {
+
   }
 
 }
