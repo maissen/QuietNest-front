@@ -58,6 +58,7 @@ export class NavbarComponent {
       } 
       else if (index === playlistSpeeches.length - 1) {
         console.log('Playlist has finished!');
+        this.playlistsService.isFinished = true;
       }
     }
   }

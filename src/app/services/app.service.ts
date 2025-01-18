@@ -26,7 +26,7 @@ export class AppService {
     private narratorsService: NarratorsService,
     public scenesService: ScenesService,
     private soundsService: SoundsService,
-    private playListsService: PlaylistsService,
+    private playlistsService: PlaylistsService,
     public user: UserService,
     private speechesService: SpeechesService,
     private soundsmixturesService: SoundsmixturesService,
@@ -60,8 +60,8 @@ export class AppService {
                 this.speechesService.setSpeeches(speeches);
 
                 //! Fetch al playlists
-                this.http.get<any[]>(`${this.playListsService.api_all_playlists}/${this.user.getUser().id}`).subscribe(allPlaylists => {
-                  this.playListsService.setPlayLists(allPlaylists);
+                this.http.get<any[]>(`${this.playlistsService.api_all_playlists}/${this.user.getUser().id}`).subscribe(allPlaylists => {
+                  this.playlistsService.setPlayLists(allPlaylists);
 
                   //! Fetch all sounds and their categories
                   this.http.get<any[]>(this.soundsService.apiGetAllSounds()).subscribe(sounds => {
@@ -86,5 +86,47 @@ export class AppService {
       }
     });
   }
+
+
+
+  //! Replay speeches & playlists
+  replay(): void {
+    if (this.playlistsService.isPlaying) { 
+      // Reset playlist playback
+      const currentPlaylist = this.playlistsService.getPlayingPlaylist();
+  
+      if (currentPlaylist && currentPlaylist.speeches.length > 0) {
+        this.playlistsService.isFinished = false;
+        this.speechesService.setSelectedSpeechData(currentPlaylist.speeches[0]);
+        this.playlistsService.setPlayingPlayList(currentPlaylist);
+        this.speechesService.html_audio.currentTime = 0;
+        this.speechesService.html_audio.play();
+      }
+    } else {
+      //! Reset single speech playback
+      const currentSpeech = this.speechesService.getSelectedSpeechData();
+  
+      if (currentSpeech) {
+        this.speechesService.clearSelectedSpeechData();
+        this.speechesService.setSelectedSpeechData(currentSpeech);
+        this.speechesService.html_audio.currentTime = 0;
+        this.speechesService.html_audio.play();
+      }
+    }
+  }
+  
+
+  showPlay_hideReplay(): boolean {
+    const isSpeechPlaying = this.speechesService.isSpeechPlaying;
+    const isPlaylistPlaying = this.playlistsService.isPlaying;
+    const isPlaylistFinished = isPlaylistPlaying && this.playlistsService.isFinished;
+    const isSpeechFinished = this.speechesService.getSpeechReadingLevelInSeconds() >= this.speechesService.getSpeechDurationInSeconds();
+  
+    // Show the play/pause button in the following cases:
+    // - If a playlist or speech is currently playing and not finished.
+    // - Hide the play button (show replay) only if playback is finished.
+    return !(isPlaylistFinished || isSpeechFinished);
+  }
+  
 
 }

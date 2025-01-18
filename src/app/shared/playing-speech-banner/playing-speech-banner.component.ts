@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppService } from 'src/app/services/app.service';
 import { CreateSectionService } from 'src/app/services/create-section.service';
 import { PlaylistsService } from 'src/app/services/playlists.service';
 import { SpeechesService } from 'src/app/services/speeches.service';
@@ -19,7 +20,8 @@ export class PlayingSpeechBannerComponent {
     private router: Router,
     public service: SpeechesService,
     private user: UserService,
-    public playlistsService: PlaylistsService
+    public playlistsService: PlaylistsService,
+    public globalService: AppService
   ) {
     this.router.events.subscribe(() => {
       this.checkRoute();

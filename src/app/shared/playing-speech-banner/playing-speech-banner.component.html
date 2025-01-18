@@ -51,13 +51,18 @@
     <button class="stop" (click)="service.clearSelectedSpeechData()">
       <i class="fa-solid fa-stop"></i>
     </button>
-    <button *ngIf="showPlay_hideReplay()" (click)="service.togglePlayPause()">
+    
+    <!-- Play/Pause Button -->
+    <button *ngIf="globalService.showPlay_hideReplay()" (click)="service.togglePlayPause()">
       <i class="fa-solid fa-play" *ngIf="!service.isSpeechPlaying"></i>
       <i class="fa-solid fa-pause" *ngIf="service.isSpeechPlaying"></i>
     </button>
-    <button *ngIf="!showPlay_hideReplay() && service.getSpeechDurationInSeconds() == service.getSpeechReadingLevelInSeconds()" (click)="service.replaySpeech()">
-        <i class="fa-solid fa-repeat"></i>
+    
+    <!-- Replay Button -->
+    <button *ngIf="!globalService.showPlay_hideReplay()" (click)="globalService.replay()">
+      <i class="fa-solid fa-repeat"></i>
     </button>
+    
   </div>
 
 </div>

@@ -18,6 +18,7 @@ export class PlaylistsService {
   public api_increment_playlists_plays: string = 'http://localhost:2003/api/increment-playlist-playing-nbr';
   private playingPlaylist: any = null;
   isPlaying: boolean = false;
+  isFinished: boolean = false;
 
   setPlayLists(list: any[]) {
     this.playlists = list;
@@ -31,11 +32,13 @@ export class PlaylistsService {
     this.playingPlaylist = playlist;
     this.router.navigate(['/app/playlist/' + this.playingPlaylist.id]);
     this.isPlaying = true;
+    this.isFinished = false;
   }
 
   clearPlayingPlaylist(): void {
     this.playingPlaylist = null;
     this.isPlaying = false;
+    this.isFinished = false;
   }
 
   getPlayingPlaylist(): any {

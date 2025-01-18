@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppService } from 'src/app/services/app.service';
+import { PlaylistsService } from 'src/app/services/playlists.service';
 import { SpeechesService } from 'src/app/services/speeches.service';
 
 @Component({
@@ -11,7 +13,9 @@ export class PlayingSpeechControlComponent {
 
   constructor(
     public service: SpeechesService,
-    private router: Router
+    private router: Router,
+    private playlistsService: PlaylistsService,
+    public globalService: AppService
   ) {}
 
   onSeek(event: any): void {
@@ -27,7 +31,5 @@ export class PlayingSpeechControlComponent {
     this.router.navigate(['app/'])
   }
 
-  showPlay_hideReplay(): boolean {
-    return this.service.getSpeechReadingLevelInSeconds() < this.service.getSpeechDurationInSeconds();
-  }
+  
 }
