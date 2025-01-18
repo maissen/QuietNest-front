@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CategoriesService } from 'src/app/services/categories.service';
 import { NarratorsService } from 'src/app/services/narrators.service';
 import { PlaylistsService } from 'src/app/services/playlists.service';
 import { SpeechesService } from 'src/app/services/speeches.service';
@@ -18,11 +19,11 @@ export class PlaylistSectionComponent implements OnInit {
       public narratorsService: NarratorsService,
       public user: UserService,
       public http: HttpClient,
-      public service: PlaylistsService
+      public service: PlaylistsService,
+      public categoriesService: CategoriesService,
     ) {}
   
     ngOnInit(): void {
-
       if (this.service.getPlayingPlaylist() == null) {
         this.router.navigate(['/app/browse']);
       }

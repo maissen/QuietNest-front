@@ -1,5 +1,4 @@
-.narrator {
-    width: 100%;
+.profile-speech {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,8 +7,9 @@
     padding: 1.3rem;
     max-width: 75rem;
     color: #FFF;
+    margin: auto;
 
-    &__pic {
+    .narrator__pic {
         height: 11rem;
         width: 11rem;
         border-radius: 50%;
@@ -21,9 +21,10 @@
         img { height: 100%; }
     }
 
-    &__info {
+    .narrator__info {
         text-align: center;
-
+        display: flex;
+        
 
         .actions {
             margin-top: 3rem;
@@ -64,6 +65,96 @@
                 }
             }
 
+        }
+
+    }
+}
+
+
+.profile-playlist {
+    max-width: 75rem;
+    color: #FFF;
+    margin: auto;
+
+    .info {
+        display: flex;
+        gap: 1.9rem;
+        align-items: center;
+        justify-content: center;
+        
+        .pic {
+            height: 8rem;
+            width: 8rem;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            flex-grow: 0;
+    
+            img { 
+                height: 100%; 
+            }
+        }
+    
+        .text {
+
+            .name {
+                margin-bottom: 0;
+            }
+
+            .description {
+                font-size: .8em;
+                margin-bottom: 0;
+                color: #b4b4b4;
+            }
+
+        }
+    }
+    
+
+    .actions {
+        margin-top: 1.4rem;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+
+        .action {
+            height: 4rem;
+            padding: 0 2rem;
+            border-radius: 2rem;
+            border: none;
+            color: #FFF;
+            background-color: #9b9b9b48;
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            i {
+                margin-right: .9rem;
+                transition: .3s;
+            }
+
+            .count {
+                display: flex;
+                margin: 0;
+            }
+
+            .showTextDetail {
+                display: none;
+
+                @media all and (min-width: 700px) {
+                    display: inline;
+                }
+            }
+
+            &.liked {
+                i {
+                    color: red;
+                }
+            }
         }
 
     }

@@ -1,16 +1,46 @@
 <div class="content" [ngStyle]="{'background-image': 'url(' + service.getPlayingPlaylist()?.img + ')'}">
 
-    <div class="loaded_content blurry-bg">  
+    <div class="loaded_content">  
+
         <div class="header">
-            <div class="title">{{service.getPlayingPlaylist().name}}</div>
+            <div class="title">{{service.getPlayingPlaylist()?.name}}</div>
 
             <app-narrator-profile></app-narrator-profile>
 
         </div>
-        <div class="body"></div>
-        <div class="footer">
-            <app-playing-speech-control></app-playing-speech-control>
+
+        <div class="body hide-scrollbar">
+
+            <div class="item" *ngFor="let speech of service.getPlayingPlaylist()?.speeches">
+                <div class="thumb" [ngStyle]="{'background-image': 'url(' + speech.img + ')'}"></div>
+                <div class="info">
+                    <div class="name">{{speech.name}}</div>
+                    <div class="category">
+                        {{categoriesService.getCategoryById(speech)?.name}} | {{narratorsService.getNarratorById(speech)?.name}}
+                    </div>
+                </div>
+                <div class="badge">
+                    <span>{{speech.likes}}</span>
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+            </div>
+            <div class="item" *ngFor="let speech of service.getPlayingPlaylist()?.speeches">
+                <div class="thumb" [ngStyle]="{'background-image': 'url(' + speech.img + ')'}"></div>
+                <div class="info">
+                    <div class="name">{{speech.name}}</div>
+                    <div class="category">
+                        {{categoriesService.getCategoryById(speech)?.name}} | {{narratorsService.getNarratorById(speech)?.name}}
+                    </div>
+                </div>
+                <div class="badge">
+                    <span>{{speech.likes}}</span>
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+            </div>
+            
         </div>
+        
+        <app-playing-speech-control></app-playing-speech-control>
     </div>
 
     <button class="close_section blurry-bg">

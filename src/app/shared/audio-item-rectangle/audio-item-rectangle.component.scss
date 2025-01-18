@@ -28,6 +28,7 @@
             padding: .5rem .9rem;
             border-radius: 1.5rem;
             letter-spacing: .1rem;
+            color: #FFF;
 
             i {
                 margin-right: .5rem;
@@ -45,6 +46,7 @@
             white-space: nowrap;
             text-overflow: ellipsis;
             width: var(--speech-item-rectangle-width);
+            color: #FFF;
         }
     
         .cat_narrator {
@@ -52,6 +54,7 @@
             gap: .8rem;
             font-size: .8em;
             margin-bottom: 1rem;
+            color: #FFF;
 
             p {
                 overflow: hidden;
@@ -69,6 +72,7 @@
             justify-content: flex-start;
             gap: .6rem;
             font-size: .7em;
+            color: #FFF;
 
             .item {
                 width: auto;
