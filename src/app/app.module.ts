@@ -36,6 +36,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { BottomSheetComponent } from './shared/bottom-sheet/bottom-sheet.component';
 import { TimerSectionComponent } from './pages/timer-section/timer-section.component';
 import { CtaBtnReviewComponent } from './shared/cta-btn-review/cta-btn-review.component';
+import { CarouselRectanglePlaylistComponent } from './shared/items-carousels/carousel-rectangle-playlist/carousel-rectangle-playlist.component';
+import { PlaylistItemRectangleComponent } from './shared/playlist-item-rectangle/playlist-item-rectangle.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import { CtaBtnReviewComponent } from './shared/cta-btn-review/cta-btn-review.co
     BottomSheetComponent,
     TimerSectionComponent,
     CtaBtnReviewComponent,
+    CarouselRectanglePlaylistComponent,
+    PlaylistItemRectangleComponent,
   ],
   imports: [
     BrowserModule,

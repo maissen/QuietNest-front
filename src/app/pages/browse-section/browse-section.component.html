@@ -21,11 +21,12 @@
             [speeches]="service.getAllSpeeches()"
         ></app-carousel-rectangle>
 
-        <!-- <app-carousel-rectangle 
-            [hasBottomBorder]="true" 
-            [carouselTitle]="'Our playlists'"
-            [speeches]="playlistsService.getPlaylists()"
-        ></app-carousel-rectangle> -->
+        <app-carousel-rectangle-playlist 
+            [carouselTitle]="'Our playlists'" 
+            [hasBottomBorder]="true"    
+            [hasScrollbar]="false"
+            [playlists]="playlistsService.getPlaylists()"
+        ></app-carousel-rectangle-playlist>
 
         <app-carousel-square 
             [carouselTitle]="'Enjoy our sound mixtures'"

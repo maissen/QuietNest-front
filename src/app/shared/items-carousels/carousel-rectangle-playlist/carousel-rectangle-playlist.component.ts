@@ -1,12 +1,12 @@
-import { Component, Input, AfterViewInit, ElementRef, ViewChild, HostListener, ChangeDetectorRef, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-carousel-rectangle',
-  templateUrl: './carousel-rectangle.component.html',
-  styleUrls: ['./carousel-rectangle.component.scss']
+  selector: 'app-carousel-rectangle-playlist',
+  templateUrl: './carousel-rectangle-playlist.component.html',
+  styleUrls: ['./carousel-rectangle-playlist.component.scss']
 })
-export class CarouselRectangleComponent {
-  @Input() speeches: any[] = [];
+export class CarouselRectanglePlaylistComponent {
+  @Input() playlists: any[] = [];
   @Input() hasBottomBorder: boolean = false;
   @Input() carouselTitle: string = '';
   @Input() hasScrollbar: boolean = false;
