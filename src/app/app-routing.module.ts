@@ -12,6 +12,7 @@ import { SpeechSectionComponent } from './pages/speech-section/speech-section.co
 import { PlaylistSectionComponent } from './pages/playlist-section/playlist-section.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AuthGuard } from './guards/auth.guard';
+import { TimerSectionComponent } from './pages/timer-section/timer-section.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
       {
         path: 'create',
         component: CreateSectionComponent
+      },
+      {
+        path: 'set-timer',
+        component: TimerSectionComponent
       },
       {
         path: 'profile',

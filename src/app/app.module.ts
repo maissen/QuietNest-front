@@ -34,6 +34,7 @@ import { BtnRoundComponent } from './shared/buttons/btn-round/btn-round.componen
 import { BtnRoundSmallComponent } from './shared/buttons/btn-round-small/btn-round-small.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { BottomSheetComponent } from './shared/bottom-sheet/bottom-sheet.component';
+import { TimerSectionComponent } from './pages/timer-section/timer-section.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { BottomSheetComponent } from './shared/bottom-sheet/bottom-sheet.compone
     BtnRoundSmallComponent,
     LoginPageComponent,
     BottomSheetComponent,
+    TimerSectionComponent,
   ],
   imports: [
     BrowserModule,
