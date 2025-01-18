@@ -127,6 +127,28 @@ export class AppService {
     // - Hide the play button (show replay) only if playback is finished.
     return !(isPlaylistFinished || isSpeechFinished);
   }
+
+
+  clearPlayback(): void {
+    if (this.playlistsService.isPlaying) {
+    
+      // Clear playlist playback
+      this.playlistsService.isFinished = true;
+      this.playlistsService.clearPlayingPlaylist();
+      this.speechesService.clearSelectedSpeechData();
+      this.speechesService.html_audio.pause();
+      this.speechesService.html_audio.currentTime = 0;
+    
+    } 
+    else if (this.speechesService.getSelectedSpeechData()) {
+    
+      // Clear single speech playback
+      this.speechesService.clearSelectedSpeechData();
+      this.speechesService.html_audio.pause();
+      this.speechesService.html_audio.currentTime = 0;
+    
+    }
+  }
   
 
 }

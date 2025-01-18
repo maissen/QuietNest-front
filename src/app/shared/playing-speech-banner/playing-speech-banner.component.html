@@ -48,7 +48,7 @@
     <button *ngIf="playlistsService.getPlayingPlaylist() && playlistsService.isPlaying" [routerLink]="'/app/playlist/' + playlistsService.getPlayingPlaylist()?.id">
       <i class="fa-solid fa-expand"></i>
     </button>
-    <button class="stop" (click)="service.clearSelectedSpeechData()">
+    <button class="stop" (click)="globalService.clearPlayback()">
       <i class="fa-solid fa-stop"></i>
     </button>
     
