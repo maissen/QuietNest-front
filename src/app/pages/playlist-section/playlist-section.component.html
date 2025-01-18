@@ -11,21 +11,12 @@
 
         <div class="body hide-scrollbar">
 
-            <div class="item" *ngFor="let speech of service.getPlayingPlaylist()?.speeches">
-                <div class="thumb" [ngStyle]="{'background-image': 'url(' + speech.img + ')'}"></div>
-                <div class="info">
-                    <div class="name">{{speech.name}}</div>
-                    <div class="category">
-                        {{categoriesService.getCategoryById(speech)?.name}} | {{narratorsService.getNarratorById(speech)?.name}}
-                    </div>
+            <div class="item" *ngFor="let speech of service.getPlayingPlaylist()?.speeches" (click)="speechesService.setSelectedSpeechData(speech)">
+                <div class="thumb" [ngStyle]="{'background-image': 'url(' + speech.img + ')'}">
+                    <p class="playingBadge" *ngIf="speechesService.getSelectedSpeechData().id == speech.id">
+                        Playing
+                    </p>
                 </div>
-                <div class="badge">
-                    <span>{{speech.likes}}</span>
-                    <i class="fa-solid fa-heart"></i>
-                </div>
-            </div>
-            <div class="item" *ngFor="let speech of service.getPlayingPlaylist()?.speeches">
-                <div class="thumb" [ngStyle]="{'background-image': 'url(' + speech.img + ')'}"></div>
                 <div class="info">
                     <div class="name">{{speech.name}}</div>
                     <div class="category">
@@ -43,8 +34,9 @@
         <app-playing-speech-control></app-playing-speech-control>
     </div>
 
-    <button class="close_section blurry-bg">
-        <i class="fa-solid fa-angle-left"></i>
-    </button>
-
+    
 </div>
+
+<button class="close_section blurry-bg" (click)="router.navigate(['/app/browse'])">
+    <i class="fa-solid fa-angle-left"></i>
+</button>

@@ -15,18 +15,19 @@ import { UserService } from 'src/app/services/user.service';
 export class PlaylistSectionComponent implements OnInit {
 
   constructor(
-      private router: Router,
+      public router: Router,
       public narratorsService: NarratorsService,
       public user: UserService,
       public http: HttpClient,
       public service: PlaylistsService,
       public categoriesService: CategoriesService,
+      public speechesService: SpeechesService
     ) {}
   
-    ngOnInit(): void {
-      if (this.service.getPlayingPlaylist() == null) {
-        this.router.navigate(['/app/browse']);
-      }
+  ngOnInit(): void {
+    if (this.service.getPlayingPlaylist() == null) {
+      this.router.navigate(['/app/browse']);
     }
+  }
 
 }
