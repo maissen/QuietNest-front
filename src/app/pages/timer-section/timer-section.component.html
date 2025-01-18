@@ -1,54 +1,91 @@
 <div class="content">
 
-    <app-btn-round-small [icon]="'fa-solid fa-angle-left'" routerLink="/app/create"></app-btn-round-small>
+    <button class="exit blurry-bg" routerLink="/app/create">
+        <i class="fa-solid fa-angle-left"></i>
+    </button>
 
     <app-bg-video></app-bg-video>
 
-    <div class="banner">
+    <div class="banner blurry-bg">
 
-        <p class="title">Set Timer</p>
+        <p class="title">{{service.timerInSeconds > 0 ? 'Time left' : 'Set Timer'}}</p>
 
         <div class="items">
             <div class="item">
-                <button (click)="service.incrementHours()">
+                <button 
+                    (click)="service.incrementHours()" 
+                    (mousewheel)="service.incrementHours()"
+                    [ngClass]="{'fade': service.timerInSeconds > 0 || service.hours >= 5}"
+                >
                     <i class="fa-solid fa-angle-up"></i>
                 </button>
                 <div class="number">
-                    {{service.hours}}
-                    <p class="label">Hours</p>
+                    <p class="counter" [ngClass]="{'active': service.timerInSeconds > 0}">{{service.hours}}</p>
+                    <p class="label cormorant-font" [ngClass]="{'active': service.timerInSeconds > 0}">Hours</p>
                 </div>
-                <button (click)="service.decrementHours()">
+                <button 
+                    (click)="service.decrementHours()" 
+                    (mousewheel)="service.decrementHours()"
+                    [ngClass]="{'fade': service.timerInSeconds > 0}"
+                >
                     <i class="fa-solid fa-angle-down"></i>
                 </button>
             </div>
             <div class="item">
-                <button (click)="service.incrementMinutes()">
+                <button 
+                    (click)="service.incrementMinutes()" 
+                    (mousewheel)="service.incrementMinutes()"
+                    [ngClass]="{'fade': service.timerInSeconds > 0}"
+                >
                     <i class="fa-solid fa-angle-up"></i>
                 </button>
                 <div class="number">
-                    {{service.minutes}}
-                    <p class="label">Minutes</p>
+                    <p class="counter" [ngClass]="{'active': service.timerInSeconds > 0}">{{service.minutes}}</p>
+                    <p class="label cormorant-font" [ngClass]="{'active': service.timerInSeconds > 0}">Minutes</p>
                 </div>
-                <button (click)="service.decrementMinutes()">
+                <button 
+                    (click)="service.decrementMinutes()" 
+                    (mousewheel)="service.decrementMinutes()"
+                    [ngClass]="{'fade': service.timerInSeconds > 0}"
+                >
                     <i class="fa-solid fa-angle-down"></i>
                 </button>
             </div>
             <div class="item">
-                <button (click)="service.incrementSeconds()">
+                <button 
+                    (click)="service.incrementSeconds()" 
+                    (mousewheel)="service.incrementSeconds()"
+                    [ngClass]="{'fade': service.timerInSeconds > 0}"
+                >
                     <i class="fa-solid fa-angle-up"></i>
                 </button>
                 <div class="number">
-                    {{service.seconds}}
-                    <p class="label">Seconds</p>
+                    <p class="counter" [ngClass]="{'active': service.timerInSeconds > 0}">{{service.seconds}}</p>
+                    <p class="label cormorant-font">Seconds</p>
                 </div>
-                <button (click)="service.decrementSeconds()">
+                <button 
+                    (click)="service.decrementSeconds()" 
+                    (mousewheel)="service.decrementSeconds()"
+                    [ngClass]="{'fade': service.timerInSeconds > 0}"
+                >
                     <i class="fa-solid fa-angle-down"></i>
                 </button>
             </div>
         </div>
 
-        <app-btn-rectangle [text]="'Confirm'" [icon]="'fa-solid fa-clock'" [isRouter]="false" (click)="service.setTimer()"></app-btn-rectangle>
-        <app-btn-rectangle [text]="'Clear Timer'" [icon]="'fa-solid fa-x'" [isRouter]="false" (click)="service.clearTimer()"></app-btn-rectangle>
+    </div>
+
+    <div class="actions">
+        <button 
+            [ngClass]="{'showUp': (service.seconds > 0 || service.minutes > 0 || service.hours > 0) && !(service.timerInSeconds > 0)}"
+            class="confirm blurry-bg" 
+            (click)="service.setTimer()"
+        >Confirm</button>
+        <button 
+            [ngClass]="{'showUp': service.timerInSeconds > 0}"
+            class="clear blurry-bg" 
+            (click)="service.clearTimer()"
+        >Clear</button>
     </div>
 
 </div>

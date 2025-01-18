@@ -17,38 +17,61 @@ export class TimerService {
   ) { }
 
   incrementSeconds(): void {
-    this.seconds++;
+    if (this.timerInSeconds == 0) {
+      this.seconds++;
+      if (this.seconds >= 60) {
+        this.seconds = 0;
+        this.incrementMinutes();
+      }
+    }
   }
 
   incrementMinutes(): void {
-    this.minutes++;
+    if (this.timerInSeconds == 0) {
+      this.minutes++;
+      if (this.minutes >= 60) {
+        this.minutes = 0;
+        this.incrementHours();
+      }
+    }
   }
 
   incrementHours(): void {
-    this.hours++;
+    if (this.timerInSeconds == 0 && this.hours < 5) {
+      this.hours++;
+    }
   }
 
   decrementSeconds(): void {
-    if (this.seconds > 0) {
+    if (this.timerInSeconds == 0 && this.seconds > 0) {
       this.seconds--;
+    } else if (this.seconds === 0 && this.minutes > 0) {
+      this.decrementMinutes();
+      this.seconds = 59;
+    } else if (this.seconds === 0 && this.minutes === 0 && this.hours > 0) {
+      this.decrementHours();
+      this.minutes = 59;
+      this.seconds = 59;
     }
   }
-  
+
   decrementMinutes(): void {
-    if (this.minutes > 0) {
+    if (this.timerInSeconds == 0 && this.minutes > 0) {
       this.minutes--;
+    } else if (this.minutes === 0 && this.hours > 0) {
+      this.decrementHours();
+      this.minutes = 59;
     }
   }
-  
+
   decrementHours(): void {
-    if (this.hours > 0) {
+    if (this.timerInSeconds == 0 && this.hours > 0) {
       this.hours--;
     }
   }
 
   setTimer(): void {
     this.timerInSeconds = this.hours * 3600 + this.minutes * 60 + this.seconds;
-
     this.startCountdown();
   }
 
@@ -60,8 +83,26 @@ export class TimerService {
     this.countdownInterval = setInterval(() => {
       if (this.timerInSeconds > 0) {
         this.timerInSeconds--;
-      } 
-      else {
+
+        const hours = Math.floor(this.timerInSeconds / 3600);
+        const minutes = Math.floor((this.timerInSeconds % 3600) / 60);
+        const seconds = this.timerInSeconds % 60;
+
+        this.hours = hours;
+        this.minutes = minutes;
+        this.seconds = seconds;
+
+        if (this.seconds === 0 && this.minutes > 0) {
+          this.decrementMinutes();
+          this.seconds = 59;
+        }
+
+        if (this.minutes === 0 && this.hours > 0) {
+          this.decrementHours();
+          this.minutes = 60;
+        }
+
+      } else {
         clearInterval(this.countdownInterval);
         this.createSectionService.togglePauseActiveSounds();
       }
@@ -72,12 +113,12 @@ export class TimerService {
     const hours = Math.floor(this.timerInSeconds / 3600);
     const minutes = Math.floor((this.timerInSeconds % 3600) / 60);
     const seconds = this.timerInSeconds % 60;
-  
+
     let formattedTime = '';
     if (hours > 0) formattedTime += `${hours} h `;
     if (minutes > 0 || hours > 0) formattedTime += `${minutes} m `;
     formattedTime += `${seconds} s`;
-  
+
     return formattedTime;
   }
 
@@ -86,11 +127,10 @@ export class TimerService {
       clearInterval(this.countdownInterval);
       this.countdownInterval = null;
     }
-    
+
     this.timerInSeconds = 0;
     this.hours = 0;
     this.minutes = 0;
     this.seconds = 0;
   }
-
 }
