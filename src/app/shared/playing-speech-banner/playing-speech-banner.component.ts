@@ -29,8 +29,9 @@ export class PlayingSpeechBannerComponent {
 
   private checkRoute(): void {
     const url = this.router.url;
-    this.hideBanner = url.startsWith('/app/speech/') || url.startsWith('/app/playlist/');
+    this.hideBanner = url.startsWith('/app/speech') || url.startsWith('/app/playlist') || url.startsWith('/app/set-timer') || url.startsWith('/app/create');
   }
+  
 
   likeSpeech() {
     let userID = this.user.getUser().id;
