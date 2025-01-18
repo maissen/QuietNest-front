@@ -16,8 +16,12 @@ export class PlaylistItemRectangleComponent {
     public categoriesService: CategoriesService
   ) { }
 
-  displaySpeechBanner() {
-    // this.service.setSelectedSpeechData(this.playlist);
-    // this.service.isPlaying();
+  playlistClick(): void {
+    this.service.setPlayingPlayList(this.playlist);
+    
+    if(this.playlist.id != this.service.getPlayingPlaylist().id) {
+      this.service.incrementPlaylistPlayings(this.playlist);
+    }
+
   }
 }
