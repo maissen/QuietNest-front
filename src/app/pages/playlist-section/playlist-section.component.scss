@@ -80,6 +80,7 @@
                 background-position: center;
                 background-size: cover;
                 background-repeat: no-repeat;
+                cursor: pointer;
 
                 .thumb {
                     height: 6rem;
@@ -105,10 +106,7 @@
                         color: #FFF;
                         background-color: #0000008e;
                         gap: 1rem;
-
-                        p {
-                            margin: 0;
-                        }
+                        margin: 0;
                     }
                 }
 

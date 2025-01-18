@@ -2,7 +2,8 @@
 
   <div class="info">
     <div class="img_thumb">
-      <img [src]="service.getSelectedSpeechData().img">
+      <img *ngIf="!playlistsService.isPlaying" [src]="service.getSelectedSpeechData().img">
+      <img *ngIf="playlistsService.isPlaying" [src]="playlistsService.getPlayingPlaylist().img">
     </div>
     <div class="description">
       <p class="title">{{service.getSelectedSpeechData().name}}</p>

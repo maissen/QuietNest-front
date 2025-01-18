@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { PlaylistsService } from 'src/app/services/playlists.service';
+import { SpeechesService } from 'src/app/services/speeches.service';
 
 @Component({
   selector: 'app-playlist-item-rectangle',
@@ -13,7 +14,8 @@ export class PlaylistItemRectangleComponent {
 
   constructor(
     public service: PlaylistsService,
-    public categoriesService: CategoriesService
+    public categoriesService: CategoriesService,
+    private speechesService: SpeechesService
   ) { }
 
   playlistClick(): void {
@@ -22,6 +24,9 @@ export class PlaylistItemRectangleComponent {
     if(this.playlist.id != this.service.getPlayingPlaylist().id) {
       this.service.incrementPlaylistPlayings(this.playlist);
     }
+
+    this.speechesService.clearSelectedSpeechData();
+    this.speechesService.setSelectedSpeechData(this.playlist.speeches[0]);
 
   }
 }
