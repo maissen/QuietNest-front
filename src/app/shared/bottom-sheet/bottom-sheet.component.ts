@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { CreateSectionService } from 'src/app/services/create-section.service';
 
 @Component({
-  selector: 'app-bottom-sheet-small',
-  templateUrl: './bottom-sheet-small.component.html',
-  styleUrls: ['./bottom-sheet-small.component.scss']
+  selector: 'app-bottom-sheet',
+  templateUrl: './bottom-sheet.component.html',
+  styleUrls: ['./bottom-sheet.component.scss']
 })
-export class BottomSheetSmallComponent {
+export class BottomSheetComponent {
 
   constructor(
     public service: CreateSectionService
   ) {}
-  
+
 }

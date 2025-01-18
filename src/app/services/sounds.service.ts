@@ -42,10 +42,7 @@ export class SoundsService {
     const soundToUpdate = this.getSounds().find(item => item.id === sound.id);
     if (soundToUpdate) {
       soundToUpdate.volume = volume;
-      console.log(`Updated volume for sound ${sound.name} (ID: ${sound.id}) to ${volume}`);
-    } else {
-      console.warn(`Sound with ID ${sound.id} not found`);
-    }
+    } 
   }
 
 }

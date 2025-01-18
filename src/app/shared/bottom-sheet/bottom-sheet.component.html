@@ -1,0 +1,53 @@
+<div 
+    *ngIf="service.isCreateSection() && service.getActiveSounds().length > 0" 
+    class="bg-layer"
+    [ngClass]="{'showUp': service.showOverlayContent && service.getActiveSounds().length > 0}" 
+    (click)="service.toggleOverLayContent()"
+></div>
+
+<div 
+    *ngIf="service.isCreateSection()"
+    class="overlay-content" 
+    [ngClass]="{'showUp': service.showOverlayContent && service.getActiveSounds().length > 0}" 
+>
+    <button>
+        <i class="fa-solid fa-clock"></i>
+        Timer
+    </button>
+    <button (click)="service.clearActiveSounds()">
+        <i class="fa-solid fa-stop"></i>
+        Stop
+    </button>
+    <button class="action" (click)="service.togglePauseActiveSounds()">
+        <i class="fa-solid fa-play" *ngIf="service.getPauseActiveSounds()"></i>
+        <i class="fa-solid fa-pause" *ngIf="!service.getPauseActiveSounds()"></i>
+        {{service.activeSoundsPaused? 'Play': 'Pause'}}
+    </button>
+</div>
+
+<div class="content blurry-bg" *ngIf="service.isCreateSection() && service.getActiveSounds().length > 0">
+    <div class="info">
+        <p>
+            {{service.getActiveSounds().length}} {{service.getActiveSounds().length == 1? 'sound': 'sounds'}}
+        </p>
+        <div class="timer">Timer desabled</div>
+    </div>
+    <div class="actions">
+        <div class="action save">
+            <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="action clock">
+            <i class="fa-solid fa-clock"></i>
+        </div>
+        <div class="action stop" (click)="service.clearActiveSounds()">
+            <i class="fa-solid fa-stop"></i>
+        </div>
+        <div class="action toggle-content" (click)="service.toggleOverLayContent()">
+            <i class="fa-solid fa-angle-up"></i>
+        </div>
+        <div class="action play" (click)="service.togglePauseActiveSounds()">
+            <i class="fa-solid fa-play" *ngIf="service.getPauseActiveSounds()"></i>
+            <i class="fa-solid fa-pause" *ngIf="!service.getPauseActiveSounds()"></i>
+        </div>
+    </div>
+</div>

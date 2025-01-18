@@ -25,9 +25,6 @@ import { ExploreByCategoryComponent } from './pages/explore-section/components/e
 import { ExploreByTimeComponent } from './pages/explore-section/components/explore-by-time/explore-by-time.component';
 import { SearchSectionComponent } from './pages/search-section/search-section.component';
 import { BgVideoComponent } from './shared/bg-video/bg-video.component';
-import { BottomSheetWideComponent } from './shared/bottom-sheet-wide/bottom-sheet-wide.component';
-import { BottomSheetSmallComponent } from './shared/bottom-sheet-small/bottom-sheet-small.component';
-import { BottomSheetContentComponent } from './shared/bottom-sheet-content/bottom-sheet-content.component';
 import { PlayingSpeechBannerComponent } from './shared/playing-speech-banner/playing-speech-banner.component';
 import { SpeechSectionComponent } from './pages/speech-section/speech-section.component';
 import { PlaylistSectionComponent } from './pages/playlist-section/playlist-section.component';
@@ -36,6 +33,7 @@ import { BtnRectangleComponent } from './shared/buttons/btn-rectangle/btn-rectan
 import { BtnRoundComponent } from './shared/buttons/btn-round/btn-round.component';
 import { BtnRoundSmallComponent } from './shared/buttons/btn-round-small/btn-round-small.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { BottomSheetComponent } from './shared/bottom-sheet/bottom-sheet.component';
 
 @NgModule({
   declarations: [
@@ -60,9 +58,6 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     ExploreByTimeComponent,
     SearchSectionComponent,
     BgVideoComponent,
-    BottomSheetWideComponent,
-    BottomSheetSmallComponent,
-    BottomSheetContentComponent,
     PlayingSpeechBannerComponent,
     SpeechSectionComponent,
     PlaylistSectionComponent,
@@ -70,6 +65,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     BtnRoundComponent,
     BtnRoundSmallComponent,
     LoginPageComponent,
+    BottomSheetComponent,
   ],
   imports: [
     BrowserModule,

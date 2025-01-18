@@ -18,12 +18,15 @@ export class AudioItemComponent {
   toggleSound(sound: any): void {
     this.service.toggleActiveSound(sound);
     this.service.toggleActiveSoundIDRef('#sound-audio-' + sound.id);
+
+    if(this.service.activeSoundsPaused) {
+      this.service.togglePauseActiveSounds()
+    }
   }
 
   updateSoundVolume(event: Event): void {
     const volume = parseInt((event.target as HTMLInputElement).value); // Extract the value
     this.soundsService.updateSoundVolume(this.sound, volume);
-    console.log(this.sound)
     this.service.updateActiveSoundVolume(this.sound, volume);
   }
   

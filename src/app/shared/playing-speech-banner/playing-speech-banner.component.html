@@ -1,4 +1,4 @@
-<div class="content blurry-bg" *ngIf="service.isPlaying() && createSectionService.showPlayingSpeechBanner() && !hideBanner">
+<div class="content blurry-bg" *ngIf="service.isPlaying() && !(createSectionService.isCreateSection()) && !hideBanner">
 
   <div class="info">
     <div class="img_thumb">
