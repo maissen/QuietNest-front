@@ -15,71 +15,12 @@
                 <span>Performed By</span>
             </div>
             <div *ngIf="service.getSelectedSpeechData().description" class="description">{{service.getSelectedSpeechData().description}}</div>
-            <div class="narrator">
-                <div class="narrator__pic">
-                    <img [src]="service.getSelectedSpeechData().narrator.img">
-                </div>
-                <div class="narrator__info">
-                    <p>{{service.getSelectedSpeechData().narrator.name}}</p>
-                    <p>{{service.getSelectedSpeechData().narrator.description}}</p>
-                    <div class="actions">
-                        <button class="action like" (click)="likeNarrator()" [ngClass]="{'liked': service.getSelectedSpeechData().narrator.liked}">
-                            <i class="fa-solid fa-heart"></i>
-                            {{service.getSelectedSpeechData().narrator.likes}}
-                            <span> {{ service.getSelectedSpeechData().narrator.likes <= 1 ? 'like to' : 'likes to' }} {{ service.getSelectedSpeechData().narrator.name.split(' ')[0] }}</span>
-                        </button>
-                        <button class="action">
-                            <i class="fa-solid fa-book"></i>
-                            {{service.getSelectedSpeechData().narrator.speeches_nbr}}
-                            <span>Available speeches</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
+
+            <app-narrator-profile></app-narrator-profile>
+
         </header>
 
-        <div class="controls" *ngIf="service.getSpeechDurationInSeconds() > 0">
-            <div class="actions">
-                <div class="action">
-                </div>
-                <div class="action">
-                    <button>
-                        <i class="fa-solid fa-save"></i>
-                    </button>
-                </div>
-                <div class="action">
-                    <button *ngIf="showPlay_hideReplay()" (click)="service.togglePlayPause()">
-                        <i class="fa-solid fa-play" *ngIf="!service.isSpeechPlaying"></i>
-                        <i class="fa-solid fa-pause" *ngIf="service.isSpeechPlaying"></i>
-                    </button>
-                    <button *ngIf="!showPlay_hideReplay()" (click)="service.replaySpeech()">
-                        <i class="fa-solid fa-repeat"></i>
-                    </button>
-                </div>
-                <div class="action">
-                    <button (click)="stopSpeech()">
-                        <i class="fa-solid fa-stop"></i>
-                    </button>
-                </div>
-                <div class="action">
-                </div>
-            </div>
-            <div class="speech_level">
-                <div class="label">{{service.getSpeechReadingLevel()}}</div>
-                <div class="range">
-                    <input 
-                        type="range" 
-                        min="0" 
-                        step="1"
-                        [max]="service.getSpeechDurationInSeconds()" 
-                        [value]="service.getSpeechReadingLevelInSeconds()"
-                        (input)="onSeek($event)"
-                        class="range-slider"
-                    >
-                </div>
-                <div class="label">{{service.getSpeechDuration()}}</div>
-            </div>
-        </div>
+        <app-playing-speech-control></app-playing-speech-control>
     </div>
 </div>
 

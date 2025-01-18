@@ -38,6 +38,8 @@ import { TimerSectionComponent } from './pages/timer-section/timer-section.compo
 import { CtaBtnReviewComponent } from './shared/cta-btn-review/cta-btn-review.component';
 import { CarouselRectanglePlaylistComponent } from './shared/items-carousels/carousel-rectangle-playlist/carousel-rectangle-playlist.component';
 import { PlaylistItemRectangleComponent } from './shared/playlist-item-rectangle/playlist-item-rectangle.component';
+import { PlayingSpeechControlComponent } from './shared/playing-speech-control/playing-speech-control.component';
+import { NarratorProfileComponent } from './shared/narrator-profile/narrator-profile.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +76,8 @@ import { PlaylistItemRectangleComponent } from './shared/playlist-item-rectangle
     CtaBtnReviewComponent,
     CarouselRectanglePlaylistComponent,
     PlaylistItemRectangleComponent,
+    PlayingSpeechControlComponent,
+    NarratorProfileComponent,
   ],
   imports: [
     BrowserModule,

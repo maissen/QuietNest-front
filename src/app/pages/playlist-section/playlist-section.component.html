@@ -1,12 +1,16 @@
 <div class="content" [ngStyle]="{'background-image': 'url(' + service.getPlayingPlaylist()?.img + ')'}">
 
-    <!-- <div class="loaded_content blurry-bg"> -->
-    <div class="loaded_content">
+    <div class="loaded_content blurry-bg">  
         <div class="header">
             <div class="title">{{service.getPlayingPlaylist().name}}</div>
+
+            <app-narrator-profile></app-narrator-profile>
+
         </div>
         <div class="body"></div>
-        <div class="footer"></div>
+        <div class="footer">
+            <app-playing-speech-control></app-playing-speech-control>
+        </div>
     </div>
 
     <button class="close_section blurry-bg">

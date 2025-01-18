@@ -1,0 +1,21 @@
+<div class="narrator">
+    <div class="narrator__pic">
+        <img [src]="service.getSelectedSpeechData().narrator.img">
+    </div>
+    <div class="narrator__info">
+        <p>{{service.getSelectedSpeechData().narrator.name}}</p>
+        <p>{{service.getSelectedSpeechData().narrator.description}}</p>
+        <div class="actions">
+            <button class="action like" (click)="likeNarrator()" [ngClass]="{'liked': service.getSelectedSpeechData().narrator.liked}">
+                <i class="fa-solid fa-heart"></i>
+                {{service.getSelectedSpeechData().narrator.likes}}
+                <span> {{ service.getSelectedSpeechData().narrator.likes <= 1 ? 'like to' : 'likes to' }} {{ service.getSelectedSpeechData().narrator.name.split(' ')[0] }}</span>
+            </button>
+            <button class="action">
+                <i class="fa-solid fa-book"></i>
+                {{service.getSelectedSpeechData().narrator.speeches_nbr}}
+                <span>Available speeches</span>
+            </button>
+        </div>
+    </div>
+</div>

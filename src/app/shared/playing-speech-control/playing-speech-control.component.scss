@@ -1,0 +1,53 @@
+.controls {
+    height: var(--controls-height);
+    width: 100%;
+    position: fixed;
+    bottom: calc(var(--navbar-small-height) + 2rem);
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media all and (min-width: 1200px) {
+        width: calc(100% - var(--navbar-wide-width));
+    }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+
+        .action {
+            height: 4rem;
+            width: 4rem;
+
+            button {
+                height: 100%;
+                width: 100%;
+                border-radius: 50%;
+                border: none;
+                background-color: transparent;
+                color: #FFF;
+                transition: .3s;
+
+                &:hover {
+                    background-color: var(--avgColor);
+                }
+            }
+        }
+    }
+
+    .speech_level {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        .range {
+            display: flex;
+            align-items: center;
+            max-width: 20rem;
+        }
+    }
+
+}

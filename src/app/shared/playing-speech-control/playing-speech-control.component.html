@@ -1,0 +1,42 @@
+<div class="controls" *ngIf="service.getSpeechDurationInSeconds() > 0">
+    <div class="actions">
+        <div class="action">
+        </div>
+        <div class="action">
+            <button>
+                <i class="fa-solid fa-save"></i>
+            </button>
+        </div>
+        <div class="action">
+            <button *ngIf="showPlay_hideReplay()" (click)="service.togglePlayPause()">
+                <i class="fa-solid fa-play" *ngIf="!service.isSpeechPlaying"></i>
+                <i class="fa-solid fa-pause" *ngIf="service.isSpeechPlaying"></i>
+            </button>
+            <button *ngIf="!showPlay_hideReplay()" (click)="service.replaySpeech()">
+                <i class="fa-solid fa-repeat"></i>
+            </button>
+        </div>
+        <div class="action">
+            <button (click)="stopSpeech()">
+                <i class="fa-solid fa-stop"></i>
+            </button>
+        </div>
+        <div class="action">
+        </div>
+    </div>
+    <div class="speech_level">
+        <div class="label">{{service.getSpeechReadingLevel()}}</div>
+        <div class="range">
+            <input 
+                type="range" 
+                min="0" 
+                step="1"
+                [max]="service.getSpeechDurationInSeconds()" 
+                [value]="service.getSpeechReadingLevelInSeconds()"
+                (input)="onSeek($event)"
+                class="range-slider"
+            >
+        </div>
+        <div class="label">{{service.getSpeechDuration()}}</div>
+    </div>
+</div>
