@@ -1,70 +1,16 @@
-<div 
-  class="content" 
-  *ngIf="service.getSelectedSpeechData() != null" 
-  [style.--currentSpeechBGImg]="'url(' + service.getSelectedSpeechData().img + ')'"
->
+<div class="content" [ngStyle]="{'background-image': 'url(' + service.getPlayingPlaylist()?.img + ')'}">
+
+    <!-- <div class="loaded_content blurry-bg"> -->
     <div class="loaded_content">
-
-        <button class="exit blurry-bg" routerLink="/app">
-            <i class="fa-solid fa-angle-left"></i>
-        </button>
-
-        <header>
-            <div class="title cormorant-font">
-                <p>{{service.getSelectedSpeechData().name}}</p>
-                <span>Performed By</span>
-            </div>
-            <div *ngIf="service.getSelectedSpeechData().description" class="description">{{service.getSelectedSpeechData().description}}</div>
-            <div class="narrator">
-                <div class="narrator__pic">
-                    <img [src]="service.getSelectedSpeechData().narrator.img">
-                </div>
-                <div class="narrator__info">
-                    <p>{{service.getSelectedSpeechData().narrator.name}}</p>
-                    <p>{{service.getSelectedSpeechData().narrator.description}}</p>
-                </div>
-            </div>
-        </header>
-
-        <div class="controls">
-            <div class="actions">
-                <div class="action">
-                    <button>
-                        <i class="fa-solid fa-save"></i>
-                    </button>
-                </div>
-                <div class="action">
-                    <button>
-                        <i class="fa-solid fa-angle-left"></i>
-                    </button>
-                </div>
-                <div class="action">
-                    <button>
-                        <i class="fa-solid fa-play"></i>
-                    </button>
-                </div>
-                <div class="action">
-                    <button>
-                        <i class="fa-solid fa-angle-right"></i>
-                    </button>
-                </div>
-                <div class="action">
-                    <button>
-                        <i class="fa-solid fa-stop"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="speech_level">
-                <div class="label">XX:YY</div>
-                <div class="range">
-                    <input type="range" name="" min="0" max="100" value="25" class="range-slider">
-                </div>
-                <div class="label">XX:YY</div>
-            </div>
-
-            <audio src=""></audio>
+        <div class="header">
+            <div class="title">{{service.getPlayingPlaylist().name}}</div>
         </div>
+        <div class="body"></div>
+        <div class="footer"></div>
     </div>
-</div>
 
-<app-btn-rectangle [text]="'Close'" [icon]="'fa-solid fa-icon'" class="close_section" routerLink="/app/browse/"></app-btn-rectangle>
+    <button class="close_section blurry-bg">
+        <i class="fa-solid fa-angle-left"></i>
+    </button>
+
+</div>
