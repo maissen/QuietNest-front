@@ -2,6 +2,27 @@
     min-height: calc(100vh - var(--navbar-small-height));
     position: relative;
 
+    .quit_btn {
+        height: 3rem;
+        width: 3rem;
+        border-radius: 50%;
+        border: none;
+        color: #FFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: var(--dynamic-content-padding);
+        left: var(--dynamic-content-padding);
+        cursor: pointer;
+        font-size: 1.2rem;
+        z-index: var(--navbar-zindex);
+
+        @media all and (min-width: 1200px) {
+            left: calc(var(--dynamic-content-padding) + var(--navbar-wide-width));
+        }
+    }
+
     .header {
         display: flex;
         align-items: center;
@@ -33,6 +54,7 @@
         font-size: 2rem;
         color: #FFF;
         margin-bottom: 2rem;
+        margin-right: 3rem;
     }
     hr {
         margin-bottom: 4rem;

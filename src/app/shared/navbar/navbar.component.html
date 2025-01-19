@@ -26,7 +26,7 @@
     <p class="copyright text-center">© Maissen Belgacem</p>
 
 
-    <div class="create-section-sounds" style="display: block;">
+    <div class="create-section-sounds" style="display: none;">
         <div *ngFor="let sound of soundsService.getSounds()">
             <audio 
                 *ngIf="service.isSoundActive(sound)" 
