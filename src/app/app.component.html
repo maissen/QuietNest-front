@@ -13,13 +13,15 @@
     <app-playing-speech-banner></app-playing-speech-banner>
     <app-bottom-sheet></app-bottom-sheet>
     
-    <div 
-        [ngClass]="{
-            'dynamic-content': true, 
-            'add-spacing-for-navbar': showNavbar, 
+    <div
+        class="dynamic-content"
+        [ngStyle]="{
+            'padding-left': showNavbar ? 'var(--navbar-wide-width)' : '0'
         }"
     >
+        {{showNavbar}}
         <router-outlet></router-outlet>
     </div>
+
 
 </div>

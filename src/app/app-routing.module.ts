@@ -83,10 +83,15 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: '**',
+    path: 'not-found',
     component: NotFound404Component
+  },
+  {
+    path: '**',
+    redirectTo: 'not-found'
   }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
