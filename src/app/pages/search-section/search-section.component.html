@@ -3,9 +3,30 @@
 
     <div class="loaded_content">
 
-        <p *ngIf="parameterType == 'narrator'">Narrators result</p>
-        <p *ngIf="parameterType == 'category'">categorys result</p>
+
+
+        <!-- <p *ngIf="parameterType == 'category' && data?.length >= 0">result of {{parameterValue}}</p> -->
         <p *ngIf="parameterType == 'time'">times result</p>
+
+        <div class="narrator" *ngIf="parameterType == 'narrator' && data?.length > 0">
+            <app-narrator-profile [narrator]="data !=null ? narrators.getNarratorById(data[0]) : ''" ></app-narrator-profile>
+            <hr>
+        </div>
+
+        <div class="grid-container">
+
+            <ng-container *ngIf="parameterType == 'narrator'">
+
+
+                <div class="item" *ngFor="let speech of data"> 
+                    <app-audio-item-rectangle [speech]="speech"></app-audio-item-rectangle>
+                </div>
+                <div class="item" *ngFor="let speech of data"> 
+                    <app-audio-item-rectangle [speech]="speech"></app-audio-item-rectangle>
+                </div>
+            </ng-container>
+
+        </div>
         
     </div>
 </div>

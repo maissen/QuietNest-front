@@ -1,4 +1,7 @@
-<div class="item" (click)="displaySpeechBanner()">
+<div 
+  class="item" 
+  (click)="displaySpeechBanner()"
+>
   <div class="item__thumb">
     <img [src]="speech.img">
     <div class="playing_banner blurry-bg" *ngIf="service.getSelectedSpeechData()?.id == speech.id && !playlistsService.isPlaying">
@@ -9,16 +12,16 @@
   <div class="item__info">
     <p class="name">{{ speech.name }} </p>
     <div class="cat_narrator cormorant-font">
-      <p class="category">{{ categoriesService.getCategoryById(speech).name }}</p>
+      <p class="category">{{ categoriesService.getCategoryById(speech)?.name }}</p>
       •
-      <p class="narrator">{{ narratorsService.getNarratorById(speech).name }}</p>
+      <p class="narrator">{{ narratorsService.getNarratorById(speech)?.name }}</p>
     </div>
     <div class="likes_plays_badges">
       <div class="item blurry-bg">
-        <i class="fa-solid fa-heart"></i> <span class="number">{{ speech.likes }}</span>
+        <i class="fa-solid fa-heart"></i> <span class="number">{{ speech?.likes }}</span>
       </div>
       <div class="item blurry-bg">
-        <i class="fa-solid fa-play"></i> <span class="number">{{ speech.playing_nbr }}</span>
+        <i class="fa-solid fa-play"></i> <span class="number">{{ speech?.playing_nbr }}</span>
       </div>
     </div>
   </div>

@@ -20,4 +20,31 @@
     .loaded_content {
         padding: var(--dynamic-content-padding);
     }
+
+    .narrator {
+        margin-bottom: 2rem;
+
+        hr {
+            margin-bottom: 6rem;
+        }
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+
+        @media all and (min-width: 500px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media all and (min-width: 850px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        @media all and (min-width: 1650px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .item {
+            margin: auto;
+        }
+    }
 }

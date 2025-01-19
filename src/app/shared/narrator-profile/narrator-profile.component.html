@@ -1,21 +1,21 @@
 <div class="profile-speech" *ngIf="!isPlaylistRoute()" [ngStyle]="{'visibility: hidden': service.getSpeechDurationInSeconds() == 0}">
     <div class="narrator__pic">
-        <img [src]="service.getSelectedSpeechData()?.narrator.img">
+        <img [src]="narrator?.img">
     </div>
     <div class="narrator__info">
         <div>
-            <p>{{service.getSelectedSpeechData().narrator.name}}</p>
-            <p>{{service.getSelectedSpeechData().narrator.description}}</p>
+            <p>{{narrator?.name}}</p>
+            <p>{{narrator?.description}}</p>
         </div>
         <div class="actions">
-            <button class="action like" (click)="likeNarrator()" [ngClass]="{'liked': service.getSelectedSpeechData().narrator.liked}">
+            <button class="action like" (click)="likeNarrator()" [ngClass]="{'liked': narrator?.liked}">
                 <i class="fa-solid fa-heart"></i>
-                {{service.getSelectedSpeechData().narrator.likes}}
-                <span> {{ service.getSelectedSpeechData().narrator.likes <= 1 ? 'like to' : 'likes to' }} {{ service.getSelectedSpeechData().narrator.name.split(' ')[0] }}</span>
+                {{narrator?.likes}}
+                <span> {{ narrator?.likes <= 1 ? 'like to' : 'likes to' }} {{ narrator?.name?.split(' ')[0] }}</span>
             </button>
             <button class="action">
                 <i class="fa-solid fa-book"></i>
-                {{service.getSelectedSpeechData().narrator.speeches_nbr}}
+                {{narrator?.speeches_nbr}}
                 <span>Available speeches</span>
             </button>
         </div>
@@ -26,27 +26,27 @@
 <div class="profile-playlist" *ngIf="isPlaylistRoute()" [ngStyle]="{'visibility: hidden': service.getSpeechDurationInSeconds() == 0}">
     <div class="info">
         <div class="pic">
-            <img [src]="service.getSelectedSpeechData()?.narrator.img">
+            <img [src]="narrator?.img">
         </div>
         <div class="text">
-            <p class="name">{{service.getSelectedSpeechData().narrator.name}}</p>
-            <p class="description">{{service.getSelectedSpeechData().narrator.description}}</p>
+            <p class="name">{{narrator?.name}}</p>
+            <p class="description">{{narrator?.description}}</p>
         </div>
     </div>
     <div class="actions">
-        <button class="action like" (click)="likeNarrator()" [ngClass]="{'liked': service.getSelectedSpeechData().narrator.liked}">
+        <button class="action like" (click)="likeNarrator()" [ngClass]="{'liked': narrator?.liked}">
             <i class="fa-solid fa-heart"></i>
             <p class="count">
-                {{service.getSelectedSpeechData().narrator.likes}}
-                {{ service.getSelectedSpeechData().narrator.likes <= 1 ? 'like ' : 'likes ' }} 
+                {{narrator?.likes}}
+                {{ narrator?.likes <= 1 ? 'like ' : 'likes ' }} 
             </p>
-            <span class="showTextDetail">to {{ service.getSelectedSpeechData().narrator.name.split(' ')[0] }}</span>
+            <span class="showTextDetail">to {{ narrator?.name.split(' ')[0] }}</span>
         </button>
         <button class="action like">
             <i class="fa-solid fa-book"></i>
             <p class="count">
-                {{service.getSelectedSpeechData().narrator.speeches_nbr}}
-                {{ service.getSelectedSpeechData().narrator.speeches_nbr <= 1 ? 'audio' : 'audios' }} 
+                {{narrator?.speeches_nbr}}
+                {{ narrator?.speeches_nbr <= 1 ? 'audio' : 'audios' }} 
             </p>
         </button>
 

@@ -16,7 +16,7 @@
             </div>
             <div *ngIf="service.getSelectedSpeechData().description" class="description">{{service.getSelectedSpeechData().description}}</div>
 
-            <app-narrator-profile></app-narrator-profile>
+            <app-narrator-profile [narrator]="service.getSelectedSpeechData()?.narrator" ></app-narrator-profile>
 
         </header>
 

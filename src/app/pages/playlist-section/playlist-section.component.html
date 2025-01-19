@@ -5,7 +5,7 @@
         <div class="header">
             <div class="title">{{service.getPlayingPlaylist()?.name}}</div>
 
-            <app-narrator-profile></app-narrator-profile>
+            <app-narrator-profile [narrator]="speechesService.getSelectedSpeechData()?.narrator" ></app-narrator-profile>
 
         </div>
 
