@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CreateSectionService } from './create-section.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,9 @@ export class SoundsmixturesService {
 
   private soundsmixtures: any[] = [];
 
-  constructor() { }
+  constructor(
+    private createSectionService: CreateSectionService
+  ) { }
 
   getSoundsMixtures(): any[] {
     return this.soundsmixtures;
@@ -18,5 +21,12 @@ export class SoundsmixturesService {
 
   setSoundsMixtures(list: any[]): void {
     this.soundsmixtures = list;
+  }
+
+  playSoundMixture(mixture: any): void {
+    console.log('sound mixture to play : ' + mixture.sounds)
+    mixture.sounds.forEach((sound: any) => {
+      this.createSectionService.toggleSound(sound);
+    });
   }
 }

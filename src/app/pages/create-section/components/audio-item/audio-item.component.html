@@ -3,7 +3,7 @@
           <div
                class="icon_thumb blurry-bg"
                [ngClass]="{'activeSound': service.isSoundActive(sound)}"
-               (click)="toggleSound(sound)"
+               (click)="service.toggleSound(sound)"
           >
                <i [class]="sound.icon"></i>
           </div>

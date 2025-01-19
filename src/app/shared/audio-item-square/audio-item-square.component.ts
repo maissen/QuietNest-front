@@ -19,7 +19,7 @@ export class AudioItemSquareComponent {
     public narratorsService: NarratorsService,
     public categoriesService: CategoriesService,
     private http: HttpClient,
-    private mixtures: SoundsmixturesService,
+    private service: SoundsmixturesService,
     private router: Router
   ) {}
 
@@ -27,7 +27,7 @@ export class AudioItemSquareComponent {
     const mixtureID = mixture.id;
     const body = { mixtureID }
 
-    this.http.post<any>(this.mixtures.api_play_soundsmixture, body).subscribe({
+    this.http.post<any>(this.service.api_play_soundsmixture, body).subscribe({
       next: (response) => {
 
         console.log(response)
@@ -38,5 +38,7 @@ export class AudioItemSquareComponent {
         console.error('Error:', err);
       }
     });
+
+    this.service.playSoundMixture(this.soundMixture);
   }
 }

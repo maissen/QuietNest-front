@@ -26,7 +26,7 @@
     <p class="copyright text-center">© Maissen Belgacem</p>
 
 
-    <div class="create-section-sounds" style="display: none;">
+    <div class="create-section-sounds" style="display: block;">
         <div *ngFor="let sound of soundsService.getSounds()">
             <audio 
                 *ngIf="service.isSoundActive(sound)" 
@@ -35,6 +35,7 @@
                 loop 
                 [autoplay]="!service.getPauseActiveSounds()"
                 [volume]="sound.volume/10"
+                controls
             ></audio>
         </div>
     </div>

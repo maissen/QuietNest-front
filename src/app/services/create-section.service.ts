@@ -44,6 +44,22 @@ export class CreateSectionService {
     });
   }
 
+  toggleSound(sound: any): void {
+    this.toggleActiveSound(sound);
+    this.toggleActiveSoundIDRef('#sound-audio-' + sound.id);
+
+    // Ensure audio element is found and then play it
+    const audioElement = document.querySelector(`#sound-audio-${sound.id}`) as HTMLAudioElement;
+    
+    if (audioElement) {
+        if (this.activeSoundsPaused) {
+            audioElement.play();
+        } else {
+            audioElement.pause();
+        }
+    }
+}
+
   getPauseActiveSounds(): boolean {
     return this.activeSoundsPaused;
   }
