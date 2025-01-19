@@ -30,9 +30,8 @@ export class AudioItemSquareComponent {
     this.http.post<any>(this.service.api_play_soundsmixture, body).subscribe({
       next: (response) => {
 
-        console.log(response)
+        // console.log(response)
         mixture.playing_nbr = parseInt(mixture.playing_nbr) + 1;
-        this.router.navigate(['app/create'])
       },
       error: (err) => {
         console.error('Error:', err);

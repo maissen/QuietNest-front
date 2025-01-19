@@ -4,6 +4,7 @@
                class="icon_thumb blurry-bg"
                [ngClass]="{'activeSound': service.isSoundActive(sound)}"
                (click)="service.toggleSound(sound)"
+               [id]="'audio-item-'+sound.id"
           >
                <i [class]="sound.icon"></i>
           </div>
