@@ -29,8 +29,8 @@ export class PlayingSpeechControlComponent {
     } 
   }
 
-  stopSpeech(): void {
-    this.service.clearSelectedSpeechData();
+  stop(): void {
+    this.globalService.clearPlayback();
     this.router.navigate(['app/'])
   }
 
