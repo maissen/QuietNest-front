@@ -60,15 +60,15 @@ const routes: Routes = [
         component: SearchSectionComponent
       },
       {
-        path: 'search/narrator/:id',
+        path: 'search/narrator/:narratorID',
         component: SearchSectionComponent
       },
       {
-        path: 'search/category/:id',
+        path: 'search/category/:categoryID',
         component: SearchSectionComponent
       },
       {
-        path: 'search/time/:id',
+        path: 'search/time/:timeID',
         component: SearchSectionComponent
       },
       {

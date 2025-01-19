@@ -1,5 +1,11 @@
 <div class="content add-bottom-spacing-for-playing-speech-banner">
     <app-bg-video></app-bg-video>
 
-    <p>search-section works!</p>
+    <div class="loaded_content">
+
+        <p *ngIf="parameterType == 'narrator'">Narrators result</p>
+        <p *ngIf="parameterType == 'category'">categorys result</p>
+        <p *ngIf="parameterType == 'time'">times result</p>
+        
+    </div>
 </div>
