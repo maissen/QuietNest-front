@@ -12,6 +12,7 @@ export class SpeechesService {
   public api_get_all_speeches = 'http://localhost:2003/api/get-all-speeches';
   public api_like_speech = 'http://localhost:2003/api/like/speech/';
   public api_increment_playingNbr = 'http://localhost:2003/api/increment-playing-nbr';
+  public api_toggle_save_speech = 'http://localhost:2003/api/save-speech/'
 
   private allSpeches: any[] = [];
   private selectedSpeech: any = null;
