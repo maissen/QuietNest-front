@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { CreateSectionService } from 'src/app/services/create-section.service';
 import { SoundsService } from 'src/app/services/sounds.service';
 
@@ -7,7 +7,7 @@ import { SoundsService } from 'src/app/services/sounds.service';
   templateUrl: './create-section.component.html',
   styleUrls: ['./create-section.component.scss'],
 })
-export class CreateSectionComponent {
+export class CreateSectionComponent implements AfterViewInit {
   @ViewChild('categoriesList', { static: true }) categoriesList!: ElementRef;
   activeCategories: any[] = [];
 
@@ -15,6 +15,16 @@ export class CreateSectionComponent {
     public service: CreateSectionService,
     public soundsService: SoundsService
   ) {}
+
+  ngAfterViewInit(): void {
+    if(this.service.auto_sounds_play) {
+      if(this.service.getActiveSounds()) {
+        this.service.clearActiveSounds()
+        console.log('after view init, sounds to play : ' + this.service.auto_sounds_list);
+        this.service.playSoundsAuto(this.service.auto_sounds_list);
+      }
+    }
+  }
 
   toggleCategory(category: any): void {
     if (category === 'All') {

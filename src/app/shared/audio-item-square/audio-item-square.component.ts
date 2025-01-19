@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
+import { CreateSectionService } from 'src/app/services/create-section.service';
 import { NarratorsService } from 'src/app/services/narrators.service';
 import { SoundsmixturesService } from 'src/app/services/soundsmixtures.service';
 import { SpeechesService } from 'src/app/services/speeches.service';
@@ -20,7 +21,8 @@ export class AudioItemSquareComponent {
     public categoriesService: CategoriesService,
     private http: HttpClient,
     private service: SoundsmixturesService,
-    private router: Router
+    private router: Router,
+    private createSectionService: CreateSectionService
   ) {}
 
   openMixture(mixture: any): void {
@@ -38,6 +40,13 @@ export class AudioItemSquareComponent {
       }
     });
 
-    this.service.playSoundMixture(this.soundMixture);
+    this.router.navigate(['/app/create']);
+    this.createSectionService.auto_sounds_play = true;
+    let soundsIDs: any = [];
+    mixture.sounds.forEach((sound: any) => {
+      soundsIDs.push(sound.id)
+    });
+    this.createSectionService.auto_sounds_list = soundsIDs;
+    // this.service.playSoundMixture(this.soundMixture);
   }
 }

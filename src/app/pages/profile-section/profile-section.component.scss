@@ -50,6 +50,10 @@
             @media all and (min-width: 500px) {
                 flex-direction: row;
                 align-items: flex-start;
+
+                .info {
+                    text-align: start;
+                }
             }
 
         }

@@ -13,6 +13,9 @@ export class CreateSectionService {
   screenWidth: number = window.innerWidth;
   showOverlayContent: boolean = false;
   private currentUrl: string = '';
+  
+  auto_sounds_play: boolean = false;
+  auto_sounds_list: any[] = [];
 
   constructor(
     private router: Router
@@ -53,6 +56,7 @@ export class CreateSectionService {
     
     if (audioElement) {
         if (this.activeSoundsPaused) {
+            this.updateActiveSoundVolume(sound, sound.volume);
             audioElement.play();
         } else {
             audioElement.pause();
@@ -113,6 +117,26 @@ export class CreateSectionService {
     return this.activeSounds;
   }
 
+  playSoundsAuto(soundsIDs: any): void {
+    // console.log(soundsIDs);
+
+    soundsIDs.forEach((id: any) => {
+        let soundItem = document.querySelector('#audio-item-' + id) as HTMLElement;  // Cast to HTMLElement
+        console.log(soundItem);
+
+        if (soundItem) {
+            setTimeout(() => {
+                soundItem.click();  // Click after 1 second
+                // console.log('Successfully clicked on:', soundItem);
+            }, 1000);  // 1000 ms = 1 second
+        } else {
+            console.warn(`No element found for sound ID: ${id}`);
+        }
+    });
+}
+
+
+
   // Resize event handler to update screen width
   private onResize = (): void => {
     this.screenWidth = window.innerWidth;
@@ -130,5 +154,6 @@ export class CreateSectionService {
   clearActiveSounds(): void {
     this.activeSounds = [];
     this.showOverlayContent = false;
+    this.auto_sounds_play = false;
   }
 }
