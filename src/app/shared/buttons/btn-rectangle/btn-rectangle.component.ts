@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class BtnRectangleComponent {
 
-  @Input() routerLink: string = '/app';
+  @Input() link: string = '/app';
   @Input() text: string = 'Button';
   @Input() icon: string = '';
   @Input() isRouter: boolean = true;
