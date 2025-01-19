@@ -39,7 +39,12 @@
   </div>
 
   <div class="actions">
-    <button class="like" [ngClass]="{'liked': service.getSelectedSpeechData().liked == true}" (click)="likeSpeech()">
+    <button 
+    *ngIf="!this.playlistsService.isPlaying"
+      class="like" 
+      [ngClass]="{'liked': service.getSelectedSpeechData().liked == true}" 
+      (click)="likeSpeech()"
+    >
       <i class="fa-solid fa-heart"></i>
     </button>
     <button *ngIf="!playlistsService.isPlaying" [routerLink]="'/app/speech/' + service.getSelectedSpeechData().id">
