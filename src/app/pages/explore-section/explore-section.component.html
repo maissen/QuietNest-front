@@ -9,11 +9,12 @@
     </div>
 
     <div class="loaded_content add-bottom-spacing-for-playing-speech-banner">
-        <app-carousel-square 
-            [hasBottomBorder]="true" 
+
+        <app-carousel-square-narrators
+            [hasBottomBorder]="true"
             [carouselTitle]="'Trending narrators'"
-            [speeches]="service.getAllSpeches()"
-        ></app-carousel-square>
+            [narrators]="narratorsService.getAllNarrators()"
+        ></app-carousel-square-narrators>
     
         <app-explore-by-category [data]="categoriesService.getAllCategories()"></app-explore-by-category>
 

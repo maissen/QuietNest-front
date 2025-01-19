@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { ExploreSectionService } from 'src/app/services/explore-section.service';
+import { NarratorsService } from 'src/app/services/narrators.service';
 import { PlaylistsService } from 'src/app/services/playlists.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class ExploreSectionComponent {
   constructor(
     public service: ExploreSectionService,
     public categoriesService: CategoriesService,
-    public playlistsService: PlaylistsService
+    public playlistsService: PlaylistsService,
+    public narratorsService: NarratorsService
   ){};
 
 }

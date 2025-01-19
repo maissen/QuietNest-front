@@ -40,6 +40,8 @@ import { CarouselRectanglePlaylistComponent } from './shared/items-carousels/car
 import { PlaylistItemRectangleComponent } from './shared/playlist-item-rectangle/playlist-item-rectangle.component';
 import { PlayingSpeechControlComponent } from './shared/playing-speech-control/playing-speech-control.component';
 import { NarratorProfileComponent } from './shared/narrator-profile/narrator-profile.component';
+import { CarouselSquareNarratorsComponent } from './shared/items-carousels/carousel-square-narrators/carousel-square-narrators.component';
+import { NarratorItemSquareComponent } from './shared/narrator-item-square/narrator-item-square.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,8 @@ import { NarratorProfileComponent } from './shared/narrator-profile/narrator-pro
     PlaylistItemRectangleComponent,
     PlayingSpeechControlComponent,
     NarratorProfileComponent,
+    CarouselSquareNarratorsComponent,
+    NarratorItemSquareComponent,
   ],
   imports: [
     BrowserModule,
