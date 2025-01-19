@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SpeechesService } from 'src/app/services/speeches.service';
 import { UserService } from 'src/app/services/user.service';
@@ -13,7 +13,7 @@ export class ProfileSectionComponent {
   constructor(
     public user: UserService,
     private router: Router,
-    private speechesService: SpeechesService
+    public speechesService: SpeechesService,
   ) {}
 
   clear() {
@@ -23,5 +23,6 @@ export class ProfileSectionComponent {
       window.location.reload();
     });
   }
+
   
 }

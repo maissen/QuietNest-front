@@ -1,9 +1,40 @@
 <div class="content">
     <app-bg-video></app-bg-video>
 
-    <p>profile-section works!</p>
+    <div class="loaded_content add-bottom-spacing-for-playing-speech-banner">
+        
+        <div class="header blurry-bg">
+            <div class="qr_img">
+                <img src="https://community.adobe.com/t5/image/serverpage/image-id/442804iB1826ABA5C5080FE?v=v2" alt="">
+            </div>
+            <div class="info"> 
+                <p class="fullname">
+                    {{ user.getUser().firstName + ' ' + this.user.getUser().lastName}}   
+                </p> 
+                <p class="joining_date">
+                    {{user.getUser().joiningDate | date}}
+                </p>
+                <app-btn-rectangle [text]="'Log out'" [isRouter]="false" (click)="clear()"></app-btn-rectangle>
+            </div>
+        </div>
 
-    <button (click)="clear()">clear</button>
-    <br>
-    {{this.user.getUser() | json}}
+
+        <div class="body">
+
+            <app-carousel-rectangle 
+            *ngIf="speechesService.getSavedSpeeches().length > 0"
+                [carouselTitle]="'Saved Speeches'" 
+                [speeches]="speechesService.getSavedSpeeches()"
+            ></app-carousel-rectangle>
+
+            <app-carousel-rectangle 
+            *ngIf="speechesService.getLikedSpeeches().length > 0"
+                [carouselTitle]="'Liked Speeches'" 
+                [speeches]="speechesService.getLikedSpeeches()"
+            ></app-carousel-rectangle>
+
+        </div>
+
+    </div>
+
 </div>

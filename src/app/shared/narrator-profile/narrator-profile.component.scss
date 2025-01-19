@@ -54,8 +54,15 @@
                     transition: .3s;
 
                     & + span {
-                        margin-left: 1.2rem;
-                        margin-right: 1.2rem;
+                        margin-left: .7rem;
+                    }
+                }
+                
+                .hideDetail {
+                    display: none;
+
+                    @media all and (min-width: 500px) {
+                        display: inline-block;
                     }
                 }
 

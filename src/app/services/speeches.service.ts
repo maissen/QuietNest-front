@@ -172,4 +172,12 @@ export class SpeechesService {
     } 
   }
 
+  getLikedSpeeches(): any[] {
+    return this.getAllSpeeches().filter(speech => speech.liked)
+  }
+
+  getSavedSpeeches(): any[] {
+    return this.getAllSpeeches().filter(speech => speech.saved)
+  }
+
 }

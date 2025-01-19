@@ -11,12 +11,15 @@
             <button class="action like" (click)="likeNarrator()" [ngClass]="{'liked': narrator?.liked}">
                 <i class="fa-solid fa-heart"></i>
                 {{narrator?.likes}}
-                <span> {{ narrator?.likes <= 1 ? 'like to' : 'likes to' }} {{ narrator?.name?.split(' ')[0] }}</span>
+                {{ narrator?.likes <= 1 ? 'like' : 'likes' }} 
+                <span class="hideDetail">{{ ' to ' + narrator?.name?.split(' ')[0] }}</span> 
             </button>
             <button class="action">
                 <i class="fa-solid fa-book"></i>
                 {{narrator?.speeches_nbr}}
-                <span>Available speeches</span>
+                <span>
+                    <span class="hideDetail">available</span> 
+                    audios</span>
             </button>
         </div>
     </div>
