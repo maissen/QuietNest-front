@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CategoriesService } from 'src/app/services/categories.service';
 import { NarratorsService } from 'src/app/services/narrators.service';
 
 @Component({
@@ -17,15 +18,19 @@ export class SearchSectionComponent implements OnInit {
 
   data: any;
   narratorName: string = '';
+  categoryName: string = '';
 
   constructor(
     private route: ActivatedRoute, 
     private router: Router,
     private http: HttpClient,
-    public narrators: NarratorsService
+    public narrators: NarratorsService,
+    public categories: CategoriesService
   ) { }
 
   ngOnInit(): void {
+    // Fetch all categories first
+
     this.route.paramMap.subscribe(params => {
 
       if (this.router.url.includes('/narrator')) {
@@ -41,20 +46,40 @@ export class SearchSectionComponent implements OnInit {
           }
         );
       
-      } else if (this.router.url.includes('/category')) {
+      } 
+      else if (this.router.url.includes('/category')) {
       
         this.parameterType = 'category';
         this.parameterValue = params.get('categoryID');
+        this.http.get(this.categories.api_get_all_categories).subscribe(
+          (res: any) => {
+            this.categories.setAllCategories(res);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+
         this.http.get(this.api_speeches_oplaylists_by_category + this.parameterValue).subscribe(
           (res: any) => {
+
             this.data = res;
+            const category = this.categories.getAllCategories().find(category => category.id == this.parameterValue);
+            
+            if (category) {
+              this.categoryName = category.name;
+            } else {
+              console.log('Category not found!');
+            }
+          
           },
           (err) => {
             console.log(err);
           }
         );
       
-      } else if (this.router.url.includes('/time')) {
+      } 
+      else if (this.router.url.includes('/time')) {
       
         this.parameterType = 'time';
         this.parameterValue = params.get('timeID');

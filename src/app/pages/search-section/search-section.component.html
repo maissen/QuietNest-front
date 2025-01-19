@@ -3,30 +3,48 @@
 
     <div class="loaded_content">
 
-
-
-        <!-- <p *ngIf="parameterType == 'category' && data?.length >= 0">result of {{parameterValue}}</p> -->
         <p *ngIf="parameterType == 'time'">times result</p>
 
-        <div class="narrator" *ngIf="parameterType == 'narrator' && data?.length > 0">
-            <app-narrator-profile [narrator]="data !=null ? narrators.getNarratorById(data[0]) : ''" ></app-narrator-profile>
+        <ng-container *ngIf="parameterType == 'narrator' && data?.length >= 0">
+
+            <div class="narrator">
+                <app-narrator-profile [narrator]="data !=null ? narrators.getNarratorById(data[0]) : ''" ></app-narrator-profile>
+                <hr>
+            </div>
+            <div class="grid-container">
+                <div class="item" *ngFor="let speech of data"> 
+                    <app-audio-item-rectangle [speech]="speech"></app-audio-item-rectangle>
+                </div>
+                <div class="item" *ngFor="let speech of data"> 
+                    <app-audio-item-rectangle [speech]="speech"></app-audio-item-rectangle>
+                </div>
+            </div>
+
+        </ng-container>
+
+
+        <ng-container *ngIf="parameterType == 'category' && data?.speeches?.length > 0">
+            <p class="title">Speeches with category : {{categoryName}}</p>
             <hr>
-        </div>
 
-        <div class="grid-container">
-
-            <ng-container *ngIf="parameterType == 'narrator'">
-
-
-                <div class="item" *ngFor="let speech of data"> 
+            <div class="grid-container">
+                <div class="item" *ngFor="let speech of data?.speeches">
                     <app-audio-item-rectangle [speech]="speech"></app-audio-item-rectangle>
                 </div>
-                <div class="item" *ngFor="let speech of data"> 
-                    <app-audio-item-rectangle [speech]="speech"></app-audio-item-rectangle>
-                </div>
-            </ng-container>
+            </div>
+        </ng-container>
 
-        </div>
+        <ng-container *ngIf="data?.playlists?.length > 0">
+            <p class="title">playlists with category : {{categoryName}}</p>
+            <hr>
+            
+            <div class="grid-container">
+                <div class="item" *ngFor="let playlist of data?.playlists">
+                    <app-playlist-item-rectangle [playlist]="playlist"></app-playlist-item-rectangle>
+                </div>
+            </div>
+        </ng-container>
+        
         
     </div>
 </div>

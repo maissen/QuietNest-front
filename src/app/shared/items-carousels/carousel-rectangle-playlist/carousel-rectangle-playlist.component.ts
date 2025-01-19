@@ -10,6 +10,7 @@ export class CarouselRectanglePlaylistComponent {
   @Input() hasBottomBorder: boolean = false;
   @Input() carouselTitle: string = '';
   @Input() hasScrollbar: boolean = false;
+  @Input() hasScrollBtns: boolean = true;
   @ViewChild('carouselContainer') carouselContainerRef!: ElementRef;
 
   scrollStep = 300;

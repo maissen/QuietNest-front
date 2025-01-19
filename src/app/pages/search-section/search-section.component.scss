@@ -29,9 +29,20 @@
         }
     }
 
+    .title {
+        font-size: 2rem;
+        color: #FFF;
+        margin-bottom: 2rem;
+    }
+    hr {
+        margin-bottom: 4rem;
+    }
+
     .grid-container {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
+        row-gap: 3rem;
+        margin-bottom: 5rem;
 
         @media all and (min-width: 500px) {
             grid-template-columns: repeat(2, 1fr);
