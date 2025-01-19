@@ -7,7 +7,7 @@ import { Component, ElementRef, ViewChild, AfterViewInit, HostListener, Input } 
 })
 export class ExploreByCategoryComponent implements AfterViewInit{
   @ViewChild('categoriesList') categoriesList!: ElementRef<HTMLUListElement>;
-  @Input() data: any[] = [];
+  @Input() categories: any[] = [];
 
   ngAfterViewInit() {
     this.categoriesList.nativeElement.addEventListener('scroll', () => this.updateScrollButtons());

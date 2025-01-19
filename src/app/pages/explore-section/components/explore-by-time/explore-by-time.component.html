@@ -1,20 +1,21 @@
 <div class="content">
-  <div class="controls">
-      <p class="title">Explore By Time</p>
-      <div class="btns">
-          <app-btn-round-small [icon]="'fa-solid fa-angle-left'" (click)="scrollLeft()"></app-btn-round-small>
-          <app-btn-round-small [icon]="'fa-solid fa-angle-right'" (click)="scrollRight()"></app-btn-round-small>
-      </div>
-  </div>
-
-  <ul class="categories_list hide-scrollbar" #categoriesList>
-      <button class="blurry-bg">5 min</button>
-      <button class="blurry-bg">10 min</button>
-      <button class="blurry-bg">15 min</button>
-      <button class="blurry-bg">20 min</button>
-      <button class="blurry-bg">30 min</button>
-      <button class="blurry-bg">45 min</button>
-      <button class="blurry-bg">60 min</button>
-      <button class="blurry-bg">1 hr+</button>
-  </ul>
+    <div class="controls">
+        <p class="title">Explore By Time</p>
+        <div class="btns">
+            <app-btn-round-small [icon]="'fa-solid fa-angle-left'" (click)="scrollLeft()"></app-btn-round-small>
+            <app-btn-round-small [icon]="'fa-solid fa-angle-right'" (click)="scrollRight()"></app-btn-round-small>
+        </div>
+    </div>
+  
+    <ul class="categories_list hide-scrollbar" #categoriesList>
+        <button class="blurry-bg" routerLink="/app/search/time/5">5 min</button>
+        <button class="blurry-bg" routerLink="/app/search/time/10">10 min</button>
+        <button class="blurry-bg" routerLink="/app/search/time/15">15 min</button>
+        <button class="blurry-bg" routerLink="/app/search/time/20">20 min</button>
+        <button class="blurry-bg" routerLink="/app/search/time/30">30 min</button>
+        <button class="blurry-bg" routerLink="/app/search/time/45">45 min</button>
+        <button class="blurry-bg" routerLink="/app/search/time/60">60 min</button>
+        <button class="blurry-bg" routerLink="/app/search/time/1hr+">1 hr+</button>
+    </ul>
 </div>
+  

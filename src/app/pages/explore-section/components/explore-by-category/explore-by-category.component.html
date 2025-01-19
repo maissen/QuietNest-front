@@ -8,7 +8,11 @@
   </div>
 
   <ul class="categories_list hide-scrollbar" #categoriesList>
-    <button class="blurry-bg" *ngFor="let item of data">category one</button>
+    <button 
+      class="blurry-bg" 
+      *ngFor="let category of categories"
+      [routerLink]="'/app/search/category/'+category.id"
+    >category one</button>
   </ul>
   
 </div>
