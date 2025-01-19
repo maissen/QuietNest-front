@@ -1,9 +1,41 @@
 <button class="blurry-bg">
-    <div class="icon">
-        <i class="fa-solid fa-star"></i>
+    <div class="header" (click)="toggleBody()" [ngStyle]="{'cursor: default;' : user.getUser().hasFeedback}">
+        <div class="icon">
+            <i class="fa-solid fa-star" *ngIf="user.getUser().hasFeedback == undefined"></i>
+            <i class="fa-solid fa-thumbs-up" *ngIf="user.getUser().hasFeedback != undefined"></i>
+        </div>
+        <div class="text">
+            <p class="title" *ngIf="user.getUser().hasFeedback == undefined">I need Your Support</p>
+            <p class="subtitle" *ngIf="user.getUser().hasFeedback == undefined">Encourage me with your Feedback, from Maissen Belgacem</p>
+
+            <p class="title" *ngIf="user.getUser().hasFeedback != undefined">Thanks For Awesome Your Support</p>
+            <p class="subtitle" *ngIf="user.getUser().hasFeedback != undefined">messagek wsol wenchallah li jey khyr {{'<3'}}</p>
+        </div>
     </div>
-    <div class="text">
-        <p class="title">I need Your Support</p>
-        <p class="subtitle">Encourage me with your Feedback, from Maissen Belgacem</p>
+    <div *ngIf="expandBody && user.getUser().hasFeedback == undefined" class="body">
+        <div class="stars">
+            <i  
+                *ngFor="let star of stars; let i = index"
+                class="fa-solid fa-star" 
+                [class.active]="i < selectedStars" 
+                (click)="setStars(i + 1)"></i>
+        </div>
+        <textarea 
+            name="message" 
+            placeholder="Ektebli haja chaja3ni beha <3" 
+            [(ngModel)]="message" 
+            (keydown)="checkMessageLength($event)" 
+            maxlength="1000">
+        </textarea>
+
+        <div class="footer">
+            <small class="length_indecator">{{message.length}} / 1000</small>
+            <button 
+                *ngIf="selectedStars > 0 || message.length > 0"
+                class="send" 
+                (click)="submitFeedback()"
+            >Yalla ab3eth <i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+
     </div>
 </button>

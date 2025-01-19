@@ -47,4 +47,16 @@ export class UserService {
     localStorage.removeItem('quiet_nest_dear_user');
     console.log('user is cleared');
   }
+
+  addUserAttribute(attribute: string, value: any): void {
+    const user = this.getUser();
+    if (user) {
+      user[attribute] = value;
+      this.setUser(user);
+    } 
+    else {
+      console.error('No user found to update. Make sure a user is set.');
+    }
+  }
+  
 }
