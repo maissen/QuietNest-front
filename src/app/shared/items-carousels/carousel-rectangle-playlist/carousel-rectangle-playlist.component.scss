@@ -1,7 +1,7 @@
 .content {
     width: 100%;
     padding-top: var(--carousel-padding-top);
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
     color: #d9dadb;
 
     .carousel__header {
@@ -11,7 +11,6 @@
 
         .carousel_title {
             font-size: 2rem;
-            margin: 0;
             margin-right: 2.5rem;
             display: flex;
             align-items: center;

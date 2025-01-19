@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, HostListener, Input } from '@angular/core';
 
 @Component({
   selector: 'app-explore-by-category',
@@ -7,12 +7,9 @@ import { Component, ElementRef, ViewChild, AfterViewInit, HostListener } from '@
 })
 export class ExploreByCategoryComponent implements AfterViewInit{
   @ViewChild('categoriesList') categoriesList!: ElementRef<HTMLUListElement>;
-
-  canScrollLeft = false;
-  canScrollRight = true;
+  @Input() data: any[] = [];
 
   ngAfterViewInit() {
-    this.updateScrollButtons();
     this.categoriesList.nativeElement.addEventListener('scroll', () => this.updateScrollButtons());
   }
 
@@ -39,7 +36,5 @@ export class ExploreByCategoryComponent implements AfterViewInit{
 
   updateScrollButtons() {
     const element = this.categoriesList.nativeElement;
-    this.canScrollLeft = element.scrollLeft > 0;
-    this.canScrollRight = element.scrollLeft + element.clientWidth < element.scrollWidth;
   }
 }

@@ -1,22 +1,14 @@
 <div class="content">
-        <div class="controls">
-          <h3>Explore By Categories</h3>
-          <div *ngIf="canScrollLeft || canScrollRight" class="btns">
-            <button (click)="scrollLeft()" [disabled]="!canScrollLeft">prev</button>
-            <button (click)="scrollRight()" [disabled]="!canScrollRight">next</button>
-          </div>
-        </div>
-      
-        <ul class="categories_list hide-scrollbar" #categoriesList>
-          <li>category one</li>
-          <li>category two</li>
-          <li>category three</li>
-          <li>category four</li>
-          <li>category five</li>
-          <li>category six</li>
-          <li>category seven</li>
-          <li>category eight</li>
-          <li>category nine</li>
-          <li>category ten</li>
-        </ul>
+  <div class="controls">
+    <p class="title">Explore By Categories</p>
+    <div class="btns">
+      <app-btn-round-small [icon]="'fa-solid fa-angle-left'" (click)="scrollLeft()"></app-btn-round-small>
+      <app-btn-round-small [icon]="'fa-solid fa-angle-right'" (click)="scrollRight()"></app-btn-round-small>
+    </div>
+  </div>
+
+  <ul class="categories_list hide-scrollbar" #categoriesList>
+    <button class="blurry-bg" *ngFor="let item of data">category one</button>
+  </ul>
+  
 </div>

@@ -7,10 +7,28 @@
         align-items: center;
         justify-content: space-between;
         padding: 1.5rem var(--dynamic-content-padding);
+        padding-top: 3rem;
 
         .title {
             margin: 0;
+            font-size: 3rem;
+            color: #FFF;
+            margin-right: 5rem;
         }
+
+        app-btn-rectangle {
+            display: none;
+        }
+
+        @media all and (min-width: 750px) {
+            app-btn-rectangle {
+                display: block;
+            }
+            app-btn-round-small {
+                display: none;
+            }
+        }
+
     }
 
     .loaded_content {

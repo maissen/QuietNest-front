@@ -2,7 +2,7 @@
     padding-top: var(--carousel-padding-top);
     padding-bottom: var(--carousel-padding-top);
     color: #d9dadb;
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
 
     .carousel__header {
         display: flex;
@@ -30,6 +30,7 @@
         display: grid;
         gap: 1.5rem;
         grid-template-columns: 1fr;
+        margin-bottom: 2rem;
 
         @media all and (min-width: 670px) {
             grid-template-columns: repeat(2, 1fr);

@@ -4,30 +4,33 @@
 
     <div class="header">
         <p class="title">Discover More</p>
-        <button routerLink="/app/search">Search</button>
+        <app-btn-rectangle [icon]="'fa-solid fa-magnifying-glass'" [text]="'filter'" [routerLink]="'/app/search'"></app-btn-rectangle>
+        <app-btn-round-small [icon]="'fa-solid fa-magnifying-glass'" [routerLink]="'/app/search'"></app-btn-round-small>
     </div>
 
     <div class="loaded_content add-bottom-spacing-for-playing-speech-banner">
         <app-carousel-square 
             [hasBottomBorder]="true" 
-            [carouselTitle]="'today\'s Picks'"
+            [carouselTitle]="'Trending narrators'"
             [speeches]="service.getAllSpeches()"
         ></app-carousel-square>
     
-        <app-explore-by-category></app-explore-by-category>
+        <app-explore-by-category [data]="categoriesService.getAllCategories()"></app-explore-by-category>
 
-        <app-carousel-rectangle 
-            [hasBottomBorder]="true" 
-            [carouselTitle]="'Top Authors'"
-            [speeches]="service.getAllSpeches()"
-        ></app-carousel-rectangle>
-
-        <app-explore-by-time></app-explore-by-time>
-        
         <app-carousel-rectangle 
             [hasBottomBorder]="true" 
             [carouselTitle]="'New and Networthy'"
             [speeches]="service.getAllSpeches()"
         ></app-carousel-rectangle>
+
+        <app-explore-by-time></app-explore-by-time>
+
+        <app-carousel-rectangle-playlist 
+            [carouselTitle]="'Hot Playlists'" 
+            [hasBottomBorder]="true" 
+            [playlists]="playlistsService.getPlaylists()"
+        ></app-carousel-rectangle-playlist>
+
+        <app-carousel-square [carouselTitle]="'Our collection of mixtures'" [speeches]="service.getAllSpeches()"></app-carousel-square>
     </div>
 </div>
