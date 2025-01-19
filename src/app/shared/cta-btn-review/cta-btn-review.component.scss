@@ -27,10 +27,13 @@ button {
             align-items: center;
             justify-content: center;
             background: linear-gradient(-45deg, #efd5ff 0%, #515ada 100%);
-            color: #ffffff65;
-        
             flex-shrink: 0;
             flex-grow: 0;
+
+            i { 
+                color: var(--avg-color);        
+                opacity: .6; 
+            }
         }
         
         .text {

@@ -6,7 +6,10 @@
       <p class="name">{{ narrator.name }}</p>
       <div class="likes_plays_badges">
         <div class="item blurry-bg">
-          <i class="fa-solid fa-play"></i> <span class="number">{{ narrator.likes }} likes</span>
+          <i class="fa-solid fa-play"></i> <span class="number">{{ narrator.likes }} <span class="hideDetail">likes</span></span>
+        </div>
+        <div class="item blurry-bg">
+          <i class="fa-solid fa-headphones"></i> <span class="number">{{ narrator.speeches_nbr }}  <span class="hideDetail2">audios</span></span>
         </div>
       </div>
     </div>

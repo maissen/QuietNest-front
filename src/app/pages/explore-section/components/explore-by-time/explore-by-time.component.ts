@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, HostListener, ChangeDetectorRef } from '@angular/core';
+import { SpeechesService } from 'src/app/services/speeches.service';
 
 @Component({
   selector: 'app-explore-by-time',
@@ -11,7 +12,9 @@ export class ExploreByTimeComponent implements AfterViewInit {
   canScrollLeft = false;
   canScrollRight = true;
 
-  constructor() {}
+  constructor(
+    public service: SpeechesService
+  ) {}
 
   ngAfterViewInit() {
     this.updateScrollButtons();

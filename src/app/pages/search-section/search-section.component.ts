@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { NarratorsService } from 'src/app/services/narrators.service';
+import { SpeechesService } from 'src/app/services/speeches.service';
 
 @Component({
   selector: 'app-search-section',
@@ -15,21 +16,23 @@ export class SearchSectionComponent implements OnInit {
   parameterValue: string | null = null;
   api_speeches_of_narrator = 'http://localhost:2003/api/speeches-of-narrator/';
   api_speeches_oplaylists_by_category = 'http://localhost:2003/api/speeches-playlists-by-category/';
+  api_speeches_by_duration = 'http://localhost:2003/api/speeches-by-time/';
 
   data: any;
   narratorName: string = '';
   categoryName: string = '';
+  duration: string = '';
 
   constructor(
     private route: ActivatedRoute, 
     private router: Router,
     private http: HttpClient,
     public narrators: NarratorsService,
-    public categories: CategoriesService
+    public categories: CategoriesService,
+    public speeches: SpeechesService
   ) { }
 
   ngOnInit(): void {
-    // Fetch all categories first
 
     this.route.paramMap.subscribe(params => {
 
@@ -83,6 +86,23 @@ export class SearchSectionComponent implements OnInit {
       
         this.parameterType = 'time';
         this.parameterValue = params.get('timeID');
+
+        this.http.get<any[]>(this.speeches.api_speeches_durations).subscribe(
+          (res) => {
+            this.speeches.speechesDurations = res;
+            this.duration = this.speeches.speechesDurations.find(item => item.id == this.parameterValue).duration;
+            this.http.get(this.api_speeches_by_duration + this.parameterValue).subscribe(
+              (res: any) => {
+                this.data = res;
+                console.log(this.data)
+              },
+              (err) => {
+                console.log(err);
+              }
+            );
+          }
+        )
+        
       
       }
     });

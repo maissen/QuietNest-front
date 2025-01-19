@@ -18,10 +18,13 @@
     </div>
     <div class="likes_plays_badges">
       <div class="item blurry-bg">
-        <i class="fa-solid fa-heart"></i> <span class="number">{{ speech?.likes }} {{ speech?.likes > 1 ? 'likes' : 'like' }}</span>
+        <i class="fa-solid fa-heart"></i> <span class="number">{{ speech?.likes }} <span class="hideDetail">{{ speech?.likes > 1 ? 'likes' : 'like' }}</span></span>
       </div>
       <div class="item blurry-bg">
-        <i class="fa-solid fa-play"></i> <span class="number">{{ speech?.playing_nbr }} {{ speech?.playing_nbr > 1 ? 'plays' : 'play' }}</span>
+        <i class="fa-solid fa-play"></i> <span class="number">{{ speech?.playing_nbr }} <span class="hideDetail">{{ speech?.playing_nbr > 1 ? 'plays' : 'play' }}</span></span>
+      </div>
+      <div class="item blurry-bg">
+        <i class="fa-regular fa-clock"></i> <span class="number">{{ speech?.audioDuration }} min</span>
       </div>
     </div>
   </div>

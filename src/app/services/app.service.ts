@@ -55,6 +55,13 @@ export class AppService {
             this.http.get<any[]>(this.categoriesService.api_get_all_categories).subscribe(categories => {
               this.categoriesService.setAllCategories(categories);
 
+              //! Fetch all supeeches durations
+              this.http.get<any[]>(this.speechesService.api_speeches_durations).subscribe(
+                (res) => {
+                  this.speechesService.speechesDurations = res;
+                }
+              )
+
               //! Fetch all speeches 
               this.http.get<any[]>(`${this.speechesService.api_get_all_speeches}/${this.user.getUser().id}`).subscribe(speeches => {
                 this.speechesService.setSpeeches(speeches);

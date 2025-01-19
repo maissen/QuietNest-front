@@ -8,8 +8,6 @@
 
     <div class="loaded_content">
 
-        <p *ngIf="parameterType == 'time'">times result</p>
-
         <ng-container *ngIf="parameterType == 'narrator' && data?.length >= 0">
 
             <div class="narrator">
@@ -28,6 +26,7 @@
         </ng-container>
 
 
+
         <ng-container *ngIf="parameterType == 'category' && data?.speeches?.length > 0">
             <p class="title">Speeches with category : {{categoryName}}</p>
             <hr>
@@ -39,7 +38,7 @@
             </div>
         </ng-container>
 
-        <ng-container *ngIf="data?.playlists?.length > 0">
+        <ng-container *ngIf="parameterType == 'category' && data?.playlists?.length > 0">
             <p class="title">playlists with category : {{categoryName}}</p>
             <hr>
             
@@ -50,6 +49,27 @@
             </div>
         </ng-container>
         
+
+
+        <ng-container *ngIf="parameterType == 'time'">
+            
+            <ng-container *ngIf="data?.length > 0">
+                <p class="title">Speeches with {{duration}} minutes duration</p>
+                <hr>
+            
+                <div class="grid-container">
+                <div class="item" *ngFor="let speech of data">
+                    <app-audio-item-rectangle [speech]="speech"></app-audio-item-rectangle>
+                </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="data?.length == 0">
+                <p class="title">There's no speech with {{duration}} minutes duration :(</p>
+            </ng-container>
+
+        </ng-container>
+          
         
     </div>
 </div>

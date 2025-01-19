@@ -8,14 +8,14 @@
     </div>
   
     <ul class="categories_list hide-scrollbar" #categoriesList>
-        <button class="blurry-bg" routerLink="/app/search/time/5">5 min</button>
-        <button class="blurry-bg" routerLink="/app/search/time/10">10 min</button>
-        <button class="blurry-bg" routerLink="/app/search/time/15">15 min</button>
-        <button class="blurry-bg" routerLink="/app/search/time/20">20 min</button>
-        <button class="blurry-bg" routerLink="/app/search/time/30">30 min</button>
-        <button class="blurry-bg" routerLink="/app/search/time/45">45 min</button>
-        <button class="blurry-bg" routerLink="/app/search/time/60">60 min</button>
-        <button class="blurry-bg" routerLink="/app/search/time/1hr+">1 hr+</button>
+        <button 
+            *ngFor="let duration of service?.speechesDurations"
+            class="blurry-bg" 
+            [routerLink]="'/app/search/time/' + duration.id"
+        >
+            {{duration?.duration}} min
+        </button>
+        
     </ul>
 </div>
   

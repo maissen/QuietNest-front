@@ -12,7 +12,9 @@ export class SpeechesService {
   public api_get_all_speeches = 'http://localhost:2003/api/get-all-speeches';
   public api_like_speech = 'http://localhost:2003/api/like/speech/';
   public api_increment_playingNbr = 'http://localhost:2003/api/increment-playing-nbr';
-  public api_toggle_save_speech = 'http://localhost:2003/api/save-speech/'
+  public api_toggle_save_speech = 'http://localhost:2003/api/save-speech/';
+  public api_speeches_durations = 'http://localhost:2003/api/get-speech-durations/';
+  public api_get_duration_of_speech = 'http://localhost:2003/api/get-speech-duration/';
 
   private allSpeches: any[] = [];
   private selectedSpeech: any = null;
@@ -25,11 +27,17 @@ export class SpeechesService {
 
   public isSpeechPlaying: boolean = false;
 
+  public speechesDurations: any[] = [];
+
   constructor(
     private http: HttpClient,
     private categoriesService: CategoriesService,
     private narratorsService: NarratorsService
   ) {}
+
+  fetchSpeechDuration(durationID: string): Observable<string> {
+    return this.http.get<string>(this.api_get_duration_of_speech + parseInt(durationID));
+  }
 
   getSpeechDuration(): string {
     return this.speechDuration;

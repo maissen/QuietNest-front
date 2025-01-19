@@ -1,6 +1,7 @@
 .content {
     min-height: calc(100vh - var(--navbar-small-height));
     position: relative;
+    padding-top: 5.5rem;
 
     .quit_btn {
         height: 3rem;
