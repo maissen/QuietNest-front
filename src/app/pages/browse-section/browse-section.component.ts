@@ -13,6 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 export class BrowseSectionComponent {
   showBgVideo: boolean = true;
   scaleFactor: number = 1;
+  salutationMessage: string = '';
 
   constructor(
     public service: BrowseSectionService,
@@ -20,10 +21,12 @@ export class BrowseSectionComponent {
     public playlistsService: PlaylistsService,
     public user: UserService,
     public mixtures: SoundsmixturesService
-  ) {}
+  ) {
+    this.setSalutationMessage();
+  }
 
   @HostListener('window:scroll', ['$event'])
-  onScroll(event: Event): void {
+  onScroll(): void {
     const scrollPosition = window.scrollY;
     const maxScroll = 300;
     const scaleIncrease = 0.5;
@@ -31,4 +34,17 @@ export class BrowseSectionComponent {
     this.scaleFactor = 1 + (Math.min(scrollPosition, maxScroll) / maxScroll) * scaleIncrease;
   }
 
+  private setSalutationMessage(): void {
+    const currentHour = new Date().getHours();
+
+    if (currentHour >= 6 && currentHour < 12) {
+      this.salutationMessage = 'Good morning';
+    } else if (currentHour >= 12 && currentHour < 18) {
+      this.salutationMessage = 'Good afternoon';
+    } else if (currentHour >= 18 && currentHour < 21) {
+      this.salutationMessage = 'Good evening';
+    } else {
+      this.salutationMessage = 'Good night';
+    }
+  }
 }
