@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgxScannerQrcodeService, ScannerQRCodeConfig, ScannerQRCodeSelectedFiles } from 'ngx-scanner-qrcode';
+import { NgxScannerQrcodeComponent, NgxScannerQrcodeService, ScannerQRCodeConfig, ScannerQRCodeSelectedFiles } from 'ngx-scanner-qrcode';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,11 +9,12 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-  firstName: string = '';
-  lastName: string = '';
+
   profileID: string = '';
   imageSrc: string = '';
   scanningValue: string = '';
+
+  @ViewChild('camera', { static: false }) cameraScanner!: NgxScannerQrcodeComponent;
 
   constructor(
     private router: Router, 
@@ -49,6 +50,7 @@ export class LoginPageComponent implements OnInit {
 
   cameraScan(event: any) {
     this.profileID = event[0].value;
+    this.cameraScanner.stop();
   }
 
   submitLogin(): void {
