@@ -2,39 +2,42 @@
     <app-bg-video></app-bg-video>
 
     <div class="loaded_content add-bottom-spacing-for-playing-speech-banner">
-        
         <div class="header blurry-bg">
             <div class="qr_img">
-                 <img [src]="user.getUser().qrcode" alt="your_qr_code" loading="lazy">
+                <!-- Added click event -->
+                <img 
+                    [src]="user.getUser().qrcode" 
+                    alt="your_qr_code" 
+                    loading="lazy"
+                >
+
+                <div class="overlay" (click)="downloadQrCode()">
+                    <p>Download <i class="fa-solid fa-download"></i></p>
+                </div>
             </div>
             <div class="info"> 
                 <p class="fullname">
-                    {{ user.getUser().firstName + ' ' + this.user.getUser().lastName}}   
+                    {{ user.getUser().firstName + ' ' + user.getUser().lastName }}   
                 </p> 
                 <p class="joining_date">
-                    {{user.getUser().joiningDate | date}}
+                    {{ user.getUser().joiningDate | date }}
                 </p>
                 <app-btn-rectangle [text]="'Log out'" [isRouter]="false" (click)="clear()"></app-btn-rectangle>
             </div>
         </div>
 
-
         <div class="body">
-
             <app-carousel-rectangle 
-            *ngIf="speechesService.getSavedSpeeches().length > 0"
+                *ngIf="speechesService.getSavedSpeeches().length > 0"
                 [carouselTitle]="'Saved Speeches'" 
                 [speeches]="speechesService.getSavedSpeeches()"
             ></app-carousel-rectangle>
 
             <app-carousel-rectangle 
-            *ngIf="speechesService.getLikedSpeeches().length > 0"
+                *ngIf="speechesService.getLikedSpeeches().length > 0"
                 [carouselTitle]="'Liked Speeches'" 
                 [speeches]="speechesService.getLikedSpeeches()"
             ></app-carousel-rectangle>
-
         </div>
-
     </div>
-
 </div>

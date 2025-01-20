@@ -26,5 +26,17 @@ export class ProfileSectionComponent {
     });
   }
 
+  downloadQrCode(): void {
+    const user = this.user.getUser();
+    const qrCodeUrl = user.qrcode;
+    const fileName = 'Quiet Nest - ' + user.firstName + ' ' + user.lastName + '.png';
+    
+    const anchor = document.createElement('a');
+    anchor.href = qrCodeUrl;
+    anchor.download = fileName;
+    anchor.click();
+  }
+  
+
   
 }
