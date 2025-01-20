@@ -56,10 +56,6 @@ const routes: Routes = [
         component: ProfileSectionComponent
       },
       {
-        path: 'search',
-        component: SearchSectionComponent
-      },
-      {
         path: 'search/narrator/:narratorID',
         component: SearchSectionComponent
       },
