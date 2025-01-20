@@ -12,10 +12,13 @@
                 <i class="fa-solid fa-music"></i>
                 <span>Create</span>
             </li>
-            <li routerLink="/app/explore" routerLinkActive="active-link">
+            <li 
+                [routerLink]="'/app/explore'" 
+                [ngClass]="{ 'active-link': checkRoute() }">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <span>Explore</span>
             </li>
+
             <li routerLink="/app/profile" routerLinkActive="active-link">
                 <i class="fa-solid fa-user"></i>
                 <span>Profile</span>
@@ -24,40 +27,6 @@
     </div>
 
     <p class="copyright text-center">© Maissen Belgacem</p>
-
-
-    <div class="create-section-sounds" style="display: none;">
-        <div *ngFor="let sound of soundsService.getSounds()">
-            <audio 
-                *ngIf="service.isSoundActive(sound)" 
-                [id]="'sound-audio-'+sound.id" 
-                [src]="sound.link" 
-                loop 
-                [autoplay]="!service.getPauseActiveSounds()"
-                [volume]="sound.volume/10"
-                
-            ></audio>
-        </div>
-    </div>
-
-    <div 
-        class="playing_speech_audio" 
-        *ngIf="speechesService.getSelectedSpeechData() != null" 
-        style="display: none;"
-    >
-    <div class="playing_speech_audio" 
-        *ngIf="speechesService.getSelectedSpeechData() != null" 
-        style="display: block;">
-        <audio 
-            [src]="speechesService.getSelectedSpeechData().link" 
-            [volume]="speechesService.getSelectedSpeechData().volume"
-            autoplay 
-            id="playing_speech_html_audio" 
-            (loadeddata)="getFetchedSpeechDuration()"
-            (ended)="onAudioEnd()">
-        </audio>
-
-    </div>
 
 </div>
 

@@ -6,9 +6,7 @@
 
 
 
-    <ng-container *ngIf="showNavbar">
-        <app-navbar></app-navbar>
-    </ng-container>
+    <app-navbar *ngIf="navbar.showNavbar"></app-navbar>
 
     <app-playing-speech-banner></app-playing-speech-banner>
     <app-bottom-sheet></app-bottom-sheet>
@@ -16,10 +14,46 @@
     <div
         class="dynamic-content"
         [ngStyle]="{
-            'padding-left': showNavbar ? 'var(--navbar-wide-width)' : '0'
+            'padding-left': navbar.showNavbar ? 'var(--navbar-wide-width)' : '0'
         }"
     >
         <router-outlet></router-outlet>
+    </div>
+
+    <div *ngIf="user.getUser() != null">
+        
+        <div class="create-section-sounds" style="display: none;">
+            <div *ngFor="let sound of soundsService.getSounds()">
+                <audio 
+                    *ngIf="service.isSoundActive(sound)" 
+                    [id]="'sound-audio-'+sound.id" 
+                    [src]="sound.link" 
+                    loop 
+                    [autoplay]="!service.getPauseActiveSounds()"
+                    [volume]="sound.volume/10"
+                    
+                ></audio>
+            </div>
+        </div>
+
+        <div 
+            class="playing_speech_audio" 
+            *ngIf="speechesService.getSelectedSpeechData() != null" 
+            style="display: none;"
+        >
+        <div class="playing_speech_audio" 
+            *ngIf="speechesService.getSelectedSpeechData() != null" 
+            style="display: block;">
+            <audio 
+                [src]="speechesService.getSelectedSpeechData().link" 
+                [volume]="speechesService.getSelectedSpeechData().volume"
+                autoplay 
+                id="playing_speech_html_audio" 
+                (loadeddata)="getFetchedSpeechDuration()"
+                (ended)="onAudioEnd()">
+            </audio>
+        </div>
+        
     </div>
 
 

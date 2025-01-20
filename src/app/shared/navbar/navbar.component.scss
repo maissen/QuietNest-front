@@ -67,7 +67,7 @@
         border: none;
         height: var(--navbar-small-height);
         background: transparent;
-        color: white;
+        color: #FFF;
 
         @media all and (min-width: 500px) {
             display: none;
@@ -168,10 +168,4 @@
         overflow: hidden;
     }
 
-}
-
-
-.border-radius {
-    border-top-right-radius: 2.5rem;
-    border-top-left-radius: 2.5rem;
 }

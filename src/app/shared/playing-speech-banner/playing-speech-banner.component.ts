@@ -31,7 +31,7 @@ export class PlayingSpeechBannerComponent {
 
   private checkRoute(): void {
     const url = this.router.url;
-    this.hideBanner = url.startsWith('/app/speech') || url.startsWith('/app/playlist') || url.startsWith('/app/set-timer') || url.startsWith('/app/create');
+    this.hideBanner = url.startsWith('/app/speech') || url.startsWith('/app/playlist') || url.startsWith('/app/set-timer') || url.startsWith('/app/create') || url.startsWith('/app/scenes');
   }
   
 
