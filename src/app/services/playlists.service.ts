@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { SpeechesService } from './speeches.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class PlaylistsService {
 
   constructor(
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
   ) { }
 
   public api_all_playlists: string = 'http://localhost:2003/api/get-all-playlists';
@@ -33,14 +34,12 @@ export class PlaylistsService {
     this.playingPlaylist = playlist;
     this.isPlaying = true;
     this.isFinished = false;
-    console.log('playlist is set : ' + this.getPlayingPlaylist().name);
   }
 
   clearPlayingPlaylist(): void {
     this.playingPlaylist = null;
     this.isPlaying = false;
     this.isFinished = false;
-    console.log('playlist is cleared');
   }
 
   getPlayingPlaylist(): any {

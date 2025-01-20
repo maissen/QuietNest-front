@@ -115,9 +115,6 @@ export class SpeechesService {
   }
 
   setSelectedSpeechData(speech: any) {
-    if (this.getSelectedSpeechData() != null && speech.id != this.getSelectedSpeechData()?.id) {
-      this.incrementSpeechPlayings(speech);
-    }
     
     this.setSpeechDuration('00:00');
     this.setSpeechReadingLevel('00:00');
