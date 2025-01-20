@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="form-container">
+  <!-- <div class="form-container">
     <h1 class="title">Enter Your Information</h1>
     <form class="form">
       <div class="input-group">
@@ -12,7 +12,7 @@
       </div>
       <button type="button" class="next-btn" (click)="onSubmitregistration()">Next</button>
     </form>
-  </div>
+  </div> -->
 
   <div class="form-container">
     <h1 class="title">Enter Profile ID</h1>
@@ -37,4 +37,17 @@
   <div *ngFor="let item of qrCodeResult" style="display: none;">
     <ngx-scanner-qrcode #actionFile="scanner" (event)="setScanningValue($event)" [src]="item.url" [isBeep]="false" [config]="config"></ngx-scanner-qrcode>
   </div>
+
+  <!-- For camera -->
+<ngx-scanner-qrcode #action="scanner"></ngx-scanner-qrcode>
+
+<!-- data  -->
+<span>{{ action.data.value | json }}</span><!-- value -->
+<span>{{ action.data | async | json }}</span><!-- async -->
+
+<!-- Loading -->
+<p *ngIf="action.isLoading">⌛ Loading...</p>
+
+<!-- start -->
+<button (click)="action.isStart ? action.stop() : action.start()">{{action.isStart ? 'Stop' : 'Start'}}</button>
 </div>
