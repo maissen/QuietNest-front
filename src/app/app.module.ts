@@ -43,6 +43,7 @@ import { NarratorProfileComponent } from './shared/narrator-profile/narrator-pro
 import { CarouselSquareNarratorsComponent } from './shared/items-carousels/carousel-square-narrators/carousel-square-narrators.component';
 import { NarratorItemSquareComponent } from './shared/narrator-item-square/narrator-item-square.component';
 import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode';
+import { ToastComponent } from './shared/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode';
     NarratorProfileComponent,
     CarouselSquareNarratorsComponent,
     NarratorItemSquareComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,13 @@
+<div 
+    *ngIf="showToast" 
+    class="toast"
+    [ngClass]="{'showUp: ' : showToast}"
+>
+    <div class="icon">
+        <img src="" alt="">
+    </div>
+    <div class="body">
+        <p class="message">Hello World</p>
+        <p class="status">Success</p>
+    </div>
+</div>

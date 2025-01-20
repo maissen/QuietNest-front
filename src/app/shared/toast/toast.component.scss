@@ -1,0 +1,39 @@
+.toast {
+
+    padding: 1.3rem;
+    border-radius: .7rem;
+    background-color: #FFF;
+    display: flex;
+    gap: 1.7rem;
+    align-items: flex-start;
+    position: fixed;
+    left: 50%;
+    bottom: 4rem;
+    z-index: calc(var(--navbar-zindex) + 10);
+    font-size: 1.6rem;
+    
+    .body {
+
+        .icon {
+            width: 3rem;
+            display: flex;
+            align-items: flex-start;
+
+            img {
+                width: 3rem;
+                height: 3rem;
+                background-color: royalblue;
+            }
+        }
+
+        .message {
+            margin: 0;
+        }
+
+        .status {
+            font-size: .9em;
+            color: green;
+            margin: 0;
+        }
+    }
+}
