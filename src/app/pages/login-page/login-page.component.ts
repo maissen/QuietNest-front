@@ -47,6 +47,10 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
+  cameraScan(event: any) {
+    this.profileID = event[0].value;
+  }
+
   submitLogin(): void {
     if(this.profileID) {
       this.user.fetchUser(this.profileID).subscribe(

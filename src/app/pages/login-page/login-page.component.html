@@ -22,7 +22,13 @@
       />
     </div>
 
-    <button type="button" class="camera-btn">Scan with your camera</button>
+    <button 
+      type="button" 
+      class="camera-btn"
+      (click)="action.isStart ? action.stop() : action.start()"
+    >
+      {{action.isStart ? 'Stop' : 'Scan with your camera'}}
+    </button>
 
     <button type="button" class="login-btn" (click)="submitLogin()">Login</button>
     
@@ -41,3 +47,7 @@
 <div *ngFor="let item of qrCodeResult" style="display: none;">
   <ngx-scanner-qrcode #actionFile="scanner" (event)="setScanningValue($event)" [src]="item.url" [isBeep]="false" [config]="config"></ngx-scanner-qrcode>
 </div>
+
+
+<!-- For camera -->
+<ngx-scanner-qrcode #action="scanner" (event)="cameraScan($event)" [isBeep]="false" [vibrate]="300"></ngx-scanner-qrcode>
