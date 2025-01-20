@@ -42,6 +42,7 @@ import { PlayingSpeechControlComponent } from './shared/playing-speech-control/p
 import { NarratorProfileComponent } from './shared/narrator-profile/narrator-profile.component';
 import { CarouselSquareNarratorsComponent } from './shared/items-carousels/carousel-square-narrators/carousel-square-narrators.component';
 import { NarratorItemSquareComponent } from './shared/narrator-item-square/narrator-item-square.component';
+import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { NarratorItemSquareComponent } from './shared/narrator-item-square/narra
     AppRoutingModule,
     RouterLink,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxScannerQrcodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

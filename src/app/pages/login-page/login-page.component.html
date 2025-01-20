@@ -13,14 +13,28 @@
       <button type="button" class="next-btn" (click)="onSubmitregistration()">Next</button>
     </form>
   </div>
+
   <div class="form-container">
-    <h1 class="title">Enter Your Profile ID</h1>
+    <h1 class="title">Enter Profile ID</h1>
     <form class="form">
       <div class="input-group">
+        <label for="qrcode_input" class="qrcode">
+          <img [src]="imageSrc" alt="Selected Image" *ngIf="imageSrc" />
+        </label>
+      </div>
+
+      <div class="input-group">
         <label for="profileID">Profile ID</label>
-        <input type="text" id="profileID" placeholder="id..." required [(ngModel)]="profileID" name="profileID">
+        <input type="text" id="profileID" required [(ngModel)]="profileID" name="profileID">
       </div>
       <button type="button" class="next-btn" (click)="onSubmitLogin()">Next</button>
     </form>
+  </div>
+
+  <!-- For select files -->
+  <input #file type="file" id="qrcode_input" (change)="onSelects(file.files);" [accept]="'.jpg, .png, .gif, .jpeg'" style="display: none;" />
+  
+  <div *ngFor="let item of qrCodeResult" style="display: none;">
+    <ngx-scanner-qrcode #actionFile="scanner" (event)="setScanningValue($event)" [src]="item.url" [isBeep]="false" [config]="config"></ngx-scanner-qrcode>
   </div>
 </div>
