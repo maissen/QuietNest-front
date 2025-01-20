@@ -1,11 +1,8 @@
 <div class="content">
   
-    <div class="main" [ngClass]="{'expandDisplay': isCameraOpen || imageSrc}">
+    <div class="main" [ngClass]="{'expandDisplay': isCameraOpen}">
 
         <div class="display">
-            <div class="qr_code_img" *ngIf="imageSrc">
-                <img [src]="imageSrc" alt="">
-            </div>
             <ngx-scanner-qrcode 
                 [ngClass]="{'show': isCameraOpen}"
                 class="camera"
@@ -20,14 +17,6 @@
         
         <h2>Log In</h2>
     
-        <!-- <label for="qrcode_input" class="qrcode_img" *ngIf="imageSrc">
-          <img [src]="imageSrc" alt="Selected Image" />
-        </label>
-    
-        <label for="qrcode_input" class="qrcode_label" *ngIf="!imageSrc">
-          click and upload your <br> profile QR image
-        </label> -->
-    
         <!--! text input  -->
         <div class="input-group">
           <input 
@@ -40,6 +29,7 @@
         </div>
 
         <label for="qrcode_input" class="select_qr_img">
+            <i class="fa-solid fa-qrcode"></i>
             Import QR code image
         </label>
     
@@ -48,7 +38,8 @@
           class="camera-btn"
           (click)="startCamera()"
         >
-          {{isCameraOpen ? 'Close camera' : 'Scan with your camera'}}
+            <i class="fa-solid fa-camera"></i>
+            {{isCameraOpen ? 'Close camera' : 'Scan with your camera'}}
         </button>
     
         <button type="button" class="login-btn" (click)="submitLogin()">Login</button>
