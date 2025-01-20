@@ -1,0 +1,22 @@
+<div class="content">
+    <form class="login-form">
+      
+      <h2>Register now</h2>
+
+      <div class="input-group">
+        <input type="text" placeholder="Enter first name" [(ngModel)]="firstName" name="firstname" autocomplete="off" />
+      </div>
+
+      <div class="input-group">
+        <input type="text" placeholder="Enter last name" [(ngModel)]="lastName" name="lastname" autocomplete="off" />
+      </div>
+      
+      <button type="submit" class="login-btn" (click)="onSubmitregistration()">Register</button>
+      
+      <p class="signup-text">
+        already a family member? <a routerLink="/login" class="signup-link">Log in</a>
+      </p>
+    
+    </form>
+</div>
+  

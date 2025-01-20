@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="form-container">
     <h1 class="title">Enter Your Information</h1>
     <form class="form">
@@ -31,23 +31,39 @@
     </form>
   </div>
 
-  <!-- For select files -->
+  For select files
   <input #file type="file" id="qrcode_input" (change)="onSelects(file.files);" [accept]="'.jpg, .png, .gif, .jpeg'" style="display: none;" />
   
   <div *ngFor="let item of qrCodeResult" style="display: none;">
     <ngx-scanner-qrcode #actionFile="scanner" (event)="setScanningValue($event)" [src]="item.url" [isBeep]="false" [config]="config"></ngx-scanner-qrcode>
   </div>
 
-  <!-- For camera -->
-<ngx-scanner-qrcode #action="scanner"></ngx-scanner-qrcode>
+</div> -->
 
-<!-- data  -->
-<span>{{ action.data.value | json }}</span><!-- value -->
-<span>{{ action.data | async | json }}</span><!-- async -->
 
-<!-- Loading -->
-<p *ngIf="action.isLoading">⌛ Loading...</p>
 
-<!-- start -->
-<button (click)="action.isStart ? action.stop() : action.start()">{{action.isStart ? 'Stop' : 'Start'}}</button>
+<div class="content">
+  <form class="login-form">
+    
+    <h2>Log In</h2>
+
+    <label for="qrcode_label" class="qrcode_label"></label>
+
+
+    <!-- <div class="qrcode_img">
+      <img src="https://www.guenstige-schaufensteraufkleber.de/images/thumbnail/produkte/small/QR_Code/QR03.jpg" alt="">
+    </div> -->
+
+    <div class="input-group">
+      <input type="text" placeholder="Enter profile ID" autocomplete="off" />
+    </div>
+    
+    <button type="submit" class="login-btn">Login</button>
+    
+    <p class="signup-text">
+      Don’t have an account? <a routerLink="/register" class="signup-link">register</a>
+    </p>
+  
+  </form>
 </div>
+
