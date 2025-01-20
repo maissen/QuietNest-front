@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ToastService } from 'src/app/services/toast.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class CtaBtnReviewComponent {
 
   constructor(
     private http: HttpClient,
-    public user: UserService
+    public user: UserService,
+    public toast: ToastService
   ) {}
 
   message: string = '';
@@ -40,7 +42,7 @@ export class CtaBtnReviewComponent {
 
     if(this.user.getUser().hasFeedback == undefined) {
       const userID = this.user.getUser().id;
-      const stars = this.selectedStars;
+      const stars = this.selectedStars || 0;
       const message = this.message.slice(0, 1001);
 
       const body = { userID, stars, message }
@@ -48,6 +50,7 @@ export class CtaBtnReviewComponent {
         (res) => {
           console.log(res);
           this.user.addUserAttribute('hasFeedback', true)
+          this.toast.showToast('messagek wsolni <3', 0, 'Message sent', 5000);
         },
         (err) => {
           console.log(err);

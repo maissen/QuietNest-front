@@ -31,7 +31,7 @@
         <div class="footer">
             <small class="length_indecator">{{message.length}} / 1000</small>
             <button 
-                *ngIf="selectedStars > 0 || message.length > 0"
+                *ngIf="selectedStars > 0 && message.length > 0"
                 class="send" 
                 (click)="submitFeedback()"
             >Yalla ab3eth <i class="fa-solid fa-paper-plane"></i></button>

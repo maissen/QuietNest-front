@@ -1,5 +1,5 @@
 <div 
-    *ngIf="toast.status == 0"
+    *ngIf="toast.status == 0 || toast.status > 2"
     class="toast success"
     [ngClass]="{'showUp': toast.show}"
 >

@@ -12,8 +12,8 @@ export class ToastService {
 
   showToast(
     message: string, 
-    status: number,
-    statusMessage: string,
+    status: number = 0,
+    statusMessage: string = '',
     duration: number = 3000,
   ) {
     if (message) {
