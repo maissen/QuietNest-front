@@ -1,64 +1,28 @@
-<!-- <div class="container">
-  <div class="form-container">
-    <h1 class="title">Enter Your Information</h1>
-    <form class="form">
-      <div class="input-group">
-        <label for="firstName">First Name</label>
-        <input type="text" id="firstName" placeholder="Your First Name" required [(ngModel)]="firstName" name="firstName">
-      </div>
-      <div class="input-group">
-        <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" placeholder="Your Last Name" required [(ngModel)]="lastName" name="lastName">
-      </div>
-      <button type="button" class="next-btn" (click)="onSubmitregistration()">Next</button>
-    </form>
-  </div>
-
-  <div class="form-container">
-    <h1 class="title">Enter Profile ID</h1>
-    <form class="form">
-      <div class="input-group">
-        <label for="qrcode_input" class="qrcode">
-          <img [src]="imageSrc" alt="Selected Image" *ngIf="imageSrc" />
-        </label>
-      </div>
-
-      <div class="input-group">
-        <label for="profileID">Profile ID</label>
-        <input type="text" id="profileID" required [(ngModel)]="profileID" name="profileID">
-      </div>
-      <button type="button" class="next-btn" (click)="onSubmitLogin(); toast.showToast('Hello maissen', 5, 'Login failed')">Next</button>
-    </form>
-  </div>
-
-  For select files
-  <input #file type="file" id="qrcode_input" (change)="onSelects(file.files);" [accept]="'.jpg, .png, .gif, .jpeg'" style="display: none;" />
-  
-  <div *ngFor="let item of qrCodeResult" style="display: none;">
-    <ngx-scanner-qrcode #actionFile="scanner" (event)="setScanningValue($event)" [src]="item.url" [isBeep]="false" [config]="config"></ngx-scanner-qrcode>
-  </div>
-
-</div> -->
-
-
-
 <div class="content">
   <form class="login-form">
     
     <h2>Log In</h2>
 
-    <label for="qrcode_label" class="qrcode_label"></label>
+    <label for="qrcode_input" class="qrcode_img" *ngIf="imageSrc">
+      <img [src]="imageSrc" alt="Selected Image" />
+    </label>
 
+    <label for="qrcode_input" class="qrcode_label" *ngIf="!imageSrc">
+      click and upload your <br> profile QR image
+    </label>
 
-    <!-- <div class="qrcode_img">
-      <img src="https://www.guenstige-schaufensteraufkleber.de/images/thumbnail/produkte/small/QR_Code/QR03.jpg" alt="">
-    </div> -->
-
+    <!--! text input  -->
     <div class="input-group">
-      <input type="text" placeholder="Enter profile ID" autocomplete="off" />
+      <input 
+        type="text" 
+        placeholder="Enter profile ID" 
+        autocomplete="off" 
+        required [(ngModel)]="profileID" 
+        name="profileID" 
+      />
     </div>
-    
-    <button type="submit" class="login-btn">Login</button>
+
+    <button type="button" class="login-btn" (click)="submitLogin()">Login</button>
     
     <p class="signup-text">
       Don’t have an account? <a routerLink="/register" class="signup-link">register</a>
@@ -67,3 +31,11 @@
   </form>
 </div>
 
+
+
+<!-- For select files -->
+<input id="qrcode_input" #file type="file" (change)="onSelects(file.files)" [accept]="'.jpg, .png, .gif, .jpeg'" style="display: none;" />
+
+<div *ngFor="let item of qrCodeResult" style="display: none;">
+  <ngx-scanner-qrcode #actionFile="scanner" (event)="setScanningValue($event)" [src]="item.url" [isBeep]="false" [config]="config"></ngx-scanner-qrcode>
+</div>

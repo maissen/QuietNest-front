@@ -17,8 +17,19 @@
         height: 12rem;
         width: 100%;
         border-radius: .5rem;
-        border: .1rem dashed #9c9c9c;
+        border: .1rem dashed #808080;
         margin-bottom: 2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #808080;
+        transition: .3s;
+
+        &:hover {
+          color:  #00a77e;
+          border-color:  #00a77e;
+        }
       }
 
       .qrcode_img {
@@ -28,6 +39,7 @@
         border: .1rem dashed transparent;
         margin-bottom: 2rem;
         overflow: hidden;
+        cursor: pointer;
 
         img {
           height: 100%;

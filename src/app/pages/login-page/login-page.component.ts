@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxScannerQrcodeService, ScannerQRCodeConfig, ScannerQRCodeSelectedFiles } from 'ngx-scanner-qrcode';
-import { ToastService } from 'src/app/services/toast.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -19,8 +18,7 @@ export class LoginPageComponent implements OnInit {
   constructor(
     private router: Router, 
     private user: UserService,
-    private qrcode: NgxScannerQrcodeService,
-    public toast: ToastService
+    private qrcode: NgxScannerQrcodeService
   ) {}
 
   ngOnInit(): void {
@@ -49,25 +47,7 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
-  isFormValid(): boolean {
-    return this.firstName.length >= 3 && this.lastName.length >= 3;
-  }
-
-  onSubmitregistration(): void {
-    if(this.isFormValid()) {
-      this.user.createUser(this.firstName, this.lastName).subscribe(
-        (response) => {
-          this.user.setUser(response);
-          this.router.navigate(['/app']);
-        },
-        (error) => {
-          console.error('Error creating user:', error);
-        }
-      );
-    }
-  }
-
-  onSubmitLogin(): void {
+  submitLogin(): void {
     if(this.profileID) {
       this.user.fetchUser(this.profileID).subscribe(
         (res) => {
@@ -81,4 +61,5 @@ export class LoginPageComponent implements OnInit {
       );
     }
   }
+
 }
