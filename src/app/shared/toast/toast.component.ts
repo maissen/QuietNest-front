@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-toast',
@@ -6,16 +7,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./toast.component.scss']
 })
 export class ToastComponent {
-  @Input() message: string = '';
-  @Input() duration: number = 3000;
-  showToast: boolean = false;
 
-  ngOnInit(): void {
-    if (this.message) {
-      this.showToast = true;
-      setTimeout(() => {
-        this.showToast = false;
-      }, this.duration);
-    }
-  }
+  constructor(
+    public toast: ToastService
+  ) {}
 }

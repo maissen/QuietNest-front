@@ -1,13 +1,42 @@
 <div 
-    *ngIf="showToast" 
-    class="toast"
-    [ngClass]="{'showUp: ' : showToast}"
+    *ngIf="toast.status == 0"
+    class="toast success"
+    [ngClass]="{'showUp': toast.show}"
 >
     <div class="icon">
-        <img src="" alt="">
+        <i class="fa-solid fa-thumbs-up"></i>
     </div>
     <div class="body">
-        <p class="message">Hello World</p>
-        <p class="status">Success</p>
+        <p class="message">{{toast.message}}</p>
+        <p class="status">{{toast.statusMessage}}</p>
     </div>
 </div>
+
+<div 
+    *ngIf="toast.status == 1"
+    class="toast warning"
+    [ngClass]="{'showUp': toast.show}"
+>
+    <div class="icon">
+        <i class="fa-solid fa-exclamation"></i>
+    </div>
+    <div class="body">
+        <p class="message">{{toast.message}}</p>
+        <p class="status">{{toast.statusMessage}}</p>
+    </div>
+</div>
+
+<div 
+    *ngIf="toast.status == 2"
+    class="toast danger"
+    [ngClass]="{'showUp': toast.show}"
+>
+    <div class="icon">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+    </div>
+    <div class="body">
+        <p class="message">{{toast.message}}</p>
+        <p class="status">{{toast.statusMessage}}</p>
+    </div>
+</div>
+

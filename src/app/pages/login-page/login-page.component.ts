@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxScannerQrcodeService, ScannerQRCodeConfig, ScannerQRCodeSelectedFiles } from 'ngx-scanner-qrcode';
+import { ToastService } from 'src/app/services/toast.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class LoginPageComponent implements OnInit {
   constructor(
     private router: Router, 
     private user: UserService,
-    private qrcode: NgxScannerQrcodeService
+    private qrcode: NgxScannerQrcodeService,
+    public toast: ToastService
   ) {}
 
   ngOnInit(): void {

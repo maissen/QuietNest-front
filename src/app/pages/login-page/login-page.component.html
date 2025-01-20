@@ -27,7 +27,7 @@
         <label for="profileID">Profile ID</label>
         <input type="text" id="profileID" required [(ngModel)]="profileID" name="profileID">
       </div>
-      <button type="button" class="next-btn" (click)="onSubmitLogin()">Next</button>
+      <button type="button" class="next-btn" (click)="onSubmitLogin(); toast.showToast('Hello maissen', 0, 'Login failed')">Next</button>
     </form>
   </div>
 
