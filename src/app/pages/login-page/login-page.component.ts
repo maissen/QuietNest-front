@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppService } from 'src/app/services/app.service';
-import { ScenesService } from 'src/app/services/scenes.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,12 +10,11 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginPageComponent implements OnInit{
   firstName: string = '';
   lastName: string = '';
+  profileID: string = '';
 
   constructor(
     private router: Router, 
     private user: UserService,
-    private sceneseService: ScenesService,
-    private appServie: AppService
   ) {}
 
   ngOnInit(): void {
@@ -30,7 +27,7 @@ export class LoginPageComponent implements OnInit{
     return this.firstName.length >= 3 && this.lastName.length >= 3;
   }
 
-  onSubmit(): void {
+  onSubmitregistration(): void {
     
     if(this.isFormValid()) {
       
@@ -38,13 +35,27 @@ export class LoginPageComponent implements OnInit{
         (response) => {
           this.user.setUser(response);
           this.router.navigate(['/app']);
-          // this.appServie.loadAllAppData();
         },
         (error) => {
           console.error('Error creating user:', error);
         }
       );
     
+    }
+  }
+
+  onSubmitLogin(): void {
+    if(this.profileID) {
+      this.user.fetchUser(this.profileID).subscribe(
+        (res) => {
+          console.log(res);
+          this.user.setUser(res);
+          this.router.navigate(['/app'])
+        },
+        (err) => {
+          alert('could\'t fetch user by id');
+        }
+      )
     }
   }
   

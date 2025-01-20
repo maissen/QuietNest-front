@@ -1,6 +1,4 @@
 .content {
-    position: relative;
-    z-index: 1;
 
     .dynamic-content {
         min-height: calc(100vh - var(--navbar-small-height));

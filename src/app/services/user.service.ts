@@ -12,6 +12,7 @@ export class UserService {
 
   api_init_user = "http://localhost:2003/api/set-user";
   api_update_scene_for_user = "http://localhost:2003/api/update-user-scene";
+  api_fetch_user = "http://localhost:2003/login";
 
   createUser(firstName: string, lastName: string): Observable<any> {
     const body = { firstName, lastName };
@@ -20,6 +21,11 @@ export class UserService {
     });
 
     return this.http.post(this.api_init_user, body, { headers });
+  }
+
+  fetchUser(userID: string): Observable<any> {
+    const url = `${this.api_fetch_user}/${userID}`;
+    return this.http.get(url);
   }
 
   updateUserScene(userID: string, sceneID: number): Observable<any> {

@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { CategoriesService } from './categories.service';
 import { NarratorsService } from './narrators.service';
 import { ScenesService } from './scenes.service';
@@ -9,7 +8,6 @@ import { PlaylistsService } from './playlists.service';
 import { UserService } from './user.service';
 import { SpeechesService } from './speeches.service';
 import { SoundsmixturesService } from './soundsmixtures.service';
-import { CreateSectionService } from './create-section.service';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +33,6 @@ export class AppService {
   loadAllAppData() {
 
     console.log(this.user.getUser())
-    console.log("data is loaded")
 
     //! Fetch al scenes
     this.http.get<any[]>(this.scenesService.api_get_all_scenes).subscribe(allScenes => {
