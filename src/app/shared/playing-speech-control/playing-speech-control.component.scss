@@ -5,10 +5,6 @@
     justify-content: space-between;
     color: #FFF;
 
-    @media all and (min-width: 1200px) {
-        width: calc(100% - var(--navbar-wide-width));
-    }
-
     .actions {
         display: flex;
         justify-content: center;
