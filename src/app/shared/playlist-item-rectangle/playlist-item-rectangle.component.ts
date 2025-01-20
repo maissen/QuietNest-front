@@ -19,13 +19,12 @@ export class PlaylistItemRectangleComponent {
   ) { }
 
   playlistClick(): void {
-    this.service.setPlayingPlayList(this.playlist);
     
-    if(this.playlist.id != this.service.getPlayingPlaylist().id) {
+    if(this.service.getPlayingPlaylist() == null || this.playlist.id != this.service.getPlayingPlaylist().id) {
       this.service.incrementPlaylistPlayings(this.playlist);
     }
+    this.service.setPlayingPlayList(this.playlist);
 
-    this.speechesService.clearSelectedSpeechData();
     this.speechesService.setSelectedSpeechData(this.playlist.speeches[0]);
 
   }

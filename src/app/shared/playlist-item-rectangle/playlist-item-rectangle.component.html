@@ -1,4 +1,4 @@
-<div class="item" (click)="playlistClick()">
+<div class="item" (click)="playlistClick()" *ngIf="playlist != null">
     <div class="item__thumb">
       <img [src]="playlist?.img">
       <div class="playing_banner blurry-bg" *ngIf=" service.getPlayingPlaylist() != null && service.getPlayingPlaylist()?.id == playlist?.id">

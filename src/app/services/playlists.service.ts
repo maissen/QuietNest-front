@@ -29,16 +29,18 @@ export class PlaylistsService {
   }
 
   setPlayingPlayList(playlist: any): void {
+    this.clearPlayingPlaylist();
     this.playingPlaylist = playlist;
-    this.router.navigate(['/app/playlist/' + this.playingPlaylist.id]);
     this.isPlaying = true;
     this.isFinished = false;
+    console.log('playlist is set : ' + this.getPlayingPlaylist().name);
   }
 
   clearPlayingPlaylist(): void {
     this.playingPlaylist = null;
     this.isPlaying = false;
     this.isFinished = false;
+    console.log('playlist is cleared');
   }
 
   getPlayingPlaylist(): any {
