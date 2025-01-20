@@ -14,15 +14,20 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AuthGuard } from './guards/auth.guard';
 import { TimerSectionComponent } from './pages/timer-section/timer-section.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { Login2Component } from './pages/login2/login2.component';
 
 const routes: Routes = [
   {
     path: '',
     component: WelcomeComponent
   },
+  // {
+  //   path: 'login',
+  //   component: LoginPageComponent
+  // },
   {
     path: 'login',
-    component: LoginPageComponent
+    component: Login2Component
   },
   {
     path: 'register',

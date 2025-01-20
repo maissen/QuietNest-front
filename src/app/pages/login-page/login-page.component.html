@@ -1,42 +1,46 @@
 <div class="content">
-  <form class="login-form">
-    
-    <h2>Log In</h2>
-
-    <label for="qrcode_input" class="qrcode_img" *ngIf="imageSrc">
-      <img [src]="imageSrc" alt="Selected Image" />
-    </label>
-
-    <label for="qrcode_input" class="qrcode_label" *ngIf="!imageSrc">
-      click and upload your <br> profile QR image
-    </label>
-
-    <!--! text input  -->
-    <div class="input-group">
-      <input 
-        type="text" 
-        placeholder="Enter profile ID" 
-        autocomplete="off" 
-        required [(ngModel)]="profileID" 
-        name="profileID" 
-      />
-    </div>
-
-    <button 
-      type="button" 
-      class="camera-btn"
-      (click)="camera.isStart ? camera.stop() : camera.start()"
-    >
-      {{camera.isStart ? 'Stop' : 'Scan with your camera'}}
-    </button>
-
-    <button type="button" class="login-btn" (click)="submitLogin()">Login</button>
-    
-    <p class="signup-text">
-      Don’t have an account? <a routerLink="/register" class="signup-link">register</a>
-    </p>
   
-  </form>
+  <div class="container">
+    <form class="login-form">
+      
+      <h2>Log In</h2>
+  
+      <label for="qrcode_input" class="qrcode_img" *ngIf="imageSrc">
+        <img [src]="imageSrc" alt="Selected Image" />
+      </label>
+  
+      <label for="qrcode_input" class="qrcode_label" *ngIf="!imageSrc">
+        click and upload your <br> profile QR image
+      </label>
+  
+      <!--! text input  -->
+      <div class="input-group">
+        <input 
+          type="text" 
+          placeholder="Enter profile ID" 
+          autocomplete="off" 
+          required [(ngModel)]="profileID" 
+          name="profileID" 
+        />
+      </div>
+  
+      <button 
+        type="button" 
+        class="camera-btn"
+        (click)="camera.isStart ? camera.stop() : camera.start()"
+      >
+        {{camera.isStart ? 'Stop' : 'Scan with your camera'}}
+      </button>
+  
+      <button type="button" class="login-btn" (click)="submitLogin()">Login</button>
+      
+      <p class="signup-text">
+        Don’t have an account? <a routerLink="/register" class="signup-link">register</a>
+      </p>
+    
+    </form>
+  </div>
+
 </div>
 
 
@@ -61,4 +65,5 @@
   (event)="cameraScan($event)" 
   [isBeep]="false" 
   [vibrate]="300"
+  style="display: none;"
 ></ngx-scanner-qrcode>
