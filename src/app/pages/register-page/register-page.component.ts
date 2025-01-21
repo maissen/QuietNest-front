@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastService } from 'src/app/services/toast.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class RegisterPageComponent {
 
   constructor(
     private user: UserService,
-    private router: Router
+    private router: Router,
+    private toast: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -23,6 +25,14 @@ export class RegisterPageComponent {
   }
 
   isFormValid(): boolean {
+
+    if(this.firstName.length < 3) {
+      this.toast.showToast('First name must be at least 3 characters', 2)
+    }
+    else if(this.lastName.length < 3) {
+      this.toast.showToast('Last name must be at least 3 characters', 2)
+    }
+
     return this.firstName.length >= 3 && this.lastName.length >= 3;
   }
 
@@ -35,6 +45,7 @@ export class RegisterPageComponent {
         },
         (error) => {
           console.error('Error creating user:', error);
+          this.toast.showToast('Oops, an error occured', 2, 'Request failed');
         }
       );
     }

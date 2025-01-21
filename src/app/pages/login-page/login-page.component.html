@@ -1,17 +1,32 @@
 <div class="content">
   
-  <div class="container">
+  <div class="main" [ngClass]="{'expandDisplay': isCameraOpen, 'welcome_user': expand_user_salutation}">
+
+      <div class="display">
+
+          <div class="user_salutation" *ngIf="expand_user_salutation">
+              <div class="message">
+                  <p>Welcome Back</p>
+                  <p>{{user.getUser().firstName + ' ' + user.getUser().lastName}}</p>
+              </div>
+
+              <div class="cormorant-font title">Quiet Nest</div>
+          </div>
+
+          <!-- For camera -->
+          <ngx-scanner-qrcode 
+              [ngClass]="{'show': isCameraOpen && !imageSrc}"
+              class="camera"
+              #camera="scanner" 
+              (event)="cameraScan($event)" 
+              [isBeep]="false" 
+              [vibrate]="300"
+        ></ngx-scanner-qrcode>
+      </div>
+
     <form class="login-form">
       
       <h2>Log In</h2>
-  
-      <label for="qrcode_input" class="qrcode_img" *ngIf="imageSrc">
-        <img [src]="imageSrc" alt="Selected Image" />
-      </label>
-  
-      <label for="qrcode_input" class="qrcode_label" *ngIf="!imageSrc">
-        click and upload your <br> profile QR image
-      </label>
   
       <!--! text input  -->
       <div class="input-group">
@@ -23,13 +38,19 @@
           name="profileID" 
         />
       </div>
+
+      <label for="qrcode_input" class="select_qr_img">
+          <i class="fa-solid fa-qrcode"></i>
+          Import QR code image
+      </label>
   
       <button 
         type="button" 
         class="camera-btn"
-        (click)="camera.isStart ? camera.stop() : camera.start()"
+        (click)="startCamera()"
       >
-        {{camera.isStart ? 'Stop' : 'Scan with your camera'}}
+          <i class="fa-solid fa-camera"></i>
+          {{isCameraOpen ? 'Close your camera' : 'Scan with your camera'}}
       </button>
   
       <button type="button" class="login-btn" (click)="submitLogin()">Login</button>
@@ -51,7 +72,7 @@
 <div *ngFor="let item of qrCodeResult" style="display: none;">
   <ngx-scanner-qrcode 
     #actionFile="scanner" 
-    (event)="setScanningValue($event)" 
+    (event)="setScannedValue($event)" 
     [src]="item.url" 
     [isBeep]="false" 
     [config]="config"
@@ -59,11 +80,3 @@
 </div>
 
 
-<!-- For camera -->
-<ngx-scanner-qrcode 
-  #camera="scanner" 
-  (event)="cameraScan($event)" 
-  [isBeep]="false" 
-  [vibrate]="300"
-  style="display: none;"
-></ngx-scanner-qrcode>

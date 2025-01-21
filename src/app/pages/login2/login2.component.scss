@@ -7,13 +7,17 @@
     
     .main {
         width: 35rem;
-        box-shadow: 0 0 50rem rgba(0, 0, 0, 0.301);
+        box-shadow: 0 0 50rem #0000004d;
         padding-top: 4rem;
         border-radius: 2rem;
         overflow: hidden;
         transition: .3s;
         position: relative;
         z-index: 1;
+
+        &.expandDisplay {
+            padding-top: 22rem;
+        }
 
         .display {
             height: 24rem;
@@ -24,6 +28,7 @@
             left: 0;
             padding-bottom: 3.5rem;
             z-index: -1;
+            transition: height .3s;
 
             .camera {
                 width: 100%;
@@ -36,8 +41,64 @@
             }
         }
 
-        &.expandDisplay {
-            padding-top: 22rem;
+        .user_salutation {
+
+            @keyframes slide {
+                0% {
+                    transform: translateY(-45%);
+                    opacity: .3;
+                }
+                100% {
+                    transform: translateY(0%);
+                    opacity: 1;
+                }
+            }
+
+            .message {
+                animation: slide .3s linear;
+
+                @keyframes spacing {
+                    0% {
+                        margin-bottom: 2.5rem;
+                    }
+                    100% {
+                        margin-bottom: 1rem;
+                    }
+                }
+
+                p {
+                    animation: spacing .3s linear;
+                    margin-bottom: 1rem;
+                    transition: .3s;
+
+                    &:nth-child(2) {
+                        font-size: 2.1rem;
+                    }
+                }
+            }
+
+            .title {
+                bottom: 1rem;
+                left: 50%;
+                transform: translateX(-50%);
+                position: absolute;
+                font-size: 2.2rem;
+            }
+        }
+
+        &.welcome_user {
+            .login-form {
+                transform: translateY(100%);
+            }
+
+            .display {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: row;
+                text-align: center;
+            }
         }
         
         .login-form {
@@ -46,6 +107,7 @@
             background-color: #ffffff;
             text-align: center;
             border-radius: 2rem;
+            transition: .4s;
             
             .qrcode_label {
                 height: 12rem;
