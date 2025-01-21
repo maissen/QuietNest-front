@@ -18,14 +18,14 @@
 
         <app-carousel-rectangle 
             [carouselTitle]="'Popular on Quiet Nest'"
-            [speeches]="service.getAllSpeeches()"
+            [speeches]="service.get_most_played_speeches()"
         ></app-carousel-rectangle>
 
         <app-carousel-rectangle-playlist 
             [carouselTitle]="'Our playlists'" 
             [hasBottomBorder]="true"    
             [hasScrollbar]="false"
-            [playlists]="playlistsService.getPlaylists()"
+            [playlists]="service.get_most_played_playlists()"
         ></app-carousel-rectangle-playlist>
 
         <app-carousel-square 
@@ -34,14 +34,14 @@
         ></app-carousel-square>
         
         <app-recommended-for-you 
-            [title]="'Recommended For You'" 
-            [data]="service.getAllSpeeches()"
+            [title]="'You may also like'" 
+            [data]="service.get_random_speeches()"
             [hasBottomBorder]="true"
         ></app-recommended-for-you>
 
         <app-carousel-rectangle 
-            [carouselTitle]="'Recently Enjoyed'"
-            [speeches]="service.getAllSpeeches()"
+            [carouselTitle]="'Top liked'"
+            [speeches]="service.get_most_liked_speeches()"
         ></app-carousel-rectangle>
     </div>
 </div>

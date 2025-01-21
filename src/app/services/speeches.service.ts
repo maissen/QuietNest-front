@@ -15,6 +15,7 @@ export class SpeechesService {
   public api_toggle_save_speech = 'http://localhost:2003/api/save-speech/';
   public api_speeches_durations = 'http://localhost:2003/api/get-speech-durations/';
   public api_get_duration_of_speech = 'http://localhost:2003/api/get-speech-duration/';
+  public api_get_random_speeches = 'http://localhost:2003/api/get-random-speeches';
 
   private allSpeches: any[] = [];
   private selectedSpeech: any = null;

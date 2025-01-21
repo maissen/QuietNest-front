@@ -30,9 +30,9 @@ export class AppService {
     private soundsmixturesService: SoundsmixturesService,
   ) { }
 
-  loadAllAppData() {
+  private random_speeches: any[] = [];
 
-    console.log(this.user.getUser())
+  loadAllAppData() {
 
     //! Fetch al scenes
     this.http.get<any[]>(this.scenesService.api_get_all_scenes).subscribe(allScenes => {
@@ -67,6 +67,11 @@ export class AppService {
                 this.http.get<any[]>(`${this.playlistsService.api_all_playlists}/${this.user.getUser().id}`).subscribe(allPlaylists => {
                   this.playlistsService.setPlayLists(allPlaylists);
 
+                  //! Fetch random speeches
+                  this.http.get<any[]>(`${this.speechesService.api_get_random_speeches}/${this.user.getUser().id}/${12}`).subscribe(random_speeches => {
+                    this.random_speeches = random_speeches;
+                  })
+
                   //! Fetch all sounds and their categories
                   this.http.get<any[]>(this.soundsService.apiGetAllSounds()).subscribe(sounds => {
                     this.soundsService.setSounds(sounds);
@@ -91,6 +96,9 @@ export class AppService {
     });
   }
 
+  get_random_speeches(): any {
+    return this.random_speeches;
+  }
 
 
   //! Replay speeches & playlists
