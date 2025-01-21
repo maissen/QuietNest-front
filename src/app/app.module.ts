@@ -45,7 +45,6 @@ import { NarratorItemSquareComponent } from './shared/narrator-item-square/narra
 import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode';
 import { ToastComponent } from './shared/toast/toast.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
-import { Login2Component } from './pages/login2/login2.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +87,6 @@ import { Login2Component } from './pages/login2/login2.component';
     NarratorItemSquareComponent,
     ToastComponent,
     RegisterPageComponent,
-    Login2Component,
   ],
   imports: [
     BrowserModule,

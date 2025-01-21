@@ -1,18 +1,18 @@
 <button class="blurry-bg">
     <div class="header" (click)="toggleBody()" [ngStyle]="{'cursor: default;' : user.getUser().hasFeedback}">
         <div class="icon">
-            <i class="fa-solid fa-star" *ngIf="user.getUser().hasFeedback == undefined"></i>
-            <i class="fa-solid fa-thumbs-up" *ngIf="user.getUser().hasFeedback != undefined"></i>
+            <i class="fa-solid fa-star" *ngIf="user.getUser().hasFeedback == 0"></i>
+            <i class="fa-solid fa-thumbs-up" *ngIf="user.getUser().hasFeedback == 1"></i>
         </div>
         <div class="text">
-            <p class="title" *ngIf="user.getUser().hasFeedback == undefined">I need Your Support</p>
-            <p class="subtitle" *ngIf="user.getUser().hasFeedback == undefined">Encourage me with your Feedback, from Maissen Belgacem</p>
+            <p class="title" *ngIf="user.getUser().hasFeedback == 0">I need Your Support</p>
+            <p class="subtitle" *ngIf="user.getUser().hasFeedback == 0">Encourage me with your Feedback, from Maissen Belgacem</p>
 
-            <p class="title" *ngIf="user.getUser().hasFeedback != undefined">Thanks For Awesome Your Support</p>
-            <p class="subtitle" *ngIf="user.getUser().hasFeedback != undefined">messagek wsol wenchallah li jey khyr {{'<3'}}</p>
+            <p class="title" *ngIf="user.getUser().hasFeedback == 1">Thanks For Awesome Your Support</p>
+            <p class="subtitle" *ngIf="user.getUser().hasFeedback == 1">messagek wsol wenchallah li jey khyr {{'<3'}}</p>
         </div>
     </div>
-    <div *ngIf="expandBody && user.getUser().hasFeedback == undefined" class="body">
+    <div *ngIf="expandBody && user.getUser().hasFeedback == 0" class="body">
         <div class="stars">
             <i  
                 *ngFor="let star of stars; let i = index"
