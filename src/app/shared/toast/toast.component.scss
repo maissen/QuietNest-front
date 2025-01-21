@@ -46,7 +46,7 @@
 
 
     &.showUp {
-        transform: translateY(-50%) translateX(-50%);
+        transform: translateY(calc(-50% - var(--navbar-small-height))) translateX(-50%);
     }
 
     &.success {
