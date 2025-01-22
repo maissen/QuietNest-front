@@ -29,6 +29,7 @@ export class SpeechesService {
   public isSpeechPlaying: boolean = false;
 
   public speechesDurations: any[] = [];
+  public selected_speech_is_loading: boolean = false;
 
   constructor(
     private http: HttpClient,

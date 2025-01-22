@@ -46,6 +46,7 @@
 
   <div class="actions">
 
+    <!--! like btn -->
     <button 
     *ngIf="!this.playlistsService.isPlaying"
       class="like" 
@@ -55,28 +56,40 @@
       <i class="fa-solid fa-heart"></i>
     </button>
 
+    <!--! expand speech btn -->
     <button *ngIf="!playlistsService.isPlaying" [routerLink]="'/app/speech/' + service.getSelectedSpeechData().id">
       <i class="fa-solid fa-expand"></i>
     </button>
 
+    <!--! expand playlist btn -->
     <button *ngIf="playlistsService.getPlayingPlaylist() && playlistsService.isPlaying" [routerLink]="'/app/playlist/' + playlistsService.getPlayingPlaylist()?.id">
       <i class="fa-solid fa-expand"></i>
     </button>
     
+    <!--! stop btn -->
     <button class="stop" (click)="globalService.clearPlayback()">
       <i class="fa-solid fa-stop"></i>
     </button>
     
-    <!-- Play/Pause Button -->
-    <button *ngIf="globalService.showPlay_hideReplay()" (click)="service.togglePlayPause()">
-      <i class="fa-solid fa-play" *ngIf="!service.isSpeechPlaying"></i>
-      <i class="fa-solid fa-pause" *ngIf="service.isSpeechPlaying"></i>
-    </button>
+    <!--! Play/Pause btn -->
+    <ng-container *ngIf="!service.selected_speech_is_loading">
+      <button *ngIf="globalService.showPlay_hideReplay()" (click)="service.togglePlayPause()">
+        <i class="fa-solid fa-play" *ngIf="!service.isSpeechPlaying"></i>
+        <i class="fa-solid fa-pause" *ngIf="service.isSpeechPlaying"></i>
+      </button>
+    </ng-container>
+    <ng-container *ngIf="service.selected_speech_is_loading">
+      <button class="loading">
+        <i class="fa-solid fa-hourglass-start"></i>
+      </button>
+    </ng-container>
     
-    <!-- Replay Button -->
-    <button *ngIf="!globalService.showPlay_hideReplay()" (click)="globalService.replay()">
-      <i class="fa-solid fa-repeat"></i>
-    </button>
+    <!--! replay btn -->
+    <ng-container *ngIf="!service.selected_speech_is_loading">
+      <button *ngIf="!globalService.showPlay_hideReplay()" (click)="globalService.replay()">
+        <i class="fa-solid fa-repeat"></i>
+      </button>
+    </ng-container>
     
   </div>
 

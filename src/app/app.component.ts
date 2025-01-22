@@ -53,30 +53,41 @@ export class AppComponent implements OnInit {
   }
 
   getFetchedSpeechDuration(): void {
+    console.log('Audio finished loading.');
+    this.speechesService.selected_speech_is_loading = false;
+  
     const html_audio = document.querySelector('#playing_speech_html_audio') as HTMLAudioElement;
+  
     html_audio.addEventListener('timeupdate', () => {
       const currentTime = html_audio.currentTime;
       const duration = html_audio.duration;
-
+  
       this.speechesService.setSpeechDurationInSeconds(duration);
       this.speechesService.setSpeechReadingLevelInSeconds(currentTime);
-
+  
       const formattedCurrentTime = `${Math.floor(currentTime / 60)
         .toString()
         .padStart(2, '0')}:${Math.floor(currentTime % 60)
         .toString()
         .padStart(2, '0')}`;
-
-      this.speechesService.setSpeechReadingLevel(formattedCurrentTime)
-
+  
+      this.speechesService.setSpeechReadingLevel(formattedCurrentTime);
+  
       const formattedDuration = `${Math.floor(duration / 60)
         .toString()
         .padStart(2, '0')}:${Math.floor(duration % 60)
         .toString()
         .padStart(2, '0')}`;
-
-      this.speechesService.setSpeechDuration(formattedDuration)
+  
+      this.speechesService.setSpeechDuration(formattedDuration);
     });
+    
+    //! when the audio loading is canceled
+    html_audio.addEventListener('error', () => {
+      console.error('Error loading audio.');
+      this.speechesService.selected_speech_is_loading = false;
+    });
+
   }
 
   onAudioEnd(): void {
@@ -96,4 +107,11 @@ export class AppComponent implements OnInit {
       }
     }
   }
+
+  onAudioSourceChange(): void {
+    console.log('Audio started loading...');
+    this.speechesService.selected_speech_is_loading = true;
+  }
+  
+
 }

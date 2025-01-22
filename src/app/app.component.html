@@ -45,14 +45,15 @@
             <div class="playing_speech_audio" 
                 *ngIf="speechesService.getSelectedSpeechData() != null" 
             >
-                <audio 
-                    [src]="speechesService.getSelectedSpeechData().link" 
-                    [volume]="speechesService.getSelectedSpeechData().volume"
-                    autoplay 
-                    id="playing_speech_html_audio" 
-                    (loadeddata)="getFetchedSpeechDuration()"
-                    (ended)="onAudioEnd()">
-                </audio>
+            <audio 
+                [src]="speechesService.getSelectedSpeechData().link" 
+                [volume]="speechesService.getSelectedSpeechData().volume"
+                autoplay 
+                id="playing_speech_html_audio" 
+                (loadstart)="onAudioSourceChange()"
+                (loadeddata)="getFetchedSpeechDuration()"
+                (ended)="onAudioEnd()">
+            </audio>
             </div>
         </div>
         
