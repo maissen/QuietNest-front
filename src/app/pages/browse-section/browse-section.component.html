@@ -28,11 +28,12 @@
             [playlists]="service.get_most_played_playlists()"
         ></app-carousel-rectangle-playlist>
 
-        <app-carousel-square 
-            [carouselTitle]="'Enjoy our sound mixtures'"
-            [speeches]="mixtures.getSoundsMixtures()"
-        ></app-carousel-square>
-        
+        <app-carousel-square-narrators
+            [carouselTitle]="'Trending Narrators'"
+            [hasBottomBorder]="true"
+            [narrators]="service.get_most_liked_narrators()"
+        ></app-carousel-square-narrators>
+
         <app-recommended-for-you 
             [title]="'You may also like'" 
             [data]="service.get_random_speeches()"

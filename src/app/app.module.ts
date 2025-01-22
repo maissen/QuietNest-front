@@ -11,10 +11,8 @@ import { NotFound404Component } from './pages/not-found-404/not-found-404.compon
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { RouterLink } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { AudioItemSquareComponent } from './shared/audio-item-square/audio-item-square.component';
 import { AudioItemRectangleComponent } from './shared/audio-item-rectangle/audio-item-rectangle.component';
 import { CarouselRectangleComponent } from './shared/items-carousels/carousel-rectangle/carousel-rectangle.component';
-import { CarouselSquareComponent } from './shared/items-carousels/carousel-square/carousel-square.component';
 import { RecommendedForYouComponent } from './shared/items-carousels/recommended-for-you/recommended-for-you.component';
 import { RecommendedForYouItemComponent } from './shared/recommended-for-you-item/recommended-for-you-item.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -55,10 +53,8 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
     ProfileSectionComponent,
     NotFound404Component,
     WelcomeComponent,
-    AudioItemSquareComponent,
     AudioItemRectangleComponent,
     CarouselRectangleComponent,
-    CarouselSquareComponent,
     RecommendedForYouComponent,
     RecommendedForYouItemComponent,
     NavbarComponent,

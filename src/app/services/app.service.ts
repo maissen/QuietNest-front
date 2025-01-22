@@ -7,7 +7,6 @@ import { SoundsService } from './sounds.service';
 import { PlaylistsService } from './playlists.service';
 import { UserService } from './user.service';
 import { SpeechesService } from './speeches.service';
-import { SoundsmixturesService } from './soundsmixtures.service';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +26,6 @@ export class AppService {
     private playlistsService: PlaylistsService,
     public user: UserService,
     private speechesService: SpeechesService,
-    private soundsmixturesService: SoundsmixturesService,
   ) { }
 
   private random_speeches: any[] = [];
@@ -77,11 +75,6 @@ export class AppService {
                     this.soundsService.setSounds(sounds);
                     this.http.get<any[]>(this.soundsService.apiGetSoundsCategories()).subscribe(categories => {
                       this.soundsService.setCategories(categories);
-
-                      //! Fetch all soundsmixtures and their sounds
-                      this.http.get<any[]>(`${this.soundsmixturesService.api_get_all_soundsmixtures}/${this.user.getUser().id}`).subscribe(mixtures => {
-                        this.soundsmixturesService.setSoundsMixtures(mixtures);
-                      });
                     });
                   });
                 });
@@ -104,7 +97,6 @@ export class AppService {
   //! Replay speeches & playlists
   replay(): void {
     if (this.playlistsService.isPlaying) { 
-      // Reset playlist playback
       const currentPlaylist = this.playlistsService.getPlayingPlaylist();
   
       if (currentPlaylist && currentPlaylist.speeches.length > 0) {
@@ -117,6 +109,7 @@ export class AppService {
     } else {
       //! Reset single speech playback
       const currentSpeech = this.speechesService.getSelectedSpeechData();
+      console.log('current speech : ' + currentSpeech);
   
       if (currentSpeech) {
         this.speechesService.clearSelectedSpeechData();

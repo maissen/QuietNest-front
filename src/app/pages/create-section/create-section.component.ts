@@ -7,7 +7,7 @@ import { SoundsService } from 'src/app/services/sounds.service';
   templateUrl: './create-section.component.html',
   styleUrls: ['./create-section.component.scss'],
 })
-export class CreateSectionComponent implements AfterViewInit {
+export class CreateSectionComponent {
   @ViewChild('categoriesList', { static: true }) categoriesList!: ElementRef;
   activeCategories: any[] = [];
 
@@ -15,16 +15,6 @@ export class CreateSectionComponent implements AfterViewInit {
     public service: CreateSectionService,
     public soundsService: SoundsService
   ) {}
-
-  ngAfterViewInit(): void {
-    if(this.service.auto_sounds_play) {
-      if(this.service.getActiveSounds()) {
-        this.service.clearActiveSounds()
-        console.log('after view init, sounds to play : ' + this.service.auto_sounds_list);
-        this.service.playSoundsAuto(this.service.auto_sounds_list);
-      }
-    }
-  }
 
   toggleCategory(category: any): void {
     if (category === 'All') {

@@ -158,16 +158,15 @@ export class SpeechesService {
   }
 
   togglePlayPause(): void {
-    if (this.html_audio) {
-      if (this.isSpeechPlaying) {
-        this.html_audio.pause();
-        this.isSpeechPlaying = false;
-      } 
-      else {
-        this.html_audio.play();
-        this.isSpeechPlaying = true;
-      }
+    console.log(this.html_audio)
+    if (this.isSpeechPlaying) {
+      this.html_audio.pause();
+      this.isSpeechPlaying = false;
     } 
+    else {
+      this.html_audio.play();
+      this.isSpeechPlaying = true;
+    }
   }
 
   getLikedSpeeches(): any[] {

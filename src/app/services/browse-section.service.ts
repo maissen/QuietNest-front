@@ -4,6 +4,7 @@ import { SpeechesService } from './speeches.service';
 import { PlaylistsService } from './playlists.service';
 import { UserService } from './user.service';
 import { AppService } from './app.service';
+import { NarratorsService } from './narrators.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class BrowseSectionService {
   constructor(
     private speechesService: SpeechesService,
     private playlistsService: PlaylistsService,
-    private appService: AppService
+    private appService: AppService,
+    private narratorsService: NarratorsService
   ) { }
 
   get_most_played_speeches(number: number = 12): any[] {
@@ -34,6 +36,12 @@ export class BrowseSectionService {
 
   get_most_liked_speeches(number: number = 12): any[] {
     return this.speechesService.getAllSpeeches()
+      .sort((a, b) => b.likes - a.likes)
+      .slice(0, number);
+  }
+
+  get_most_liked_narrators(number: number = 12): any[] {
+    return this.narratorsService.getAllNarrators()
       .sort((a, b) => b.likes - a.likes)
       .slice(0, number);
   }

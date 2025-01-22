@@ -10,7 +10,7 @@
 
         <app-carousel-square-narrators
             [hasBottomBorder]="true"
-            [carouselTitle]="'Trending narrators'"
+            [carouselTitle]="'explore by narrators'"
             [narrators]="narratorsService.getAllNarrators()"
         ></app-carousel-square-narrators>
     
@@ -26,10 +26,8 @@
 
         <app-carousel-rectangle-playlist 
             [carouselTitle]="'Hot Playlists'" 
-            [hasBottomBorder]="true" 
             [playlists]="playlistsService.getPlaylists()"
         ></app-carousel-rectangle-playlist>
 
-        <app-carousel-square [carouselTitle]="'Our collection of mixtures'" [speeches]="service.getAllSpeches()"></app-carousel-square>
     </div>
 </div>

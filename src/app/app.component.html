@@ -42,17 +42,18 @@
             *ngIf="speechesService.getSelectedSpeechData() != null" 
             style="display: none;"
         >
-        <div class="playing_speech_audio" 
-            *ngIf="speechesService.getSelectedSpeechData() != null" 
-            style="display: block;">
-            <audio 
-                [src]="speechesService.getSelectedSpeechData().link" 
-                [volume]="speechesService.getSelectedSpeechData().volume"
-                autoplay 
-                id="playing_speech_html_audio" 
-                (loadeddata)="getFetchedSpeechDuration()"
-                (ended)="onAudioEnd()">
-            </audio>
+            <div class="playing_speech_audio" 
+                *ngIf="speechesService.getSelectedSpeechData() != null" 
+            >
+                <audio 
+                    [src]="speechesService.getSelectedSpeechData().link" 
+                    [volume]="speechesService.getSelectedSpeechData().volume"
+                    autoplay 
+                    id="playing_speech_html_audio" 
+                    (loadeddata)="getFetchedSpeechDuration()"
+                    (ended)="onAudioEnd()">
+                </audio>
+            </div>
         </div>
         
     </div>
