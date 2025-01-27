@@ -14,9 +14,8 @@
                 <p>{{service.getSelectedSpeechData().name}}</p>
                 <span>Performed By</span>
             </div>
-            <div *ngIf="service.getSelectedSpeechData().description" class="description">{{service.getSelectedSpeechData().description}}</div>
 
-            <app-narrator-profile [narrator]="service.getSelectedSpeechData()?.narrator" ></app-narrator-profile>
+            <app-narrator-profile [narrator]="narratorsService.getNarratorById(service.getSelectedSpeechData().narratorID)" ></app-narrator-profile>
 
         </header>
 

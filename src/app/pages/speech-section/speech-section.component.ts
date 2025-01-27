@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NarratorsService } from 'src/app/services/narrators.service';
 import { SpeechesService } from 'src/app/services/speeches.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class SpeechSectionComponent implements OnInit {
 
   constructor(
     public service: SpeechesService,
+    public narratorsService: NarratorsService,
     private router: Router,
   ) {}
 
