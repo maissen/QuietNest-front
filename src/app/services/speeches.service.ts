@@ -126,17 +126,11 @@ export class SpeechesService {
     this.isSpeechPlaying = true;
 
     this.selectedSpeech = speech;
-    this.selectedSpeech.narrator = this.narratorsService.getNarratorById(this.selectedSpeech);
-    this.selectedSpeech.category = this.categoriesService.getCategoryById(this.selectedSpeech);
 
-    // console.log(this.getSelectedSpeechData());
+    console.log(this.getSelectedSpeechData());
   }  
 
   getSelectedSpeechData(): any {
-    return this.selectedSpeech;
-  }
-
-  getSpeech(): any {
     return this.selectedSpeech;
   }
 

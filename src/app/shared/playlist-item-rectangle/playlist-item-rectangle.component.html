@@ -8,8 +8,8 @@
     </div>
     <div class="item__info">
       <p class="name">{{ playlist?.name }} </p>
-      <div class="cat_narrator cormorant-font">
-        <p class="category">{{ playlist?.category?.name }}</p>
+      <div class="cat_narrator">
+        <p class="category">{{ categoriesService.getCategoryById(playlist.categoryID).name }} • {{playlist.speeches?.length + ' speeches'}}</p>
       </div>
       <div class="likes_plays_badges">
         <div class="item blurry-bg">

@@ -9,7 +9,7 @@
 
     <div class="description">
       <p class="title">{{service.getSelectedSpeechData().name}}</p>
-      <small class="sub_title cormorant-font">{{service.getSelectedSpeechData().category.name}} | {{service.getSelectedSpeechData().narrator.name}}</small>
+      <p class="sub_title"><span>{{ categoriesService.getCategoryById(service.getSelectedSpeechData().categoryID).name }}</span> . <span>{{ narratorsService.getNarratorById(service.getSelectedSpeechData().narratorID).name }}</span></p>
     </div>
 
     <div class="speech_reading_level small">
@@ -48,10 +48,18 @@
 
     <!--! like btn -->
     <button 
-    *ngIf="!this.playlistsService.isPlaying"
+      *ngIf="!this.playlistsService.isPlaying"
       class="like" 
-      [ngClass]="{'liked': service.getSelectedSpeechData().liked == true}" 
+      [ngClass]="{'liked': service.getSelectedSpeechData().liked}" 
       (click)="likeSpeech()"
+    >
+      <i class="fa-solid fa-heart"></i>
+    </button>
+    <button 
+      *ngIf="this.playlistsService.isPlaying"
+      class="like" 
+      [ngClass]="{'liked': playlistsService.getPlayingPlaylist().liked}" 
+      (click)="likePlaylist()"
     >
       <i class="fa-solid fa-heart"></i>
     </button>

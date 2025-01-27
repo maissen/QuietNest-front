@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SpeechesService } from './speeches.service';
+import { catchError, map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,14 @@ export class PlaylistsService {
   private playlists: any[] = [];
 
   constructor(
-    private router: Router,
     private http: HttpClient,
   ) { }
 
   public api_all_playlists: string = 'http://localhost:2003/api/get-all-playlists';
   public api_increment_playlists_plays: string = 'http://localhost:2003/api/increment-playlist-playing-nbr';
+  public api_user_likes_playlist: string = 'http://localhost:2003/api/like/playlist/';
+
+
   private playingPlaylist: any = null;
   isPlaying: boolean = false;
   isFinished: boolean = false;
@@ -60,6 +63,21 @@ export class PlaylistsService {
       },
     });
   }
+
+  userLikesPlaylist(playlistID: number, userID: string): Observable<any> {
+      const requestBody = { playlistID, userID };
+  
+      return this.http.post<any>(this.api_user_likes_playlist, requestBody).pipe(
+        map(response => {
+          console.log(response);
+          return response;
+        }),
+        catchError(err => {
+          console.error('Failed to like speech:', err);
+          return of({ success: false, error: err });
+        })
+      );
+    }
   
 
 }

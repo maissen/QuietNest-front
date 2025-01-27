@@ -11,10 +11,10 @@
   </div>
   <div class="item__info">
     <p class="name">{{ speech.name }} </p>
-    <div class="cat_narrator cormorant-font">
-      <p class="category">{{ categoriesService.getCategoryById(speech)?.name }}</p>
+    <div class="cat_narrator">
+      <p class="category">{{ categoriesService.getCategoryById(speech?.categoryID)?.name }}</p>
       •
-      <p class="narrator">{{ narratorsService.getNarratorById(speech)?.name }}</p>
+      <p class="narrator">{{ narratorsService.getNarratorById(speech.narratorID)?.name }}</p>
     </div>
     <div class="likes_plays_badges">
       <div class="item blurry-bg">

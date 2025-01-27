@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
+import { CategoriesService } from 'src/app/services/categories.service';
 import { CreateSectionService } from 'src/app/services/create-section.service';
+import { NarratorsService } from 'src/app/services/narrators.service';
 import { PlaylistsService } from 'src/app/services/playlists.service';
 import { SpeechesService } from 'src/app/services/speeches.service';
 import { UserService } from 'src/app/services/user.service';
@@ -21,7 +23,9 @@ export class PlayingSpeechBannerComponent {
     public service: SpeechesService,
     private user: UserService,
     public playlistsService: PlaylistsService,
-    public globalService: AppService
+    public globalService: AppService,
+    public categoriesService: CategoriesService,
+    public narratorsService: NarratorsService
   ) {
     this.router.events.subscribe(() => {
       this.checkRoute();
@@ -56,6 +60,27 @@ export class PlayingSpeechBannerComponent {
     });
   }
 
+  likePlaylist() {
+    let userID = this.user.getUser().id;
+    let playlist = this.playlistsService.getPlayingPlaylist();
+    
+    this.playlistsService.userLikesPlaylist(playlist.id, userID).subscribe(response => {
+  
+      if (playlist.liked) {
+        playlist.likes = parseInt(playlist.likes) - 1 ;
+      }
+      else {
+        playlist.likes = parseInt(playlist.likes) + 1 ;
+      }
+
+      playlist.liked = !playlist.liked;
+
+    }, 
+    error => {
+      console.error('Error liking playlist:', error);
+    });
+  }
+
   updateVolume(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
     let volume = parseFloat(inputElement.value);
@@ -64,10 +89,6 @@ export class PlayingSpeechBannerComponent {
   
   showPlay_hideReplay(): boolean {
     return this.service.getSpeechReadingLevelInSeconds() < this.service.getSpeechDurationInSeconds();
-  }
-
-  navigate(): void {
-
   }
 
 }

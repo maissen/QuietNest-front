@@ -27,15 +27,15 @@
     
         button {
             flex: 0 0 auto;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
+            padding: 0.7rem 1.3rem;
+            border-radius: 3rem;
             white-space: nowrap;
             text-decoration: none;
             border: none;
             color: lightgray;
 
             i {
-                margin-right: 1rem;
+                margin-right: .5rem;
             }
 
             &.active {

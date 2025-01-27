@@ -15,7 +15,7 @@ export class CategoriesService {
     return this.allCategories;
   }
 
-  getCategoryById(speech: any): any {
-    return this.getAllCategories().find((category: any) => category.id == speech.categoryID);
+  getCategoryById(categoryID: number): any {
+    return this.getAllCategories().find((category: any) => category.id == categoryID);
   }
 }

@@ -21,8 +21,8 @@ export class NarratorsService {
     return this.allNarrators;
   }
 
-  getNarratorById(speech: any): any {
-    return this.getAllNarrators().find(narrator => narrator.id == speech.narratorID);
+  getNarratorById(narratorID: number): any {
+    return this.getAllNarrators().find(narrator => narrator.id == narratorID);
   }
 }
 

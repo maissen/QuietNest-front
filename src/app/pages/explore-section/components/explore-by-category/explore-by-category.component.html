@@ -12,7 +12,10 @@
       class="blurry-bg" 
       *ngFor="let category of categories"
       [routerLink]="'/app/search/category/'+category.id"
-    >{{category?.name}}</button>
+    >
+      <i class="fa-solid fa-tag"></i>
+      {{category?.count}} {{category?.name}}
+    </button>
   </ul>
   
 </div>
