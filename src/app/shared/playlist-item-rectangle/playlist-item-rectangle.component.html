@@ -8,12 +8,17 @@
     </div>
     <div class="item__info">
       <p class="name">{{ playlist?.name }} </p>
-      <div class="cat_narrator">
+      <!-- <div class="cat_narrator">
         <p class="category">{{ categoriesService.getCategoryById(playlist.categoryID).name }} • {{playlist.speeches?.length + ' speeches'}}</p>
-      </div>
+      </div> -->
       <div class="likes_plays_badges">
         <div class="item blurry-bg">
-          <i class="fa-solid fa-play"></i> <span class="number">{{ playlist?.playing_nbr }} plays</span>
+          <div class="content">
+            <i class="fa-solid fa-play"></i> <span class="number">{{ playlist?.playing_nbr }} plays</span>
+          </div>
+          <div class="content">
+            <i class="fa-solid fa-book"></i> <span class="number">{{ playlist?.speeches.length }} audios</span>
+          </div>
         </div>
       </div>
     </div>

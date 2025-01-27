@@ -23,6 +23,7 @@ export class PlaylistsService {
   private playingPlaylist: any = null;
   isPlaying: boolean = false;
   isFinished: boolean = false;
+  playing_speech_index: number = -1;
 
   setPlayLists(list: any[]) {
     this.playlists = list;
@@ -37,12 +38,14 @@ export class PlaylistsService {
     this.playingPlaylist = playlist;
     this.isPlaying = true;
     this.isFinished = false;
+    this.playing_speech_index = 1;
   }
 
   clearPlayingPlaylist(): void {
     this.playingPlaylist = null;
     this.isPlaying = false;
     this.isFinished = false;
+    this.playing_speech_index = -1;
   }
 
   getPlayingPlaylist(): any {
@@ -75,7 +78,7 @@ export class PlaylistsService {
           return of({ success: false, error: err });
         })
       );
-    }
+  }
   
 
 }
