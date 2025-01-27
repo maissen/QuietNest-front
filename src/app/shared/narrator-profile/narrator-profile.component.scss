@@ -57,15 +57,6 @@
                         margin-left: .7rem;
                     }
                 }
-                
-                .hideDetail {
-                    display: none;
-
-                    @media all and (min-width: 500px) {
-                        display: inline-block;
-                    }
-                }
-
 
                 &.liked {
                     i {
@@ -149,14 +140,6 @@
             .count {
                 display: flex;
                 margin: 0;
-            }
-
-            .showTextDetail {
-                display: none;
-
-                @media all and (min-width: 700px) {
-                    display: inline;
-                }
             }
 
             &.liked {

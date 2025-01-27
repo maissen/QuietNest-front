@@ -5,26 +5,26 @@
         <div class="header">
             <div class="title">{{service.getPlayingPlaylist()?.name}}</div>
 
-            <app-narrator-profile [narrator]="speechesService.getSelectedSpeechData()?.narrator" ></app-narrator-profile>
+            <app-narrator-profile [narrator]="narratorsService.getNarratorById(speechesService.getSelectedSpeechData().narratorID)" ></app-narrator-profile>
 
         </div>
 
         <div class="body hide-scrollbar">
 
-            <div class="item" *ngFor="let speech of service.getPlayingPlaylist()?.speeches" (click)="speechesService.setSelectedSpeechData(speech)">
-                <div class="thumb" [ngStyle]="{'background-image': 'url(' + speech.img + ')'}">
-                    <p class="playingBadge" *ngIf="speechesService.getSelectedSpeechData().id == speech.id">
+            <div class="item" *ngFor="let speech of service.getPlayingPlaylist()?.speeches" (click)="speechesService.setSelectedSpeechData(speechesService.getSpeechById(speech))">
+                <div class="thumb" [ngStyle]="{'background-image': 'url(' + speechesService.getSpeechById(speech).img + ')'}">
+                    <p class="playingBadge" *ngIf="speechesService.getSelectedSpeechData().id == speechesService.getSpeechById(speech).id">
                         Playing
                     </p>
                 </div>
                 <div class="info">
-                    <div class="name">{{speech.name}}</div>
+                    <div class="name">{{speechesService.getSpeechById(speech).name}}</div>
                     <div class="category">
-                        {{categoriesService.getCategoryById(speech)?.name}} | {{narratorsService.getNarratorById(speech)?.name}}
+                        {{narratorsService.getNarratorById(speechesService.getSpeechById(speech).narratorID)?.name}}
                     </div>
                 </div>
                 <div class="badge">
-                    <span>{{speech.likes}}</span>
+                    <span>{{speechesService.getSpeechById(speech).likes}}</span>
                     <i class="fa-solid fa-heart"></i>
                 </div>
             </div>

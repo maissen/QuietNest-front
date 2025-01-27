@@ -107,7 +107,6 @@ export class SpeechesService {
 
     return this.http.post(this.api_increment_playingNbr, requestBody).subscribe({
       next: (response) => {
-        // console.log('Playing number incremented successfully:', response);
         speech.playing_nbr = parseInt(speech.playing_nbr) + 1;
       },
       error: (error) => {
@@ -126,8 +125,6 @@ export class SpeechesService {
     this.isSpeechPlaying = true;
 
     this.selectedSpeech = speech;
-
-    console.log(this.getSelectedSpeechData());
   }  
 
   getSelectedSpeechData(): any {

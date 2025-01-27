@@ -101,7 +101,7 @@ export class AppService {
   
       if (currentPlaylist && currentPlaylist.speeches.length > 0) {
         this.playlistsService.isFinished = false;
-        this.speechesService.setSelectedSpeechData(currentPlaylist.speeches[0]);
+        this.speechesService.setSelectedSpeechData(this.speechesService.getSpeechById(currentPlaylist.speeches[0]));
         this.playlistsService.setPlayingPlayList(currentPlaylist);
         this.speechesService.html_audio.currentTime = 0;
         this.speechesService.html_audio.play();

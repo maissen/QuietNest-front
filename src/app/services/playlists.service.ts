@@ -56,7 +56,6 @@ export class PlaylistsService {
     return this.http.post(this.api_increment_playlists_plays, requestBody).subscribe({
       next: (response) => {
         playlist.playing_nbr = parseInt(playlist.playing_nbr) + 1;
-        console.log(response);
       },
       error: (error) => {
         console.error('Error incrementing playing number:', error);
@@ -69,7 +68,6 @@ export class PlaylistsService {
   
       return this.http.post<any>(this.api_user_likes_playlist, requestBody).pipe(
         map(response => {
-          console.log(response);
           return response;
         }),
         catchError(err => {
