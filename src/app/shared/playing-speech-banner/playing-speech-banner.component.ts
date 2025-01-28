@@ -19,13 +19,14 @@ export class PlayingSpeechBannerComponent {
 
   constructor(
     public createSectionService: CreateSectionService,
-    private router: Router,
     public service: SpeechesService,
-    private user: UserService,
     public playlistsService: PlaylistsService,
     public globalService: AppService,
     public categoriesService: CategoriesService,
-    public narratorsService: NarratorsService
+    public narratorsService: NarratorsService,
+    private router: Router,
+    private user: UserService,
+    private speechesService: SpeechesService
   ) {
     this.router.events.subscribe(() => {
       this.checkRoute();

@@ -23,6 +23,7 @@
 
     <div *ngIf="user.getUser() != null">
         
+        <!--! sounds of create section -->
         <div class="create-section-sounds" style="display: none;">
             <div *ngFor="let sound of soundsService.getSounds()">
                 <audio 
@@ -37,6 +38,7 @@
             </div>
         </div>
 
+        <!--! audio of playing speech -->
         <div 
             class="playing_speech_audio" 
             *ngIf="speechesService.getSelectedSpeechData() != null" 

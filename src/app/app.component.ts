@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
   }
 
   getFetchedSpeechDuration(): void {
-    console.log('Audio finished loading.');
+    // console.log('Audio finished loading.');
     this.speechesService.selected_speech_is_loading = false;
   
     const html_audio = document.querySelector('#playing_speech_html_audio') as HTMLAudioElement;
@@ -93,23 +93,19 @@ export class AppComponent implements OnInit {
   onAudioEnd(): void {
     if (this.playlistsService.isPlaying) {
       const playlistSpeeches = this.playlistsService.getPlayingPlaylist().speeches;
-      const currentSpeech = this.speechesService.getSelectedSpeechData();
-  
-      const index = playlistSpeeches.findIndex((speech: any) => speech.id === currentSpeech.id);
+      let index = this.playlistsService.getPlayingPlaylist().speeches.indexOf(this.speechesService.getSelectedSpeechData().id);
   
       if (index >= 0 && index < playlistSpeeches.length - 1) {
-        this.speechesService.setSelectedSpeechData(playlistSpeeches[index + 1]);
-        console.log('Current speech index in playlist is ' + index);
+        this.speechesService.setSelectedSpeechData(this.speechesService.getSpeechById(playlistSpeeches[index + 1]));
       } 
-      else if (index === playlistSpeeches.length - 1) {
-        console.log('Playlist has finished!');
+      else if (index == playlistSpeeches.length - 1) {
         this.playlistsService.isFinished = true;
       }
     }
   }
 
   onAudioSourceChange(): void {
-    console.log('Audio started loading...');
+    // console.log('Audio started loading...');
     this.speechesService.selected_speech_is_loading = true;
   }
   
