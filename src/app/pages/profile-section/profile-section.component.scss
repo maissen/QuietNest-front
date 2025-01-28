@@ -13,63 +13,24 @@
             padding: 2rem;
             width: 100%;
             margin: auto;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            flex-direction: column;
+            // display: flex;
+            // justify-content: flex-start;
+            // align-items: center;
+            // flex-direction: column;
 
             gap: 2rem;
             color: #FFF;
             margin-bottom: 7rem;
 
-            .qr_img {
-                height: var(--segment);
-                width: var(--segment);
-                border: .1rem solid #FFF;
-                overflow: hidden;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: relative;
-                z-index: 1;
-
-                img {
-                    height: 100%;
-                }
-
-                .overlay {
-                    position: absolute;
-                    z-index: 2;
-                    width: 100%;
-                    height: 100%;
-                    background-color: #000000c4;
-                    cursor: pointer;
-                    transition: opacity .3s;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    opacity: 0;
-                    color: #FFF;
-
-                    p {
-                        margin: 0;
-                        font-size: 1.9rem;
-
-                        i {
-                            margin-left: .5rem;
-                        }
-                    }
-
-                    &:hover {
-                        opacity: 1;
-                    }
-                }
-            }
-
-            .info {
+            .user {
                 text-align: center;
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 2rem;
+                padding-bottom: 1rem;
+
                 .fullname {
-                    font-size: 2rem;
+                    font-size: 3rem;
                 }
     
                 .joining_date {
@@ -81,11 +42,84 @@
                 flex-direction: row;
                 align-items: flex-start;
 
-                .info {
+                .user {
                     text-align: start;
                 }
             }
 
+            .info {
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 2rem;
+            
+                .qr_img {
+                    height: var(--segment);
+                    width: var(--segment);
+                    border: .1rem solid #FFF;
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                    flex-grow: 0;
+                    flex-shrink: 0;
+                    z-index: 1;
+            
+                    img {
+                        height: 100%;
+                    }
+            
+                    .overlay {
+                        position: absolute;
+                        z-index: 2;
+                        width: 100%;
+                        height: 100%;
+                        background-color: #000000c4;
+                        cursor: pointer;
+                        transition: opacity .3s;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        opacity: 0;
+                        color: #FFF;
+            
+                        p {
+                            margin: 0;
+                            font-size: 1.9rem;
+            
+                            i {
+                                margin-left: .5rem;
+                            }
+                        }
+            
+                        &:hover {
+                            opacity: 1;
+                        }
+                    }
+                }
+            
+                .items {
+                    flex-grow: 0;
+                    flex-shrink: 0;
+
+                    .item {
+                        i {
+                            margin-right: .7rem;
+                        }
+
+                        &.copyID {
+                            button {
+                                border: none;
+                                background-color: transparent;
+                                color: #ffffffb2;
+                                margin-left: 1rem;
+                            }
+                        }
+                    }
+                }
+            }
+            
         }
     }
 

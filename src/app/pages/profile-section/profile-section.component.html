@@ -2,28 +2,45 @@
     <app-bg-video></app-bg-video>
 
     <div class="loaded_content add-bottom-spacing-for-playing-speech-banner">
-        <div class="header blurry-bg">
-            <div class="qr_img">
-                <!-- Added click event -->
-                <img 
-                    [src]="user.getUser().qrcode" 
-                    alt="your_qr_code" 
-                    loading="lazy"
-                >
 
-                <div class="overlay" (click)="downloadQrCode()">
-                    <p>Download <i class="fa-solid fa-download"></i></p>
-                </div>
-            </div>
-            <div class="info"> 
+
+        <div class="header blurry-bg">
+            <div class="user"> 
                 <p class="fullname">
                     {{ user.getUser().firstName + ' ' + user.getUser().lastName }}   
                 </p> 
-                <p class="joining_date">
-                    {{ user.getUser().joiningDate | date }}
-                </p>
                 <app-btn-rectangle [text]="'Log out'" [isRouter]="false" (click)="clear()"></app-btn-rectangle>
             </div>
+
+            <div class="info">
+                <div class="qr_img">
+                    <img 
+                        [src]="user.getUser().qrcode" 
+                        alt="your_qr_code" 
+                        loading="lazy"
+                    >
+    
+                    <div class="overlay" (click)="downloadQrCode()">
+                        <p>Download <i class="fa-solid fa-download"></i></p>
+                    </div>
+                </div>
+                <div class="items">
+                    <p class="item">
+                        <i class="fa-regular fa-calendar"></i>
+                        {{ user.getUser().joiningDate | date }}
+                    </p>
+                    <p class="item">
+                        <i class="fa-regular fa-clock"></i>
+                        Time spent
+                    </p>
+                    <p class="item copyID">
+                        <i class="fa-regular fa-id-card"></i>
+                        <button (click)="copyID()">Copy ID</button>
+                    </p>
+
+                </div>
+            </div>
+            
         </div>
 
         <div class="body">

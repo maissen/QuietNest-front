@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SpeechesService } from 'src/app/services/speeches.service';
+import { ToastService } from 'src/app/services/toast.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class ProfileSectionComponent {
     public user: UserService,
     private router: Router,
     public speechesService: SpeechesService,
+    private toast: ToastService
   ) {}
 
   clear() {
@@ -36,6 +38,18 @@ export class ProfileSectionComponent {
     anchor.download = fileName;
     anchor.click();
   }
+
+  copyID(): void {
+    const userId = this.user.getUser().id;
+    if (userId) {
+      navigator.clipboard.writeText(userId).then(() => {
+        this.toast.showToast('Your ID is copied successfully', 0, 'success');
+      }).catch((err) => {
+        this.toast.showToast('can not copy ID', 2, 'failed');
+      });
+    }
+  }
+  
   
 
   
