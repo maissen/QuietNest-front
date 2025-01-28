@@ -1,0 +1,9 @@
+<div class="content">
+    <video autoplay loop muted>
+        <!-- <source [src]="scenesService.getSceneByID(user.getUser().sceneID)"> -->
+        <source src="./../../../assets/Forest During Autumn Season.mp4">
+    </video>
+
+    <!-- <img [src]="scenesService.getSceneByID(user.getUser().sceneID)" alt=""> -->
+    {{scenesService.getSceneByID(user.getUser().sceneID) | json}}
+</div>

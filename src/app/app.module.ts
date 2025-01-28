@@ -43,6 +43,7 @@ import { NarratorItemSquareComponent } from './shared/narrator-item-square/narra
 import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode';
 import { ToastComponent } from './shared/toast/toast.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { OverlayVideoComponent } from './shared/overlay-video/overlay-video.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
     NarratorItemSquareComponent,
     ToastComponent,
     RegisterPageComponent,
+    OverlayVideoComponent,
   ],
   imports: [
     BrowserModule,

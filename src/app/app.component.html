@@ -2,14 +2,14 @@
   class="content" 
   [style]="'--avgColor:' + scenesService.getActiveScene()?.avgColor + 
           '; --avgColorlighter:' + scenesService.getActiveScene()?.avgColor + '42' + 
-          '; --currentSceneImg:url(' + scenesService.getActiveScene()?.img + ')'">
-
-
+          '; --currentSceneImg:url(' + scenesService.getActiveScene()?.img + ')'"
+>
 
     <app-navbar *ngIf="navbar.showNavbar"></app-navbar>
 
     <app-playing-speech-banner></app-playing-speech-banner>
     <app-bottom-sheet></app-bottom-sheet>
+    <app-overlay-video></app-overlay-video>
     
     <div
         class="dynamic-content"
