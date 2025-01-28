@@ -8,8 +8,10 @@ import { catchError, map, Observable, of } from 'rxjs';
 export class NarratorsService {
 
   public api_get_all_narrators = "http://localhost:2003/api/get-all-narrators";
+  public api_trending_narrators = "http://localhost:2003/api/get-trending-narrators";
   public api_user_likes_narrator = "http://localhost:2003/api/like/narrator/";
   private allNarrators: any[] = [];
+  public trending_narrators: any[] = [];
 
   constructor(private http: HttpClient) {}
 

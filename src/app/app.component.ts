@@ -8,6 +8,7 @@ import { CreateSectionService } from './services/create-section.service';
 import { SoundsService } from './services/sounds.service';
 import { PlaylistsService } from './services/playlists.service';
 import { NavbarService } from './services/navbar.service';
+import { NarratorsService } from './services/narrators.service';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,8 @@ export class AppComponent implements OnInit {
     public service: CreateSectionService,
     public soundsService: SoundsService,
     public playlistsService: PlaylistsService,
-    public navbar: NavbarService
+    public navbar: NavbarService,
+    public narratorsService: NarratorsService,
   ) { }
 
   ngOnInit() {
@@ -36,6 +38,11 @@ export class AppComponent implements OnInit {
       this.check_url();
     });
 
+    this.loadAllAppData();
+
+  }
+
+  loadAllAppData(): void {
   }
   
   check_url() {
@@ -47,9 +54,44 @@ export class AppComponent implements OnInit {
     }
 
     if(this.user.getUser() !== null && this.app.isLoaded == false) {
-      this.app.loadAllAppData();
       this.app.isLoaded = true;
     }
+    
+    if(currentUrl.startsWith('/app')) {
+      this.app.loadScenes();
+      this.app.loadAllNarrators();
+    }
+
+    if(this.router.url.startsWith('/app/browse')) {
+      if(this.narratorsService.trending_narrators.length == 0) {
+        this.app.loadTrendingNarrators(12);
+      }
+      if(this.speechesService.popular_speeches.length == 0) {
+        this.app.loadPopularSpeeches(12);
+      }
+      if(this.playlistsService.hot_playlists.length == 0) {
+        this.app.loadHotPlaylists(12);
+      }
+      if(this.speechesService.random_speeches.length == 0) {
+        this.app.loadRandomSpeeches(12);
+      }
+      if(this.speechesService.top_liked_speeches.length == 0) {
+        this.app.loadTopLikedSpeeches(12);
+      }
+    }
+
+    if(this.router.url.startsWith('/app/create')) {
+      if(this.soundsService.getSounds().length == 0) {
+        this.app.loadSounds();
+      }
+    }
+
+    if(this.router.url.startsWith('/app/explore')) {
+      this.app.loadAllNarrators();
+      this.app.loadAllSpeeches();
+      this.app.loadAllPlaylists();
+    }
+
   }
 
   getFetchedSpeechDuration(): void {

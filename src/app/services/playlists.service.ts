@@ -9,18 +9,20 @@ import { catchError, map, Observable, of } from 'rxjs';
 })
 export class PlaylistsService {
 
-  private playlists: any[] = [];
-
   constructor(
     private http: HttpClient,
   ) { }
 
   public api_all_playlists: string = 'http://localhost:2003/api/get-all-playlists';
+  public api_hot_playlists: string = 'http://localhost:2003/api/get-hot-playlists';
   public api_increment_playlists_plays: string = 'http://localhost:2003/api/increment-playlist-playing-nbr';
   public api_user_likes_playlist: string = 'http://localhost:2003/api/like/playlist/';
 
 
+  private playlists: any[] = [];
   private playingPlaylist: any = null;
+  hot_playlists: any[] = [];
+
   isPlaying: boolean = false;
   isFinished: boolean = false;
   playing_speech_index: number = -1;

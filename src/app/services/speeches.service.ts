@@ -10,6 +10,8 @@ import { NarratorsService } from './narrators.service';
 })
 export class SpeechesService {
   public api_get_all_speeches = 'http://localhost:2003/api/get-all-speeches';
+  public api_get_popular_speeches = 'http://localhost:2003/api/get-popular-speeches';
+  public api_get_top_liked_speeches = 'http://localhost:2003/api/get-top-liked-speeches';
   public api_like_speech = 'http://localhost:2003/api/like/speech/';
   public api_increment_playingNbr = 'http://localhost:2003/api/increment-playing-nbr';
   public api_toggle_save_speech = 'http://localhost:2003/api/save-speech/';
@@ -19,6 +21,9 @@ export class SpeechesService {
 
   private allSpeches: any[] = [];
   private selectedSpeech: any = null;
+  popular_speeches: any[] = [];
+  top_liked_speeches: any[] = [];
+  random_speeches: any[] = [];
 
   private speechDuration: string = '00:00';
   private speechReadingLevel: string = '00:00';

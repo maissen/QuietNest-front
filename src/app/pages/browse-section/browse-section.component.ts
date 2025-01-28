@@ -3,6 +3,7 @@ import { BrowseSectionService } from 'src/app/services/browse-section.service';
 import { NarratorsService } from 'src/app/services/narrators.service';
 import { PlaylistsService } from 'src/app/services/playlists.service';
 import { ScenesService } from 'src/app/services/scenes.service';
+import { SpeechesService } from 'src/app/services/speeches.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -20,6 +21,8 @@ export class BrowseSectionComponent {
     public scenesService: ScenesService,
     public playlistsService: PlaylistsService,
     public user: UserService,
+    public narratorsService: NarratorsService,
+    public speechesService: SpeechesService
   ) {
     this.setSalutationMessage();
   }

@@ -7,6 +7,7 @@ import { SoundsService } from './sounds.service';
 import { PlaylistsService } from './playlists.service';
 import { UserService } from './user.service';
 import { SpeechesService } from './speeches.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -18,81 +19,168 @@ export class AppService {
   isLoaded: boolean = false;
   
   constructor(
+    public user: UserService,
+    public scenesService: ScenesService,
     private http: HttpClient,
+    private playlistsService: PlaylistsService,
+    private speechesService: SpeechesService,
+    private soundsService: SoundsService,
     private categoriesService: CategoriesService,
     private narratorsService: NarratorsService,
-    public scenesService: ScenesService,
-    private soundsService: SoundsService,
-    private playlistsService: PlaylistsService,
-    public user: UserService,
-    private speechesService: SpeechesService,
+    private router: Router
   ) { }
 
-  private random_speeches: any[] = [];
 
-  loadAllAppData() {
-
-    //! Fetch al scenes
-    this.http.get<any[]>(this.scenesService.api_get_all_scenes).subscribe(allScenes => {
-      this.scenesService.setScenesList(allScenes);
-
-      if (this.user.getUser() !== null) {
-        const userSceneID = this.user.getUser().sceneID;
-        const scene = this.scenesService.getSceneByID(userSceneID);
-        if (scene) {
-          this.scenesService.setActiveScene(scene);
-
-          //! Fetch al narrators
-          this.http.get<any[]>(`${this.narratorsService.api_get_all_narrators}/${this.user.getUser().id}`).subscribe(categories => {
-            this.narratorsService.setAllnarrators(categories);
-
-            //! Fetch all categories
-            this.http.get<any[]>(this.categoriesService.api_get_all_categories).subscribe(categories => {
-              this.categoriesService.setAllCategories(categories);
-
-              //! Fetch all supeeches durations
-              this.http.get<any[]>(this.speechesService.api_speeches_durations).subscribe(
-                (res) => {
-                  this.speechesService.speechesDurations = res;
-                }
-              )
-
-              //! Fetch all speeches 
-              this.http.get<any[]>(`${this.speechesService.api_get_all_speeches}/${this.user.getUser().id}`).subscribe(speeches => {
-                this.speechesService.setSpeeches(speeches);
-
-                //! Fetch al playlists
-                this.http.get<any[]>(`${this.playlistsService.api_all_playlists}/${this.user.getUser().id}`).subscribe(allPlaylists => {
-                  this.playlistsService.setPlayLists(allPlaylists);
-
-                  //! Fetch random speeches
-                  this.http.get<any[]>(`${this.speechesService.api_get_random_speeches}/${this.user.getUser().id}/${12}`).subscribe(random_speeches => {
-                    this.random_speeches = random_speeches;
-                  })
-
-                  //! Fetch all sounds and their categories
-                  this.http.get<any[]>(this.soundsService.apiGetAllSounds()).subscribe(sounds => {
-                    this.soundsService.setSounds(sounds);
-                    this.http.get<any[]>(this.soundsService.apiGetSoundsCategories()).subscribe(categories => {
-                      this.soundsService.setCategories(categories);
-                    });
-                  });
-                });
-              });
-            });
-          });
-        } 
-        else {
-          console.warn(`No scene found with ID: ${userSceneID}`);
+  loadScenes(): void {
+    this.http.get<any[]>(this.scenesService.api_get_all_scenes).subscribe(
+      allScenes => {
+        this.scenesService.setScenesList(allScenes);
+        if (this.user.getUser() !== null) {
+          const userSceneID = this.user.getUser().sceneID;
+          const scene = this.scenesService.getSceneByID(userSceneID);
+          if (scene) {
+            this.scenesService.setActiveScene(scene);
+          } else {
+            console.warn(`No scene found with ID: ${userSceneID}`);
+          }
+        } else {
+          console.warn('User is not logged in');
         }
+      },
+      error => {
+        console.error('Error loading scenes:', error);
       }
-    });
+    );
+  }
+  
+  loadTrendingNarrators(count: number = 0): void {
+    this.http.get<any[]>(`${this.narratorsService.api_trending_narrators}/${this.user.getUser().id}/${count}`).subscribe(
+      trendingNarrators => {
+        this.narratorsService.trending_narrators = trendingNarrators;
+      },
+      error => {
+        console.error('Error loading narrators:', error);
+      }
+    );
   }
 
-  get_random_speeches(): any {
-    return this.random_speeches;
+  loadAllNarrators(count: number = 0): void {
+    this.http.get<any[]>(`${this.narratorsService.api_get_all_narrators}/${this.user.getUser().id}/${count}`).subscribe(
+      allNarrators => {
+        this.narratorsService.setAllnarrators(allNarrators);
+      },
+      error => {
+        console.error('Error loading narrators:', error);
+      }
+    );
+  }
+  
+  loadCategories(): void {
+    this.http.get<any[]>(this.categoriesService.api_get_all_categories).subscribe(
+      categories => {
+        this.categoriesService.setAllCategories(categories);
+      },
+      error => {
+        console.error('Error loading categories:', error);
+      }
+    );
+  }
+  
+  loadSpeechesDurations(): void {
+    this.http.get<any[]>(this.speechesService.api_speeches_durations).subscribe(
+      res => {
+        this.speechesService.speechesDurations = res;
+      },
+      error => {
+        console.error('Error loading speech durations:', error);
+      }
+    );
+  }
+  
+  loadAllSpeeches(count: number = 0): void {
+    this.http.get<any[]>(`${this.speechesService.api_get_all_speeches}/${this.user.getUser().id}/${count}`).subscribe(
+      speeches => {
+        this.speechesService.setSpeeches(speeches);
+      },
+      error => {
+        console.error('Error loading speeches:', error);
+      }
+    );
   }
 
+  loadPopularSpeeches(count: number = 0): void {
+    this.http.get<any[]>(`${this.speechesService.api_get_popular_speeches}/${this.user.getUser().id}/${count}`).subscribe(
+      speeches => {
+        this.speechesService.popular_speeches = speeches;
+      },
+      error => {
+        console.error('Error loading popular speeches:', error);
+      }
+    );
+  }
+
+  loadTopLikedSpeeches(count: number = 0): void {
+    this.http.get<any[]>(`${this.speechesService.api_get_top_liked_speeches}/${this.user.getUser().id}/${count}`).subscribe(
+      speeches => {
+        this.speechesService.top_liked_speeches = speeches;
+      },
+      error => {
+        console.error('Error loading top liked speeches:', error);
+      }
+    );
+  }
+  
+  loadAllPlaylists(count: number = 0): void {
+    this.http.get<any[]>(`${this.playlistsService.api_all_playlists}/${this.user.getUser().id}/${count}`).subscribe(
+      allPlaylists => {
+        this.playlistsService.setPlayLists(allPlaylists);
+      },
+      error => {
+        console.error('Error loading all playlists:', error);
+      }
+    );
+  }
+
+  loadHotPlaylists(count: number = 0): void {
+    this.http.get<any[]>(`${this.playlistsService.api_hot_playlists}/${this.user.getUser().id}/${count}`).subscribe(
+      hotPlaylists => {
+        this.playlistsService.hot_playlists = hotPlaylists;
+      },
+      error => {
+        console.error('Error loading hot playlists:', error);
+      }
+    );
+  }
+  
+  loadRandomSpeeches(count: number = 0): void {
+    this.http.get<any[]>(`${this.speechesService.api_get_random_speeches}/${this.user.getUser().id}/${count}`).subscribe(
+      random_speeches => {
+        this.speechesService.random_speeches = random_speeches;
+      },
+      error => {
+        console.error('Error loading random speeches:', error);
+      }
+    );
+  }
+  
+  loadSounds(): void {
+    this.http.get<any[]>(this.soundsService.apiGetAllSounds()).subscribe(
+      sounds => {
+        this.soundsService.setSounds(sounds);
+        this.http.get<any[]>(this.soundsService.apiGetSoundsCategories()).subscribe(
+          categories => {
+            this.soundsService.setCategories(categories);
+          },
+          error => {
+            console.error('Error loading sound categories:', error);
+          }
+        );
+      },
+      error => {
+        console.error('Error loading sounds:', error);
+      }
+    );
+  }
 
   //! Replay speeches & playlists
   replay(): void {
