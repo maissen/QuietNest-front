@@ -19,14 +19,13 @@ export class PlayingSpeechBannerComponent {
 
   constructor(
     public createSectionService: CreateSectionService,
-    public service: SpeechesService,
     public playlistsService: PlaylistsService,
     public globalService: AppService,
     public categoriesService: CategoriesService,
     public narratorsService: NarratorsService,
     private router: Router,
     private user: UserService,
-    private speechesService: SpeechesService
+    public speechesService: SpeechesService
   ) {
     this.router.events.subscribe(() => {
       this.checkRoute();
@@ -42,9 +41,9 @@ export class PlayingSpeechBannerComponent {
 
   likeSpeech() {
     let userID = this.user.getUser().id;
-    let speech = this.service.getSelectedSpeechData();
+    let speech = this.speechesService.getSelectedSpeechData();
     
-    this.service.userLikesSpeech(speech.id, userID).subscribe(response => {
+    this.speechesService.userLikesSpeech(speech.id, userID).subscribe(response => {
   
       if (speech.liked) {
         speech.likes = parseInt(speech.likes) - 1 ;
@@ -84,11 +83,11 @@ export class PlayingSpeechBannerComponent {
   updateVolume(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
     let volume = parseFloat(inputElement.value);
-    this.service.updatePlayingSpeechVolume(volume);
+    this.speechesService.updatePlayingSpeechVolume(volume);
   }
   
   showPlay_hideReplay(): boolean {
-    return this.service.getSpeechReadingLevelInSeconds() < this.service.getSpeechDurationInSeconds();
+    return this.speechesService.getSpeechReadingLevelInSeconds() < this.speechesService.getSpeechDurationInSeconds();
   }
 
 }

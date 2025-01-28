@@ -24,7 +24,6 @@ export class PlaylistItemRectangleComponent {
       this.service.incrementPlaylistPlayings(this.playlist);
     }
     this.service.setPlayingPlayList(this.playlist);
-
     this.speechesService.setSelectedSpeechData(this.speechesService.getSpeechById(this.playlist.speeches[0]));
   }
 }

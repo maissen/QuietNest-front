@@ -8,6 +8,7 @@ import { PlaylistsService } from './playlists.service';
 import { UserService } from './user.service';
 import { SpeechesService } from './speeches.service';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -141,16 +142,14 @@ export class AppService {
     );
   }
 
-  loadHotPlaylists(count: number = 0): void {
-    this.http.get<any[]>(`${this.playlistsService.api_hot_playlists}/${this.user.getUser().id}/${count}`).subscribe(
-      hotPlaylists => {
-        this.playlistsService.hot_playlists = hotPlaylists;
-      },
-      error => {
-        console.error('Error loading hot playlists:', error);
-      }
-    );
-  }
+  // loadHotPlaylists(count: number = 0) {
+  //   return this.http.get<any[]>(`${this.playlistsService.api_hot_playlists}/${this.user.getUser().id}/${count}`).pipe(
+  //     tap((hotPlaylists) => {
+  //       this.playlistsService.hot_playlists = hotPlaylists;
+  //     })
+  //   );
+  // }
+  
   
   loadRandomSpeeches(count: number = 0): void {
     this.http.get<any[]>(`${this.speechesService.api_get_random_speeches}/${this.user.getUser().id}/${count}`).subscribe(

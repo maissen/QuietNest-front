@@ -9,6 +9,8 @@ import { SoundsService } from './services/sounds.service';
 import { PlaylistsService } from './services/playlists.service';
 import { NavbarService } from './services/navbar.service';
 import { NarratorsService } from './services/narrators.service';
+import { HttpClient } from '@angular/common/http';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +31,7 @@ export class AppComponent implements OnInit {
     public playlistsService: PlaylistsService,
     public navbar: NavbarService,
     public narratorsService: NarratorsService,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
@@ -69,9 +72,8 @@ export class AppComponent implements OnInit {
       if(this.speechesService.popular_speeches.length == 0) {
         this.app.loadPopularSpeeches(12);
       }
-      if(this.playlistsService.hot_playlists.length == 0) {
-        this.app.loadHotPlaylists(12);
-      }
+      
+      
       if(this.speechesService.random_speeches.length == 0) {
         this.app.loadRandomSpeeches(12);
       }

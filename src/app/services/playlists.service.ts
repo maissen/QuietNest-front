@@ -17,11 +17,10 @@ export class PlaylistsService {
   public api_hot_playlists: string = 'http://localhost:2003/api/get-hot-playlists';
   public api_increment_playlists_plays: string = 'http://localhost:2003/api/increment-playlist-playing-nbr';
   public api_user_likes_playlist: string = 'http://localhost:2003/api/like/playlist/';
-
+  public api_get_playlist_speeches: string = 'http://localhost:2003/api/get-playlist-speeches';
 
   private playlists: any[] = [];
   private playingPlaylist: any = null;
-  hot_playlists: any[] = [];
 
   isPlaying: boolean = false;
   isFinished: boolean = false;
@@ -80,7 +79,6 @@ export class PlaylistsService {
           return of({ success: false, error: err });
         })
       );
-  }
-  
+  }  
 
 }

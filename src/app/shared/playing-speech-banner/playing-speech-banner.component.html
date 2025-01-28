@@ -1,32 +1,32 @@
-<div class="content blurry-bg" *ngIf="service.isPlaying() && !hideBanner">
+<div class="content blurry-bg" *ngIf="(speechesService.isPlaying() || playlistsService.getPlayingPlaylist())&& !hideBanner">
 
   <div class="info">
 
     <div class="img_thumb">
-      <img *ngIf="!playlistsService.isPlaying" [src]="service.getSelectedSpeechData().img">
-      <img *ngIf="playlistsService.isPlaying" [src]="playlistsService.getPlayingPlaylist().img">
+      <img *ngIf="!playlistsService?.isPlaying" [src]="speechesService.getSelectedSpeechData().img">
+      <img *ngIf="playlistsService?.isPlaying" [src]="playlistsService.getPlayingPlaylist()?.img">
     </div>
 
     <div class="description">
-      <p class="title">{{service.getSelectedSpeechData().name}}</p>
+      <p class="title">{{speechesService.getSelectedSpeechData()?.name}}</p>
       <p 
         *ngIf="!playlistsService.isPlaying"
         class="sub_title"
       >
-        <span>{{ narratorsService.getNarratorById(service.getSelectedSpeechData().narratorID).name }}</span>
+        <span>{{ narratorsService.getNarratorById(speechesService.getSelectedSpeechData().narratorID).name }}</span>
       </p>
       <p 
-        *ngIf="playlistsService.isPlaying"
+        *ngIf="playlistsService?.isPlaying"
         class="sub_title"
       >
-        <span>{{ (playlistsService.getPlayingPlaylist().speeches.indexOf(service.getSelectedSpeechData().id) + 1) + '/' + playlistsService.getPlayingPlaylist().speeches.length }}</span> 
+        <span>{{ (playlistsService.getPlayingPlaylist()?.speeches.indexOf(speechesService.getSelectedSpeechData().id) + 1) + '/' + playlistsService.getPlayingPlaylist()?.speeches.length }}</span> 
         . 
-        <span>{{ narratorsService.getNarratorById(service.getSelectedSpeechData().narratorID).name }}</span>
+        <span>{{ narratorsService.getNarratorById(speechesService.getSelectedSpeechData().narratorID).name }}</span>
       </p>
     </div>
 
     <div class="speech_reading_level small">
-      <p class="time">{{service.getSpeechReadingLevel()}}</p>
+      <p class="time">{{speechesService.getSpeechReadingLevel()}}</p>
       <input 
         class="range-slider" 
         type="range" 
@@ -34,7 +34,7 @@
         min="0"
         max="1"
         step="0.1"
-        [value]="service.getSelectedSpeechData().volume"
+        [value]="speechesService.getSelectedSpeechData().volume"
         (input)="updateVolume($event)"
       >
     </div>
@@ -43,7 +43,7 @@
   
   <div class="speech_reading_level wide">
 
-    <p class="time">{{service.getSpeechReadingLevel()}}</p>
+    <p class="time">{{speechesService.getSpeechReadingLevel()}}</p>
     <input 
       class="range-slider" 
       type="range" 
@@ -51,7 +51,7 @@
       min="0"
       max="1"
       step="0.1"
-      [value]="service.getSelectedSpeechData().volume"
+      [value]="speechesService.getSelectedSpeechData().volume"
       (input)="updateVolume($event)"
     >
 
@@ -61,29 +61,29 @@
 
     <!--! like btn -->
     <button 
-      *ngIf="!this.playlistsService.isPlaying"
+      *ngIf="!this.playlistsService?.isPlaying"
       class="like" 
-      [ngClass]="{'liked': service.getSelectedSpeechData().liked}" 
+      [ngClass]="{'liked': speechesService.getSelectedSpeechData().liked}" 
       (click)="likeSpeech()"
     >
       <i class="fa-solid fa-heart"></i>
     </button>
     <button 
-      *ngIf="this.playlistsService.isPlaying"
+      *ngIf="this.playlistsService?.isPlaying"
       class="like" 
-      [ngClass]="{'liked': playlistsService.getPlayingPlaylist().liked}" 
+      [ngClass]="{'liked': playlistsService.getPlayingPlaylist()?.liked}" 
       (click)="likePlaylist()"
     >
       <i class="fa-solid fa-heart"></i>
     </button>
 
     <!--! expand speech btn -->
-    <button *ngIf="!playlistsService.isPlaying" [routerLink]="'/app/speech/' + service.getSelectedSpeechData().id">
+    <button *ngIf="!playlistsService?.isPlaying" [routerLink]="'/app/speech/' + speechesService.getSelectedSpeechData().id">
       <i class="fa-solid fa-expand"></i>
     </button>
 
     <!--! expand playlist btn -->
-    <button *ngIf="playlistsService.getPlayingPlaylist() && playlistsService.isPlaying" [routerLink]="'/app/playlist/' + playlistsService.getPlayingPlaylist()?.id">
+    <button *ngIf="playlistsService.getPlayingPlaylist() && playlistsService?.isPlaying" [routerLink]="'/app/playlist/' + playlistsService.getPlayingPlaylist()?.id">
       <i class="fa-solid fa-expand"></i>
     </button>
     
@@ -93,20 +93,20 @@
     </button>
     
     <!--! Play/Pause btn -->
-    <ng-container *ngIf="!service.selected_speech_is_loading">
-      <button *ngIf="globalService.showPlay_hideReplay()" (click)="service.togglePlayPause()">
-        <i class="fa-solid fa-play" *ngIf="!service.isSpeechPlaying"></i>
-        <i class="fa-solid fa-pause" *ngIf="service.isSpeechPlaying"></i>
+    <ng-container *ngIf="!speechesService.selected_speech_is_loading">
+      <button *ngIf="globalService.showPlay_hideReplay()" (click)="speechesService.togglePlayPause()">
+        <i class="fa-solid fa-play" *ngIf="!speechesService.isSpeechPlaying"></i>
+        <i class="fa-solid fa-pause" *ngIf="speechesService.isSpeechPlaying"></i>
       </button>
     </ng-container>
-    <ng-container *ngIf="service.selected_speech_is_loading">
+    <ng-container *ngIf="speechesService.selected_speech_is_loading">
       <button class="loading">
         <i class="fa-solid fa-hourglass-start"></i>
       </button>
     </ng-container>
     
     <!--! replay btn -->
-    <ng-container *ngIf="!service.selected_speech_is_loading">
+    <ng-container *ngIf="!speechesService.selected_speech_is_loading">
       <button *ngIf="!globalService.showPlay_hideReplay()" (click)="globalService.replay()">
         <i class="fa-solid fa-repeat"></i>
       </button>
