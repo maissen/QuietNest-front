@@ -54,7 +54,6 @@ export class PlayingSpeechBannerComponent {
       }
 
       speech.liked = !speech.liked;
-
     }, 
     error => {
       console.error('Error liking speech:', error);

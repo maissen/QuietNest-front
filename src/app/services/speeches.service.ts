@@ -96,8 +96,6 @@ export class SpeechesService {
 
     return this.http.post<any>(this.api_like_speech, requestBody).pipe(
       map(response => {
-        console.log(response);
-        return response;
       }),
       catchError(err => {
         console.error('Failed to like speech:', err);

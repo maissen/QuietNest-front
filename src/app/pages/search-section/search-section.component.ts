@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { NarratorsService } from 'src/app/services/narrators.service';
 import { SpeechesService } from 'src/app/services/speeches.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-search-section',
@@ -14,7 +15,7 @@ export class SearchSectionComponent implements OnInit {
 
   parameterType: string | null = null;
   parameterValue: string | null = null;
-  api_speeches_of_narrator = 'http://localhost:2003/api/speeches-of-narrator/';
+  api_speeches_of_narrator = 'http://localhost:2003/api/speeches-of-narrator';
   api_speeches_oplaylists_by_category = 'http://localhost:2003/api/speeches-playlists-by-category/';
   api_speeches_by_duration = 'http://localhost:2003/api/speeches-by-time/';
 
@@ -29,7 +30,8 @@ export class SearchSectionComponent implements OnInit {
     private http: HttpClient,
     public narrators: NarratorsService,
     public categories: CategoriesService,
-    public speeches: SpeechesService
+    public speeches: SpeechesService,
+    private user: UserService
   ) { }
 
   ngOnInit(): void {
@@ -40,14 +42,17 @@ export class SearchSectionComponent implements OnInit {
 
         this.parameterType = 'narrator';
         this.parameterValue = params.get('narratorID');
-        this.http.get(this.api_speeches_of_narrator + this.parameterValue).subscribe(
-          (res: any) => {
-            this.data = res;
-          },
-          (err) => {
-            console.log(err);
-          }
-        );
+        // this.http.get(`${this.api_speeches_of_narrator}/${this.parameterValue}/${this.user.getUser().id}`).subscribe(
+        //   (res: any) => {
+        //     this.data = res;
+        //   },
+        //   (err) => {
+        //     console.log(err);
+        //   }
+        // );
+
+
+        this.data = this.speeches.getAllSpeeches().filter(speech => speech.narratorID == this.parameterValue);
       
       } 
       else if (this.router.url.includes('/category')) {
