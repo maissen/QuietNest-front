@@ -31,6 +31,7 @@
 
                 .fullname {
                     font-size: 3rem;
+                    margin-right: 4rem;
                 }
     
                 .joining_date {
@@ -38,12 +39,27 @@
                 }
             }
 
-            @media all and (min-width: 500px) {
+            @media all and (max-width: 600px) {
                 flex-direction: row;
-                align-items: flex-start;
 
-                .user {
-                    text-align: start;
+                app-btn-rectangle {
+                    display: none;
+                }
+
+                app-btn-round-small {
+                    margin-top: 1rem;
+                    display: block;
+                }
+            }
+            @media all and (min-width: 600px) {
+                flex-direction: row;
+
+                app-btn-rectangle {
+                    display: block;
+                }
+
+                app-btn-round-small {
+                    display: none;
                 }
             }
 
@@ -51,7 +67,12 @@
                 display: flex;
                 justify-content: flex-start;
                 align-items: flex-start;
-                gap: 2rem;
+                flex-direction: column;
+                gap: 3rem;
+
+                @media all and (min-width: 600px) {
+                    flex-direction: row;
+                }
             
                 .qr_img {
                     height: var(--segment);
@@ -65,6 +86,10 @@
                     flex-grow: 0;
                     flex-shrink: 0;
                     z-index: 1;
+                    
+                    @media all and (max-width: 599px) {
+                        margin: auto;
+                    }
             
                     img {
                         height: 100%;
@@ -104,8 +129,13 @@
                     flex-shrink: 0;
 
                     .item {
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        gap: 1rem;
+
                         i {
-                            margin-right: .7rem;
+                            width: 2.5rem;
                         }
 
                         &.copyID {
@@ -113,14 +143,23 @@
                                 border: none;
                                 background-color: transparent;
                                 color: #ffffffb2;
-                                margin-left: 1rem;
                             }
                         }
+
+                        i.activated {
+                            color: green;
+                        }
+                        i.desactivated {
+                            color: gray;
+                        }
                     }
+
+                    .settingsItem label{
+                        cursor: pointer;
+                    }
+                    
                 }
             }
-            
         }
     }
-
 }

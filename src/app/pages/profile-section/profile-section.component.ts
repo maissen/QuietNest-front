@@ -12,6 +12,8 @@ import { UserService } from 'src/app/services/user.service';
 export class ProfileSectionComponent {
 
   qrCodeImage: string | null = null;
+  checkbox_video_overlay: boolean = true;
+  checkbox_recent_speech: boolean = true;
 
   constructor(
     public user: UserService,
@@ -44,7 +46,8 @@ export class ProfileSectionComponent {
     if (userId) {
       navigator.clipboard.writeText(userId).then(() => {
         this.toast.showToast('Your ID is copied successfully', 0, 'success');
-      }).catch((err) => {
+      })
+      .catch((err) => {
         this.toast.showToast('can not copy ID', 2, 'failed');
       });
     }

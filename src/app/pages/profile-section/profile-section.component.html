@@ -9,7 +9,8 @@
                 <p class="fullname">
                     {{ user.getUser().firstName + ' ' + user.getUser().lastName }}   
                 </p> 
-                <app-btn-rectangle [text]="'Log out'" [isRouter]="false" (click)="clear()"></app-btn-rectangle>
+                <app-btn-rectangle [text]="'Log out'" [isRouter]="false" (click)="clear()" class="wide"></app-btn-rectangle>
+                <app-btn-round-small [icon]="'fa-solid fa-x'" (click)="clear()" class="small"></app-btn-round-small>
             </div>
 
             <div class="info">
@@ -37,7 +38,32 @@
                         <i class="fa-regular fa-id-card"></i>
                         <button (click)="copyID()">Copy ID</button>
                     </p>
-
+                    <p class="item settingsItem">
+                        <input 
+                            type="checkbox" 
+                            name="video_overlay" 
+                            id="video_overlay" 
+                            style="display: none;"
+                            [(ngModel)]="checkbox_video_overlay"
+                        >
+                        <i class="fa-solid fa-thumbs-up activated" *ngIf="checkbox_video_overlay"></i>
+                        <i class="fa-solid fa-x desactivated" *ngIf="!checkbox_video_overlay"></i>
+                        
+                        <label for="video_overlay">Disable video overlay</label>
+                    </p>
+                    <p class="item settingsItem">
+                        <input 
+                            type="checkbox" 
+                            name="recent_speech" 
+                            id="recent_speech" 
+                            style="display: none;"
+                            [(ngModel)]="checkbox_recent_speech"
+                        >
+                        <i class="fa-solid fa-thumbs-up activated" *ngIf="checkbox_recent_speech"></i>
+                        <i class="fa-solid fa-x desactivated" *ngIf="!checkbox_recent_speech"></i>
+                        
+                        <label for="recent_speech">Disable video overlay</label>
+                    </p>
                 </div>
             </div>
             
