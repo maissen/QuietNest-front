@@ -40,6 +40,7 @@ export class UserService {
   setUser(user: any): void {
     this.clearUser();
     localStorage.setItem('quiet_nest_user', JSON.stringify(user));
+    console.log('user is set');
   }
 
   getUser(): any {
@@ -48,6 +49,7 @@ export class UserService {
   }
 
   clearUser(): void {
+    console.log('user is cleared');
     localStorage.removeItem('quiet_nest_user');
   }
 

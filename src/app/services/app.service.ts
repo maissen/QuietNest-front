@@ -140,16 +140,7 @@ export class AppService {
         console.error('Error loading all playlists:', error);
       }
     );
-  }
-
-  // loadHotPlaylists(count: number = 0) {
-  //   return this.http.get<any[]>(`${this.playlistsService.api_hot_playlists}/${this.user.getUser().id}/${count}`).pipe(
-  //     tap((hotPlaylists) => {
-  //       this.playlistsService.hot_playlists = hotPlaylists;
-  //     })
-  //   );
-  // }
-  
+  }  
   
   loadRandomSpeeches(count: number = 0): void {
     this.http.get<any[]>(`${this.speechesService.api_get_random_speeches}/${this.user.getUser().id}/${count}`).subscribe(
@@ -214,9 +205,9 @@ export class AppService {
     const isPlaylistFinished = isPlaylistPlaying && this.playlistsService.isFinished;
     const isSpeechFinished = this.speechesService.getSpeechReadingLevelInSeconds() >= this.speechesService.getSpeechDurationInSeconds();
   
-    // Show the play/pause button in the following cases:
-    // - If a playlist or speech is currently playing and not finished.
-    // - Hide the play button (show replay) only if playback is finished.
+    //? Show the play/pause button in the following cases:
+    //? - If a playlist or speech is currently playing and not finished.
+    //? - Hide the play button (show replay) only if playback is finished.
     return !(isPlaylistFinished || isSpeechFinished);
   }
 
@@ -224,21 +215,31 @@ export class AppService {
   clearPlayback(): void {
     if (this.playlistsService.isPlaying) {
     
-      // Clear playlist playback
+      //! Clear playlist playback
       this.playlistsService.isFinished = true;
       this.playlistsService.clearPlayingPlaylist();
       this.speechesService.clearSelectedSpeechData();
       this.speechesService.html_audio.pause();
-      this.speechesService.html_audio.currentTime = 0;
-    
+      this.speechesService.html_audio.currentTime = 0;    
     } 
     else if (this.speechesService.getSelectedSpeechData()) {
     
-      // Clear single speech playback
+      //! Clear single speech playback
       this.speechesService.clearSelectedSpeechData();
       this.speechesService.html_audio.pause();
       this.speechesService.html_audio.currentTime = 0;
-    
+
+      let userID = this.user.getUser().id;
+      this.http.post(this.speechesService.api_clear_current_speeches, { userID }).subscribe(
+        (user) => {  // Success callback (response from the API)
+          this.user.setUser(user);
+          console.log('Current speech is cleared');
+        },
+        (err) => {  // Error callback (if the request fails)
+          console.error(err);
+        }
+      );
+
     }
   }
   

@@ -9,7 +9,7 @@
     transform: translateX(-50%);
     box-shadow: #110c2ebd 0 4.8rem 10rem 0;
     cursor: default;
-    z-index: calc(var(--navbar-zindex) + 2);
+    z-index: var(--navbar-zindex);
 
     display: flex;
     align-items: center;

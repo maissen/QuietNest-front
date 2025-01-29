@@ -20,6 +20,7 @@ export class SpeechesService {
   public api_get_duration_of_speech = 'http://localhost:2003/api/get-speech-duration/';
   public api_get_random_speeches = 'http://localhost:2003/api/get-random-speeches';
   public api_set_current_speeches = 'http://localhost:2003/api/set-current-speech-for-user/';
+  public api_clear_current_speeches = 'http://localhost:2003/api/clear-current-speech-for-user/';
 
   private allSpeches: any[] = [];
   private selectedSpeech: any = null;
@@ -40,6 +41,7 @@ export class SpeechesService {
 
   constructor(
     private http: HttpClient,
+    private user: UserService
   ) {}
 
   fetchSpeechDuration(durationID: string): Observable<string> {
@@ -115,7 +117,8 @@ export class SpeechesService {
         speech.playing_nbr = parseInt(speech.playing_nbr) + 1;
 
         this.http.post(this.api_set_current_speeches, requestBody).subscribe({
-          next: (response2) => {
+          next: (user) => {
+            this.user.setUser(user)
           },
           error: (error2) => {
             console.error('Error settiing current speech:', error2);
@@ -151,7 +154,7 @@ export class SpeechesService {
   }
 
   isPlaying(): any {
-    return this.selectedSpeech;
+    return this.isSpeechPlaying;
   }
 
   updatePlayingSpeechVolume(volume: number): void {
