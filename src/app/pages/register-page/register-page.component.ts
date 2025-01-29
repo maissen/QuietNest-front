@@ -24,20 +24,43 @@ export class RegisterPageComponent {
     }
   }
 
+  sanitizeString(input: string): string {
+
+    const str = input[0].toUpperCase() + input.slice(1)
+
+    return str
+      .trim()
+      .replace(/\s+/g, ' ')
+  }
+  
+
   isFormValid(): boolean {
-
-    if(this.firstName.length < 3) {
-      this.toast.showToast('First name must be at least 3 characters', 2)
+    if(this.firstName.length > 0) {
+      this.firstName = this.sanitizeString(this.firstName);
     }
-    else if(this.lastName.length < 3) {
-      this.toast.showToast('Last name must be at least 3 characters', 2)
+    if(this.lastName.length > 0) {
+      this.lastName = this.sanitizeString(this.lastName);
     }
 
-    return this.firstName.length >= 3 && this.lastName.length >= 3;
+    if (this.firstName.length < 3) {
+      this.toast.showToast('First name must be between', 2, ' 3 and 10 characters');
+      return false;
+    } else if (this.firstName.length > 10) {
+      this.toast.showToast('First name must be between', 2, ' 3 and 10 characters');
+      return false;
+    } else if (this.lastName.length < 3) {
+      this.toast.showToast('Last name must be between', 2, ' 3 and 10 characters');
+      return false;
+    } else if (this.lastName.length > 10) {
+      this.toast.showToast('Last name must be between', 2, ' 3 and 10 characters');
+      return false;
+    }
+
+    return true;
   }
 
   onSubmitregistration(): void {
-    if(this.isFormValid()) {
+    if (this.isFormValid()) {
       this.user.createUser(this.firstName, this.lastName).subscribe(
         (response) => {
           this.user.setUser(response);
@@ -45,10 +68,9 @@ export class RegisterPageComponent {
         },
         (error) => {
           console.error('Error creating user:', error);
-          this.toast.showToast('Oops, an error occured', 2, 'Request failed');
+          this.toast.showToast('Oops, an error occurred', 2, 'Request failed');
         }
       );
     }
   }
-
 }

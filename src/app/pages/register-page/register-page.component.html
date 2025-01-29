@@ -5,11 +5,14 @@
         <h2>Register now</h2>
   
         <div class="input-group">
-          <input type="text" placeholder="Enter first name" [(ngModel)]="firstName" name="firstname" autocomplete="off" />
+          <input autofocus type="text" placeholder="Enter first name" [(ngModel)]="firstName" name="firstname" autocomplete="off" />
+          <i class="fa-regular fa-circle-question" title="First name must be between 3 and 10 characters"></i>
         </div>
   
         <div class="input-group">
           <input type="text" placeholder="Enter last name" [(ngModel)]="lastName" name="lastname" autocomplete="off" />
+          <i class="fa-regular fa-circle-question" title="Last name must be between 3 and 10 characters"></i>
+
         </div>
         
         <button type="submit" class="login-btn" (click)="onSubmitregistration()">Register</button>
