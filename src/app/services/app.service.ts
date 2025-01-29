@@ -172,6 +172,8 @@ export class AppService {
 
   //! Replay speeches & playlists
   replay(): void {
+
+    //! replay a playlist
     if (this.playlistsService.isPlaying) { 
       const currentPlaylist = this.playlistsService.getPlayingPlaylist();
   
@@ -181,8 +183,12 @@ export class AppService {
         this.playlistsService.setPlayingPlayList(currentPlaylist);
         this.speechesService.html_audio.currentTime = 0;
         this.speechesService.html_audio.play();
+
+        //? increment plays number of playlist
+        this.playlistsService.incrementPlaylistPlayings(currentPlaylist);
       }
-    } else {
+    } 
+    else {
       //! Reset single speech playback
       const currentSpeech = this.speechesService.getSelectedSpeechData();
   
@@ -191,15 +197,16 @@ export class AppService {
         this.speechesService.setSelectedSpeechData(currentSpeech);
         this.speechesService.html_audio.currentTime = 0;
         this.speechesService.html_audio.play();
+
+        //? increment plays number of speech
+        this.speechesService.incrementSpeechPlayings(currentSpeech);
       }
     }
   }
   
 
   showPlay_hideReplay(): boolean {
-    const isSpeechPlaying = this.speechesService.isSpeechPlaying;
-    const isPlaylistPlaying = this.playlistsService.isPlaying;
-    const isPlaylistFinished = isPlaylistPlaying && this.playlistsService.isFinished;
+    const isPlaylistFinished = this.playlistsService.isPlaying && this.playlistsService.isFinished;
     const isSpeechFinished = this.speechesService.getSpeechReadingLevelInSeconds() >= this.speechesService.getSpeechDurationInSeconds();
   
     //? Show the play/pause button in the following cases:
