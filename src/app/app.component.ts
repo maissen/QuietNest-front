@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ScenesService } from './services/scenes.service';
 import { UserService } from './services/user.service';
@@ -11,6 +11,8 @@ import { NavbarService } from './services/navbar.service';
 import { NarratorsService } from './services/narrators.service';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
+import { ToastService } from './services/toast.service';
+import { OverlayVideoService } from './services/overlay-video.service';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +21,7 @@ import { forkJoin } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   title = 'quietNest-front';
+  private inactivityTimer: any;
 
   constructor(
     private router: Router,
@@ -31,7 +34,7 @@ export class AppComponent implements OnInit {
     public playlistsService: PlaylistsService,
     public navbar: NavbarService,
     public narratorsService: NarratorsService,
-    private http: HttpClient
+    private overlayvideo: OverlayVideoService
   ) { }
 
   ngOnInit() {
@@ -41,13 +44,30 @@ export class AppComponent implements OnInit {
       this.check_url();
     });
 
-    this.loadAllAppData();
+    if(this.user.getUser()) {
+      this.resetTimer();
+    } 
 
   }
 
-  loadAllAppData(): void {
-  }
+  @HostListener('window:mousemove')
+  @HostListener('window:keydown')
+  @HostListener('window:click')
   
+  resetTimer(): void {
+    clearTimeout(this.inactivityTimer);
+    this.overlayvideo.isOpened = false;
+
+    this.inactivityTimer = setTimeout(() => {
+      this.showInactivityAlert();
+    }, 8000);
+  }
+
+  showInactivityAlert(): void {
+    this.overlayvideo.isOpened = true;
+  }
+
+
   check_url() {
     const currentUrl = this.router.url;
     this.navbar.showNavbar = currentUrl.startsWith('/app/');

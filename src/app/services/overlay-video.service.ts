@@ -5,5 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class OverlayVideoService {
 
+  isOpened: boolean = false;
+
   constructor() { }
 }

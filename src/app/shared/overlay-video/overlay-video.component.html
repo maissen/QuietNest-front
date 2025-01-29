@@ -1,9 +1,8 @@
-<div class="content">
+<div class="content" *ngIf="service.isOpened">
     <video autoplay loop muted>
         <!-- <source [src]="scenesService.getSceneByID(user.getUser().sceneID)"> -->
         <source src="./../../../assets/Forest During Autumn Season.mp4">
     </video>
 
     <!-- <img [src]="scenesService.getSceneByID(user.getUser().sceneID)" alt=""> -->
-    {{scenesService.getSceneByID(user.getUser().sceneID) | json}}
 </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OverlayVideoService } from 'src/app/services/overlay-video.service';
 import { ScenesService } from 'src/app/services/scenes.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -9,11 +10,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class OverlayVideoComponent {
 
-  isOpened: boolean = false;
-
   constructor(
-    public user: UserService,
-    public scenesService: ScenesService
+    public scenesService: ScenesService,
+    public service: OverlayVideoService
   ) {}
 
 }
