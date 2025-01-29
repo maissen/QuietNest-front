@@ -29,6 +29,5 @@ export class AudioItemRectangleComponent {
 
     this.playlistsService.clearPlayingPlaylist();
     this.service.setSelectedSpeechData(this.speech);
-    console.log(this.service.getSelectedSpeechData());
   }
 }

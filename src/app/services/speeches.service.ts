@@ -158,8 +158,11 @@ export class SpeechesService {
     this.speechReadingLevelInSeconds = 0;
 
     this.isSpeechPlaying = true;
-
     this.selectedSpeech = speech;
+
+    this.html_audio.src = '';
+    this.html_audio.src = speech.link;
+    this.html_audio.play();
   }  
 
   getSelectedSpeechData(): any {

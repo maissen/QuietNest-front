@@ -17,7 +17,6 @@ export class AppService {
 
   isPlayingAudio: boolean = false;
   avgcolor: string = '';
-  isLoaded: boolean = false;
   
   constructor(
     public user: UserService,

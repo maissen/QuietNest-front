@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ScenesService } from './services/scenes.service';
 import { UserService } from './services/user.service';
@@ -19,7 +19,7 @@ import { OverlayVideoService } from './services/overlay-video.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'quietNest-front';
   private inactivityTimer: any;
 
@@ -47,6 +47,12 @@ export class AppComponent implements OnInit {
     if (this.user.getUser() && this.router.url.startsWith('/app')) {
       this.resetTimer();
     }
+
+  }
+
+  ngAfterViewInit(): void {
+    const html_audio = document.querySelector('#playing_speech_html_audio') as HTMLAudioElement;
+    this.speechesService.html_audio = html_audio;
   }
 
 
@@ -80,7 +86,7 @@ export class AppComponent implements OnInit {
       document.body.style.overflowY = 'hidden';
     }
   }
-  
+
 
 
   check_url() {
@@ -90,15 +96,17 @@ export class AppComponent implements OnInit {
     if(currentUrl.startsWith('/app/speech') || currentUrl.startsWith('/app/playlist') || currentUrl.startsWith('/app/scenes') || currentUrl.startsWith('/app/set-timer')) {
       this.navbar.showNavbar = false;
     }
-
-    if(this.user.getUser() !== null && this.app.isLoaded == false) {
-      this.app.isLoaded = true;
-      console.log(this.user.getUser())
-    }
     
     if(currentUrl.startsWith('/app')) {
       this.app.loadScenes();
       this.app.loadAllNarrators();
+
+      if(this.user.getUser().currentPlaylist) {
+        
+      }
+      else if(this.user.getUser().currentSpeech) {
+        
+      }
     }
 
     if(this.router.url.startsWith('/app/browse')) {
@@ -133,14 +141,11 @@ export class AppComponent implements OnInit {
   }
 
   getFetchedSpeechDuration(): void {
-    console.log('Audio finished loading.');
     this.speechesService.selected_speech_is_loading = false;
-  
-    const html_audio = document.querySelector('#playing_speech_html_audio') as HTMLAudioElement;
-  
-    html_audio.addEventListener('timeupdate', () => {
-      const currentTime = html_audio.currentTime;
-      const duration = html_audio.duration;
+    
+    this.speechesService.html_audio.addEventListener('timeupdate', () => {
+      const currentTime = this.speechesService.html_audio.currentTime;
+      const duration = this.speechesService.html_audio.duration;
   
       this.speechesService.setSpeechDurationInSeconds(duration);
       this.speechesService.setSpeechReadingLevelInSeconds(currentTime);
@@ -163,7 +168,7 @@ export class AppComponent implements OnInit {
     });
     
     //! when the audio loading is canceled
-    html_audio.addEventListener('error', () => {
+    this.speechesService.html_audio.addEventListener('error', () => {
       console.error('Error loading audio.');
       this.speechesService.selected_speech_is_loading = true;
     });
@@ -171,6 +176,8 @@ export class AppComponent implements OnInit {
   }
 
   onAudioEnd(): void {
+
+    //! if a playlist is playing then it'll play the next speech
     if (this.playlistsService.isPlaying) {
       const playlistSpeeches = this.playlistsService.getPlayingPlaylist().speeches;
       let index = this.playlistsService.getPlayingPlaylist().speeches.indexOf(this.speechesService.getSelectedSpeechData().id);
@@ -184,8 +191,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  onAudioSourceChange(): void {
-    console.log('Audio started loading...');
+  startLoadingSpeech(): void {
     this.speechesService.selected_speech_is_loading = true;
   }
   

@@ -39,24 +39,17 @@
         </div>
 
         <!--! audio of playing speech -->
+        <!-- *ngIf="speechesService.getSelectedSpeechData() != null"  -->
         <div 
-            class="playing_speech_audio" 
-            *ngIf="speechesService.getSelectedSpeechData() != null" 
+            class="playing_speech_audio"  
             style="display: none;"
         >
-            <div class="playing_speech_audio" 
-                *ngIf="speechesService.getSelectedSpeechData() != null" 
-            >
             <audio 
-                [src]="speechesService.getSelectedSpeechData().link" 
-                [volume]="speechesService.getSelectedSpeechData().volume"
-                autoplay 
                 id="playing_speech_html_audio" 
-                (loadstart)="onAudioSourceChange()"
+                (loadstart)="startLoadingSpeech()"
                 (loadeddata)="getFetchedSpeechDuration()"
                 (ended)="onAudioEnd()">
             </audio>
-            </div>
         </div>
         
     </div>
