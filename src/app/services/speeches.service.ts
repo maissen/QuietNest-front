@@ -106,30 +106,48 @@ export class SpeechesService {
     );
   }
 
-  incrementSpeechPlayings(speech: any, user: any) {
+  incrementSpeechPlayings(speech: any) {
     const speechID = speech.id;
-    const userID = user.id;
-    const requestBody = { speechID, userID };
 
     this.http.post(this.api_increment_playingNbr, {speechID}).subscribe({
       next: (response) => {
-
         speech.playing_nbr = parseInt(speech.playing_nbr) + 1;
-
-        this.http.post(this.api_set_current_speeches, requestBody).subscribe({
-          next: (user) => {
-            this.user.setUser(user)
-          },
-          error: (error2) => {
-            console.error('Error settiing current speech:', error2);
-          },
-        });
-
       },
       error: (error) => {
         console.error('Error incrementing playing number:', error);
       },
     });
+  }
+
+  set_current_speech(user: any, speech: any): void {
+
+    let speechID = speech.id;
+    let userID = user.id;
+    const requestBody = { userID, speechID }
+
+
+    this.http.post(this.api_set_current_speeches, requestBody).subscribe({
+      next: (user) => {
+        this.user.setUser(user)
+      },
+      error: (error2) => {
+        console.error('Error settiing current speech:', error2);
+      },
+    });
+  }
+
+  clear_current_speech(user: any): void {
+    const userID = user.id;
+
+    this.http.post(this.api_clear_current_speeches, { userID }).subscribe(
+      (user) => {
+        this.user.setUser(user);
+        console.log('Current speech is cleared');
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
   }
 
   setSelectedSpeechData(speech: any) {

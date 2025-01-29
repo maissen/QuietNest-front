@@ -221,6 +221,8 @@ export class AppService {
       this.speechesService.clearSelectedSpeechData();
       this.speechesService.html_audio.pause();
       this.speechesService.html_audio.currentTime = 0;    
+
+      this.playlistsService.clear_current_playlist_for_user(this.user.getUser());
     } 
     else if (this.speechesService.getSelectedSpeechData()) {
     
@@ -229,16 +231,7 @@ export class AppService {
       this.speechesService.html_audio.pause();
       this.speechesService.html_audio.currentTime = 0;
 
-      let userID = this.user.getUser().id;
-      this.http.post(this.speechesService.api_clear_current_speeches, { userID }).subscribe(
-        (user) => {  // Success callback (response from the API)
-          this.user.setUser(user);
-          console.log('Current speech is cleared');
-        },
-        (err) => {  // Error callback (if the request fails)
-          console.error(err);
-        }
-      );
+      this.speechesService.clear_current_speech(this.user.getUser());
 
     }
   }

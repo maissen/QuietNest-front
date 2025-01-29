@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class PlaylistsService {
 
   constructor(
     private http: HttpClient,
+    private user: UserService
   ) { }
 
   public api_all_playlists: string = 'http://localhost:2003/api/get-all-playlists';
@@ -17,6 +19,7 @@ export class PlaylistsService {
   public api_user_likes_playlist: string = 'http://localhost:2003/api/like/playlist/';
   public api_get_playlist_speeches: string = 'http://localhost:2003/api/get-playlist-speeches';
   public api_set_current_playlist: string = 'http://localhost:2003/api/set-current-playlist-for-user/';
+  public api_clear_current_playlist: string = 'http://localhost:2003/api/clear-current-playlist-for-user/';
 
   private playlists: any[] = [];
   private playingPlaylist: any = null;
@@ -72,8 +75,24 @@ export class PlaylistsService {
     const requestBody = {userID, playlistID };
 
     this.http.post(this.api_set_current_playlist, requestBody).subscribe({
-      next: (response) => {
+      next: (user) => {
+        this.user.setUser(user);
         console.log('default playlist is set');
+      },
+      error: (error) => {
+        console.error('Error setting default playlist:', error);
+      },
+    });
+  }
+
+  clear_current_playlist_for_user(user: any): void {
+    const userID = user.id;
+    const requestBody = { userID };
+
+    this.http.post(this.api_clear_current_playlist, requestBody).subscribe({
+      next: (user) => {
+        console.log('default playlist is cleared');
+        this.user.setUser(user);
       },
       error: (error) => {
         console.error('Error setting default playlist:', error);

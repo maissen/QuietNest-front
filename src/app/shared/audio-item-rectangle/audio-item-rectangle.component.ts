@@ -23,7 +23,8 @@ export class AudioItemRectangleComponent {
 
   speechClick() {
     if (this.service.getSelectedSpeechData() == null || this.speech.id != this.service.getSelectedSpeechData().id) {
-      this.service.incrementSpeechPlayings(this.speech, this.user.getUser());
+      this.service.incrementSpeechPlayings(this.speech);
+      this.service.set_current_speech(this.user.getUser(), this.speech)
     }
 
     this.playlistsService.clearPlayingPlaylist();
