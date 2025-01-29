@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     public playlistsService: PlaylistsService,
     public navbar: NavbarService,
     public narratorsService: NarratorsService,
-    private overlayvideo: OverlayVideoService
+    public overlayvideo: OverlayVideoService
   ) { }
 
   ngOnInit() {
@@ -44,10 +44,9 @@ export class AppComponent implements OnInit {
       this.check_url();
     });
 
-    if(this.user.getUser()) {
+    if (this.user.getUser() && this.router.url.startsWith('/app')) {
       this.resetTimer();
-    } 
-
+    }
   }
 
   @HostListener('window:mousemove')
@@ -55,17 +54,30 @@ export class AppComponent implements OnInit {
   @HostListener('window:click')
   
   resetTimer(): void {
-    clearTimeout(this.inactivityTimer);
-    this.overlayvideo.isOpened = false;
-
-    this.inactivityTimer = setTimeout(() => {
-      this.showInactivityAlert();
-    }, 8000);
+    const currentUrl = this.router.url;
+  
+    if (currentUrl.startsWith('/app')) {
+      clearTimeout(this.inactivityTimer);
+      this.overlayvideo.isOpened = false;
+      document.body.style.overflowY = 'auto';
+  
+      this.inactivityTimer = setTimeout(() => {
+        this.showInactivityAlert();
+      }, 8000);
+    } else {
+      this.overlayvideo.isOpened = false;
+      document.body.style.overflowY = 'auto';
+      clearTimeout(this.inactivityTimer)
+    }
   }
-
+  
   showInactivityAlert(): void {
-    this.overlayvideo.isOpened = true;
+    if (this.router.url.startsWith('/app')) {
+      this.overlayvideo.isOpened = true;
+      document.body.style.overflowY = 'hidden';
+    }
   }
+  
 
 
   check_url() {

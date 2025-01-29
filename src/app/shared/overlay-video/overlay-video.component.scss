@@ -1,15 +1,32 @@
 .content {
     height: 100vh;
-    width: 100%;
-    background-color: royalblue;
+    width: 100vw;
     position: fixed;
     top: 0;
     left: 0;
     z-index: var(--overlay-video-zindex);
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease-in-out, visibility 0s 1s;
+}
 
-    video,
-    img {
-        height: 100%;
-        width: 100%;
-    }
+.content.fade-in {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.content.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease-in-out, visibility 0s 1s;
+}
+
+video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
 }

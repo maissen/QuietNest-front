@@ -1,8 +1,6 @@
-<div class="content" *ngIf="service.isOpened">
+<div class="content" [class.fade-in]="service.isOpened && service.checkbox_video_overlay" 
+     [class.fade-out]="!service.isOpened || !service.checkbox_video_overlay">
     <video autoplay loop muted>
-        <!-- <source [src]="scenesService.getSceneByID(user.getUser().sceneID)"> -->
         <source src="./../../../assets/Forest During Autumn Season.mp4">
     </video>
-
-    <!-- <img [src]="scenesService.getSceneByID(user.getUser().sceneID)" alt=""> -->
 </div>

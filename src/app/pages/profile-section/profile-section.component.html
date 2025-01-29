@@ -44,11 +44,11 @@
                             name="video_overlay" 
                             id="video_overlay" 
                             style="display: none;"
-                            [(ngModel)]="checkbox_video_overlay"
+                            [(ngModel)]="overlayVideoService.checkbox_video_overlay"
                             (click)="toggleVideoOverlayBoolean()"
                         >
-                        <i class="fa-solid fa-thumbs-up activated" *ngIf="checkbox_video_overlay"></i>
-                        <i class="fa-solid fa-x desactivated" *ngIf="!checkbox_video_overlay"></i>
+                        <i class="fa-solid fa-circle-check activated" *ngIf="overlayVideoService.checkbox_video_overlay"></i>
+                        <i class="fa-solid fa-ban desactivated" *ngIf="!overlayVideoService.checkbox_video_overlay"></i>
                         
                         <label for="video_overlay">Disable video overlay</label>
                     </p>
@@ -58,11 +58,11 @@
                             name="recent_speech" 
                             id="recent_speech" 
                             style="display: none;"
-                            [(ngModel)]="checkbox_recent_speech"
+                            [(ngModel)]="overlayVideoService.checkbox_recent_speech"
                             (click)="toggleRecentSpeechBoolean()"
                         >
-                        <i class="fa-solid fa-thumbs-up activated" *ngIf="checkbox_recent_speech"></i>
-                        <i class="fa-solid fa-x desactivated" *ngIf="!checkbox_recent_speech"></i>
+                        <i class="fa-solid fa-circle-check activated" *ngIf="overlayVideoService.checkbox_recent_speech"></i>
+                        <i class="fa-solid fa-ban desactivated" *ngIf="!overlayVideoService.checkbox_recent_speech"></i>
                         
                         <label for="recent_speech">Show Recent speech when logged in</label>
                     </p>

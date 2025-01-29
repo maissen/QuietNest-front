@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { OverlayVideoService } from 'src/app/services/overlay-video.service';
 import { SpeechesService } from 'src/app/services/speeches.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { UserService } from 'src/app/services/user.service';
@@ -12,9 +13,6 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ProfileSectionComponent implements OnInit {
 
-  checkbox_video_overlay: boolean = true;
-  checkbox_recent_speech: boolean = true;
-
   api_toggle_showVideoOverlay: string = 'http://localhost:2003/api/toggle-show-video-overlay';
   api_toggle_showRecentSpeech: string = 'http://localhost:2003/api/toggle-show-recen-speech/';
 
@@ -23,12 +21,13 @@ export class ProfileSectionComponent implements OnInit {
     private router: Router,
     public speechesService: SpeechesService,
     private toast: ToastService,
-    private http: HttpClient
+    private http: HttpClient,
+    public overlayVideoService: OverlayVideoService
   ) {}
 
   ngOnInit(): void {
-    this.checkbox_recent_speech = this.user.getUser().showRecentSpeech == 1;
-    this.checkbox_video_overlay = this.user.getUser().showVideoOverlay == 1;
+    this.overlayVideoService.checkbox_recent_speech = this.user.getUser().showRecentSpeech == 1;
+    this.overlayVideoService.checkbox_video_overlay = this.user.getUser().showVideoOverlay == 1;
   }
 
   clear() {
@@ -68,7 +67,7 @@ export class ProfileSectionComponent implements OnInit {
     this.http.post(this.api_toggle_showVideoOverlay, { userID }).subscribe({
         next: (user: any) => {
           this.user.setUser(user);
-          this.checkbox_video_overlay = this.user.getUser().showVideoOverlay == 1;
+          this.overlayVideoService.checkbox_video_overlay = this.user.getUser().showVideoOverlay == 1;
         },
         error: (err) => {
           console.log(err);
@@ -84,7 +83,7 @@ export class ProfileSectionComponent implements OnInit {
     this.http.post(this.api_toggle_showRecentSpeech, { userID }).subscribe({
         next: (user: any) => {
           this.user.setUser(user);
-          this.checkbox_recent_speech = this.user.getUser().showRecentSpeech == 1;
+          this.overlayVideoService.checkbox_recent_speech = this.user.getUser().showRecentSpeech == 1;
         },
         error: (err) => {
           console.log(err);
