@@ -4,7 +4,7 @@
     <div class="loaded_content add-bottom-spacing-for-playing-speech-banner">
 
 
-        <div class="header blurry-bg">
+        <div class="header">
             <div class="user"> 
                 <p class="fullname">
                     {{ user.getUser().firstName + ' ' + user.getUser().lastName }}   
@@ -45,6 +45,7 @@
                             id="video_overlay" 
                             style="display: none;"
                             [(ngModel)]="checkbox_video_overlay"
+                            (click)="toggleVideoOverlayBoolean()"
                         >
                         <i class="fa-solid fa-thumbs-up activated" *ngIf="checkbox_video_overlay"></i>
                         <i class="fa-solid fa-x desactivated" *ngIf="!checkbox_video_overlay"></i>
@@ -58,11 +59,12 @@
                             id="recent_speech" 
                             style="display: none;"
                             [(ngModel)]="checkbox_recent_speech"
+                            (click)="toggleRecentSpeechBoolean()"
                         >
                         <i class="fa-solid fa-thumbs-up activated" *ngIf="checkbox_recent_speech"></i>
                         <i class="fa-solid fa-x desactivated" *ngIf="!checkbox_recent_speech"></i>
                         
-                        <label for="recent_speech">Disable video overlay</label>
+                        <label for="recent_speech">Show Recent speech when logged in</label>
                     </p>
                 </div>
             </div>

@@ -58,6 +58,7 @@ export class AppComponent implements OnInit {
 
     if(this.user.getUser() !== null && this.app.isLoaded == false) {
       this.app.isLoaded = true;
+      console.log(this.user.getUser())
     }
     
     if(currentUrl.startsWith('/app')) {

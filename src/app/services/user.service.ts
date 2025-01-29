@@ -39,19 +39,16 @@ export class UserService {
 
   setUser(user: any): void {
     this.clearUser();
-    console.log('user clear');
-    localStorage.setItem('quiet_nest_dear_user', JSON.stringify(user));
-    console.log('user set');
+    localStorage.setItem('quiet_nest_user', JSON.stringify(user));
   }
 
   getUser(): any {
-    const user = localStorage.getItem('quiet_nest_dear_user');
+    const user = localStorage.getItem('quiet_nest_user');
     return user ? JSON.parse(user) : null;
   }
 
   clearUser(): void {
-    localStorage.removeItem('quiet_nest_dear_user');
-    console.log('user is cleared');
+    localStorage.removeItem('quiet_nest_user');
   }
 
   addUserAttribute(attribute: string, value: any): void {

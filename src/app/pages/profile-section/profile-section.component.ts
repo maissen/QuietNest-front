@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SpeechesService } from 'src/app/services/speeches.service';
@@ -9,18 +10,26 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './profile-section.component.html',
   styleUrls: ['./profile-section.component.scss']
 })
-export class ProfileSectionComponent {
+export class ProfileSectionComponent implements OnInit {
 
-  qrCodeImage: string | null = null;
   checkbox_video_overlay: boolean = true;
   checkbox_recent_speech: boolean = true;
+
+  api_toggle_showVideoOverlay: string = 'http://localhost:2003/api/toggle-show-video-overlay';
+  api_toggle_showRecentSpeech: string = 'http://localhost:2003/api/toggle-show-recen-speech/';
 
   constructor(
     public user: UserService,
     private router: Router,
     public speechesService: SpeechesService,
-    private toast: ToastService
+    private toast: ToastService,
+    private http: HttpClient
   ) {}
+
+  ngOnInit(): void {
+    this.checkbox_recent_speech = this.user.getUser().showRecentSpeech == 1;
+    this.checkbox_video_overlay = this.user.getUser().showVideoOverlay == 1;
+  }
 
   clear() {
     this.user.clearUser();
@@ -53,7 +62,35 @@ export class ProfileSectionComponent {
     }
   }
   
-  
+  toggleVideoOverlayBoolean(): void {
+    const userID = this.user.getUser().id;
+    
+    this.http.post(this.api_toggle_showVideoOverlay, { userID }).subscribe({
+        next: (user: any) => {
+          this.user.setUser(user);
+          this.checkbox_video_overlay = this.user.getUser().showVideoOverlay == 1;
+        },
+        error: (err) => {
+          console.log(err);
+          this.toast.showToast("An error occurred", 2, 'Try again');
+        }
+    });
+  }
 
+
+  toggleRecentSpeechBoolean(): void {
+    const userID = this.user.getUser().id;
+    
+    this.http.post(this.api_toggle_showRecentSpeech, { userID }).subscribe({
+        next: (user: any) => {
+          this.user.setUser(user);
+          this.checkbox_recent_speech = this.user.getUser().showRecentSpeech == 1;
+        },
+        error: (err) => {
+          console.log(err);
+          this.toast.showToast("An error occurred", 2, 'Try again');
+        }
+    });
+  }
   
 }
