@@ -3,6 +3,7 @@ import { CategoriesService } from 'src/app/services/categories.service';
 import { NarratorsService } from 'src/app/services/narrators.service';
 import { PlaylistsService } from 'src/app/services/playlists.service';
 import { SpeechesService } from 'src/app/services/speeches.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-audio-item-rectangle',
@@ -16,12 +17,13 @@ export class AudioItemRectangleComponent {
     public service: SpeechesService,
     public narratorsService: NarratorsService,
     public categoriesService: CategoriesService,
-    public playlistsService: PlaylistsService
+    public playlistsService: PlaylistsService,
+    private user: UserService
   ) { }
 
   speechClick() {
     if (this.service.getSelectedSpeechData() == null || this.speech.id != this.service.getSelectedSpeechData().id) {
-      this.service.incrementSpeechPlayings(this.speech);
+      this.service.incrementSpeechPlayings(this.speech, this.user.getUser());
     }
 
     this.playlistsService.clearPlayingPlaylist();

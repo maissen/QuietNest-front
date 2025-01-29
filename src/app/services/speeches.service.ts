@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { CategoriesService } from './categories.service';
 import { NarratorsService } from './narrators.service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class SpeechesService {
   public api_speeches_durations = 'http://localhost:2003/api/get-speech-durations/';
   public api_get_duration_of_speech = 'http://localhost:2003/api/get-speech-duration/';
   public api_get_random_speeches = 'http://localhost:2003/api/get-random-speeches';
+  public api_set_current_speeches = 'http://localhost:2003/api/set-current-speech-for-user/';
 
   private allSpeches: any[] = [];
   private selectedSpeech: any = null;
@@ -38,8 +40,6 @@ export class SpeechesService {
 
   constructor(
     private http: HttpClient,
-    private categoriesService: CategoriesService,
-    private narratorsService: NarratorsService
   ) {}
 
   fetchSpeechDuration(durationID: string): Observable<string> {
@@ -104,13 +104,24 @@ export class SpeechesService {
     );
   }
 
-  incrementSpeechPlayings(speech: any) {
+  incrementSpeechPlayings(speech: any, user: any) {
     const speechID = speech.id;
-    const requestBody = { speechID };
+    const userID = user.id;
+    const requestBody = { speechID, userID };
 
-    return this.http.post(this.api_increment_playingNbr, requestBody).subscribe({
+    this.http.post(this.api_increment_playingNbr, {speechID}).subscribe({
       next: (response) => {
+
         speech.playing_nbr = parseInt(speech.playing_nbr) + 1;
+
+        this.http.post(this.api_set_current_speeches, requestBody).subscribe({
+          next: (response2) => {
+          },
+          error: (error2) => {
+            console.error('Error settiing current speech:', error2);
+          },
+        });
+
       },
       error: (error) => {
         console.error('Error incrementing playing number:', error);
