@@ -5,6 +5,8 @@ import { catchError, map } from 'rxjs/operators';
 import { CategoriesService } from './categories.service';
 import { NarratorsService } from './narrators.service';
 import { UserService } from './user.service';
+import { AppService } from './app.service';
+import { PlaylistsService } from './playlists.service';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +43,8 @@ export class SpeechesService {
 
   constructor(
     private http: HttpClient,
-    private user: UserService
+    private user: UserService,
+    private playlistsService: PlaylistsService
   ) {}
 
   fetchSpeechDuration(durationID: string): Observable<string> {
@@ -163,6 +166,7 @@ export class SpeechesService {
     this.html_audio.src = '';
     this.html_audio.src = speech.link;
     this.html_audio.play();
+    this.handle_current_speech_and_playlist();
   }  
 
   getSelectedSpeechData(): any {
@@ -172,6 +176,23 @@ export class SpeechesService {
   clearSelectedSpeechData() {
     this.selectedSpeech = null;
     this.isSpeechPlaying = false;
+  }
+
+  
+  handle_current_speech_and_playlist(): void {
+
+    const user = this.user.getUser();
+
+    if(this.playlistsService.isPlaying) {
+      if(user.currentPlaylist != this.playlistsService.getPlayingPlaylist().id) {
+        this.playlistsService.set_current_playlist_for_user(user);
+      }
+      this.set_current_speech(user, this.getSelectedSpeechData());
+    }
+    else {
+      this.playlistsService.clear_current_playlist_for_user(user);
+      this.set_current_speech(user, this.selectedSpeech);
+    }
   }
 
   isPlaying(): any {
