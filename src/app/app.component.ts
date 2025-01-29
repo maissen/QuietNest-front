@@ -133,7 +133,7 @@ export class AppComponent implements OnInit {
   }
 
   getFetchedSpeechDuration(): void {
-    // console.log('Audio finished loading.');
+    console.log('Audio finished loading.');
     this.speechesService.selected_speech_is_loading = false;
   
     const html_audio = document.querySelector('#playing_speech_html_audio') as HTMLAudioElement;
@@ -165,7 +165,7 @@ export class AppComponent implements OnInit {
     //! when the audio loading is canceled
     html_audio.addEventListener('error', () => {
       console.error('Error loading audio.');
-      this.speechesService.selected_speech_is_loading = false;
+      this.speechesService.selected_speech_is_loading = true;
     });
 
   }
@@ -185,7 +185,7 @@ export class AppComponent implements OnInit {
   }
 
   onAudioSourceChange(): void {
-    // console.log('Audio started loading...');
+    console.log('Audio started loading...');
     this.speechesService.selected_speech_is_loading = true;
   }
   

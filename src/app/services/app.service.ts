@@ -28,7 +28,6 @@ export class AppService {
     private soundsService: SoundsService,
     private categoriesService: CategoriesService,
     private narratorsService: NarratorsService,
-    private router: Router
   ) { }
 
 
@@ -187,7 +186,6 @@ export class AppService {
     } else {
       //! Reset single speech playback
       const currentSpeech = this.speechesService.getSelectedSpeechData();
-      console.log('current speech : ' + currentSpeech);
   
       if (currentSpeech) {
         this.speechesService.clearSelectedSpeechData();

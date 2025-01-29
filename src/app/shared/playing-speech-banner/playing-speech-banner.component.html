@@ -1,4 +1,4 @@
-<div class="content blurry-bg" *ngIf="(speechesService.isPlaying() || playlistsService.getPlayingPlaylist())&& !hideBanner">
+<div class="content blurry-bg" *ngIf="(speechesService.getSelectedSpeechData() || playlistsService.getPlayingPlaylist())&& !hideBanner">
 
   <div class="info">
 

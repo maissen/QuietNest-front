@@ -185,7 +185,6 @@ export class SpeechesService {
   }
 
   togglePlayPause(): void {
-    console.log(this.html_audio)
     if (this.isSpeechPlaying) {
       this.html_audio.pause();
       this.isSpeechPlaying = false;
