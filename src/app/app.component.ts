@@ -49,9 +49,12 @@ export class AppComponent implements OnInit {
     }
   }
 
+
+  //! for video overlay
   @HostListener('window:mousemove')
   @HostListener('window:keydown')
   @HostListener('window:click')
+  @HostListener('window:scroll')
   
   resetTimer(): void {
     const currentUrl = this.router.url;

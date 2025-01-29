@@ -1,7 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { SpeechesService } from './speeches.service';
 import { catchError, map, Observable, of } from 'rxjs';
 
 @Injectable({
@@ -18,6 +16,7 @@ export class PlaylistsService {
   public api_increment_playlists_plays: string = 'http://localhost:2003/api/increment-playlist-playing-nbr';
   public api_user_likes_playlist: string = 'http://localhost:2003/api/like/playlist/';
   public api_get_playlist_speeches: string = 'http://localhost:2003/api/get-playlist-speeches';
+  public api_set_current_playlist: string = 'http://localhost:2003/api/set-current-playlist-for-user/';
 
   private playlists: any[] = [];
   private playingPlaylist: any = null;
@@ -57,12 +56,27 @@ export class PlaylistsService {
     const playlistID = playlist.id;
     const requestBody = { playlistID };
 
-    return this.http.post(this.api_increment_playlists_plays, requestBody).subscribe({
+    this.http.post(this.api_increment_playlists_plays, requestBody).subscribe({
       next: (response) => {
         playlist.playing_nbr = parseInt(playlist.playing_nbr) + 1;
       },
       error: (error) => {
         console.error('Error incrementing playing number:', error);
+      },
+    });
+  }
+
+  set_current_playlist_for_user(user: any): void {
+    const playlistID = this.getPlayingPlaylist().id;
+    const userID = user.id;
+    const requestBody = {userID, playlistID };
+
+    this.http.post(this.api_set_current_playlist, requestBody).subscribe({
+      next: (response) => {
+        console.log('default playlist is set');
+      },
+      error: (error) => {
+        console.error('Error setting default playlist:', error);
       },
     });
   }
