@@ -170,6 +170,17 @@ export class AppService {
     );
   }
 
+  loadAllCategories(): void {
+    this.http.get<any[]>(`${this.categoriesService.api_get_all_categories}`).subscribe(
+      categories => {
+        this.categoriesService.setAllCategories(categories);
+      },
+      error => {
+        console.error('Error loading categories:', error);
+      }
+    );
+  }
+
   //! Replay speeches & playlists
   replay(): void {
 

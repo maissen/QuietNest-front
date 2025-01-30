@@ -13,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
 import { ToastService } from './services/toast.service';
 import { OverlayVideoService } from './services/overlay-video.service';
+import { CategoriesService } from './services/categories.service';
 
 @Component({
   selector: 'app-root',
@@ -34,7 +35,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     public playlistsService: PlaylistsService,
     public navbar: NavbarService,
     public narratorsService: NarratorsService,
-    public overlayvideo: OverlayVideoService
+    public overlayvideo: OverlayVideoService,
+    public categoriesService: CategoriesService
   ) { }
 
   ngOnInit() {
@@ -160,6 +162,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
       if(this.narratorsService.getAllNarrators().length == 0) {
         this.app.loadAllNarrators();
+      }
+
+      if(this.categoriesService.getAllCategories().length == 0) {
+        this.app.loadAllCategories();
       }
     }
 
