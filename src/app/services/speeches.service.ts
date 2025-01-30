@@ -22,13 +22,15 @@ export class SpeechesService {
   public api_clear_current_speeches = 'http://localhost:2003/api/clear-current-speech-for-user/';
   public api_get_speeches_of_playlist = 'http://localhost:2003/api/speeches-of-current-playlist';
   public api_current_speech_of_user = 'http://localhost:2003/api/get-speech-by-id';
+  public api_get_user_speeches_history = 'http://localhost:2003/api/get-user-speeches-history';
+  public api_update_user_speeches_history = 'http://localhost:2003/api/add-speech-history-for-user';
 
   private allSpeches: any[] = [];
   private selectedSpeech: any = null;
   popular_speeches: any[] = [];
   top_liked_speeches: any[] = [];
   random_speeches: any[] = [];
-  speeches_of_playlist: any[] = [];
+  speeches_history: any[] = [];
   current_speech_of_user: any = null;
 
   private speechDuration: string = '00:00';
@@ -47,7 +49,6 @@ export class SpeechesService {
   constructor(
     private http: HttpClient,
     private user: UserService,
-    private playlistsService: PlaylistsService
   ) {}
 
   fetchSpeechDuration(durationID: string): Observable<string> {
@@ -125,6 +126,29 @@ export class SpeechesService {
     });
   }
   
+  fetchUserSpeechHistory(userID: number): void {
+    this.http.get<any>(`${this.api_get_user_speeches_history}/${userID}`).subscribe({
+        next: (history) => {
+          this.speeches_history = history;
+          console.log('User Speech History:', history);
+        },
+        error: (error) => {
+            console.error('Error fetching speech history:', error);
+        }
+    });
+  }
+
+  updateUserSpeechHistory(userID: string, speechID: number): void {
+    this.http.post<any>(this.api_update_user_speeches_history, { userID, speechID }).subscribe({
+        next: (response) => {
+          // console.log(response)
+        },
+        error: (error) => {
+          console.error(error);
+        }
+    });
+  }
+
   //! load only current speech
   fetch_current_speech_of_user(speechID: number): Observable<any> {
     return this.http.get<any>(`${this.api_current_speech_of_user}/${speechID}`).pipe(
@@ -139,8 +163,6 @@ export class SpeechesService {
     );
   }
   
-  
-
   set_current_speech(user: any, speech: any): void {
 
     let speechID = speech.id;
@@ -187,6 +209,8 @@ export class SpeechesService {
     this.set_current_speech(this.user.getUser(), this.selectedSpeech);
     
     this.html_audio.play();
+
+    this.updateUserSpeechHistory(this.user.getUser().id, this.getSelectedSpeechData().id);
   }  
 
   setAutoSelectedSpeechData(speech: any) {
