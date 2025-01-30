@@ -163,6 +163,12 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
     }
 
+    if(this.router.url.startsWith('/app/profile')) {
+
+      this.speechesService.fetchUserSpeechHistory(user.id);
+
+    }
+
   }
 
   getFetchedSpeechDuration(): void {

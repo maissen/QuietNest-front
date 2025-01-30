@@ -130,7 +130,6 @@ export class SpeechesService {
     this.http.get<any>(`${this.api_get_user_speeches_history}/${userID}`).subscribe({
         next: (history) => {
           this.speeches_history = history;
-          console.log('User Speech History:', history);
         },
         error: (error) => {
             console.error('Error fetching speech history:', error);
