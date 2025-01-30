@@ -16,7 +16,7 @@ export class SearchSectionComponent implements OnInit {
   parameterType: string | null = null;
   parameterValue: string | null = null;
   api_speeches_of_narrator = 'http://localhost:2003/api/speeches-of-narrator';
-  api_speeches_oplaylists_by_category = 'http://localhost:2003/api/speeches-playlists-by-category/';
+  api_get_speeches_and_playlists_by_category = 'http://localhost:2003/api/get-speeches-and-playlists-by-category';
   api_speeches_by_duration = 'http://localhost:2003/api/speeches-by-time/';
 
   data: any;
@@ -42,15 +42,6 @@ export class SearchSectionComponent implements OnInit {
 
         this.parameterType = 'narrator';
         this.parameterValue = params.get('narratorID');
-        // this.http.get(`${this.api_speeches_of_narrator}/${this.parameterValue}/${this.user.getUser().id}`).subscribe(
-        //   (res: any) => {
-        //     this.data = res;
-        //   },
-        //   (err) => {
-        //     console.log(err);
-        //   }
-        // );
-
 
         this.data = this.speeches.getAllSpeeches().filter(speech => speech.narratorID == this.parameterValue);
       
@@ -68,9 +59,9 @@ export class SearchSectionComponent implements OnInit {
           }
         );
 
-        this.http.get(this.api_speeches_oplaylists_by_category + this.parameterValue).subscribe(
+        this.http.get(`${this.api_get_speeches_and_playlists_by_category}/${this.user.getUser().id}/${this.parameterValue}`).subscribe(
           (res: any) => {
-
+            console.log(res);
             this.data = res;
             const category = this.categories.getAllCategories().find(category => category.id == this.parameterValue);
             

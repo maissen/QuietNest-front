@@ -11,6 +11,7 @@ export class CategoriesService {
   setAllCategories(list: any[]): void {
     this.allCategories = list;
   }
+  
   getAllCategories(): any[] {
     return this.allCategories;
   }
