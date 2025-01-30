@@ -171,7 +171,8 @@ export class SpeechesService {
 
     this.http.post(this.api_set_current_speeches, requestBody).subscribe({
       next: (user) => {
-        this.user.setUser(user)
+        this.user.setUser(user);
+        console.log('current speech set')
       },
       error: (error2) => {
         console.error('Error settiing current speech:', error2);
@@ -204,8 +205,8 @@ export class SpeechesService {
 
     this.html_audio.src = '';
     this.html_audio.src = speech.link;
-    this.clear_current_speech(this.user.getUser());
-    this.set_current_speech(this.user.getUser(), this.selectedSpeech);
+    // this.clear_current_speech(this.user.getUser());
+    // this.set_current_speech(this.user.getUser(), this.selectedSpeech);
     
     this.html_audio.play();
 
