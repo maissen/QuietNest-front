@@ -42,7 +42,7 @@ export class SpeechesService {
   public speechesDurations: any[] = [];
   public selected_speech_is_loading: boolean = false;
 
-  is_speech_clicked: boolean = true;
+  speech_played_auto: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -187,7 +187,6 @@ export class SpeechesService {
     this.set_current_speech(this.user.getUser(), this.selectedSpeech);
     
     this.html_audio.play();
-    console.log(this.selectedSpeech)
   }  
 
   setAutoSelectedSpeechData(speech: any) {
@@ -200,9 +199,8 @@ export class SpeechesService {
     this.isSpeechPlaying = true;
     this.selectedSpeech = speech;
 
-    this.html_audio.src = '';
     this.html_audio.src = speech.link;
-    
+    this.speech_played_auto = true;
     this.html_audio.pause();
   }  
 

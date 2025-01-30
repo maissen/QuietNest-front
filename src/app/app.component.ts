@@ -104,7 +104,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.app.loadAllNarrators();
       }
 
-      if(user.showRecentSpeech == 1) {
+      if(user.showRecentSpeech == 1 && !this.speechesService.speech_played_auto) {
         if (user.currentSpeech) {
           this.speechesService.fetch_current_speech_of_user(user.currentSpeech).subscribe({
             next: (speech) => {
