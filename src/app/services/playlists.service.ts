@@ -20,6 +20,7 @@ export class PlaylistsService {
   public api_get_playlist_speeches: string = 'http://localhost:2003/api/get-playlist-speeches';
   public api_set_current_playlist: string = 'http://localhost:2003/api/set-current-playlist-for-user/';
   public api_clear_current_playlist: string = 'http://localhost:2003/api/clear-current-playlist-for-user/';
+  public api_fetch_playlist_by_id: string = 'http://localhost:2003/api/get-playlist-by-id';
 
   private playlists: any[] = [];
   private playingPlaylist: any = null;
@@ -27,6 +28,7 @@ export class PlaylistsService {
   isPlaying: boolean = false;
   isFinished: boolean = false;
   playing_speech_index: number = -1;
+  current_playlist: any = null;
 
   setPlayLists(list: any[]) {
     this.playlists = list;
@@ -36,12 +38,12 @@ export class PlaylistsService {
     return this.playlists;
   }
 
-  setPlayingPlayList(playlist: any): void {
+  setPlayingPlayList(playlist: any, index: number = 1): void {
     this.clearPlayingPlaylist();
     this.playingPlaylist = playlist;
     this.isPlaying = true;
     this.isFinished = false;
-    this.playing_speech_index = 1;
+    this.playing_speech_index = index;
   }
 
   clearPlayingPlaylist(): void {
@@ -69,49 +71,21 @@ export class PlaylistsService {
     });
   }
 
-  set_current_playlist_for_user(user: any): void {
-    const playlistID = this.getPlayingPlaylist().id;
-    const userID = user.id;
-    const requestBody = {userID, playlistID };
-
-    this.http.post(this.api_set_current_playlist, requestBody).subscribe({
-      next: (user) => {
-        this.user.setUser(user);
-        console.log('default playlist is set');
-      },
-      error: (error) => {
-        console.error('Error setting default playlist:', error);
-      },
-    });
-  }
-
-  clear_current_playlist_for_user(user: any): void {
-    const userID = user.id;
-    const requestBody = { userID };
-
-    this.http.post(this.api_clear_current_playlist, requestBody).subscribe({
-      next: (user) => {
-        console.log('default playlist is cleared');
-        this.user.setUser(user);
-      },
-      error: (error) => {
-        console.error('Error setting default playlist:', error);
-      },
-    });
-  }
-
   userLikesPlaylist(playlistID: number, userID: string): Observable<any> {
-      const requestBody = { playlistID, userID };
-  
-      return this.http.post<any>(this.api_user_likes_playlist, requestBody).pipe(
-        map(response => {
-          return response;
-        }),
-        catchError(err => {
-          console.error('Failed to like speech:', err);
-          return of({ success: false, error: err });
-        })
-      );
+    const requestBody = { playlistID, userID };
+
+    return this.http.post<any>(this.api_user_likes_playlist, requestBody).pipe(
+      map(response => {
+        return response;
+      }),
+      catchError(err => {
+        console.error('Failed to like speech:', err);
+        return of({ success: false, error: err });
+      })
+    );
   }  
 
+  getPlaylistById(playlistID: number): any {
+    return this.getPlaylists().find(playlist => playlist.id === playlistID);
+  }
 }

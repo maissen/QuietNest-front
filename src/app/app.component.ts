@@ -92,6 +92,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   check_url() {
     const currentUrl = this.router.url;
     this.navbar.showNavbar = currentUrl.startsWith('/app/');
+    const user = this.user.getUser();
 
     if(currentUrl.startsWith('/app/speech') || currentUrl.startsWith('/app/playlist') || currentUrl.startsWith('/app/scenes') || currentUrl.startsWith('/app/set-timer')) {
       this.navbar.showNavbar = false;
@@ -99,43 +100,67 @@ export class AppComponent implements OnInit, AfterViewInit {
     
     if(currentUrl.startsWith('/app')) {
       this.app.loadScenes();
-      this.app.loadAllNarrators();
-
-      if(this.user.getUser().currentPlaylist) {
-        
+      if(this.narratorsService.getAllNarrators().length == 0) {
+        this.app.loadAllNarrators();
       }
-      else if(this.user.getUser().currentSpeech) {
-        
+
+      if(user.showRecentSpeech == 1) {
+        if (user.currentSpeech) {
+          this.speechesService.fetch_current_speech_of_user(user.currentSpeech).subscribe({
+            next: (speech) => {
+              if (speech) {
+                this.speechesService.setAutoSelectedSpeechData(speech);
+              }
+            },
+            error: (error) => {
+              console.error('Error occurred while fetching speech:', error);
+            },
+          });
+          
+        }
       }
     }
 
     if(this.router.url.startsWith('/app/browse')) {
+
       if(this.narratorsService.trending_narrators.length == 0) {
         this.app.loadTrendingNarrators(12);
       }
       if(this.speechesService.popular_speeches.length == 0) {
         this.app.loadPopularSpeeches(12);
       }
-      
-      
       if(this.speechesService.random_speeches.length == 0) {
         this.app.loadRandomSpeeches(12);
       }
       if(this.speechesService.top_liked_speeches.length == 0) {
         this.app.loadTopLikedSpeeches(12);
       }
+
     }
 
     if(this.router.url.startsWith('/app/create')) {
+
       if(this.soundsService.getSounds().length == 0) {
         this.app.loadSounds();
       }
+
     }
 
-    if(this.router.url.startsWith('/app/explore')) {
-      this.app.loadAllNarrators();
-      this.app.loadAllSpeeches();
-      this.app.loadAllPlaylists();
+    if(this.router.url.startsWith('/app/explore') || this.router.url.startsWith('/app/search') || this.router.url.startsWith('/app/profile')) {
+      
+      if(this.speechesService.getAllSpeeches().length == 0) {
+        this.app.loadAllSpeeches();
+      }
+      if(this.narratorsService.getAllNarrators().length == 0) {
+        this.app.loadAllNarrators();
+      }
+      if(this.playlistsService.getPlaylists().length == 0) {
+        this.app.loadAllPlaylists();
+      }
+
+      if(this.narratorsService.getAllNarrators().length == 0) {
+        this.app.loadAllNarrators();
+      }
     }
 
   }

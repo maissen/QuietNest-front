@@ -1,13 +1,11 @@
 <div class="content blurry-bg" (click)="displaySpeechBanner()">
     <div class="img_thumb">
-      <img [src]="data.img" [alt]="data.name">
+      <img [src]="data?.img" [alt]="data?.name">
     </div>
     <div class="info">
-      <div class="title">{{ data.name }}</div>
-      <p class="narrator cormorant-font">{{narratorsService.getNarratorById(data.narratorID).name }}</p>
+      <div class="title">{{ data?.name }}</div>
+      <p class="narrator cormorant-font">{{narratorsService.getNarratorById(data.narratorID)?.name }}</p>
       <!-- <span *ngIf="playingSpeechService.getSelectedSpeechData()?.id == data.id">(Playing)</span>  -->
     </div>
   </div>
   
-
-  <!-- {{ categoriesService.getCategoryById(data).name }} -->

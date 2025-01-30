@@ -226,7 +226,6 @@ export class AppService {
       this.speechesService.html_audio.pause();
       this.speechesService.html_audio.currentTime = 0;    
 
-      this.playlistsService.clear_current_playlist_for_user(this.user.getUser());
       this.speechesService.clear_current_speech(this.user.getUser());
     } 
     else if (this.speechesService.getSelectedSpeechData()) {

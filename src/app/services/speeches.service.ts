@@ -2,10 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { CategoriesService } from './categories.service';
-import { NarratorsService } from './narrators.service';
 import { UserService } from './user.service';
-import { AppService } from './app.service';
 import { PlaylistsService } from './playlists.service';
 
 @Injectable({
@@ -23,12 +20,16 @@ export class SpeechesService {
   public api_get_random_speeches = 'http://localhost:2003/api/get-random-speeches';
   public api_set_current_speeches = 'http://localhost:2003/api/set-current-speech-for-user/';
   public api_clear_current_speeches = 'http://localhost:2003/api/clear-current-speech-for-user/';
+  public api_get_speeches_of_playlist = 'http://localhost:2003/api/speeches-of-current-playlist';
+  public api_current_speech_of_user = 'http://localhost:2003/api/get-speech-by-id';
 
   private allSpeches: any[] = [];
   private selectedSpeech: any = null;
   popular_speeches: any[] = [];
   top_liked_speeches: any[] = [];
   random_speeches: any[] = [];
+  speeches_of_playlist: any[] = [];
+  current_speech_of_user: any = null;
 
   private speechDuration: string = '00:00';
   private speechReadingLevel: string = '00:00';
@@ -40,6 +41,8 @@ export class SpeechesService {
 
   public speechesDurations: any[] = [];
   public selected_speech_is_loading: boolean = false;
+
+  is_speech_clicked: boolean = true;
 
   constructor(
     private http: HttpClient,
@@ -121,6 +124,22 @@ export class SpeechesService {
       },
     });
   }
+  
+  //! load only current speech
+  fetch_current_speech_of_user(speechID: number): Observable<any> {
+    return this.http.get<any>(`${this.api_current_speech_of_user}/${speechID}`).pipe(
+      map((speech) => {
+        this.current_speech_of_user = speech;
+        return speech;
+      }),
+      catchError((error) => {
+        console.error('Error fetching speech:', error);
+        return of(null);
+      })
+    );
+  }
+  
+  
 
   set_current_speech(user: any, speech: any): void {
 
@@ -145,7 +164,6 @@ export class SpeechesService {
     this.http.post(this.api_clear_current_speeches, { userID }).subscribe(
       (user) => {
         this.user.setUser(user);
-        console.log('Current speech is cleared');
       },
       (err) => {
         console.error(err);
@@ -165,8 +183,27 @@ export class SpeechesService {
 
     this.html_audio.src = '';
     this.html_audio.src = speech.link;
+    this.clear_current_speech(this.user.getUser());
+    this.set_current_speech(this.user.getUser(), this.selectedSpeech);
+    
     this.html_audio.play();
-    this.handle_current_speech_and_playlist();
+    console.log(this.selectedSpeech)
+  }  
+
+  setAutoSelectedSpeechData(speech: any) {
+    
+    this.setSpeechDuration('00:00');
+    this.setSpeechReadingLevel('00:00');
+    this.speechDurationInSeconds = 0;
+    this.speechReadingLevelInSeconds = 0;
+
+    this.isSpeechPlaying = true;
+    this.selectedSpeech = speech;
+
+    this.html_audio.src = '';
+    this.html_audio.src = speech.link;
+    
+    this.html_audio.pause();
   }  
 
   getSelectedSpeechData(): any {
@@ -178,22 +215,6 @@ export class SpeechesService {
     this.isSpeechPlaying = false;
   }
 
-  
-  handle_current_speech_and_playlist(): void {
-
-    const user = this.user.getUser();
-
-    if(this.playlistsService.isPlaying) {
-      if(user.currentPlaylist != this.playlistsService.getPlayingPlaylist().id) {
-        this.playlistsService.set_current_playlist_for_user(user);
-      }
-      this.set_current_speech(user, this.getSelectedSpeechData());
-    }
-    else {
-      this.playlistsService.clear_current_playlist_for_user(user);
-      this.set_current_speech(user, this.selectedSpeech);
-    }
-  }
 
   isPlaying(): any {
     return this.isSpeechPlaying;
