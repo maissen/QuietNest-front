@@ -6,7 +6,7 @@ import { ScenesService } from './scenes.service';
   providedIn: 'root'
 })
 export class ScenesSectionService {
-  private defaultSceneApi = 'http://localhost:2003/api/default-scene';
+  private defaultSceneApi = 'https://quietrest-back.onrender.com/api/default-scene';
 
   constructor(
     private http: HttpClient,

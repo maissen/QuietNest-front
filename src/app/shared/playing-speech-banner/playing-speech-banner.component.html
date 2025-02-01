@@ -14,7 +14,7 @@
         *ngIf="!playlistsService.isPlaying"
         class="sub_title"
       >
-        <span>{{ narratorsService.getNarratorById(speechesService.getSelectedSpeechData().narratorID).name }}</span>
+        <span>{{ narratorsService.getNarratorById(speechesService.getSelectedSpeechData().narratorID)?.name }}</span>
       </p>
       <p 
         *ngIf="playlistsService?.isPlaying"
@@ -22,7 +22,7 @@
       >
         <span>{{ (playlistsService.getPlayingPlaylist()?.speeches.indexOf(speechesService.getSelectedSpeechData().id) + 1) + '/' + playlistsService.getPlayingPlaylist()?.speeches.length }}</span> 
         . 
-        <span>{{ narratorsService.getNarratorById(speechesService.getSelectedSpeechData().narratorID).name }}</span>
+        <span>{{ narratorsService.getNarratorById(speechesService.getSelectedSpeechData().narratorID)?.name }}</span>
       </p>
     </div>
 

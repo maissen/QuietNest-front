@@ -9,21 +9,21 @@ import { PlaylistsService } from './playlists.service';
   providedIn: 'root'
 })
 export class SpeechesService {
-  public api_get_all_speeches = 'http://localhost:2003/api/get-all-speeches';
-  public api_get_popular_speeches = 'http://localhost:2003/api/get-popular-speeches';
-  public api_get_top_liked_speeches = 'http://localhost:2003/api/get-top-liked-speeches';
-  public api_like_speech = 'http://localhost:2003/api/like/speech/';
-  public api_increment_playingNbr = 'http://localhost:2003/api/increment-playing-nbr';
-  public api_toggle_save_speech = 'http://localhost:2003/api/save-speech/';
-  public api_speeches_durations = 'http://localhost:2003/api/get-speech-durations/';
-  public api_get_duration_of_speech = 'http://localhost:2003/api/get-speech-duration/';
-  public api_get_random_speeches = 'http://localhost:2003/api/get-random-speeches';
-  public api_set_current_speeches = 'http://localhost:2003/api/set-current-speech-for-user/';
-  public api_clear_current_speeches = 'http://localhost:2003/api/clear-current-speech-for-user/';
-  public api_get_speeches_of_playlist = 'http://localhost:2003/api/speeches-of-current-playlist';
-  public api_current_speech_of_user = 'http://localhost:2003/api/get-speech-by-id';
-  public api_get_user_speeches_history = 'http://localhost:2003/api/get-user-speeches-history';
-  public api_update_user_speeches_history = 'http://localhost:2003/api/add-speech-history-for-user';
+  public api_get_all_speeches = 'https://quietrest-back.onrender.com/api/get-all-speeches';
+  public api_get_popular_speeches = 'https://quietrest-back.onrender.com/api/get-popular-speeches';
+  public api_get_top_liked_speeches = 'https://quietrest-back.onrender.com/api/get-top-liked-speeches';
+  public api_like_speech = 'https://quietrest-back.onrender.com/api/like/speech/';
+  public api_increment_playingNbr = 'https://quietrest-back.onrender.com/api/increment-playing-nbr';
+  public api_toggle_save_speech = 'https://quietrest-back.onrender.com/api/save-speech/';
+  public api_speeches_durations = 'https://quietrest-back.onrender.com/api/get-speech-durations/';
+  public api_get_duration_of_speech = 'https://quietrest-back.onrender.com/api/get-speech-duration/';
+  public api_get_random_speeches = 'https://quietrest-back.onrender.com/api/get-random-speeches';
+  public api_set_current_speeches = 'https://quietrest-back.onrender.com/api/set-current-speech-for-user/';
+  public api_clear_current_speeches = 'https://quietrest-back.onrender.com/api/clear-current-speech-for-user/';
+  public api_get_speeches_of_playlist = 'https://quietrest-back.onrender.com/api/speeches-of-current-playlist';
+  public api_current_speech_of_user = 'https://quietrest-back.onrender.com/api/get-speech-by-id';
+  public api_get_user_speeches_history = 'https://quietrest-back.onrender.com/api/get-user-speeches-history';
+  public api_update_user_speeches_history = 'https://quietrest-back.onrender.com/api/add-speech-history-for-user';
 
   private allSpeches: any[] = [];
   private selectedSpeech: any = null;

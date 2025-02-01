@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SoundsService {
-  private api_get_sounds_categories = 'http://localhost:2003/api/get-sounds-categories';
-  private api_get_all_sounds = 'http://localhost:2003/api/get-all-sounds';
+  private api_get_sounds_categories = 'https://quietrest-back.onrender.com/api/get-sounds-categories';
+  private api_get_all_sounds = 'https://quietrest-back.onrender.com/api/get-all-sounds';
 
   private categories: any[] = [];
   private allSounds: any[] = [];

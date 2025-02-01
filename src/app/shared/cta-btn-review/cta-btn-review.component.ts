@@ -38,7 +38,7 @@ export class CtaBtnReviewComponent {
     }
   }
 
-  api_post_feedback = 'http://localhost:2003/api/post-feedback';
+  api_post_feedback = 'https://quietrest-back.onrender.com/api/post-feedback';
 
   submitFeedback(): void {
     const userID = this.user.getUser().id;

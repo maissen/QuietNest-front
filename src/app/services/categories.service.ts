@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class CategoriesService {
 
-  public api_get_all_categories = "http://localhost:2003/api/get-all-categories";
+  public api_get_all_categories = "https://quietrest-back.onrender.com/api/get-all-categories";
   private allCategories: any[] = [];
 
   setAllCategories(list: any[]): void {

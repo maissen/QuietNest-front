@@ -13,14 +13,14 @@ export class PlaylistsService {
     private user: UserService
   ) { }
 
-  public api_all_playlists: string = 'http://localhost:2003/api/get-all-playlists';
-  public api_hot_playlists: string = 'http://localhost:2003/api/get-hot-playlists';
-  public api_increment_playlists_plays: string = 'http://localhost:2003/api/increment-playlist-playing-nbr';
-  public api_user_likes_playlist: string = 'http://localhost:2003/api/like/playlist/';
-  public api_get_playlist_speeches: string = 'http://localhost:2003/api/get-playlist-speeches';
-  public api_set_current_playlist: string = 'http://localhost:2003/api/set-current-playlist-for-user/';
-  public api_clear_current_playlist: string = 'http://localhost:2003/api/clear-current-playlist-for-user/';
-  public api_fetch_playlist_by_id: string = 'http://localhost:2003/api/get-playlist-by-id';
+  public api_all_playlists: string = 'https://quietrest-back.onrender.com/api/get-all-playlists';
+  public api_hot_playlists: string = 'https://quietrest-back.onrender.com/api/get-hot-playlists';
+  public api_increment_playlists_plays: string = 'https://quietrest-back.onrender.com/api/increment-playlist-playing-nbr';
+  public api_user_likes_playlist: string = 'https://quietrest-back.onrender.com/api/like/playlist/';
+  public api_get_playlist_speeches: string = 'https://quietrest-back.onrender.com/api/get-playlist-speeches';
+  public api_set_current_playlist: string = 'https://quietrest-back.onrender.com/api/set-current-playlist-for-user/';
+  public api_clear_current_playlist: string = 'https://quietrest-back.onrender.com/api/clear-current-playlist-for-user/';
+  public api_fetch_playlist_by_id: string = 'https://quietrest-back.onrender.com/api/get-playlist-by-id';
 
   private playlists: any[] = [];
   private playingPlaylist: any = null;

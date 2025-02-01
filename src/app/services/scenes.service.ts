@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class ScenesService {
 
-  public api_get_all_scenes = 'http://localhost:2003/api/get-scenes';
-  public api_get_active_scene = 'http://localhost:2003/api/get-active-scene';
+  public api_get_all_scenes = 'https://quietrest-back.onrender.com/api/get-scenes';
+  public api_get_active_scene = 'https://quietrest-back.onrender.com/api/get-active-scene';
 
   private scenesList: any[] = [];
   private activeScene: any;

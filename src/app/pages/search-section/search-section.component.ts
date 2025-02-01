@@ -15,9 +15,9 @@ export class SearchSectionComponent implements OnInit {
 
   parameterType: string | null = null;
   parameterValue: string | null = null;
-  api_speeches_of_narrator = 'http://localhost:2003/api/speeches-of-narrator';
-  api_get_speeches_and_playlists_by_category = 'http://localhost:2003/api/get-speeches-and-playlists-by-category';
-  api_speeches_by_duration = 'http://localhost:2003/api/speeches-by-time/';
+  api_speeches_of_narrator = 'https://quietrest-back.onrender.com/api/speeches-of-narrator';
+  api_get_speeches_and_playlists_by_category = 'https://quietrest-back.onrender.com/api/get-speeches-and-playlists-by-category';
+  api_speeches_by_duration = 'https://quietrest-back.onrender.com/api/speeches-by-time/';
 
   data: any;
   narratorName: string = '';

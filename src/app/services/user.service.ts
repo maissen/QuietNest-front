@@ -10,9 +10,9 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  api_init_user = "http://localhost:2003/api/set-user";
-  api_update_scene_for_user = "http://localhost:2003/api/update-user-scene";
-  api_fetch_user = "http://localhost:2003/login";
+  api_init_user = "https://quietrest-back.onrender.com/api/set-user";
+  api_update_scene_for_user = "https://quietrest-back.onrender.com/api/update-user-scene";
+  api_fetch_user = "https://quietrest-back.onrender.com/login";
 
   createUser(firstName: string, lastName: string): Observable<any> {
     const body = { firstName, lastName };
