@@ -33,6 +33,9 @@ export class SpeechesService {
   speeches_history: any[] = [];
   current_speech_of_user: any = null;
 
+  public speech_is_ended_playing: boolean = false;
+  
+
   private speechDuration: string = '00:00';
   private speechReadingLevel: string = '00:00';
   private speechDurationInSeconds: number = 0;

@@ -22,7 +22,6 @@ import { CategoriesService } from './services/categories.service';
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'quietNest-front';
-  private inactivityTimer: any;
 
   constructor(
     private router: Router,
@@ -68,21 +67,21 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.app.loadAllNarrators();
       }
 
-      if(user.showRecentSpeech == 1 && !this.speechesService.speech_played_auto) {
-        if (user.currentSpeech) {
-          this.speechesService.fetch_current_speech_of_user(user.currentSpeech).subscribe({
-            next: (speech) => {
-              if (speech) {
-                this.speechesService.setAutoSelectedSpeechData(speech);
-              }
-            },
-            error: (error) => {
-              console.error('Error occurred while fetching speech:', error);
-            },
-          });
+      // if(user.showRecentSpeech == 1 && !this.speechesService.speech_played_auto) {
+      //   if (user.currentSpeech) {
+      //     this.speechesService.fetch_current_speech_of_user(user.currentSpeech).subscribe({
+      //       next: (speech) => {
+      //         if (speech) {
+      //           this.speechesService.setAutoSelectedSpeechData(speech);
+      //         }
+      //       },
+      //       error: (error) => {
+      //         console.error('Error occurred while fetching speech:', error);
+      //       },
+      //     });
           
-        }
-      }
+      //   }
+      // }
     }
 
     if(this.router.url.startsWith('/app/browse')) {
@@ -176,6 +175,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   onAudioEnd(): void {
 
+    this.speechesService.speech_is_ended_playing = true;
     //! if a playlist is playing then it'll play the next speech
     if (this.playlistsService.isPlaying) {
       const playlistSpeeches = this.playlistsService.getPlayingPlaylist().speeches;
@@ -192,6 +192,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   startLoadingSpeech(): void {
     this.speechesService.selected_speech_is_loading = true;
+    this.speechesService.speech_is_ended_playing = false;
   }
   
 

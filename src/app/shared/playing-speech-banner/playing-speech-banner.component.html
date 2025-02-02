@@ -100,6 +100,8 @@
         <i class="fa-solid fa-pause" *ngIf="speechesService.isSpeechPlaying"></i>
       </button>
     </ng-container>
+
+    <!--! loader -->
     <ng-container *ngIf="speechesService.selected_speech_is_loading">
       <button class="loading">
         <i class="fa-solid fa-hourglass-start"></i>
@@ -107,7 +109,7 @@
     </ng-container>
     
     <!--! replay btn -->
-    <ng-container *ngIf="!speechesService.selected_speech_is_loading">
+    <ng-container *ngIf="!speechesService.selected_speech_is_loading && speechesService.speech_is_ended_playing">
       <button *ngIf="!globalService.showPlay_hideReplay()" (click)="globalService.replay()">
         <i class="fa-solid fa-repeat"></i>
       </button>

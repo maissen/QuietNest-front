@@ -124,7 +124,7 @@
                 color: red;
             }
         }
-        .stop {
+        .like {
             display: none;
         }
     }
@@ -132,7 +132,7 @@
     
     @media all and (min-width: 550px) {
         .actions {
-            .stop {
+            .like {
                 display: block;
             }
         }

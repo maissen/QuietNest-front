@@ -43,14 +43,14 @@ export class PlayingSpeechBannerComponent {
     let userID = this.user.getUser().id;
     let speech = this.speechesService.getSelectedSpeechData();
     
+    if (speech.liked) {
+      speech.likes = parseInt(speech.likes) - 1 ;
+    }
+    else {
+      speech.likes = parseInt(speech.likes) + 1 ;
+    }
     this.speechesService.userLikesSpeech(speech.id, userID).subscribe(response => {
   
-      if (speech.liked) {
-        speech.likes = parseInt(speech.likes) - 1 ;
-      }
-      else {
-        speech.likes = parseInt(speech.likes) + 1 ;
-      }
 
       speech.liked = !speech.liked;
     }, 
@@ -63,14 +63,14 @@ export class PlayingSpeechBannerComponent {
     let userID = this.user.getUser().id;
     let playlist = this.playlistsService.getPlayingPlaylist();
     
+    if (playlist.liked) {
+      playlist.likes = parseInt(playlist.likes) - 1 ;
+    }
+    else {
+      playlist.likes = parseInt(playlist.likes) + 1 ;
+    }
     this.playlistsService.userLikesPlaylist(playlist.id, userID).subscribe(response => {
   
-      if (playlist.liked) {
-        playlist.likes = parseInt(playlist.likes) - 1 ;
-      }
-      else {
-        playlist.likes = parseInt(playlist.likes) + 1 ;
-      }
 
       playlist.liked = !playlist.liked;
 
