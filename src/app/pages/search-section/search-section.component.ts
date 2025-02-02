@@ -104,10 +104,9 @@ export class SearchSectionComponent implements OnInit {
           (res) => {
             this.speeches.speechesDurations = res;
             this.duration = this.speeches.speechesDurations.find(item => item.id == this.parameterValue).duration;
-            this.http.get(this.api_speeches_by_duration + this.parameterValue).subscribe(
+            this.http.get(`${this.api_speeches_by_duration}${this.user.getUser().id}/${this.parameterValue}`).subscribe(
               (res: any) => {
                 this.data = res;
-                console.log(this.data)
               },
               (err) => {
                 console.log(err);

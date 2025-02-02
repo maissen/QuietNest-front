@@ -128,6 +128,10 @@ export class AppComponent implements OnInit, AfterViewInit {
       if(this.categoriesService.getAllCategories().length == 0) {
         this.app.loadAllCategories();
       }
+
+      if(this.speechesService.speechesDurations.length == 0) {
+        this.app.loadSpeechDurations();
+      }
     }
 
     if(this.router.url.startsWith('/app/profile')) {

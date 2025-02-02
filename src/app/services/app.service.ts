@@ -181,6 +181,20 @@ export class AppService {
     );
   }
 
+
+  loadSpeechDurations(): void {
+    this.http.get<any[]>(`${this.speechesService.api_speeches_durations}`).subscribe(
+      durations => {
+        this.speechesService.speechesDurations = durations;
+      },
+      error => {
+        console.error(error)
+      }
+    )
+  }
+
+  
+
   //! Replay speeches & playlists
   replay(): void {
 
