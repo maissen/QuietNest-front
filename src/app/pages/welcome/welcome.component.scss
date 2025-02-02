@@ -29,9 +29,9 @@
 
     .badges {
         display: flex;
-        align-items: center;
-        justify-content: center;
         flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
         gap: 2.5rem;
         text-align: center;
 
@@ -56,12 +56,12 @@
 
         
 
-        @media all and (min-width: 1100px) {
+        @media all and (min-width: 800px) {
             flex-direction: row;
             text-align: left;
 
             .title {
-                justify-content: flex-start;
+                justify-content: left;
             }
         }
     }
@@ -92,7 +92,7 @@
                 margin-bottom: 2rem;
             }
             
-            @media all and (min-width: 750px) {
+            @media all and (min-width: 800px) {
                 flex-direction: row;
 
                 &:nth-child(even) {
@@ -213,7 +213,7 @@
                 object-fit: cover;
             }
     
-            @media all and (min-width: 750px) {
+            @media all and (min-width: 800px) {
                 height: 18rem;
                 width: 18rem;
             }
@@ -245,6 +245,7 @@
         
         max-width: 50rem;
         margin: auto;
+        margin-bottom: 6rem;
 
         .title {
             font-size: 2.2rem;
@@ -254,4 +255,23 @@
         }
     }
     
+
+    footer {
+        padding: 2rem var(--dynamic-content-padding);
+        text-align: center;
+
+        .title {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+
+            @media all and (min-width: 850px) {
+                font-size: 5rem;
+            }
+        }
+
+        p {
+            margin: 0;
+            color: #555555d0;
+        }
+    }
 }
