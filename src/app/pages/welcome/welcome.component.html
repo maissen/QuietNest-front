@@ -1,6 +1,10 @@
-<app-welcome-page-header></app-welcome-page-header>
+<header #headerElement>
+    <h1>Welcome to <span class="cormorant-font">Quiet Rest</span></h1>
+    <p>Maissen Belgacem</p>
+</header>
+
 <div class="content">
-    <app-welcome-page-navbar></app-welcome-page-navbar>
+    <app-welcome-page-navbar [height]="elementHeight"></app-welcome-page-navbar>
     
     <section class="introduction">
         <h1 class="title">

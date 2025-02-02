@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 
 @Component({
   selector: 'app-welcome-page-navbar',
@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class WelcomePageNavbarComponent {
 
+  @Input() height: any;
+  
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > this.height) {
+      nav?.classList.add('scrolled');
+    } else {
+      nav?.classList.remove('scrolled');
+    }
+  }
 }

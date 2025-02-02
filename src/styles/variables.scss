@@ -1,5 +1,7 @@
 :root {
 
+    --primary-color: #a3d79f;
+
     --navbar-zindex: 10;
     --navbar-content-zindex: var(--navbar-zindex) + 1;
     --overlay-video-zindex: calc(var(--navbar-zindex) + 1);

@@ -1,12 +1,29 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss']
 })
-export class WelcomeComponent {
+export class WelcomeComponent implements OnInit {
   @ViewChild('itemsContainer', { static: false }) itemsContainer!: ElementRef;
+  @ViewChild('headerElement', { static: true }) headerElement!: ElementRef;
+  elementHeight = 0;
+
+  ngOnInit(): void {
+    this.updateElementHeight();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.updateElementHeight();
+  }
+
+  updateElementHeight(): void {
+    if (this.headerElement) {
+      this.elementHeight = this.headerElement.nativeElement.offsetHeight;
+    }
+  }
 
   scrollLeft() {
     if (this.itemsContainer) {

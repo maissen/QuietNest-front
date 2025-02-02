@@ -44,7 +44,6 @@ import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode';
 import { ToastComponent } from './shared/toast/toast.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { OverlayVideoComponent } from './shared/overlay-video/overlay-video.component';
-import { WelcomePageHeaderComponent } from './pages/welcome/components/welcome-page-header/welcome-page-header.component';
 import { WelcomePageNavbarComponent } from './pages/welcome/components/welcome-page-navbar/welcome-page-navbar.component';
 import { WelcomePageAccordionComponent } from './pages/welcome/components/welcome-page-accordion/welcome-page-accordion.component';
 import { WelcomePageContactComponent } from './pages/welcome/components/welcome-page-contact/welcome-page-contact.component';
@@ -89,7 +88,6 @@ import { WelcomePageContactComponent } from './pages/welcome/components/welcome-
     ToastComponent,
     RegisterPageComponent,
     OverlayVideoComponent,
-    WelcomePageHeaderComponent,
     WelcomePageNavbarComponent,
     WelcomePageAccordionComponent,
     WelcomePageContactComponent,
