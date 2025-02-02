@@ -109,7 +109,7 @@
     </ng-container>
     
     <!--! replay btn -->
-    <ng-container *ngIf="!speechesService.selected_speech_is_loading && speechesService.speech_is_ended_playing">
+    <ng-container *ngIf="!speechesService.selected_speech_is_loading">
       <button *ngIf="!globalService.showPlay_hideReplay()" (click)="globalService.replay()">
         <i class="fa-solid fa-repeat"></i>
       </button>
