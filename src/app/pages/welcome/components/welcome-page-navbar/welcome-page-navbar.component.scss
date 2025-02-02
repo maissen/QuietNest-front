@@ -1,0 +1,28 @@
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--dynamic-content-padding);
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--navbar-zindex);
+    background-color: #FFF;
+    margin-bottom: 4rem;
+
+    .logo {
+        font-size: 3rem;
+        color: #000;
+        margin: 0;
+    }
+
+    button {
+        border: none;
+        padding: .3rem 1.7rem;
+        border-radius: 1.5rem;
+        background-color: royalblue;
+        font-size: 1.3rem;
+        color: #FFF;
+    }
+}

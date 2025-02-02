@@ -45,6 +45,7 @@ import { ToastComponent } from './shared/toast/toast.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { OverlayVideoComponent } from './shared/overlay-video/overlay-video.component';
 import { WelcomePageHeaderComponent } from './pages/welcome/components/welcome-page-header/welcome-page-header.component';
+import { WelcomePageNavbarComponent } from './pages/welcome/components/welcome-page-navbar/welcome-page-navbar.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { WelcomePageHeaderComponent } from './pages/welcome/components/welcome-p
     RegisterPageComponent,
     OverlayVideoComponent,
     WelcomePageHeaderComponent,
+    WelcomePageNavbarComponent,
   ],
   imports: [
     BrowserModule,
