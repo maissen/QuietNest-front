@@ -27,4 +27,10 @@ export class WelcomeComponent {
     { text: "Best app for relaxation. Highly recommend!", username: "Jane Doe", stars: 5 },
     { text: "Helps me sleep instantly. Great work!", username: "John Smith", stars: 4 }
   ];
+
+  accordionData = [
+    { title: 'Section 1', content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id obcaecati ea non, rerum consectetur fugiat tempore ratione maiores deserunt eos corrupti cupiditate distinctio labore quaerat dolorum numquam nobis nostrum. Aspernatur.' },
+    { title: 'Section 2', content: 'Content for Section 2' },
+    { title: 'Section 3', content: 'Content for Section 3' }
+  ];
 }

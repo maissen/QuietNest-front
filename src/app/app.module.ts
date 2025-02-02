@@ -46,6 +46,7 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { OverlayVideoComponent } from './shared/overlay-video/overlay-video.component';
 import { WelcomePageHeaderComponent } from './pages/welcome/components/welcome-page-header/welcome-page-header.component';
 import { WelcomePageNavbarComponent } from './pages/welcome/components/welcome-page-navbar/welcome-page-navbar.component';
+import { WelcomePageAccordionComponent } from './pages/welcome/components/welcome-page-accordion/welcome-page-accordion.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { WelcomePageNavbarComponent } from './pages/welcome/components/welcome-p
     OverlayVideoComponent,
     WelcomePageHeaderComponent,
     WelcomePageNavbarComponent,
+    WelcomePageAccordionComponent,
   ],
   imports: [
     BrowserModule,

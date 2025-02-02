@@ -55,7 +55,7 @@
         </div>
     </section>
 
-    <div class="feedback">
+    <section class="feedback">
         <h2 class="title">
             <p>What our users say</p>
             <div class="btns">
@@ -76,7 +76,12 @@
                 <div class="stars">{{ feedback.stars }}</div>
             </div>
         </div>
-    </div>
-    
+    </section>
 
+    <section class="FAQ">
+        <h2 class="title">FAQs</h2>
+        <app-welcome-page-accordion [items]="accordionData"></app-welcome-page-accordion>
+    </section>
+    
+    
 </div>
