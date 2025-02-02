@@ -33,7 +33,7 @@ export class ProfileSectionComponent implements OnInit {
   clear() {
     this.user.clearUser();
     this.speechesService.clearSelectedSpeechData();
-    this.router.navigate(['/login']).then(() => {
+    this.router.navigate(['/']).then(() => {
       window.location.reload();
     });
   }

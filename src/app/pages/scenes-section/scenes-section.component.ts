@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ScenesSectionService } from 'src/app/services/scenes-section.service';
 import { ScenesService } from 'src/app/services/scenes.service';
