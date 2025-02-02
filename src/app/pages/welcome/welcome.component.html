@@ -55,4 +55,28 @@
         </div>
     </section>
 
+    <div class="feedback">
+        <h2 class="title">
+            <p>What our users say</p>
+            <div class="btns">
+                <app-btn-round-small [icon]="'fa-solid fa-angle-left'" (click)="scrollLeft()"></app-btn-round-small>
+                <app-btn-round-small [icon]="'fa-solid fa-angle-right'" (click)="scrollRight()"></app-btn-round-small>
+            </div>
+        </h2>
+    
+        <div class="items hide-scrollbar" #itemsContainer>
+            <div class="item" *ngFor="let feedback of feedbackList">
+                <div class="icon">
+                    <i class="fa-solid fa-car"></i>
+                </div>
+                <div class="text">
+                    {{ feedback.text }}
+                </div>
+                <div class="username">{{ feedback.username }}</div>
+                <div class="stars">{{ feedback.stars }}</div>
+            </div>
+        </div>
+    </div>
+    
+
 </div>

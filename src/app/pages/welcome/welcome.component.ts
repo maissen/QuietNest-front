@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-welcome',
@@ -6,5 +6,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent {
+  @ViewChild('itemsContainer', { static: false }) itemsContainer!: ElementRef;
 
+  scrollLeft() {
+    if (this.itemsContainer) {
+      this.itemsContainer.nativeElement.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+  }
+
+  scrollRight() {
+    if (this.itemsContainer) {
+      this.itemsContainer.nativeElement.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+  }
+
+  feedbackList = [
+    { text: "When I cannot fall asleep, I turn on this app and am out within 5 minutes.", username: "Eya Yahyaoui", stars: 4 },
+    { text: "I love the calming sounds. Helps me relax after work.", username: "Maissen Belgacem", stars: 5 },
+    { text: "Really effective for meditation and focus.", username: "User123", stars: 4 },
+    { text: "Best app for relaxation. Highly recommend!", username: "Jane Doe", stars: 5 },
+    { text: "Helps me sleep instantly. Great work!", username: "John Smith", stars: 4 }
+  ];
 }

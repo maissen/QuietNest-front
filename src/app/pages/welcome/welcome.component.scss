@@ -1,4 +1,7 @@
 .content {
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 100rem;
+    margin: auto;
 
     .introduction {
         padding: var(--dynamic-content-padding);
@@ -28,6 +31,7 @@
         flex-direction: column;
         gap: 2.5rem;
         text-align: center;
+        margin-bottom: 4rem;
 
         .item {
             flex: 1;
@@ -63,6 +67,7 @@
 
     .accessibility {
         padding: var(--dynamic-content-padding);
+        margin-bottom: 4rem;
 
         .line {
             display: flex;
@@ -101,5 +106,70 @@
             }
         }
 
+    }
+
+    .feedback {
+        padding: var(--dynamic-content-padding);
+        margin-bottom: 4rem;
+
+        .title {
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            p {
+                font-size: 2.2rem;
+                font-weight: 600;
+                margin-right: 7rem;
+            }
+
+            .btns {
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                gap: 1rem;
+            }
+        }
+        
+        .items {
+            display: flex;
+            justify-content: flex-start;
+            overflow-y: auto;
+            gap: 2rem;
+
+            .item {
+                padding: var(--dynamic-content-padding);
+                background-color: royalblue;
+                border-radius: 2rem;
+                flex: 0 0 30rem;
+
+                .icon {
+                    font-size: 5rem;
+                    color: #cacacab4;
+                }
+
+                .text {
+                    color: #FFF;
+                    margin-bottom: 1rem;
+                    letter-spacing: .1rem;
+                }
+
+                .username {
+                    color: #ffffffb4;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            @media all and (min-width: 700px) {
+                .item {
+                    flex: 0 0 40rem;
+
+                    &:first-child {
+                        margin-left: 25vw;
+                    }
+                }
+            }
+        }
     }
 }
