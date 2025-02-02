@@ -32,7 +32,7 @@
                     </p>
                     <p class="item">
                         <i class="fa-regular fa-clock"></i>
-                        Time spent
+                        {{ user.getUser().joiningDate | date: 'HH:mm' }}
                     </p>
                     <p class="item copyID">
                         <i class="fa-regular fa-id-card"></i>
