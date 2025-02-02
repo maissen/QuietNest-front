@@ -5,7 +5,6 @@
   }
   
   .accordion-item {
-    border: 1px solid #ddd;
     border-radius: 0.5rem;
     overflow: hidden;
   
@@ -25,6 +24,10 @@
       span {
         transition: transform 0.3s;
       }
+
+      i {
+        transition: .5s;
+      }
   
       .open {
         transform: rotate(180deg);
@@ -34,14 +37,13 @@
     .accordion-content {
       background: #fff;
       padding: 0 1rem;
-      border-top: 1px solid #ddd;
-      max-height: 0;
+      height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
     }
   
     .expanded {
-      max-height: 200px; /* Adjust based on content */
+      height: auto;
       padding: 1rem;
     }
   }

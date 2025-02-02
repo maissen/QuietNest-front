@@ -80,6 +80,7 @@ header {
                 gap: 1.5rem;
                 margin-bottom: 1.3rem;
                 font-size: 2rem;
+                color: var(--primary-color);
     
                 p {
                     margin: 0;
@@ -107,40 +108,68 @@ header {
             flex-direction: column;
             align-items: center;
             text-align: center;
-
+            margin-bottom: 3rem;
+    
             .image {
-                height: 20rem;
-                width: 20rem;
+                height: 30rem;
+                width: 30rem;
                 overflow: hidden;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 margin-bottom: 2rem;
-
+                flex-shrink: 0;
+    
                 img {
-                    height: 100%;
+                    width: 100%;
                 }
             }
+    
             .text {
                 margin-bottom: 2rem;
-            }
-            
-            @media all and (min-width: 800px) {
-                flex-direction: row;
+                flex-grow: 1;
+    
+                p {
+                    margin: 0;
+                }
+    
+                .title {
+                    font-size: 2rem;
+                    margin-bottom: 1rem;
+                    font-weight: 600;
+                }
 
+                button {
+                    margin-top: 2rem;
+                    padding: .9rem 2rem;
+                    background-color: var(--primary-color);
+                    color: #FFF;
+                    border: none;
+                    border-radius: 2.5rem;
+                }
+            }
+    
+            @media all and (min-width: 1000px) {
+                flex-direction: row;
+                margin-bottom: 0;
+    
                 &:nth-child(even) {
                     flex-direction: row-reverse;
                 }
-
-                & .image,
-                & .text {
-                    flex: 1;
+    
+                .image {
+                    height: 35rem;
+                    width: 35rem;
+                }
+    
+                .text {
+                    flex-grow: 1;
+                    margin: 0 2rem;
                 }
             }
         }
-
     }
-
+    
 
     .feedback {
 
@@ -161,6 +190,17 @@ header {
                 align-items: flex-start;
                 justify-content: center;
                 gap: 1rem;
+
+                button {
+                    height: 3rem;
+                    width: 3rem;
+                    border-radius: 50%;
+                    border: none;
+                    background-color: transparent;
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: center;
+                }
             }
         }
         
@@ -169,27 +209,37 @@ header {
             justify-content: flex-start;
             overflow-y: auto;
             gap: 2rem;
+            scroll-behavior: smooth;
+            position: relative;
 
             .item {
                 padding: var(--dynamic-content-padding);
-                background-color: royalblue;
                 border-radius: 2rem;
                 flex: 0 0 30rem;
-
+                background-color: #f8f9fa;
+                border: .1rem solid #dfdfdf;
+                color: #000;
+                
                 .icon {
                     font-size: 5rem;
-                    color: #cacacab4;
-                }
-
-                .text {
-                    color: #FFF;
-                    margin-bottom: 1rem;
-                    letter-spacing: .1rem;
+                    color: var(--primary-color);
                 }
 
                 .username {
-                    color: #ffffffb4;
+                    color: #000000b4;
                     margin-bottom: 1rem;
+                }
+
+                .stars {
+                    display: flex;
+                    gap: .8rem;
+                    margin-bottom: 2.5rem;
+                    color: var(--primary-color);
+                }
+
+                .text {
+                    margin-bottom: 1rem;
+                    letter-spacing: .1rem;
                 }
             }
 
@@ -198,8 +248,14 @@ header {
                     flex: 0 0 40rem;
 
                     &:first-child {
-                        margin-left: 25vw;
+                        margin-left: 20vw;
                     }
+                }
+            }
+
+            @media all and (min-width: 1100px) {
+                .item {
+                    flex: 0 0 50rem;
                 }
             }
         }
@@ -266,9 +322,6 @@ header {
 
             p {
                 margin: 0;
-                &::first-letter {
-                    font-size: 2.2rem;
-                }
             }
         }
     }

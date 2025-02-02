@@ -19,21 +19,21 @@
     <section class="badges">
         <div class="item">
             <div class="title">
-                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-smile"></i>
                 <p>Stress less</p>
             </div>
             <div class="text">Get in-the-moment relief for stress and anxiety so you can get back to living.</div>
         </div>
         <div class="item">
             <div class="title">
-                <i class="fa-solid fa-z"></i>
+                <i class="fa-solid fa-bed"></i>
                 <p>Sleep more</p>
             </div>
             <div class="text">Fall asleep (and stay asleep) naturally and peacefully.</div>
         </div>
         <div class="item">
             <div class="title">
-                <i class="fa-solid fa-bed"></i>
+                <i class="fa-solid fa-heart"></i>
                 <p>live mindfully</p>
             </div>
             <div class="text">Navigate life's ups and downs with resilience, confidence and guided support.</div>
@@ -43,18 +43,21 @@
     <section class="accessibility">
         <div class="line">
             <div class="image">
-                <img src="https://placehold.co/600x400" alt="">
+                <img src="assets/img/responsivness.png" alt="">
             </div>
             <div class="text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum itaque at dolore ab facere quis ducimus deserunt sit laboriosam excepturi ipsa sint unde ea similique repellat, eum cumque maxime sequi.
+                <p class="title">Access is everywhere</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed odio atque cupiditate ea recusandae nam quaerat placeat reiciendis totam, voluptate commodi ratione maiores iure excepturi exercitationem nobis, cumque dignissimos dolore.</p>
             </div>
         </div>
         <div class="line">
             <div class="image">
-                <img src="https://placehold.co/600x400" alt="">
+                <img src="assets/img/iphone.png" alt="">
             </div>
             <div class="text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum itaque at dolore ab facere quis ducimus deserunt sit laboriosam excepturi ipsa sint unde ea similique repellat, eum cumque maxime sequi.
+                <p class="title">Quickly Share Your profile</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed odio atque cupiditate ea recusandae nam quaerat placeat reiciendis totam, voluptate commodi ratione maiores iure excepturi exercitationem nobis, cumque dignissimos dolore.</p>
+                <button routerLink="/app">Join now</button>
             </div>
         </div>
     </section>
@@ -63,23 +66,29 @@
         <h2 class="title">
             <p>What our users say</p>
             <div class="btns">
-                <app-btn-round-small [icon]="'fa-solid fa-angle-left'" (click)="scrollLeft()"></app-btn-round-small>
-                <app-btn-round-small [icon]="'fa-solid fa-angle-right'" (click)="scrollRight()"></app-btn-round-small>
+                <button (click)="scrollLeft()"><i class="fa-solid fa-angle-left"></i></button>
+                <button (click)="scrollRight()"><i class="fa-solid fa-angle-right"></i></button>
             </div>
         </h2>
     
         <div class="items hide-scrollbar" #itemsContainer>
             <div class="item" *ngFor="let feedback of feedbackList">
-                <div class="icon">
-                    <i class="fa-solid fa-car"></i>
-                </div>
-                <div class="text">
-                    {{ feedback.text }}
-                </div>
-                <div class="username">{{ feedback.username }}</div>
-                <div class="stars">{{ feedback.stars }}</div>
+              <div class="icon">
+                <i class="fa-solid fa-quote-right"></i>
+              </div>
+              <div class="username">{{ feedback.firstName + ' ' + feedback.lastName}}</div>
+              <div class="stars">
+                <!--! Filled stars -->
+                <i *ngFor="let star of [].constructor(feedback.stars); let i = index" class="fa-solid fa-star"></i>
+                <!--! Empty stars -->
+                <i *ngFor="let star of [].constructor(5 - feedback.stars); let i = index" class="fa-regular fa-star"></i>
+              </div>
+              <div class="text">
+                {{ feedback.message }}
+              </div>
             </div>
-        </div>
+          </div>
+          
     </section>
 
     <section class="FAQ">
@@ -90,14 +99,13 @@
     
     <section class="me">
         <div class="thumb">
-            <img src="https://placehold.co/600x400" alt="">
+            <img src="assets/img/me.png" alt="">
         </div>
         <div class="text">
             <h2 class="title">Who I am</h2>
             <p>Maissen Belgacem ipsum dolor sit amet, consectetur adipisicing elit. Inventore officiis, natus quasi tempore blanditiis nulla recusandae libero eligendi ad, consequuntur tenetur fuga neque, voluptatem totam quaerat deserunt sed quod dolorum.</p>
         </div>
     </section>
-
 
     <section class="contact">
         <h2 class="title">Contant Me</h2>

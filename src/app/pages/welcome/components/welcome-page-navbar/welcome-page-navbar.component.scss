@@ -1,12 +1,11 @@
 nav {
-    padding: var(--dynamic-content-padding);
+    padding: 2rem var(--dynamic-content-padding);
     position: sticky;
     top: 0;
     left: 0;
     width: 100%;
     z-index: var(--navbar-zindex);
     background-color: #FFF;
-    margin-bottom: 4rem;
     transition: box-shadow 0.3s ease-in-out;
 
     .content {

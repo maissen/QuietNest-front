@@ -12,7 +12,7 @@ form {
     
         &:focus {
             outline: none;
-            border-color: #00a77e;
+            border-color: var(--primary-color);
         }
     }
 
@@ -24,7 +24,7 @@ form {
         padding: .9rem 1.6rem;
         border: none;
         color: #FFF;
-        background-color: #00a77e;
+        background-color: var(--primary-color);
         border-radius: .6rem;
         display: flex;
         align-items: center;
@@ -32,6 +32,19 @@ form {
 
         i {
             margin-right: 1rem;
+        }
+
+        .loading {
+            animation: rotate 1s infinite linear;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
     }
 }

@@ -1,8 +1,26 @@
-<form>
-    <input type="email" placeholder="Your email ...">
-    <textarea name="message" placeholder="Your message ..."></textarea>
-    <button>
-        <i class="fa-solid fa-paper-plane"></i>
-        <span>yalla ab3ath</span>
+<form (submit)="sendMessage(); $event.preventDefault()">
+    <input 
+        type="email" 
+        placeholder="Your email ..." 
+        name="email"
+        [(ngModel)]="email" 
+        [disabled]="loading"
+        required>
+    
+    <textarea 
+        name="message" 
+        placeholder="Your message ..." 
+        name="message"
+        [(ngModel)]="message" 
+        [disabled]="loading"
+        required>
+    </textarea>
+    
+    <button type="submit" [disabled]="loading">
+        <i *ngIf="!loading" class="fa-solid fa-paper-plane"></i>
+        <i *ngIf="loading" class="fa-solid fa-hourglass-end loading"></i>
+        <span *ngIf="!loading">yalla ab3ath</span>
+        <span *ngIf="loading">Sending...</span>
     </button>
+
 </form>
