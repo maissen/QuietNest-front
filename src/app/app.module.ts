@@ -44,6 +44,7 @@ import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode';
 import { ToastComponent } from './shared/toast/toast.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { OverlayVideoComponent } from './shared/overlay-video/overlay-video.component';
+import { WelcomePageHeaderComponent } from './pages/welcome/components/welcome-page-header/welcome-page-header.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { OverlayVideoComponent } from './shared/overlay-video/overlay-video.comp
     ToastComponent,
     RegisterPageComponent,
     OverlayVideoComponent,
+    WelcomePageHeaderComponent,
   ],
   imports: [
     BrowserModule,
