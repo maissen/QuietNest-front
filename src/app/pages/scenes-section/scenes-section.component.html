@@ -16,6 +16,9 @@
                 [ngClass]="{'scene-item-active': scene.id == user.getUser().sceneID}"
                 (click)="updateUserScene(scene)"
             >
+                <div *ngIf="is_scene_loading && scene.id == target_scene_id" class="loading_overlay">
+                    <i class="fa-solid fa-hourglass-end"></i>
+                </div>
                 <img [src]="scene.img" alt="Scene Image">
                 <p class="name">{{scene.name}}</p>
             </div>
