@@ -77,8 +77,22 @@
         cursor: pointer;
         margin-bottom: 2rem;
 
-        &:hover {
+        &:active {
           background-color: #008d67;
+        }
+        
+        i {
+          animation: rotate 1s linear infinite;
+          color: #FFF;
+        }
+
+        @keyframes rotate {
+          0% {
+              transform: rotateZ(0deg);
+          }
+          100% {
+              transform: rotateZ(360deg);
+          }
         }
       }
 

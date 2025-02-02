@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class RegisterPageComponent {
   firstName: string = '';
   lastName: string = '';
+  isloading: boolean = false;
 
   constructor(
     private user: UserService,
@@ -61,13 +62,16 @@ export class RegisterPageComponent {
 
   onSubmitregistration(): void {
     if (this.isFormValid()) {
+      this.isloading = true;
       this.user.createUser(this.firstName, this.lastName).subscribe(
         (response) => {
           this.user.setUser(response);
+          this.isloading = false;
           this.router.navigate(['/app']);
         },
         (error) => {
           console.error('Error creating user:', error);
+          this.isloading = false;
           this.toast.showToast('Oops, an error occurred', 2, 'Request failed');
         }
       );
