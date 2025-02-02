@@ -16,6 +16,7 @@ profileID: string = '';
   isCameraOpen: boolean = false;
 
   expand_user_salutation: boolean = false;
+  is_loading: boolean = false;
 
   @ViewChild('camera', { static: false }) cameraScanner!: NgxScannerQrcodeComponent;
 
@@ -55,6 +56,7 @@ profileID: string = '';
   // set scanned value by qr image
   setScannedValue(event: any) {
     this.profileID = event[0].value;
+    this.isCameraOpen = false;
     this.submitLogin();
   }
 
@@ -63,6 +65,7 @@ profileID: string = '';
     this.qrcode.loadFiles(files).subscribe((res: ScannerQRCodeSelectedFiles[]) => {
       this.qrCodeResult = res;
       this.imageSrc = res[0].url;
+      this.isCameraOpen = false;
     });
   }
 
@@ -76,11 +79,12 @@ profileID: string = '';
 
   submitLogin(): void {
     if (this.profileID) {
+      this.is_loading = true;
       this.user.fetchUser(this.profileID).subscribe(
         (res) => {
           this.user.setUser(res);
+          this.is_loading = false;
           this.expand_user_salutation = true;
-          this.toast.showToast('User authenticated', 0, 'Log in success');
   
           setTimeout(() => {
             this.router.navigate(['/app']);
@@ -88,6 +92,7 @@ profileID: string = '';
         },
         (err) => {
           this.toast.showToast('Please verify your ID', 2, 'Log in failed');
+          this.is_loading = false;
         }
       );
     }

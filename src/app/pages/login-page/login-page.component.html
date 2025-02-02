@@ -36,6 +36,7 @@
           autocomplete="off" 
           required [(ngModel)]="profileID" 
           name="profileID" 
+          [disabled]="is_loading"
         />
       </div>
 
@@ -48,12 +49,16 @@
         type="button" 
         class="camera-btn"
         (click)="startCamera()"
+        [disabled]="is_loading"
       >
           <i class="fa-solid fa-camera"></i>
           {{isCameraOpen ? 'Close your camera' : 'Scan with your camera'}}
       </button>
   
-      <button type="button" class="login-btn" (click)="submitLogin()">Login</button>
+      <button type="button" class="login-btn" (click)="submitLogin()">
+        <i *ngIf="is_loading" class="fa-solid fa-hourglass-end"></i>
+        <span *ngIf="!is_loading">Login</span>
+      </button>
       
       <p class="signup-text">
         Don’t have an account? <a routerLink="/register" class="signup-link">register</a>
@@ -67,7 +72,15 @@
 
 
 <!-- For select files -->
-<input id="qrcode_input" #file type="file" (change)="onSelects(file.files)" [accept]="'.jpg, .png, .gif, .jpeg'" style="display: none;" />
+<input 
+  id="qrcode_input" 
+  #file 
+  type="file" 
+  (change)="onSelects(file.files)" 
+  [accept]="'.jpg, .png, .gif, .jpeg'" 
+  style="display: none;" 
+  [disabled]="is_loading"
+/>
 
 <div *ngFor="let item of qrCodeResult" style="display: none;">
   <ngx-scanner-qrcode 
