@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class NarratorProfileComponent {
 
-  @Input() narrator: any;
+  @Input() narrator: any = null;
 
   constructor(
     private user: UserService,

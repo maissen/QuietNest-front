@@ -11,7 +11,7 @@
         <ng-container *ngIf="parameterType == 'narrator' && data?.length >= 0">
 
             <div class="narrator">
-                <app-narrator-profile [narrator]="data !=null ? narrators.getNarratorById(data[0]) : ''" ></app-narrator-profile>
+                <app-narrator-profile [narrator]="narrator" ></app-narrator-profile>
                 <hr>
             </div>
             <div class="grid-container">
