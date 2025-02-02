@@ -19,6 +19,7 @@ export class SearchSectionComponent implements OnInit {
   api_get_speeches_and_playlists_by_category = 'https://quietrest-back.onrender.com/api/get-speeches-and-playlists-by-category';
   api_speeches_by_duration = 'https://quietrest-back.onrender.com/api/speeches-by-time/';
   api_get_narrator_by_id = 'https://quietrest-back.onrender.com/api/get-narrator/';
+  api_get_speeches_of_narrator = 'https://quietrest-back.onrender.com/api/get-speeches-of-narrator/';
 
   data: any;
   narratorName: string = '';
@@ -45,18 +46,21 @@ export class SearchSectionComponent implements OnInit {
         this.parameterType = 'narrator';
         this.parameterValue = params.get('narratorID');
 
-        console.log('narrator id : ' + this.parameterType);
-        this.http.get(this.api_get_narrator_by_id + this.parameterValue).subscribe(
+        this.http.get(`${this.api_get_narrator_by_id}${this.user.getUser().id}/${this.parameterValue}`).subscribe(
           (narrator: any) => {
             this.narrator = narrator;
-            console.log('narrator : ' + Object.keys(narrator))
+            
+            this.http.get(this.api_get_speeches_of_narrator + this.parameterValue).subscribe(
+              (speeches: any) => {
+                this.data = speeches;
+              }
+            )
+
           },
           (err) => {
             console.log(err);
           }
         );
-        console.log('all narrators : ' + this.narrators.getAllNarrators())
-        // console.log(this.data)
       
       } 
       else if (this.router.url.includes('/category')) {

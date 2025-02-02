@@ -1,4 +1,4 @@
-<div class="profile-speech" *ngIf="!isPlaylistRoute()" [ngStyle]="{'visibility: hidden': service.getSpeechDurationInSeconds() == 0}">
+<div class="profile-speech" *ngIf="!isPlaylistRoute()" [ngStyle]="{'opacity: 0': service.getSpeechDurationInSeconds() == 0}">
     <div class="narrator__pic">
         <img [src]="narrator?.img">
     </div>
@@ -12,21 +12,17 @@
                 <i class="fa-solid fa-heart"></i>
                 {{narrator?.likes}}
                 {{ narrator?.likes <= 1 ? 'like' : 'likes' }} 
-                <span class="hideDetail">{{ ' to ' + narrator?.name }}</span> 
             </button>
             <button class="action">
                 <i class="fa-solid fa-book"></i>
-                {{narrator?.speeches_nbr}}
-                <span>
-                    <span class="hideDetail">available</span> 
-                    audios</span>
+                {{narrator?.speeches_nbr}} audios
             </button>
         </div>
     </div>
 </div>
 
 
-<div class="profile-playlist" *ngIf="isPlaylistRoute()" [ngStyle]="{'visibility: hidden': service.getSpeechDurationInSeconds() == 0}">
+<div class="profile-playlist" *ngIf="isPlaylistRoute()" [ngStyle]="{'opacity: hidden': service.getSpeechDurationInSeconds() == 0}">
     <div class="info">
         <div class="pic">
             <img [src]="narrator?.img">
