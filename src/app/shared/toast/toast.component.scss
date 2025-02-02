@@ -7,8 +7,8 @@
     position: fixed;
     gap: 1.7rem;
     left: 50%;
-    bottom: 0;
-    transform: translateY(150%) translateX(-50%);
+    top: 0;
+    transform: translateY(-150%) translateX(-50%);
     font-size: 1.6rem;
     transition: .5s;
     box-shadow: #64646f33 0px 7px 29px 0px;
@@ -48,7 +48,7 @@
     }
 
     &.showUp {
-        transform: translateY(calc(-50% - var(--navbar-small-height))) translateX(-50%);
+        transform: translateY(50%) translateX(-50%);
     }
 
     &.success {
