@@ -46,50 +46,12 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.check_url();
     });
 
-    if (this.user.getUser() && this.router.url.startsWith('/app')) {
-      this.resetTimer();
-    }
-
   }
 
   ngAfterViewInit(): void {
     const html_audio = document.querySelector('#playing_speech_html_audio') as HTMLAudioElement;
     this.speechesService.html_audio = html_audio;
   }
-
-
-  //! for video overlay
-  @HostListener('window:mousemove')
-  @HostListener('window:keydown')
-  @HostListener('window:click')
-  @HostListener('window:scroll')
-  
-  resetTimer(): void {
-    const currentUrl = this.router.url;
-  
-    if (currentUrl.startsWith('/app')) {
-      clearTimeout(this.inactivityTimer);
-      this.overlayvideo.isOpened = false;
-      document.body.style.overflowY = 'auto';
-  
-      this.inactivityTimer = setTimeout(() => {
-        this.showInactivityAlert();
-      }, 8000);
-    } else {
-      this.overlayvideo.isOpened = false;
-      document.body.style.overflowY = 'auto';
-      clearTimeout(this.inactivityTimer)
-    }
-  }
-  
-  showInactivityAlert(): void {
-    if (this.router.url.startsWith('/app')) {
-      this.overlayvideo.isOpened = true;
-      document.body.style.overflowY = 'hidden';
-    }
-  }
-
-
 
   check_url() {
     const currentUrl = this.router.url;

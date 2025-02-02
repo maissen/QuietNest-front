@@ -38,34 +38,6 @@
                         <i class="fa-regular fa-id-card"></i>
                         <button (click)="copyID()">Copy ID</button>
                     </p>
-                    <p class="item settingsItem">
-                        <input 
-                            type="checkbox" 
-                            name="video_overlay" 
-                            id="video_overlay" 
-                            style="display: none;"
-                            [(ngModel)]="overlayVideoService.checkbox_video_overlay"
-                            (click)="toggleVideoOverlayBoolean()"
-                        >
-                        <i class="fa-solid fa-circle-check activated" *ngIf="overlayVideoService.checkbox_video_overlay"></i>
-                        <i class="fa-solid fa-ban desactivated" *ngIf="!overlayVideoService.checkbox_video_overlay"></i>
-                        
-                        <label for="video_overlay">Disable video overlay</label>
-                    </p>
-                    <p class="item settingsItem">
-                        <input 
-                            type="checkbox" 
-                            name="recent_speech" 
-                            id="recent_speech" 
-                            style="display: none;"
-                            [(ngModel)]="overlayVideoService.checkbox_recent_speech"
-                            (click)="toggleRecentSpeechBoolean()"
-                        >
-                        <i class="fa-solid fa-circle-check activated" *ngIf="overlayVideoService.checkbox_recent_speech"></i>
-                        <i class="fa-solid fa-ban desactivated" *ngIf="!overlayVideoService.checkbox_recent_speech"></i>
-                        
-                        <label for="recent_speech">Show Recent speech when logged in</label>
-                    </p>
                 </div>
             </div>
             
