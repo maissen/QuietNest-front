@@ -27,7 +27,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     private router: Router,
     public scenesService: ScenesService,
     public user: UserService,
-    private app: AppService,
+    public app: AppService,
     public speechesService: SpeechesService,
     public service: CreateSectionService,
     public soundsService: SoundsService,

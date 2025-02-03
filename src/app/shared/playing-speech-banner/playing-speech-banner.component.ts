@@ -25,13 +25,15 @@ export class PlayingSpeechBannerComponent {
     public narratorsService: NarratorsService,
     private router: Router,
     private user: UserService,
-    public speechesService: SpeechesService
+    public speechesService: SpeechesService,
+    public app: AppService
   ) {
     this.router.events.subscribe(() => {
       this.checkRoute();
     });
     this.checkRoute();
   }
+
 
   private checkRoute(): void {
     const url = this.router.url;
@@ -78,12 +80,6 @@ export class PlayingSpeechBannerComponent {
     error => {
       console.error('Error liking playlist:', error);
     });
-  }
-
-  updateVolume(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    let volume = parseFloat(inputElement.value);
-    this.speechesService.updatePlayingSpeechVolume(volume);
   }
   
   showPlay_hideReplay(): boolean {

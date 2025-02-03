@@ -207,7 +207,7 @@ export class SpeechesService {
     this.selectedSpeech = speech;
 
     this.html_audio.src = '';
-    this.html_audio.src = speech.link;
+    this.html_audio.src = speech?.link ;
     // this.clear_current_speech(this.user.getUser());
     // this.set_current_speech(this.user.getUser(), this.selectedSpeech);
     
@@ -243,10 +243,6 @@ export class SpeechesService {
 
   isPlaying(): any {
     return this.isSpeechPlaying;
-  }
-
-  updatePlayingSpeechVolume(volume: number): void {
-    this.getSelectedSpeechData().volume = volume;
   }
 
   replaySpeech(): void {

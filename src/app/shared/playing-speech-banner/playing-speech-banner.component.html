@@ -35,8 +35,7 @@
         min="0"
         max="1"
         step="0.1"
-        [value]="speechesService.getSelectedSpeechData().volume"
-        (input)="updateVolume($event)"
+        [(ngModel)]="app.playingSpeechVolume"
       >
     </div>
 
@@ -52,8 +51,7 @@
       min="0"
       max="1"
       step="0.1"
-      [value]="speechesService.getSelectedSpeechData().volume"
-      (input)="updateVolume($event)"
+      [(ngModel)]="app.playingSpeechVolume"
     >
 
   </div>

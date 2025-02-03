@@ -9,7 +9,6 @@
 
     <app-playing-speech-banner></app-playing-speech-banner>
     <app-bottom-sheet></app-bottom-sheet>
-    <!-- <app-overlay-video></app-overlay-video> -->
     
     <div
         class="dynamic-content"
@@ -47,7 +46,9 @@
                 id="playing_speech_html_audio" 
                 (loadstart)="startLoadingSpeech()"
                 (loadeddata)="getFetchedSpeechDuration()"
-                (ended)="onAudioEnd()">
+                (ended)="onAudioEnd()"
+                [volume]="app.playingSpeechVolume"
+            >
             </audio>
         </div>
         

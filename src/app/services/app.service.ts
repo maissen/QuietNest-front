@@ -265,4 +265,7 @@ export class AppService {
     }
   }  
 
+
+  playingSpeechVolume: number = 1;
+
 }
