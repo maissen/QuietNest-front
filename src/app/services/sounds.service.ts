@@ -30,7 +30,7 @@ export class SoundsService {
   }
 
   setSounds(list: any[]): void {
-    list.forEach(item => item.isActive = false);
+    list.forEach(item => {item.isActive = false;});
     this.allSounds = list;
   }
 

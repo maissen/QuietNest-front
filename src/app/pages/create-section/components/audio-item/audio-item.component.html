@@ -6,7 +6,14 @@
                (click)="toggleSound(sound)"
                [id]="'audio-item-'+sound.id"
           >
-               <i [class]="sound.icon"></i>
+               <i 
+                    *ngIf="sound.isLoading && sound.isActive"
+                    class="fa-solid fa-hourglass-end rotate"
+               ></i>
+               <i 
+                    *ngIf="!sound.isLoading || !sound.isActive"
+                    [class]="sound.icon"
+               ></i>
           </div>
           <p class="name text-center">
                <span *ngIf="!sound.isActive">{{ sound.name }}</span>

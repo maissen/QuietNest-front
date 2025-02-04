@@ -34,6 +34,8 @@
                     autoplay
                     [volume]="sound.volume / 10"
                     #audioElement
+                    (loadstart)="sound.isLoading = true"
+                    (loadeddata)="sound.isLoading = false"
                 ></audio>
             </div>
             
