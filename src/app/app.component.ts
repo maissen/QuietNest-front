@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { ScenesService } from './services/scenes.service';
 import { UserService } from './services/user.service';
@@ -9,10 +9,6 @@ import { SoundsService } from './services/sounds.service';
 import { PlaylistsService } from './services/playlists.service';
 import { NavbarService } from './services/navbar.service';
 import { NarratorsService } from './services/narrators.service';
-import { HttpClient } from '@angular/common/http';
-import { forkJoin } from 'rxjs';
-import { ToastService } from './services/toast.service';
-import { OverlayVideoService } from './services/overlay-video.service';
 import { CategoriesService } from './services/categories.service';
 import { CreateSectionSoundsService } from './services/create-section-sounds.service';
 
@@ -35,7 +31,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     public playlistsService: PlaylistsService,
     public navbar: NavbarService,
     public narratorsService: NarratorsService,
-    public overlayvideo: OverlayVideoService,
     public categoriesService: CategoriesService,
     public createSectionSounds: CreateSectionSoundsService
   ) { }
