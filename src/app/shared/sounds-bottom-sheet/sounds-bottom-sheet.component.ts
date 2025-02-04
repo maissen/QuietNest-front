@@ -4,12 +4,11 @@ import { SoundsService } from 'src/app/services/sounds.service';
 import { TimerService } from 'src/app/services/timer.service';
 
 @Component({
-  selector: 'app-bottom-sheet',
-  templateUrl: './bottom-sheet.component.html',
-  styleUrls: ['./bottom-sheet.component.scss']
+  selector: 'app-sounds-bottom-sheet',
+  templateUrl: './sounds-bottom-sheet.component.html',
+  styleUrls: ['./sounds-bottom-sheet.component.scss']
 })
-export class BottomSheetComponent {
-
+export class SoundsBottomSheetComponent {
   constructor(
     public service: CreateSectionService,
     public timerService: TimerService,

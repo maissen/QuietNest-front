@@ -31,7 +31,6 @@ import { BtnRectangleComponent } from './shared/buttons/btn-rectangle/btn-rectan
 import { BtnRoundComponent } from './shared/buttons/btn-round/btn-round.component';
 import { BtnRoundSmallComponent } from './shared/buttons/btn-round-small/btn-round-small.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { BottomSheetComponent } from './shared/bottom-sheet/bottom-sheet.component';
 import { TimerSectionComponent } from './pages/timer-section/timer-section.component';
 import { CtaBtnReviewComponent } from './shared/cta-btn-review/cta-btn-review.component';
 import { CarouselRectanglePlaylistComponent } from './shared/items-carousels/carousel-rectangle-playlist/carousel-rectangle-playlist.component';
@@ -46,6 +45,8 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { WelcomePageNavbarComponent } from './pages/welcome/components/welcome-page-navbar/welcome-page-navbar.component';
 import { WelcomePageAccordionComponent } from './pages/welcome/components/welcome-page-accordion/welcome-page-accordion.component';
 import { WelcomePageContactComponent } from './pages/welcome/components/welcome-page-contact/welcome-page-contact.component';
+import { SpeechBottomSheetComponent } from './shared/speech-bottom-sheet/speech-bottom-sheet.component';
+import { SoundsBottomSheetComponent } from './shared/sounds-bottom-sheet/sounds-bottom-sheet.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,6 @@ import { WelcomePageContactComponent } from './pages/welcome/components/welcome-
     BtnRoundComponent,
     BtnRoundSmallComponent,
     LoginPageComponent,
-    BottomSheetComponent,
     TimerSectionComponent,
     CtaBtnReviewComponent,
     CarouselRectanglePlaylistComponent,
@@ -89,6 +89,8 @@ import { WelcomePageContactComponent } from './pages/welcome/components/welcome-
     WelcomePageNavbarComponent,
     WelcomePageAccordionComponent,
     WelcomePageContactComponent,
+    SpeechBottomSheetComponent,
+    SoundsBottomSheetComponent,
   ],
   imports: [
     BrowserModule,
