@@ -67,7 +67,6 @@ export class SpeechesService {
   }
 
   getSpeechDurationInSeconds(): number {
-    this.html_audio = document.querySelector('#playing_speech_html_audio') as HTMLAudioElement;
     return Math.floor(this.speechDurationInSeconds);
   }
   
@@ -208,8 +207,6 @@ export class SpeechesService {
 
     this.html_audio.src = '';
     this.html_audio.src = speech?.link ;
-    // this.clear_current_speech(this.user.getUser());
-    // this.set_current_speech(this.user.getUser(), this.selectedSpeech);
     
     this.html_audio.play();
 

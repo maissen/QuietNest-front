@@ -232,12 +232,11 @@ export class AppService {
 
   showPlay_hideReplay(): boolean {
     const isPlaylistFinished = this.playlistsService.isPlaying && this.playlistsService.isFinished;
-    const isSpeechFinished = this.speechesService.getSpeechReadingLevelInSeconds() >= this.speechesService.getSpeechDurationInSeconds();
   
     //? Show the play/pause button in the following cases:
     //? - If a playlist or speech is currently playing and not finished.
     //? - Hide the play button (show replay) only if playback is finished.
-    return !(isPlaylistFinished || isSpeechFinished);
+    return !(isPlaylistFinished || this.speechesService.speech_is_ended_playing);
   }
 
 

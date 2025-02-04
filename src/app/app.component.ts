@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { ScenesService } from './services/scenes.service';
 import { UserService } from './services/user.service';
@@ -45,7 +45,14 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   @ViewChildren('audioElement') audioElements: QueryList<ElementRef> | undefined;
+  @ViewChild('speech_html_audio') audioRef!: ElementRef<HTMLAudioElement>;
+  
   ngAfterViewInit() {
+
+    //? set speech html audio
+    this.speechesService.html_audio = this.audioRef.nativeElement;
+
+    //? keep tracking create section active sounds
     this.audioElements?.changes.subscribe(() => {
       this.handleAudioElements();
     });
@@ -174,8 +181,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   onAudioEnd(): void {
-
-    this.speechesService.speech_is_ended_playing = true;
+    
     //! if a playlist is playing then it'll play the next speech
     if (this.playlistsService.isPlaying) {
       const playlistSpeeches = this.playlistsService.getPlayingPlaylist().speeches;
@@ -187,6 +193,9 @@ export class AppComponent implements OnInit, AfterViewInit {
       else if (index == playlistSpeeches.length - 1) {
         this.playlistsService.isFinished = true;
       }
+    }
+    else {
+      this.speechesService.speech_is_ended_playing = true;
     }
   }
 
