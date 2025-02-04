@@ -10,9 +10,43 @@
 
     <div class="loaded_content add-bottom-spacing-for-playing-speech-banner">
 
-        <div class="title">{{salutationMessage}} {{user.getUser().firstName}}</div>
-        <app-btn-rectangle class="scenes_btn rectangle" [routerLink]="'/app/scenes'" [text]="'Scenes'" [icon]="'fa-solid fa-mountain-sun'"></app-btn-rectangle>
-        <app-btn-round class="scenes_btn round" [routerLink]="'/app/scenes'" [icon]="'fa-solid fa-mountain-sun'"></app-btn-round>
+        <div class="title">
+            <h1>{{ salutationMessage }} {{ user.getUser().firstName }}</h1>
+        
+            <div class="btns">
+                <app-btn-round 
+                    class="scenes_btn round" 
+                    [icon]="'fa-solid ' + (isFullScreen ? 'fa-minimize' : 'fa-expand')"
+                    title="Toggle full screen"
+                    (click)="toggleFullScreen()">
+                </app-btn-round>
+        
+                <app-btn-round 
+                    class="scenes_btn round" 
+                    [routerLink]="'/app/scenes'" 
+                    [icon]="'fa-solid fa-mountain-sun'" 
+                    title="Open scenes">
+                </app-btn-round>
+        
+                <app-btn-rectangle 
+                    class="scenes_btn rectangle" 
+                    [text]="''" 
+                    [icon]="'fa-solid ' + (isFullScreen ? 'fa-minimize' : 'fa-expand')"
+                    title="Toggle full screen"
+                    (click)="toggleFullScreen()">
+                </app-btn-rectangle>
+        
+                <app-btn-rectangle 
+                    class="scenes_btn rectangle" 
+                    [routerLink]="'/app/scenes'" 
+                    [text]="'Scenes'" 
+                    [icon]="'fa-solid fa-mountain-sun'" 
+                    title="Open scenes">
+                </app-btn-rectangle>
+            </div>
+        </div>
+        
+        
         
         <app-cta-btn-review></app-cta-btn-review>
 
@@ -20,13 +54,6 @@
             [carouselTitle]="'Popular on Quiet Nest'"
             [speeches]="speechesService.popular_speeches"
         ></app-carousel-rectangle>
-
-        <!-- <app-carousel-rectangle-playlist 
-            [carouselTitle]="'Hot playlists'" 
-            [hasBottomBorder]="true"    
-            [hasScrollbar]="false"
-            [playlists]="playlistsService.hot_playlists"
-        ></app-carousel-rectangle-playlist> -->
 
         <app-carousel-square-narrators
             [carouselTitle]="'Trending Narrators'"

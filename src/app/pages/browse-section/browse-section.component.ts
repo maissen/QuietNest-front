@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ElementRef } from '@angular/core';
 import { BrowseSectionService } from 'src/app/services/browse-section.service';
 import { NarratorsService } from 'src/app/services/narrators.service';
 import { PlaylistsService } from 'src/app/services/playlists.service';
@@ -15,6 +15,7 @@ export class BrowseSectionComponent {
   showBgVideo: boolean = true;
   scaleFactor: number = 1;
   salutationMessage: string = '';
+  isFullScreen: boolean = false;
 
   constructor(
     public service: BrowseSectionService,
@@ -22,7 +23,7 @@ export class BrowseSectionComponent {
     public playlistsService: PlaylistsService,
     public user: UserService,
     public narratorsService: NarratorsService,
-    public speechesService: SpeechesService
+    public speechesService: SpeechesService,
   ) {
     this.setSalutationMessage();
   }
@@ -47,6 +48,46 @@ export class BrowseSectionComponent {
       this.salutationMessage = 'Good evening';
     } else {
       this.salutationMessage = 'Good night';
+    }
+  }
+
+  toggleFullScreen(): void {
+    if (!this.isFullScreen) {
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+      } 
+      
+      //? Firefox
+      else if ((document.documentElement as any).mozRequestFullScreen) { 
+        (document.documentElement as any).mozRequestFullScreen();
+      } 
+      
+      //? Chrome, Safari, Opera
+      else if ((document.documentElement as any).webkitRequestFullscreen) { 
+        (document.documentElement as any).webkitRequestFullscreen();
+      } 
+      
+      //? IE/Edge
+      else if ((document.documentElement as any).msRequestFullscreen) { 
+        (document.documentElement as any).msRequestFullscreen();
+      }
+
+      this.isFullScreen = true;
+    } 
+    else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } 
+      else if ((document as any).mozCancelFullScreen) {
+        (document as any).mozCancelFullScreen();
+      } 
+      else if ((document as any).webkitExitFullscreen) {
+        (document as any).webkitExitFullscreen();
+      } 
+      else if ((document as any).msExitFullscreen) {
+        (document as any).msExitFullscreen();
+      }
+      this.isFullScreen = false;
     }
   }
 }
