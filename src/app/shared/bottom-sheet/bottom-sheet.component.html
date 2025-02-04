@@ -1,34 +1,34 @@
 <div 
-    *ngIf="service.isCreateSection() && service.getActiveSounds().length > 0" 
+    *ngIf="service.isCreateSection() && soundsService.getActiveSounds()" 
     class="bg-layer"
-    [ngClass]="{'showUp': service.showOverlayContent && service.getActiveSounds().length > 0}" 
+    [ngClass]="{'showUp': service.showOverlayContent && soundsService.getActiveSounds()}" 
     (click)="service.toggleOverLayContent()"
 ></div>
 
 <div 
     *ngIf="service.isCreateSection()"
     class="overlay-content" 
-    [ngClass]="{'showUp': service.showOverlayContent && service.getActiveSounds().length > 0}" 
+    [ngClass]="{'showUp': service.showOverlayContent && soundsService.getActiveSounds()}" 
 >
     <button routerLink="/app/set-timer">
         <i class="fa-solid fa-clock"></i>
         Timer
     </button>
-    <button (click)="service.clearActiveSounds()">
+    <button (click)="soundsService.desactivateAllSounds()">
         <i class="fa-solid fa-stop"></i>
         Stop
     </button>
-    <button class="action" (click)="service.togglePauseActiveSounds()">
-        <i class="fa-solid fa-play" *ngIf="service.getPauseActiveSounds()"></i>
-        <i class="fa-solid fa-pause" *ngIf="!service.getPauseActiveSounds()"></i>
+    <button class="action" (click)="soundsService.toggle_play_pause_all_sounds()">
+        <i class="fa-solid fa-play" *ngIf="soundsService.all_sounds_are_paused"></i>
+        <i class="fa-solid fa-pause" *ngIf="!soundsService.all_sounds_are_paused"></i>
         {{service.activeSoundsPaused? 'Play': 'Pause'}}
     </button>
 </div>
 
-<div class="content blurry-bg" *ngIf="service.isCreateSection() && service.getActiveSounds().length > 0">
+<div class="content blurry-bg" *ngIf="service.isCreateSection() && soundsService.getActiveSounds().length > 0">
     <div class="info">
         <p>
-            {{service.getActiveSounds().length}} {{service.getActiveSounds().length == 1? 'sound': 'sounds'}}
+            {{soundsService.getActiveSounds().length}} {{soundsService.getActiveSounds().length == 1? 'sound': 'sounds'}}
         </p>
         <div class="timer">
             <i class="fa-regular fa-clock" *ngIf="timerService.timerInSeconds > 0"></i>
@@ -39,15 +39,15 @@
         <div class="action clock" routerLink="/app/set-timer">
             <i class="fa-solid fa-clock"></i>
         </div>
-        <div class="action stop" (click)="service.clearActiveSounds()">
+        <div class="action stop" (click)="soundsService.desactivateAllSounds()">
             <i class="fa-solid fa-stop"></i>
         </div>
         <div class="action toggle-content" (click)="service.toggleOverLayContent()">
             <i class="fa-solid fa-angle-up"></i>
         </div>
-        <div class="action play" (click)="service.togglePauseActiveSounds()">
-            <i class="fa-solid fa-play" *ngIf="service.getPauseActiveSounds()"></i>
-            <i class="fa-solid fa-pause" *ngIf="!service.getPauseActiveSounds()"></i>
+        <div class="action play" (click)="soundsService.toggle_play_pause_all_sounds()">
+            <i class="fa-solid fa-play" *ngIf="soundsService.all_sounds_are_paused"></i>
+            <i class="fa-solid fa-pause" *ngIf="!soundsService.all_sounds_are_paused"></i>
         </div>
     </div>
 </div>

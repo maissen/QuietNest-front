@@ -9,6 +9,9 @@ export class SoundsService {
 
   private categories: any[] = [];
   private allSounds: any[] = [];
+  public allHtmlSounds: HTMLAudioElement[] = [];
+  public sounds_started_loading = false;
+  public all_sounds_are_paused = false;
 
   apiGetSoundsCategories(): string {
     return this.api_get_sounds_categories;
@@ -27,6 +30,7 @@ export class SoundsService {
   }
 
   setSounds(list: any[]): void {
+    list.forEach(item => item.isActive = false);
     this.allSounds = list;
   }
 
@@ -38,11 +42,33 @@ export class SoundsService {
     return this.getSounds().filter(sound => sound.soundCategoryID == categoryID);
   }
 
-  updateSoundVolume(sound: any, volume: number): void {
-    const soundToUpdate = this.getSounds().find(item => item.id === sound.id);
-    if (soundToUpdate) {
-      soundToUpdate.volume = volume;
-    } 
+  getActiveSounds(): any {
+    return this.allSounds.filter(sound => sound.isActive);
   }
 
+  desactivateAllSounds(): void {
+    this.allSounds.forEach(sound => sound.isActive = false);
+  }
+
+  pauseAllSounds(): void {
+    this.allHtmlSounds.forEach((audio: HTMLAudioElement) => {
+      audio.pause();
+    });
+  }
+
+  playAllSounds(): void {
+    this.allHtmlSounds.forEach((audio: HTMLAudioElement) => {
+      audio.play();
+    });
+  }
+
+  toggle_play_pause_all_sounds(): void {
+    if(this.all_sounds_are_paused) {
+      this.playAllSounds();
+      this.all_sounds_are_paused = false;
+    } else {
+      this.pauseAllSounds();
+      this.all_sounds_are_paused = true;
+    }
+  }
 }

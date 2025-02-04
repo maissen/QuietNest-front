@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { ScenesService } from './services/scenes.service';
 import { UserService } from './services/user.service';
@@ -14,6 +14,7 @@ import { forkJoin } from 'rxjs';
 import { ToastService } from './services/toast.service';
 import { OverlayVideoService } from './services/overlay-video.service';
 import { CategoriesService } from './services/categories.service';
+import { CreateSectionSoundsService } from './services/create-section-sounds.service';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +36,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     public navbar: NavbarService,
     public narratorsService: NarratorsService,
     public overlayvideo: OverlayVideoService,
-    public categoriesService: CategoriesService
+    public categoriesService: CategoriesService,
+    public createSectionSounds: CreateSectionSoundsService
   ) { }
 
   ngOnInit() {
@@ -47,9 +49,23 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   }
 
-  ngAfterViewInit(): void {
-    const html_audio = document.querySelector('#playing_speech_html_audio') as HTMLAudioElement;
-    this.speechesService.html_audio = html_audio;
+  @ViewChildren('audioElement') audioElements: QueryList<ElementRef> | undefined;
+  ngAfterViewInit() {
+    this.audioElements?.changes.subscribe(() => {
+      this.handleAudioElements();
+    });
+
+    this.handleAudioElements();
+  }
+
+  private handleAudioElements() {
+    if (this.audioElements) {
+      this.soundsService.allHtmlSounds = [];
+      this.audioElements.forEach(audioRef => {
+        const audio = audioRef.nativeElement;
+        this.soundsService.allHtmlSounds.push(audio)
+      });
+    }
   }
 
   check_url() {
@@ -66,22 +82,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       if(this.narratorsService.getAllNarrators().length == 0) {
         this.app.loadAllNarrators();
       }
-
-      // if(user.showRecentSpeech == 1 && !this.speechesService.speech_played_auto) {
-      //   if (user.currentSpeech) {
-      //     this.speechesService.fetch_current_speech_of_user(user.currentSpeech).subscribe({
-      //       next: (speech) => {
-      //         if (speech) {
-      //           this.speechesService.setAutoSelectedSpeechData(speech);
-      //         }
-      //       },
-      //       error: (error) => {
-      //         console.error('Error occurred while fetching speech:', error);
-      //       },
-      //     });
-          
-      //   }
-      // }
     }
 
     if(this.router.url.startsWith('/app/browse')) {
@@ -103,10 +103,11 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     if(this.router.url.startsWith('/app/create')) {
 
-      if(this.soundsService.getSounds().length == 0) {
+      if(!this.soundsService.sounds_started_loading) {
         this.app.loadSounds();
+        this.soundsService.sounds_started_loading = true;
       }
-
+      
     }
 
     if(this.router.url.startsWith('/app/explore') || this.router.url.startsWith('/app/search') || this.router.url.startsWith('/app/profile')) {

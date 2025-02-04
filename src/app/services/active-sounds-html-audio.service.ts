@@ -16,9 +16,8 @@ export class ActiveSoundsHtmlAudioService {
     audio.loop = loop;
     audio.volume = volume;
     audio.autoplay = true;
-    
-    console.log('html audios : ' + this.html_audios)
-    // document.body.appendChild(audio);
+
+    this.html_audios.push(audio)
   }
 
   destroyAudioElement(id: string): void {

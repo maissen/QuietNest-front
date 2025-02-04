@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CreateSectionService } from 'src/app/services/create-section.service';
 import { SoundsService } from 'src/app/services/sounds.service';
 
@@ -13,7 +13,7 @@ export class CreateSectionComponent {
 
   constructor(
     public service: CreateSectionService,
-    public soundsService: SoundsService
+    public soundsService: SoundsService,
   ) {}
 
   toggleCategory(category: any): void {

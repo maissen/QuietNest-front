@@ -24,17 +24,19 @@
         
         <!--! sounds of create section -->
         <div class="create-section-sounds" style="display: none;">
-            <div *ngFor="let sound of soundsService.getSounds()">
+            <div *ngFor="let sound of soundsService.getSounds(); let i = index">
                 <audio 
-                    *ngIf="service.isSoundActive(sound)" 
-                    [id]="'sound-audio-'+sound.id" 
-                    [src]="sound.link" 
+                    *ngIf="sound.isActive"
+                    class="sound"
+                    [id]="'sound-'+sound.id" 
+                    [src]="sound.link"
                     loop 
-                    [autoplay]="!service.getPauseActiveSounds()"
-                    [volume]="sound.volume/10"
-                    
+                    autoplay
+                    [volume]="sound.volume / 10"
+                    #audioElement
                 ></audio>
             </div>
+            
         </div>
 
         <!--! audio of playing speech -->

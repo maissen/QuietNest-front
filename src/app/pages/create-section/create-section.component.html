@@ -25,7 +25,7 @@
         <span>All</span>
       </button>
       <button
-        *ngIf="service.getActiveSounds().length > 0"
+        *ngIf="soundsService.getActiveSounds()"
         class="blurry-bg"
         [ngClass]="{'active': activeCategories.includes('active-sounds')}"
         (click)="toggleCategory('active-sounds')"
@@ -54,11 +54,11 @@
         <div class="title">Currently Enjoying</div>
         <div class="audio_items">
           <app-audio-item
-            *ngFor="let sound of service.getActiveSounds()"
+            *ngFor="let sound of soundsService.getActiveSounds()"
             [sound]="sound"
           ></app-audio-item>
         </div>
-        <div *ngIf="service.getActiveSounds().length === 0">
+        <div *ngIf="soundsService.getActiveSounds().length === 0">
           <p>No sounds currently being enjoyed.</p>
         </div>
       </div>

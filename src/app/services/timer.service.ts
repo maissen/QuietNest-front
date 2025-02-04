@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CreateSectionService } from './create-section.service';
+import { SoundsService } from './sounds.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class TimerService {
   private countdownInterval: any;
 
   constructor(
-    private createSectionService: CreateSectionService
+    private soundsService: SoundsService
   ) { }
 
   incrementSeconds(): void {
@@ -104,7 +105,7 @@ export class TimerService {
 
       } else {
         clearInterval(this.countdownInterval);
-        this.createSectionService.togglePauseActiveSounds();
+        this.soundsService.toggle_play_pause_all_sounds();
       }
     }, 1000);
   }
