@@ -24,7 +24,7 @@
                 color: #FFF;
                 transition: .3s;
 
-                &:hover {
+                &:active {
                     background-color: var(--avgColor);
                 }
             }
