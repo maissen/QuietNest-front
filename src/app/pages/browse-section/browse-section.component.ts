@@ -1,4 +1,4 @@
-import { Component, HostListener, ElementRef } from '@angular/core';
+import { Component, HostListener, ElementRef, OnInit } from '@angular/core';
 import { BrowseSectionService } from 'src/app/services/browse-section.service';
 import { NarratorsService } from 'src/app/services/narrators.service';
 import { PlaylistsService } from 'src/app/services/playlists.service';
@@ -11,11 +11,11 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './browse-section.component.html',
   styleUrls: ['./browse-section.component.scss']
 })
-export class BrowseSectionComponent {
+export class BrowseSectionComponent implements OnInit{
   showBgVideo: boolean = true;
   scaleFactor: number = 1;
   salutationMessage: string = '';
-  isFullScreen: boolean = false;
+  isFullScreen: any;
 
   constructor(
     public service: BrowseSectionService,
@@ -26,6 +26,10 @@ export class BrowseSectionComponent {
     public speechesService: SpeechesService,
   ) {
     this.setSalutationMessage();
+  }
+
+  ngOnInit(): void {
+    this.isFullScreen = document.fullscreenElement;
   }
 
   @HostListener('window:scroll', ['$event'])
