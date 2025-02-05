@@ -16,35 +16,35 @@
         <!--! speech like btn -->
         <button 
             *ngIf="!this.playlistsService?.isPlaying"
-            [ngClass]="{'liked': speechesService.getSelectedSpeechData().liked}" 
+            class="like"
             (click)="playingSpeechControl.likeSpeech()"
         >
             <i 
                 class="fa-solid"
-                [ngClass]="{'fa-heart': !speechesService.getSelectedSpeechData()?.liked, 'fa-heart-crack' : speechesService.getSelectedSpeechData()?.liked}"
+                [ngClass]="{'fa-heart-crack': !speechesService.getSelectedSpeechData()?.liked, 'fa-heart' : speechesService.getSelectedSpeechData()?.liked}"
             ></i>
-            <span>{{ speechesService.getSelectedSpeechData().liked ? 'Dislike' : 'Like' }}</span>
         </button>
         
         <!--! playlist like btn -->
         <button 
             *ngIf="this.playlistsService?.isPlaying"
-            [ngClass]="{'liked': playlistsService.getPlayingPlaylist()?.liked}" 
+            class="like"
             (click)="playingSpeechControl.likePlaylist()"
         >
             <i 
                 class="fa-solid"
-                [ngClass]="{'fa-heart': !playlistsService.getPlayingPlaylist()?.liked, 'fa-heart-crack' : playlistsService.getPlayingPlaylist()?.liked}"
+                [ngClass]="{'fa-heart-crack': !playlistsService.getPlayingPlaylist()?.liked, 'fa-heart' : playlistsService.getPlayingPlaylist()?.liked}"
             ></i>
-            <span>{{ playlistsService.getPlayingPlaylist()?.liked ? 'Dislike' : 'Like' }}</span>
         </button>
         
         
         <!--! speech save/unsave btn -->
-        <button (click)="playingSpeechControl.toggleSaveUnsaveSpeech()">
+        <button 
+            (click)="playingSpeechControl.toggleSaveUnsaveSpeech()"
+            class="save"
+        >
             <i class="fa-solid fa-save" *ngIf="!speechesService.getSelectedSpeechData().saved"></i>
             <i class="fa-solid fa-trash" *ngIf="speechesService.getSelectedSpeechData().saved"></i>
-            <span>{{ speechesService.getSelectedSpeechData().saved ? 'Unsave' : 'Save' }}</span>
         </button>
 
         <!--! speech expand btn -->
@@ -52,9 +52,10 @@
             *ngIf="!playlistsService?.isPlaying" 
             [routerLink]="'/app/speech/' + speechesService.getSelectedSpeechData().id"
             (click)="playingSpeechControl.expand_speech_bottom_sheet = !playingSpeechControl.expand_speech_bottom_sheet"    
+            class="expand"
         >
             <i class="fa-solid fa-expand"></i>
-            <span>Expand</span>
+            <!-- <span>Expand</span> -->
         </button>
         
         <!--! playlist expand btn -->
@@ -64,7 +65,7 @@
             (click)="playingSpeechControl.expand_speech_bottom_sheet = !playingSpeechControl.expand_speech_bottom_sheet"    
         >
             <i class="fa-solid fa-expand"></i>
-            <span>Expand</span>
+            <!-- <span>Expand</span> -->
         </button>
     </div>
 
@@ -88,7 +89,9 @@
 
         <!--! speech track range input -->
         <div class="item">
-            <i class="fa-solid fa-play"></i>
+            <p class="text">
+                {{speechesService.selected_speech_is_loading? 'Loading' : speechesService.getSpeechReadingLevel()}}
+            </p>
             <input 
                 class="range-slider" 
                 type="range" 

@@ -74,7 +74,7 @@
     >
       <i 
         class="fa-solid"
-        [ngClass]="{'fa-heart': !speechesService.getSelectedSpeechData()?.liked, 'fa-heart-crack' : speechesService.getSelectedSpeechData()?.liked}"
+        [ngClass]="{'fa-heart-crack': !speechesService.getSelectedSpeechData()?.liked, 'fa-heart' : speechesService.getSelectedSpeechData()?.liked}"
       ></i>
     </button>
 
