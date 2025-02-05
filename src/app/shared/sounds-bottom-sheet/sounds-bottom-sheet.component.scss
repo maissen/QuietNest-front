@@ -46,13 +46,16 @@
     }
 
     button {
-        height: 3.5rem;
         width: 100%;
         border-radius: 2.5rem;
         border: none;
-        color: #000;
         width: 100%;
         transition: .7s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.1rem 0;
+        gap: .7rem;
             
         &.clock {
             color: #dc143c;
@@ -65,10 +68,6 @@
         &.play {
             color: #4169e1;
             background-color: #4169e131;
-        }
-
-        i {
-            margin-right: .7rem;
         }
     }
 

@@ -12,15 +12,17 @@
 >
     <button class="clock" routerLink="/app/set-timer">
         <i class="fa-solid fa-clock"></i>
-        Timer
+        <span>Timer</span>
     </button>
     <button class="stop" (click)="soundsService.desactivateAllSounds(); service.toggleOverLayContent()">
         <i class="fa-solid fa-stop"></i>
-        Stop
+        <span>Stop</span>
     </button>
     <button class="action play" (click)="soundsService.toggle_play_pause_all_sounds()">
         <i class="fa-solid fa-play" *ngIf="soundsService.all_sounds_are_paused"></i>
         <i class="fa-solid fa-pause" *ngIf="!soundsService.all_sounds_are_paused"></i>
-        {{service.activeSoundsPaused? 'Play': 'Pause'}}
+        <span>
+            {{ soundsService.all_sounds_are_paused ? 'Play': 'Pause'}}
+        </span>
     </button>
 </div>
