@@ -22,7 +22,6 @@
     .info {
         flex: 1;
         padding: 0 1rem;
-        padding-right: 4rem;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -30,6 +29,8 @@
 
         .narrator {
             margin: 0;
+            font-size: .8em;
+            color: #808080;
         }
     }
 }

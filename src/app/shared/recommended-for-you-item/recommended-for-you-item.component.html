@@ -4,8 +4,7 @@
     </div>
     <div class="info">
       <div class="title">{{ data?.name }}</div>
-      <p class="narrator cormorant-font">{{narratorsService.getNarratorById(data.narratorID)?.name }}</p>
-      <!-- <span *ngIf="playingSpeechService.getSelectedSpeechData()?.id == data.id">(Playing)</span>  -->
+      <p class="narrator">{{narratorsService.getNarratorById(data.narratorID)?.name }}</p>
     </div>
   </div>
   
