@@ -50,14 +50,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
 
     //? set speech html audio
-    this.speechesService.html_audio = this.audioRef.nativeElement;
+    if(this.router.url.startsWith('/app')) {
+      this.speechesService.html_audio = this.audioRef.nativeElement;
 
-    //? keep tracking create section active sounds
-    this.audioElements?.changes.subscribe(() => {
+      //? keep tracking create section active sounds
+      this.audioElements?.changes.subscribe(() => {
+        this.handleAudioElements();
+      });
+
       this.handleAudioElements();
-    });
-
-    this.handleAudioElements();
+    }
   }
 
   private handleAudioElements() {

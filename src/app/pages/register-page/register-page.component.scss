@@ -9,7 +9,7 @@
     box-shadow: 0 0 50rem #0000004d;
     border-radius: 2rem;
     padding-top: 4rem;
-    background-color: #00a77e;
+    background-color: var(--primary-color-dark);
 
     .login-form {
       width: 30rem;
@@ -47,7 +47,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          color: #00a77e;
+          color: var(--primary-color-dark);
         }
 
         input {
@@ -63,23 +63,19 @@
         }
 
         &:focus-within {
-          border: 0.1rem solid #00a77e;
+          border: 0.1rem solid var(--primary-color-dark);
         }
       }
 
       .login-btn {
         width: 100%;
         padding: 0.75rem;
-        background-color: #00a77e;
+        background-color: var(--primary-color-dark);
         border: none;
         border-radius: .5rem;
         color: #fff;
         cursor: pointer;
         margin-bottom: 2rem;
-
-        &:active {
-          background-color: #008d67;
-        }
         
         i {
           animation: rotate 1s linear infinite;
@@ -100,7 +96,7 @@
         color: #666;
 
         .signup-link {
-          color: #00a77e;
+          color: var(--primary-color-dark);
           text-decoration: none;
 
           &:hover {

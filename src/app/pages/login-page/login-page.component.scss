@@ -26,7 +26,7 @@
     .display {
         height: 24rem;
         width: 100%;
-        background-color: #00a77e;
+        background-color: var(--primary-color-dark);
         position: absolute;
         top: 0;
         left: 0;
@@ -127,8 +127,8 @@
             transition: .3s;
 
             &:hover {
-                color:  #00a77e;
-                border-color:  #00a77e;
+                color:  var(--primary-color-dark);
+                border-color:  var(--primary-color-dark);
             }
         }
 
@@ -168,7 +168,7 @@
         
                 &:focus {
                     outline: none;
-                    border-color: #00a77e;
+                    border-color: var(--primary-color-dark);
                 }
             }
         }
@@ -192,16 +192,13 @@
         .login-btn {
             width: 100%;
             padding: 0.75rem;
-            background-color: #00a77e;
+            background-color: var(--primary-color-dark);
             border: none;
             border-radius: 5px;
             color: #fff;
             cursor: pointer;
             margin-bottom: 2rem;
-        
-            &:active {
-                background-color: #008d67;
-            }
+            transition: .3s;
 
             i {
                 animation: rotate 1s linear infinite;
@@ -222,7 +219,7 @@
             color: #666;
         
             .signup-link {
-                color: #00a77e;
+                color: var(--primary-color-dark);
                 text-decoration: none;
         
                 &:hover {

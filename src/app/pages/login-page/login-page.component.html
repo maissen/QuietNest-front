@@ -10,7 +10,7 @@
                   <p>{{user.getUser().firstName + ' ' + user.getUser().lastName}}</p>
               </div>
 
-              <div class="cormorant-font title">Quiet Nest</div>
+              <div class="cormorant-font title">Quiet Rest</div>
           </div>
 
           <!-- For camera -->
@@ -56,7 +56,7 @@
       </button>
   
       <button type="button" class="login-btn" (click)="submitLogin()">
-        <i *ngIf="is_loading" class="fa-solid fa-hourglass-end"></i>
+        <i *ngIf="is_loading" class="fa-solid fa-spinner"></i>
         <span *ngIf="!is_loading">Login</span>
       </button>
       
