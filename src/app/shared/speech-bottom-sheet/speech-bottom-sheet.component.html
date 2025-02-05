@@ -142,7 +142,8 @@
 
         <!--! speech volume range input -->
         <div class="item">
-            <i class="fa-solid fa-microphone-lines"></i>
+            <i *ngIf="app.playingSpeechVolume > 0" class="fa-solid fa-volume-high"></i>
+            <i *ngIf="app.playingSpeechVolume == 0" class="fa-solid fa-volume-xmark"></i>
             <input 
                 class="range-slider" 
                 type="range" 
