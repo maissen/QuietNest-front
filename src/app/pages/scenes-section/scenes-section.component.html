@@ -11,17 +11,18 @@
 
     <div class="loaded-content">
         <ng-container *ngFor="let scene of service.getAllScenes()">
-            <div 
+            <button 
                 class="scene-item" 
                 [ngClass]="{'scene-item-active': scene.id == user.getUser().sceneID}"
                 (click)="updateUserScene(scene)"
+                [disabled]="user.getUser().sceneID == scene.id"
             >
                 <div *ngIf="is_scene_loading && scene.id == target_scene_id" class="loading_overlay">
-                    <i class="fa-solid fa-hourglass-end"></i>
+                    <i class="fa-solid fa-spinner"></i>
                 </div>
                 <img [src]="scene.img" alt="Scene Image">
                 <p class="name">{{scene.name}}</p>
-            </div>
+            </button>
         </ng-container>
     </div>
 </div>
