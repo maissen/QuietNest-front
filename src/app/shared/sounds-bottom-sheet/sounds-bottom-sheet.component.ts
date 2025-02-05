@@ -14,8 +14,4 @@ export class SoundsBottomSheetComponent {
     public timerService: TimerService,
     public soundsService: SoundsService
   ) {}
-
-  get formattedTimer(): string {
-    return this.timerService.getFormattedCount();
-  }
 }

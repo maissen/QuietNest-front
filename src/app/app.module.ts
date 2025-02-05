@@ -47,6 +47,7 @@ import { WelcomePageAccordionComponent } from './pages/welcome/components/welcom
 import { WelcomePageContactComponent } from './pages/welcome/components/welcome-page-contact/welcome-page-contact.component';
 import { SpeechBottomSheetComponent } from './shared/speech-bottom-sheet/speech-bottom-sheet.component';
 import { SoundsBottomSheetComponent } from './shared/sounds-bottom-sheet/sounds-bottom-sheet.component';
+import { PlayingSoundsBannerComponent } from './shared/playing-sounds-banner/playing-sounds-banner.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { SoundsBottomSheetComponent } from './shared/sounds-bottom-sheet/sounds-
     WelcomePageContactComponent,
     SpeechBottomSheetComponent,
     SoundsBottomSheetComponent,
+    PlayingSoundsBannerComponent,
   ],
   imports: [
     BrowserModule,

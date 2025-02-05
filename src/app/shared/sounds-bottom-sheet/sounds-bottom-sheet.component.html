@@ -14,7 +14,7 @@
         <i class="fa-solid fa-clock"></i>
         Timer
     </button>
-    <button class="stop" (click)="soundsService.desactivateAllSounds()">
+    <button class="stop" (click)="soundsService.desactivateAllSounds(); service.toggleOverLayContent()">
         <i class="fa-solid fa-stop"></i>
         Stop
     </button>
@@ -23,31 +23,4 @@
         <i class="fa-solid fa-pause" *ngIf="!soundsService.all_sounds_are_paused"></i>
         {{service.activeSoundsPaused? 'Play': 'Pause'}}
     </button>
-</div>
-
-<div class="content blurry-bg" *ngIf="service.isCreateSection() && soundsService.getActiveSounds().length > 0">
-    <div class="info">
-        <p>
-            {{soundsService.getActiveSounds().length}} {{soundsService.getActiveSounds().length == 1? 'sound': 'sounds'}}
-        </p>
-        <div class="timer">
-            <i class="fa-regular fa-clock" *ngIf="timerService.timerInSeconds > 0"></i>
-            {{timerService.timerInSeconds > 0 ? formattedTimer : 'Timer is disabled'}}
-        </div>
-    </div>
-    <div class="actions">
-        <div class="action clock" routerLink="/app/set-timer">
-            <i class="fa-solid fa-clock"></i>
-        </div>
-        <div class="action stop" (click)="soundsService.desactivateAllSounds()">
-            <i class="fa-solid fa-stop"></i>
-        </div>
-        <div class="action toggle-content" (click)="service.toggleOverLayContent()">
-            <i class="fa-solid fa-angle-up"></i>
-        </div>
-        <div class="action play" (click)="soundsService.toggle_play_pause_all_sounds()">
-            <i class="fa-solid fa-play" *ngIf="soundsService.all_sounds_are_paused"></i>
-            <i class="fa-solid fa-pause" *ngIf="!soundsService.all_sounds_are_paused"></i>
-        </div>
-    </div>
 </div>
