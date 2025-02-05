@@ -5,6 +5,9 @@
     <div class="img_thumb">
       <img *ngIf="!playlistsService?.isPlaying" [src]="speechesService.getSelectedSpeechData().img">
       <img *ngIf="playlistsService?.isPlaying" [src]="playlistsService.getPlayingPlaylist()?.img">
+      <div class="overlay" [class.showUp]="isOverlayVisible">
+        <p>{{app.playingSpeechVolume * 10}}</p>
+      </div>
     </div>
 
     <div class="description">
@@ -35,6 +38,7 @@
         max="1"
         step="0.1"
         [(ngModel)]="app.playingSpeechVolume"
+        (input)="showOverlay()"
       >
     </div>
 

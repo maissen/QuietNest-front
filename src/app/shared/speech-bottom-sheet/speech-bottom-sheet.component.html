@@ -78,9 +78,9 @@
             *ngIf="playlistsService.getPlayingPlaylist() && playlistsService?.isPlaying" 
             [routerLink]="'/app/playlist/' + playlistsService.getPlayingPlaylist()?.id"
             (click)="playingSpeechControl.expand_speech_bottom_sheet = !playingSpeechControl.expand_speech_bottom_sheet"    
+            class="expand"
         >
             <i class="fa-solid fa-expand"></i>
-            <!-- <span>Expand</span> -->
         </button>
     </div>
 

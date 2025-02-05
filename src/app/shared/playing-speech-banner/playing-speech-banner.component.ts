@@ -43,50 +43,23 @@ export class PlayingSpeechBannerComponent {
     this.hideBanner = url.startsWith('/app/speech') || url.startsWith('/app/playlist') || url.startsWith('/app/set-timer') || url.startsWith('/app/create') || url.startsWith('/app/scenes');
   }
   
-
-  likeSpeech() {
-    let userID = this.user.getUser().id;
-    let speech = this.speechesService.getSelectedSpeechData();
-    
-    if (speech.liked) {
-      speech.likes = parseInt(speech.likes) - 1 ;
-    }
-    else {
-      speech.likes = parseInt(speech.likes) + 1 ;
-    }
-    this.speechesService.userLikesSpeech(speech.id, userID).subscribe(response => {
-  
-
-      speech.liked = !speech.liked;
-    }, 
-    error => {
-      console.error('Error liking speech:', error);
-    });
-  }
-
-  likePlaylist() {
-    let userID = this.user.getUser().id;
-    let playlist = this.playlistsService.getPlayingPlaylist();
-    
-    if (playlist.liked) {
-      playlist.likes = parseInt(playlist.likes) - 1 ;
-    }
-    else {
-      playlist.likes = parseInt(playlist.likes) + 1 ;
-    }
-    this.playlistsService.userLikesPlaylist(playlist.id, userID).subscribe(response => {
-  
-
-      playlist.liked = !playlist.liked;
-
-    }, 
-    error => {
-      console.error('Error liking playlist:', error);
-    });
-  }
-  
   showPlay_hideReplay(): boolean {
     return this.speechesService.getSpeechReadingLevelInSeconds() < this.speechesService.getSpeechDurationInSeconds();
+  }
+
+  isOverlayVisible: boolean = false;
+  overlayTimeout: any;
+
+  showOverlay() {
+    this.isOverlayVisible = true;
+
+    if (this.overlayTimeout) {
+      clearTimeout(this.overlayTimeout);
+    }
+
+    this.overlayTimeout = setTimeout(() => {
+      this.isOverlayVisible = false;
+    }, 3000);
   }
 
 }
