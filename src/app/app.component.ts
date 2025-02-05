@@ -40,6 +40,14 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.check_url();
     this.router.events.subscribe(() => {
       this.check_url();
+
+      if(this.router.url.startsWith('/app')) {
+        this.checkUserScene();
+
+        setInterval(() => {
+          this.checkUserScene();
+        }, 10000);
+      }
     });
 
   }
@@ -68,6 +76,29 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.soundsService.allHtmlSounds.push(audio)
       });
     }
+  }
+
+  checkUserScene(): void {
+    let sceneID : any;
+
+    this.user.LoadSceneByID().subscribe(
+      (data) => {
+        sceneID = data.sceneID;
+
+        if (this.user.getUser().sceneID !== sceneID) {
+          this.user.updateUserScene(this.user.getUser().id, sceneID).subscribe(
+            (response) => {
+              this.user.setUser(response);
+              this.scenesService.setActiveScene(this.scenesService.getScenesList().find(scene => scene.id === sceneID));
+            },
+            (error) => {
+              console.error('Error updating scene:', error);
+            }
+          );
+    
+        }
+      }
+    );
   }
 
   check_url() {

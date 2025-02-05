@@ -51,6 +51,8 @@ export class AppService {
       }
     );
   }
+
+  
   
   loadTrendingNarrators(count: number = 0): void {
     this.http.get<any[]>(`${this.narratorsService.api_trending_narrators}/${this.user.getUser().id}/${count}`).subscribe(

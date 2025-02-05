@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class UserService {
   api_init_user = "https://quietrest-back.onrender.com/api/set-user";
   api_update_scene_for_user = "https://quietrest-back.onrender.com/api/update-user-scene";
   api_fetch_user = "https://quietrest-back.onrender.com/login";
+  api_fetch_user_scene_by_id = "https://quietrest-back.onrender.com/get-user-scene/";
 
   createUser(firstName: string, lastName: string): Observable<any> {
     const body = { firstName, lastName };
@@ -52,6 +53,15 @@ export class UserService {
     // console.log('user is cleared');
     localStorage.removeItem('quiet_rest_user');
   }
+
+  LoadSceneByID(): Observable<any> {
+    return this.http.get<any>(`${this.api_fetch_user_scene_by_id}${this.getUser().id}`).pipe(
+      catchError((error) => {
+        return of(null);
+      })
+    );
+  }
+  
 
   addUserAttribute(attribute: string, value: any): void {
     const user = this.getUser();
