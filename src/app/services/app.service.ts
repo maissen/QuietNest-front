@@ -264,6 +264,34 @@ export class AppService {
     }
   }  
 
+  playNextSpeechOfPlaylist(): void {
+    const playlist = this.playlistsService.getPlayingPlaylist();
+    if (!playlist || !playlist.speeches.length) return;
+
+    const currentSpeechId = this.speechesService.getSelectedSpeechData().id;
+    const currentIndex = playlist.speeches.indexOf(currentSpeechId);
+
+    if (currentIndex >= 0 && currentIndex < playlist.speeches.length - 1) {
+      const nextSpeech = this.speechesService.getSpeechById(playlist.speeches[currentIndex + 1]);
+      this.speechesService.setSelectedSpeechData(nextSpeech);
+    } else {
+      this.playlistsService.isFinished = true;
+    }
+  }
+
+  playPrevSpeechOfPlaylist(): void {
+    const playlist = this.playlistsService.getPlayingPlaylist();
+    if (!playlist || !playlist.speeches.length) return;
+
+    const currentSpeechId = this.speechesService.getSelectedSpeechData().id;
+    const currentIndex = playlist.speeches.indexOf(currentSpeechId);
+
+    if (currentIndex > 0) {
+      const prevSpeech = this.speechesService.getSpeechById(playlist.speeches[currentIndex - 1]);
+      this.speechesService.setSelectedSpeechData(prevSpeech);
+    } 
+}
+
 
   playingSpeechVolume: number = .7;
 

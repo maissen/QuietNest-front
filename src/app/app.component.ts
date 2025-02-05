@@ -32,7 +32,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     public navbar: NavbarService,
     public narratorsService: NarratorsService,
     public categoriesService: CategoriesService,
-    public createSectionSounds: CreateSectionSoundsService
+    public createSectionSounds: CreateSectionSoundsService,
   ) { }
 
   ngOnInit() {
@@ -181,20 +181,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   onAudioEnd(): void {
-    
-    //! if a playlist is playing then it'll play the next speech
     if (this.playlistsService.isPlaying) {
-      const playlistSpeeches = this.playlistsService.getPlayingPlaylist().speeches;
-      let index = this.playlistsService.getPlayingPlaylist().speeches.indexOf(this.speechesService.getSelectedSpeechData().id);
-  
-      if (index >= 0 && index < playlistSpeeches.length - 1) {
-        this.speechesService.setSelectedSpeechData(this.speechesService.getSpeechById(playlistSpeeches[index + 1]));
-      } 
-      else if (index == playlistSpeeches.length - 1) {
-        this.playlistsService.isFinished = true;
-      }
-    }
-    else {
+      this.app.playNextSpeechOfPlaylist();
+    } else {
       this.speechesService.speech_is_ended_playing = true;
     }
   }

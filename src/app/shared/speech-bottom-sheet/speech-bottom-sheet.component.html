@@ -107,13 +107,21 @@
 
         <!--? playlist speech next/prev btns -->
         <div *ngIf="playlistsService.isPlaying" class="item speech-item">
-            <button>
+            <button 
+                [ngStyle]="{ visibility: playlistsService.getPlayingPlaylist().speeches.indexOf(speechesService.getSelectedSpeechData().id) > 0 ? 'visible' : 'hidden' }" 
+                (click)="app.playPrevSpeechOfPlaylist()"
+            >
                 <i class="fa-solid fa-backward"></i>
             </button>
+
             <div class="speech">
-                Lorem ipsum dolor sit amet voluptas suscipit autem illum!
+                {{ speechesService.getSelectedSpeechData().name }}
             </div>
-            <button>
+
+            <button 
+                [ngStyle]="{ visibility: playlistsService.getPlayingPlaylist().speeches.indexOf(speechesService.getSelectedSpeechData().id) < playlistsService.getPlayingPlaylist().speeches.length - 1 ? 'visible' : 'hidden' }" 
+                (click)="app.playNextSpeechOfPlaylist()"
+            >
                 <i class="fa-solid fa-forward"></i>
             </button>
         </div>

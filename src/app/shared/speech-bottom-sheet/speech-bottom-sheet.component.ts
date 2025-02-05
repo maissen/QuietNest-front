@@ -17,7 +17,6 @@ export class SpeechBottomSheetComponent {
     public app: AppService,
     public playlistsService: PlaylistsService
   ) { }
-
   
 
 }
