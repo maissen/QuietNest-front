@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CreateSectionService } from 'src/app/services/create-section.service';
+import { PlayingSpeechControlsService } from 'src/app/services/playing-speech-controls.service';
 import { SoundsService } from 'src/app/services/sounds.service';
+import { SpeechesService } from 'src/app/services/speeches.service';
 import { TimerService } from 'src/app/services/timer.service';
 
 @Component({
@@ -11,9 +13,11 @@ import { TimerService } from 'src/app/services/timer.service';
 export class PlayingSoundsBannerComponent {
 
   constructor(
-      public service: CreateSectionService,
-      public timerService: TimerService,
-      public soundsService: SoundsService
-    ) {}
+    public service: CreateSectionService,
+    public timerService: TimerService,
+    public soundsService: SoundsService,
+    public speechesService: SpeechesService,
+    public playingSpeechControl: PlayingSpeechControlsService
+  ) {}
 
 }

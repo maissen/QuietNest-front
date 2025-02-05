@@ -12,6 +12,7 @@
     align-items: center;
     height: var(--bottom-sheet-height);
     padding: var(--bottom-sheet-padding);
+    padding-right: calc(var(--bottom-sheet-padding) - .2rem);
     z-index: var(--navbar-zindex);
 
     @media all and (min-width: 1200px) {
@@ -64,6 +65,19 @@
 
                 @media all and (min-width: 500px) {
                     display: flex;
+                }
+            }
+
+            &.speech_btn {
+                overflow: hidden;
+                cursor: pointer;
+
+                img {
+                    height: 100%;
+                }
+
+                @media all and (min-width: 500px) {
+                    display: none;
                 }
             }
 

@@ -22,7 +22,15 @@
             <i class="fa-solid fa-play" *ngIf="soundsService.all_sounds_are_paused"></i>
             <i class="fa-solid fa-pause" *ngIf="!soundsService.all_sounds_are_paused"></i>
         </div>
+        <div    
+            *ngIf="speechesService.getSelectedSpeechData()" 
+            (click)="playingSpeechControl.expand_speech_bottom_sheet = !playingSpeechControl.expand_speech_bottom_sheet"
+            class="action speech_btn"
+        > 
+            <img [src]="speechesService.getSelectedSpeechData().img" alt="">
+        </div>
     </div>
 </div>
 
 <app-sounds-bottom-sheet *ngIf="service.isCreateSection() && soundsService.getActiveSounds().length > 0"></app-sounds-bottom-sheet>
+<app-speech-bottom-sheet></app-speech-bottom-sheet>
