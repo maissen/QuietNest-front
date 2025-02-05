@@ -18,6 +18,9 @@ export class PlayingSpeechControlsService {
   ) { }
 
   expand_speech_bottom_sheet: boolean = false;
+  loading_like_speech: boolean = false;
+  loading_like_playlist: boolean = false;
+  loading_save_unsave_speech: boolean = false;
 
   onSeek(event: any): void {
     
@@ -30,11 +33,12 @@ export class PlayingSpeechControlsService {
   toggleSaveUnsaveSpeech(): void {
     const userID = this.user.getUser().id;
     const speechID = this.service.getSelectedSpeechData().id;
+    this.loading_save_unsave_speech = true;
 
     this.http.post(this.service.api_toggle_save_speech, {userID, speechID}).subscribe(
       (res) => {
-        console.log(res);
         this.service.getSelectedSpeechData().saved = !this.service.getSelectedSpeechData().saved;
+        this.loading_save_unsave_speech = false;
       },
       (err) =>{
         console.error('Error saving/unsaving speech:', err);
@@ -45,16 +49,17 @@ export class PlayingSpeechControlsService {
   likeSpeech() {
     let userID = this.user.getUser().id;
     let speech = this.service.getSelectedSpeechData();
-    console.log(speech)
+    this.loading_like_speech = true;
     
-    if (speech.liked) {
-      speech.likes = parseInt(speech.likes) - 1 ;
-    }
-    else {
-      speech.likes = parseInt(speech.likes) + 1 ;
-    }
     this.service.userLikesSpeech(speech.id, userID).subscribe(response => {
+      this.loading_like_speech = false;
       speech.liked = !speech.liked;
+      if (speech.liked) {
+        speech.likes = parseInt(speech.likes) - 1 ;
+      }
+      else {
+        speech.likes = parseInt(speech.likes) + 1 ;
+      }
     }, 
     error => {
       console.error('Error liking speech:', error);
@@ -64,15 +69,17 @@ export class PlayingSpeechControlsService {
   likePlaylist() {
     let userID = this.user.getUser().id;
     let playlist = this.playlistsService.getPlayingPlaylist();
+    this.loading_like_playlist = true;
     
-    if (playlist.liked) {
-      playlist.likes = parseInt(playlist.likes) - 1 ;
-    }
-    else {
-      playlist.likes = parseInt(playlist.likes) + 1 ;
-    }
     this.playlistsService.userLikesPlaylist(playlist.id, userID).subscribe(response => {
+      this.loading_like_playlist = false;
       playlist.liked = !playlist.liked;
+      if (playlist.liked) {
+        playlist.likes = parseInt(playlist.likes) - 1 ;
+      }
+      else {
+        playlist.likes = parseInt(playlist.likes) + 1 ;
+      }
     }, 
     error => {
       console.error('Error liking playlist:', error);

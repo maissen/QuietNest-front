@@ -20,8 +20,14 @@
             (click)="playingSpeechControl.likeSpeech()"
         >
             <i 
+                *ngIf="!playingSpeechControl.loading_like_speech"
                 class="fa-solid"
                 [ngClass]="{'fa-heart-crack': !speechesService.getSelectedSpeechData()?.liked, 'fa-heart' : speechesService.getSelectedSpeechData()?.liked}"
+            ></i>
+
+            <i 
+                *ngIf="playingSpeechControl.loading_like_speech"
+                class="fa-solid fa-spinner rotate"
             ></i>
         </button>
         
@@ -32,8 +38,14 @@
             (click)="playingSpeechControl.likePlaylist()"
         >
             <i 
+                *ngIf="!playingSpeechControl.loading_like_playlist"
                 class="fa-solid"
                 [ngClass]="{'fa-heart-crack': !playlistsService.getPlayingPlaylist()?.liked, 'fa-heart' : playlistsService.getPlayingPlaylist()?.liked}"
+            ></i>
+
+            <i 
+                *ngIf="playingSpeechControl.loading_like_playlist"
+                class="fa-solid fa-spinner rotate"
             ></i>
         </button>
         
@@ -43,8 +55,12 @@
             (click)="playingSpeechControl.toggleSaveUnsaveSpeech()"
             class="save"
         >
-            <i class="fa-solid fa-save" *ngIf="!speechesService.getSelectedSpeechData().saved"></i>
-            <i class="fa-solid fa-trash" *ngIf="speechesService.getSelectedSpeechData().saved"></i>
+            <i class="fa-solid fa-save" *ngIf="!playingSpeechControl.loading_save_unsave_speech && !speechesService.getSelectedSpeechData().saved"></i>
+            <i class="fa-solid fa-trash" *ngIf="!playingSpeechControl.loading_save_unsave_speech && speechesService.getSelectedSpeechData().saved"></i>
+            <i 
+                *ngIf="playingSpeechControl.loading_save_unsave_speech"
+                class="fa-solid fa-spinner rotate"
+            ></i>
         </button>
 
         <!--! speech expand btn -->
@@ -55,7 +71,6 @@
             class="expand"
         >
             <i class="fa-solid fa-expand"></i>
-            <!-- <span>Expand</span> -->
         </button>
         
         <!--! playlist expand btn -->
