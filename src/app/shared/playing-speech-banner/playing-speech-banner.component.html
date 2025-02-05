@@ -106,7 +106,11 @@
     </button>
 
     <!--! expand speech btn -->
-    <button class="expand-btn" *ngIf="!playlistsService?.isPlaying" [routerLink]="'/app/speech/' + speechesService.getSelectedSpeechData().id">
+    <button 
+      class="expand-btn" 
+      *ngIf="!playlistsService?.isPlaying" 
+      [routerLink]="'/app/speech/' + speechesService.getSelectedSpeechData().id"
+    >
       <i class="fa-solid fa-expand"></i>
     </button>
 
