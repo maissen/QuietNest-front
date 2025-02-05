@@ -27,7 +27,8 @@
             (click)="playingSpeechControl.expand_speech_bottom_sheet = !playingSpeechControl.expand_speech_bottom_sheet"
             class="action speech_btn"
         > 
-            <img [src]="speechesService.getSelectedSpeechData().img" alt="">
+            <img *ngIf="playlistsService.isPlaying" [src]="playlistsService.getPlayingPlaylist().img">
+            <img *ngIf="!playlistsService.isPlaying" [src]="speechesService.getSelectedSpeechData().img">
         </div>
     </div>
 </div>
