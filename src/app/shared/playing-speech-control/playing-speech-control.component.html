@@ -3,7 +3,7 @@
         <div class="action">
         </div>
         <div class="action">
-            <button (click)="toggleSaveUnsaveSpeech()">
+            <button (click)="playingSpeechControl.toggleSaveUnsaveSpeech()">
                 <i class="fa-solid fa-save" *ngIf="!service.getSelectedSpeechData().saved"></i>
                 <i class="fa-solid fa-trash" *ngIf="service.getSelectedSpeechData().saved"></i>
             </button>
@@ -37,7 +37,7 @@
                 step="1"
                 [max]="service.getSpeechDurationInSeconds()" 
                 [value]="service.getSpeechReadingLevelInSeconds()"
-                (input)="onSeek($event)"
+                (input)="playingSpeechControl.onSeek($event)"
                 class="range-slider"
             >
         </div>

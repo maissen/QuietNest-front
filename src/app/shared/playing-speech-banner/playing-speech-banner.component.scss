@@ -124,29 +124,33 @@
                 color: red;
             }
         }
-        .like {
+
+        .like-btn,
+        .expand-btn {
             display: none;
+        }
+
+        .toggle-bottom-sheet-btn {
+            display: block;
         }
     }
 
     
-    @media all and (min-width: 550px) {
+    @media all and (min-width: 500px) {
         .actions {
-            .like {
+            .like-btn,
+            .expand-btn {
                 display: block;
+            }
+            
+            .toggle-bottom-sheet-btn {
+                display: none;
             }
         }
     }
 
     @media all and (min-width: 1200px) {
         left: calc(50% + (var(--navbar-wide-width) / 2));
-
-        .actions {
-            .like,
-            .stop {
-                display: block;
-            }
-        }
     }
     
     @media all and (max-width: 1400px) {

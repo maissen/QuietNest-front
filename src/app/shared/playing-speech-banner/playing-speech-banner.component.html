@@ -1,4 +1,3 @@
-<!-- <div class="content blurry-bg" *ngIf="(speechesService.getSelectedSpeechData() || playlistsService.getPlayingPlaylist()) && !hideBanner && playlistsService.getPlayingPlaylist() != undefined"> -->
 <div class="content blurry-bg" *ngIf="(speechesService.getSelectedSpeechData() || playlistsService.getPlayingPlaylist()) && !hideBanner">
 
   <div class="info">
@@ -58,31 +57,47 @@
 
   <div class="actions">
 
-    <!--! like btn -->
+    <!--! toggle speech bottom sheet btn -->
     <button 
-      *ngIf="!this.playlistsService?.isPlaying"
-      class="like" 
-      [ngClass]="{'liked': speechesService.getSelectedSpeechData().liked}" 
-      (click)="likeSpeech()"
+      class="toggle-bottom-sheet-btn"
+      (click)="playingSpeechControl.expand_speech_bottom_sheet = !playingSpeechControl.expand_speech_bottom_sheet"
     >
-      <i class="fa-solid fa-heart"></i>
+      <i class="fa-solid fa-angle-up"></i>
     </button>
+
+    <!--! speech like btn -->
     <button 
-      *ngIf="this.playlistsService?.isPlaying"
-      class="like" 
-      [ngClass]="{'liked': playlistsService.getPlayingPlaylist()?.liked}" 
-      (click)="likePlaylist()"
+      class="like-btn"
+      *ngIf="!this.playlistsService?.isPlaying"
+      [ngClass]="{'liked': speechesService.getSelectedSpeechData().liked}" 
+      (click)="playingSpeechControl.likeSpeech()"
     >
-      <i class="fa-solid fa-heart"></i>
+      <i 
+        class="fa-solid"
+        [ngClass]="{'fa-heart': !speechesService.getSelectedSpeechData()?.liked, 'fa-heart-crack' : speechesService.getSelectedSpeechData()?.liked}"
+      ></i>
+    </button>
+
+    <!--! playlist like btn -->
+    <button 
+      class="like-btn"
+      *ngIf="this.playlistsService?.isPlaying"
+      [ngClass]="{'liked': playlistsService.getPlayingPlaylist()?.liked}" 
+      (click)="playingSpeechControl.likePlaylist()"
+    >
+      <i 
+        class="fa-solid"
+        [ngClass]="{'fa-heart': !playlistsService.getPlayingPlaylist()?.liked, 'fa-heart-crack' : playlistsService.getPlayingPlaylist()?.liked}"
+      ></i>
     </button>
 
     <!--! expand speech btn -->
-    <button *ngIf="!playlistsService?.isPlaying" [routerLink]="'/app/speech/' + speechesService.getSelectedSpeechData().id">
+    <button class="expand-btn" *ngIf="!playlistsService?.isPlaying" [routerLink]="'/app/speech/' + speechesService.getSelectedSpeechData().id">
       <i class="fa-solid fa-expand"></i>
     </button>
 
     <!--! expand playlist btn -->
-    <button *ngIf="playlistsService.getPlayingPlaylist() && playlistsService?.isPlaying" [routerLink]="'/app/playlist/' + playlistsService.getPlayingPlaylist()?.id">
+    <button class="expand-btn" *ngIf="playlistsService.getPlayingPlaylist() && playlistsService?.isPlaying" [routerLink]="'/app/playlist/' + playlistsService.getPlayingPlaylist()?.id">
       <i class="fa-solid fa-expand"></i>
     </button>
     
@@ -116,3 +131,5 @@
   </div>
 
 </div>
+
+<app-speech-bottom-sheet *ngIf="!hideBanner"></app-speech-bottom-sheet>

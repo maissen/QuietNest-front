@@ -4,6 +4,7 @@ import { AppService } from 'src/app/services/app.service';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { CreateSectionService } from 'src/app/services/create-section.service';
 import { NarratorsService } from 'src/app/services/narrators.service';
+import { PlayingSpeechControlsService } from 'src/app/services/playing-speech-controls.service';
 import { PlaylistsService } from 'src/app/services/playlists.service';
 import { SpeechesService } from 'src/app/services/speeches.service';
 import { UserService } from 'src/app/services/user.service';
@@ -16,6 +17,7 @@ import { UserService } from 'src/app/services/user.service';
 export class PlayingSpeechBannerComponent {
   hideBanner: boolean = false;
   didUserLikeThisSpeech: boolean = false;
+  expandBottomSheet: boolean = false;
 
   constructor(
     public createSectionService: CreateSectionService,
@@ -26,7 +28,8 @@ export class PlayingSpeechBannerComponent {
     private router: Router,
     private user: UserService,
     public speechesService: SpeechesService,
-    public app: AppService
+    public app: AppService,
+    public playingSpeechControl: PlayingSpeechControlsService
   ) {
     this.router.events.subscribe(() => {
       this.checkRoute();
