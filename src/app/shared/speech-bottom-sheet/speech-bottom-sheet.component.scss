@@ -47,14 +47,9 @@
         margin-bottom: 3rem;
 
         button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.2rem;
             height: 3.5rem;
             width: 100%;
             border-radius: 2.5rem;
-            background-color: transparent;
             border: none;
             color: #000;
             width: 100%;
@@ -69,7 +64,7 @@
                 background-color: var(--primary-color-light);
             }
             &.expand {
-                color: royalblue;
+                color: #4169e1;
                 background-color: #4169e131;
             }
         }

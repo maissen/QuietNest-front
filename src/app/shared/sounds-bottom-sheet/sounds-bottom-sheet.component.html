@@ -10,15 +10,15 @@
     class="overlay-content" 
     [ngClass]="{'showUp': service.showOverlayContent && soundsService.getActiveSounds()}" 
 >
-    <button routerLink="/app/set-timer">
+    <button class="clock" routerLink="/app/set-timer">
         <i class="fa-solid fa-clock"></i>
         Timer
     </button>
-    <button (click)="soundsService.desactivateAllSounds()">
+    <button class="stop" (click)="soundsService.desactivateAllSounds()">
         <i class="fa-solid fa-stop"></i>
         Stop
     </button>
-    <button class="action" (click)="soundsService.toggle_play_pause_all_sounds()">
+    <button class="action play" (click)="soundsService.toggle_play_pause_all_sounds()">
         <i class="fa-solid fa-play" *ngIf="soundsService.all_sounds_are_paused"></i>
         <i class="fa-solid fa-pause" *ngIf="!soundsService.all_sounds_are_paused"></i>
         {{service.activeSoundsPaused? 'Play': 'Pause'}}
