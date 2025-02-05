@@ -18,6 +18,7 @@
             *ngIf="!this.playlistsService?.isPlaying"
             class="like"
             (click)="playingSpeechControl.likeSpeech()"
+            [disabled]="playingSpeechControl.loading_like_speech"
         >
             <i 
                 *ngIf="!playingSpeechControl.loading_like_speech"
@@ -38,6 +39,7 @@
             *ngIf="this.playlistsService?.isPlaying"
             class="like"
             (click)="playingSpeechControl.likePlaylist()"
+            [disabled]="playingSpeechControl.loading_like_playlist"
         >
             <i 
                 *ngIf="!playingSpeechControl.loading_like_playlist"
@@ -58,6 +60,7 @@
         <button 
             (click)="playingSpeechControl.toggleSaveUnsaveSpeech()"
             class="save"
+            [disabled]="playingSpeechControl.loading_save_unsave_speech"
         >
             <i class="fa-solid fa-save" *ngIf="!playingSpeechControl.loading_save_unsave_speech && !speechesService.getSelectedSpeechData().saved"></i>
             <i class="fa-solid fa-trash" *ngIf="!playingSpeechControl.loading_save_unsave_speech && speechesService.getSelectedSpeechData().saved"></i>
