@@ -9,8 +9,8 @@
                 <p class="fullname">
                     {{ user.getUser().firstName + ' ' + user.getUser().lastName }}   
                 </p> 
-                <app-btn-rectangle [text]="'Log out'" [isRouter]="false" (click)="clear()" class="wide"></app-btn-rectangle>
-                <app-btn-round-small [icon]="'fa-solid fa-x'" (click)="clear()" class="small"></app-btn-round-small>
+                <app-btn-rectangle [icon]="'fa-solid fa-right-from-bracket'" [text]="'Log out'" [isRouter]="false" (click)="clear()" class="wide"></app-btn-rectangle>
+                <app-btn-round-small [icon]="'fa-solid fa-right-from-bracket'" (click)="clear()" class="small"></app-btn-round-small>
             </div>
 
             <div class="info">

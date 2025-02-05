@@ -196,7 +196,7 @@ export class SpeechesService {
   }
 
   setSelectedSpeechData(speech: any) {
-    
+
     this.setSpeechDuration('00:00');
     this.setSpeechReadingLevel('00:00');
     this.speechDurationInSeconds = 0;
