@@ -8,12 +8,12 @@
     transition: opacity .3s;
     opacity: 0;
     visibility: hidden;
+    backdrop-filter: blur(4px);
     z-index: calc(var(--navbar-zindex) + 1);
 
     &.showUp {
         opacity: 1;
         visibility: visible;
-        backdrop-filter: blur(4px);
     }
 
     @media all and (min-width: 500px) {
