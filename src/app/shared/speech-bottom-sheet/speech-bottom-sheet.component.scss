@@ -132,6 +132,7 @@
             &.speech-item {
                 margin-top: 2rem;
                 height: auto;
+                justify-content: center;
 
                 .speech {
                     width: 100%;
@@ -149,9 +150,21 @@
                     justify-content: center;
                     color: #000;
                     border: none;
+                    transition: .3s;
+
+                    &:first-child:active {
+                        transform: translateX(-.5rem);
+                    }
+                    &:last-child:active {
+                        transform: translateX(.5rem);
+                    }
                 }
             }
 
+        }
+
+        .playlist_speech_index {
+            text-align: center;
         }
     }
 }

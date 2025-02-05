@@ -177,21 +177,65 @@
             </p>
         </div>
 
+        <div
+            *ngIf="
+                !playlistsService.isPlaying &&
+                speechesService.getSelectedSpeechData() && 
+                speechesService.getSelectedSpeechData().name.length < 35" 
+
+            class="item speech-item"
+        >
+            {{ speechesService.getSelectedSpeechData().name }}
+        </div>
+        <marquee 
+            *ngIf="!playlistsService.isPlaying && speechesService.getSelectedSpeechData() && speechesService.getSelectedSpeechData().name.length >= 35" 
+            direction="left" 
+            class="item speech-item"
+        >
+            {{ speechesService.getSelectedSpeechData().name }}
+        </marquee>
+
         <!--? playlist speech next/prev btns -->
+        <div *ngIf="playlistsService.isPlaying" class="playlist_speech_index">
+            <span>
+                {{
+                    (playlistsService.getPlayingPlaylist().speeches.indexOf(
+                        speechesService.getSelectedSpeechData().id
+                    )) + 1 + ' / ' +
+                    playlistsService.getPlayingPlaylist().speeches.length
+                }}
+            </span>
+        </div>
+
         <div *ngIf="playlistsService.isPlaying" class="item speech-item">
             <button 
-                [ngStyle]="{ visibility: playlistsService.getPlayingPlaylist().speeches.indexOf(speechesService.getSelectedSpeechData().id) > 0 ? 'visible' : 'hidden' }" 
+                [ngStyle]="{ color: playlistsService.getPlayingPlaylist().speeches.indexOf(speechesService.getSelectedSpeechData().id) > 0 ? '#000' : '#d3d3d3' }" 
                 (click)="app.playPrevSpeechOfPlaylist()"
             >
                 <i class="fa-solid fa-backward"></i>
             </button>
 
-            <div class="speech">
+            <div
+                *ngIf="
+                    playlistsService.isPlaying &&
+                    speechesService.getSelectedSpeechData() && 
+                    speechesService.getSelectedSpeechData().name.length < 35" 
+                class="speech"
+            >
                 {{ speechesService.getSelectedSpeechData().name }}
             </div>
 
+            <marquee 
+                *ngIf="playlistsService.isPlaying && speechesService.getSelectedSpeechData() && speechesService.getSelectedSpeechData().name.length >= 35" 
+                class="speech"
+                direction="left" 
+
+            >
+                {{ speechesService.getSelectedSpeechData().name }}
+            </marquee>
+
             <button 
-                [ngStyle]="{ visibility: playlistsService.getPlayingPlaylist().speeches.indexOf(speechesService.getSelectedSpeechData().id) < playlistsService.getPlayingPlaylist().speeches.length - 1 ? 'visible' : 'hidden' }" 
+                [ngStyle]="{ color: playlistsService.getPlayingPlaylist().speeches.indexOf(speechesService.getSelectedSpeechData().id) < playlistsService.getPlayingPlaylist().speeches.length - 1 ? '#000' : '#d3d3d3' }" 
                 (click)="app.playNextSpeechOfPlaylist()"
             >
                 <i class="fa-solid fa-forward"></i>
