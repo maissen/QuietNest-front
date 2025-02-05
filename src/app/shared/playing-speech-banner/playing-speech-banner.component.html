@@ -116,13 +116,13 @@
     </button>
     
     <!--! stop btn -->
-    <button class="stop" (click)="globalService.clearPlayback()">
+    <button class="stop" (click)="app.clearPlayback()">
       <i class="fa-solid fa-stop"></i>
     </button>
     
     <!--! Play/Pause btn -->
     <ng-container *ngIf="!speechesService.selected_speech_is_loading">
-      <button *ngIf="globalService.showPlay_hideReplay()" (click)="speechesService.togglePlayPause()">
+      <button *ngIf="app.showPlay_hideReplay()" (click)="speechesService.togglePlayPause()">
         <i class="fa-solid fa-play" *ngIf="!speechesService.isSpeechPlaying"></i>
         <i class="fa-solid fa-pause" *ngIf="speechesService.isSpeechPlaying"></i>
       </button>
@@ -137,7 +137,7 @@
     
     <!--! replay btn -->
     <ng-container *ngIf="!speechesService.selected_speech_is_loading">
-      <button *ngIf="!globalService.showPlay_hideReplay()" (click)="globalService.replay()">
+      <button *ngIf="!app.showPlay_hideReplay()" (click)="app.replay()">
         <i class="fa-solid fa-repeat"></i>
       </button>
     </ng-container>

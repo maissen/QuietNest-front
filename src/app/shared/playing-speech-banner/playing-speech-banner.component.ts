@@ -22,7 +22,6 @@ export class PlayingSpeechBannerComponent {
   constructor(
     public createSectionService: CreateSectionService,
     public playlistsService: PlaylistsService,
-    public globalService: AppService,
     public categoriesService: CategoriesService,
     public narratorsService: NarratorsService,
     private router: Router,

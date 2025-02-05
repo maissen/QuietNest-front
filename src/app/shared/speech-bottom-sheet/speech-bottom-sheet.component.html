@@ -72,16 +72,46 @@
         >
             <i class="fa-solid fa-expand"></i>
         </button>
-        
+
         <!--! playlist expand btn -->
-        <button 
-            *ngIf="playlistsService.getPlayingPlaylist() && playlistsService?.isPlaying" 
-            [routerLink]="'/app/playlist/' + playlistsService.getPlayingPlaylist()?.id"
+        <button  
+            *ngIf="playlistsService?.isPlaying" 
             (click)="playingSpeechControl.expand_speech_bottom_sheet = !playingSpeechControl.expand_speech_bottom_sheet"    
+            [routerLink]="'/app/playlist/' + playlistsService.getPlayingPlaylist()?.id"
             class="expand"
         >
             <i class="fa-solid fa-expand"></i>
         </button>
+
+        <!--! Play/Pause btn -->
+        <ng-container *ngIf="!speechesService.selected_speech_is_loading">
+            <button 
+                *ngIf="app.showPlay_hideReplay()" 
+                (click)="speechesService.togglePlayPause()"
+                class="play_pause_replay_btn"
+            >
+                <i class="fa-solid fa-play" *ngIf="!speechesService.isSpeechPlaying"></i>
+                <i class="fa-solid fa-pause" *ngIf="speechesService.isSpeechPlaying"></i>
+            </button>
+        </ng-container>
+
+        <!--! replay btn -->
+        <ng-container *ngIf="!speechesService.selected_speech_is_loading">
+            <button 
+                *ngIf="!app.showPlay_hideReplay()" 
+                (click)="app.replay()"
+                class="play_pause_replay_btn"    
+            >
+            <i class="fa-solid fa-repeat"></i>
+            </button>
+        </ng-container>
+    
+        <!--! loader -->
+        <ng-container *ngIf="speechesService.selected_speech_is_loading">
+            <button class="play_pause_replay_btn">
+                <i class="fa-solid fa-spinner rotate"></i>
+            </button>
+        </ng-container>
     </div>
 
     <div class="controls">
@@ -105,7 +135,7 @@
         <!--! speech track range input -->
         <div class="item">
             <p class="text">
-                {{speechesService.selected_speech_is_loading? 'Loading' : speechesService.getSpeechReadingLevel()}}
+                {{speechesService.selected_speech_is_loading? '00:00' : speechesService.getSpeechReadingLevel()}}
             </p>
             <input 
                 class="range-slider" 
