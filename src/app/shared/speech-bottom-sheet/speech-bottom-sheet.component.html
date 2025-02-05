@@ -21,10 +21,13 @@
             [disabled]="playingSpeechControl.loading_like_speech"
         >
             <i 
-                *ngIf="!playingSpeechControl.loading_like_speech"
-                class="fa-solid"
-                [ngClass]="{'fa-heart-crack': !speechesService.getSelectedSpeechData()?.liked, 'fa-heart' : speechesService.getSelectedSpeechData()?.liked}"
+                *ngIf="!playingSpeechControl.loading_like_speech && speechesService.getSelectedSpeechData()?.liked"
+                class="fa-solid fa-heart"
             ></i>
+            <i 
+                *ngIf="!playingSpeechControl.loading_like_speech && !speechesService.getSelectedSpeechData()?.liked"
+                class="fa-regular fa-heart">
+            </i>
 
             <i 
                 *ngIf="playingSpeechControl.loading_like_speech"
@@ -42,11 +45,13 @@
             [disabled]="playingSpeechControl.loading_like_playlist"
         >
             <i 
-                *ngIf="!playingSpeechControl.loading_like_playlist"
-                class="fa-solid"
-                [ngClass]="{'fa-heart-crack': !playlistsService.getPlayingPlaylist()?.liked, 'fa-heart' : playlistsService.getPlayingPlaylist()?.liked}"
+                *ngIf="!playingSpeechControl.loading_like_playlist && playlistsService.getPlayingPlaylist()?.liked"
+                class="fa-solid fa-heart"
             ></i>
-
+            <i 
+                *ngIf="!playingSpeechControl.loading_like_playlist && !playlistsService.getPlayingPlaylist()?.liked"
+                class="fa-regular fa-heart">
+            </i>
             <i 
                 *ngIf="playingSpeechControl.loading_like_playlist"
                 class="fa-solid fa-spinner rotate"
