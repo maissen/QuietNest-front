@@ -4,8 +4,12 @@
         </div>
         <div class="action">
             <button (click)="playingSpeechControl.toggleSaveUnsaveSpeech()">
-                <i class="fa-solid fa-save" *ngIf="!service.getSelectedSpeechData().saved"></i>
-                <i class="fa-solid fa-trash" *ngIf="service.getSelectedSpeechData().saved"></i>
+                <i class="fa-solid fa-save" *ngIf="!playingSpeechControl.loading_save_unsave_speech && !service.getSelectedSpeechData().saved"></i>
+                <i class="fa-solid fa-trash" *ngIf="!playingSpeechControl.loading_save_unsave_speech && service.getSelectedSpeechData().saved"></i>
+                <i 
+                    *ngIf="playingSpeechControl.loading_save_unsave_speech"
+                    class="fa-solid fa-spinner rotate"
+                ></i>
             </button>
         </div>
         <div class="action">

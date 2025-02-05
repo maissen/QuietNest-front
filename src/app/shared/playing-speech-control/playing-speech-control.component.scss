@@ -24,8 +24,19 @@
                 color: #FFF;
                 transition: .3s;
 
-                &:active {
-                    background-color: var(--avgColor);
+                i {
+                    &.rotate {
+                        animation: rotate 1s infinite linear;
+        
+                        @keyframes rotate {
+                            0% {
+                                transform: rotateZ(0deg);
+                            }
+                            100% {
+                                transform: rotateZ(360deg);
+                            }
+                        }
+                    }
                 }
             }
         }

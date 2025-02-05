@@ -69,12 +69,17 @@
     <button 
       class="like-btn"
       *ngIf="!this.playlistsService?.isPlaying"
-      [ngClass]="{'liked': speechesService.getSelectedSpeechData().liked}" 
+      [ngClass]="{'liked': speechesService.getSelectedSpeechData().liked && !playingSpeechControl.loading_like_speech}" 
       (click)="playingSpeechControl.likeSpeech()"
     >
       <i 
+        *ngIf="!playingSpeechControl.loading_like_speech"
         class="fa-solid"
         [ngClass]="{'fa-heart-crack': !speechesService.getSelectedSpeechData()?.liked, 'fa-heart' : speechesService.getSelectedSpeechData()?.liked}"
+      ></i>
+      <i 
+        *ngIf="playingSpeechControl.loading_like_speech"
+        class="fa-solid fa-spinner rotate"
       ></i>
     </button>
 
@@ -82,12 +87,17 @@
     <button 
       class="like-btn"
       *ngIf="this.playlistsService?.isPlaying"
-      [ngClass]="{'liked': playlistsService.getPlayingPlaylist()?.liked}" 
+      [ngClass]="{'liked': playlistsService.getPlayingPlaylist()?.liked && !playingSpeechControl.loading_like_playlist}" 
       (click)="playingSpeechControl.likePlaylist()"
     >
       <i 
+        *ngIf="!playingSpeechControl.loading_like_playlist"
         class="fa-solid"
-        [ngClass]="{'fa-heart': !playlistsService.getPlayingPlaylist()?.liked, 'fa-heart-crack' : playlistsService.getPlayingPlaylist()?.liked}"
+        [ngClass]="{'fa-heart-crack': !playlistsService.getPlayingPlaylist()?.liked, 'fa-heart' : playlistsService.getPlayingPlaylist()?.liked}"
+      ></i>
+      <i 
+        *ngIf="playingSpeechControl.loading_like_playlist"
+        class="fa-solid fa-spinner rotate"
       ></i>
     </button>
 
