@@ -11,6 +11,7 @@
         .icon_thumb {
             height: var(--create-section-audio-item-segment);
             width: var(--create-section-audio-item-segment);
+            overflow: hidden;
             border-radius: 1rem;
             margin: auto;
             margin-bottom: .8rem;
@@ -24,6 +25,12 @@
             &.activeSound {
                 background-color: #ffffffa9;
                 color: var(--avgColor);
+            }
+
+            .volume_overlay {
+                margin: 0;
+                color: var(--avgColor);
+                font-size: 2rem;
             }
         }
     

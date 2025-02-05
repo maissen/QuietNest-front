@@ -6,14 +6,19 @@
                (click)="toggleSound(sound)"
                [id]="'audio-item-'+sound.id"
           >
-               <i 
-                    *ngIf="sound.isLoading && sound.isActive"
-                    class="fa-solid fa-hourglass-end rotate"
-               ></i>
-               <i 
-                    *ngIf="!sound.isLoading || !sound.isActive"
-                    [class]="sound.icon"
-               ></i>
+               <ng-container *ngIf="!isVolumeOverlayVisible">
+                    <i 
+                         *ngIf="sound.isLoading && sound.isActive"
+                         class="fa-solid fa-hourglass-end rotate"
+                    ></i>
+                    <i 
+                         *ngIf="!sound.isLoading || !sound.isActive"
+                         [class]="sound.icon"
+                    ></i>
+               </ng-container>
+               <p *ngIf="isVolumeOverlayVisible" class="volume_overlay">
+                    {{sound.volume}}
+               </p>
           </div>
           <p class="name text-center">
                <span *ngIf="!sound.isActive">{{ sound.name }}</span>
