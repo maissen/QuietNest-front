@@ -289,6 +289,7 @@ export class AppService {
     if (currentIndex > 0) {
       const prevSpeech = this.speechesService.getSpeechById(playlist.speeches[currentIndex - 1]);
       this.speechesService.setSelectedSpeechData(prevSpeech);
+      this.playlistsService.isFinished = false;
     } 
 }
 
