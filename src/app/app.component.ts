@@ -18,7 +18,8 @@ import { CreateSectionSoundsService } from './services/create-section-sounds.ser
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  title = 'quietNest-front';
+
+  isURLApp: boolean = false;
 
   constructor(
     private router: Router,
@@ -43,10 +44,14 @@ export class AppComponent implements OnInit, AfterViewInit {
 
       if(this.router.url.startsWith('/app')) {
         this.checkUserScene();
+        this.isURLApp = true;
 
         setInterval(() => {
           this.checkUserScene();
         }, 10000);
+      }
+      else {
+        this.isURLApp = false;
       }
     });
 

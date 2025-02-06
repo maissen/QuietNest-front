@@ -13,12 +13,14 @@
     <div
         class="dynamic-content"
         [ngStyle]="{
-            'padding-left': navbar.showNavbar ? 'var(--navbar-wide-width)' : '0'
+            'padding-left': navbar.showNavbar ? 'var(--navbar-wide-width)' : '0',
+            'background-color': isURLApp ? 'var(--avgColor)' : '#FFF'
         }"
     >
         <app-toast></app-toast>
         <router-outlet></router-outlet>
     </div>
+
 
     <div>
         
