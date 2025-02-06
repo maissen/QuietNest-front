@@ -12,10 +12,21 @@
         [ngClass]="{'custom-scrollbar': hasScrollbar == true, 'hide-scrollbar': !hasScrollbar}"
         #carouselContainer
     >
-        
-    <div *ngFor="let narrator of narrators">
-        <app-narrator-item-square [narrator]="narrator"></app-narrator-item-square>
-    </div>
+
+    <ng-container *ngIf="narrators.length > 0; else skeletonLoader">
+        <div *ngFor="let narrator of narrators">
+            <app-narrator-item-square [narrator]="narrator"></app-narrator-item-square>
+        </div>
+    </ng-container>
+    
+    <ng-template #skeletonLoader>
+        <div class="skeleton-wrapper">
+            <div *ngFor="let i of [1, 2, 3, 4]" class="skeleton-item-container">
+                <div class="skeleton-item"></div>
+                <div class="skeleton-text"></div>
+            </div>
+        </div>
+    </ng-template> 
     
 
     </div>

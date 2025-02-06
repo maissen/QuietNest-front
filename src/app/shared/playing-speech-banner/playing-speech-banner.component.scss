@@ -24,7 +24,6 @@
 
         .title {
             margin: 0;
-            font-size: 1.9rem;
             display: none;
         }
 
@@ -33,9 +32,10 @@
             letter-spacing: .1rem;
             font-weight: bold;
             display: none;
+            margin: 0;
 
             span {
-                font-size: .8em;
+                font-size: .7em;
             }
         }
 

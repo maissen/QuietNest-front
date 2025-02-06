@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./audio-item-rectangle.component.scss']
 })
 export class AudioItemRectangleComponent {
-  @Input() speech: any;
+  @Input() speech: any = null;
 
   constructor(
     public service: SpeechesService,
@@ -24,7 +24,6 @@ export class AudioItemRectangleComponent {
   speechClick() {
     if (this.service.getSelectedSpeechData() == null || this.speech.id != this.service.getSelectedSpeechData().id) {
       this.service.incrementSpeechPlayings(this.speech);
-      // this.service.set_current_speech(this.user.getUser(), this.speech)
     }
 
     this.playlistsService.clearPlayingPlaylist();

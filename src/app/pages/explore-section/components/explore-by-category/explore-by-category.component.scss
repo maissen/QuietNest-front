@@ -47,3 +47,41 @@
     
     margin-bottom: 5rem;
 }
+
+
+
+
+
+.skeleton-wrapper {
+    display: flex;
+    gap: 2rem;
+}
+
+.skeleton-item-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.skeleton-item {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 0.7rem 1.3rem;
+    border-radius: 3rem;
+    background: linear-gradient(90deg, #b5b5b534 25%, #d1d1d134 50%, #b5b5b534 75%);
+    backdrop-filter: blur(3px);
+    background-size: 200% 100%;
+    animation: loadingAnimation 1.5s infinite linear;
+    color: #ffffff00;
+}
+
+
+@keyframes loadingAnimation {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}

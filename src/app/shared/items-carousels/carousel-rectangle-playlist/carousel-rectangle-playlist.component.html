@@ -12,10 +12,21 @@
         [ngClass]="{'custom-scrollbar': hasScrollbar == true, 'hide-scrollbar': !hasScrollbar}"
         #carouselContainer
     >
-        
-    <div *ngFor="let playlist of playlists">
-        <app-playlist-item-rectangle [playlist]="playlist" ></app-playlist-item-rectangle>
-    </div>
+
+    <ng-container *ngIf="playlists.length > 0; else skeletonLoader">
+        <div *ngFor="let playlist of playlists">
+            <app-playlist-item-rectangle [playlist]="playlist" ></app-playlist-item-rectangle>
+        </div>
+    </ng-container>
+
+    <ng-template #skeletonLoader>
+        <div class="skeleton-wrapper">
+            <div *ngFor="let i of [1, 2, 3, 4]" class="skeleton-item-container">
+                <div class="skeleton-item"></div>
+                <div class="skeleton-text"></div>
+            </div>
+        </div>
+    </ng-template>  
     
 
     </div>
