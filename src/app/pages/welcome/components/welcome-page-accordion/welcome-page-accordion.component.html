@@ -1,10 +1,10 @@
-<div class="accordion">
-  <div *ngFor="let item of items; let i = index" class="accordion-item">
-    <div class="accordion-header" [class.open]="openIndex === i" (click)="toggle(i)">
+<div class="accordions">
+  <div *ngFor="let item of items; let i = index" class="item" [class.open]="openIndex === i">
+    <div class="header" (click)="toggle(i)">
       <p>{{ item.title }}</p>
       <i class="fa-solid fa-angle-down"></i>
     </div>
-    <div class="accordion-content" #accordionContent>
+    <div class="content" #accordionContent>
       <p>{{ item.content }}</p>
     </div>
   </div>
