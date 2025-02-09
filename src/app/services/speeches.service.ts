@@ -197,9 +197,9 @@ export class SpeechesService {
 
   
   setSelectedSpeechData(speech: any) {
-    this.isSpeechPlaying = true;
     
     if (!this.selectedSpeech || this.selectedSpeech.id !== speech.id) {
+      this.isSpeechPlaying = true;
 
       this.setSpeechDuration('00:00');
       this.setSpeechReadingLevel('00:00');
@@ -209,32 +209,13 @@ export class SpeechesService {
       this.html_audio.src = speech?.link;
       this.incrementSpeechPlayings(speech)
 
-    }
-    
-    this.html_audio.play();
-  
-    const currentUser = this.user.getUser();
-    const selectedSpeech = this.getSelectedSpeechData();
-    if (currentUser && selectedSpeech) {
+      this.html_audio.play();
+
+      const currentUser = this.user.getUser();
+      const selectedSpeech = this.getSelectedSpeechData();
       this.updateUserSpeechHistory(currentUser.id, selectedSpeech.id);
     }
   }
-  
-
-  setAutoSelectedSpeechData(speech: any) {
-    
-    this.setSpeechDuration('00:00');
-    this.setSpeechReadingLevel('00:00');
-    this.speechDurationInSeconds = 0;
-    this.speechReadingLevelInSeconds = 0;
-
-    this.isSpeechPlaying = true;
-    this.selectedSpeech = speech;
-
-    this.html_audio.src = speech.link;
-    this.speech_played_auto = true;
-    this.html_audio.pause();
-  }  
 
   getSelectedSpeechData(): any {
     return this.selectedSpeech;
