@@ -62,8 +62,33 @@ export class WelcomeComponent implements OnInit {
 
 
   accordionData = [
-    { title: 'Section 1', content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id obcaecati ea non, rerum consectetur fugiat tempore ratione maiores deserunt eos corrupti cupiditate distinctio labore quaerat dolorum numquam nobis nostrum. Aspernatur.' },
-    { title: 'Section 2', content: 'Content for Section 2' },
-    { title: 'Section 3', content: 'Content for Section 3' }
+    { 
+      title: 'What is Quiet Rest about', 
+      content: 'This app is designed to help you reduce stress, anxiety, and improve your overall well-being. With a wide variety of guided speeches by specialists, calming nature sounds, and customizable audio settings, you can create your perfect relaxation environment, whether you’re trying to sleep better, focus, or relax.'
+    },
+    { 
+      title: 'How can I customize my sound experience', 
+      content: "You can easily mix and match different nature sounds, such as birds, campfires, rivers, and more. Simply choose the sounds you like, and adjust their volumes to suit your preferences. You can also add a narration or specialist's speech and modify the volume of that as well to create the ideal atmosphere."
+    },
+    { 
+      title: 'Are the speeches guided by professionals', 
+      content: "Yes! Quiet Rest features speeches and sessions led by specialists in mental health, sleep improvement, stress management, and relaxation techniques. These professionals will guide you through different exercises and offer tips to help you feel more at ease."
+    },
+    { 
+      title: 'Can I use the app without an internet connection', 
+      content: "Some features, such as streaming nature sounds and speech sessions, require an internet connection. However, you will be able to use offline features such as listening to downloaded content if available."
+    },
+    { 
+      title: 'Is the app free', 
+      content: "Yes, Quiet Rest is completely free! You can enjoy all the features, including a wide variety of speeches and nature sounds, without any limitations. We believe in providing a stress-free experience without requiring any subscriptions."
+    },
+    { 
+      title: 'How do I contact support if I have an issue', 
+      content: `If you encounter any problems or have any questions, you can contact me through the app's "Contact me section" section, or you can email me directly at maissen.developer500@gmail.com\nI'm here to assist you!`
+    },
+    { 
+      title: 'Can I request new content or sounds to be added', 
+      content: `Yes, I love hearing from my users! If you have a suggestion for new sounds or speeches, feel free to submit your idea through the "Contact Me" section in the app. I'm always looking to expand my offerings to make your experience better.`
+    },
   ];
 }
