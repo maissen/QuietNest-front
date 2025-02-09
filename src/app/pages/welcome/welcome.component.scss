@@ -281,7 +281,8 @@ header {
         flex-wrap: wrap;
         text-align: center;
 
-        @media all and (min-width: 1000px) {
+
+        @media all and (min-width: 850px) {
             flex-direction: row;
             text-align: start;
         }
