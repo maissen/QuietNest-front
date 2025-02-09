@@ -7,10 +7,15 @@ nav {
     z-index: var(--navbar-zindex);
     background-color: #FFF;
     transition: box-shadow 0.3s ease-in-out;
+    margin-bottom: 4rem;
+
+    @media all and (min-width: 1000px) {
+        margin-bottom: 7rem;
+    }
 
     .content {
         margin: auto;
-        max-width: 100rem;
+        max-width: 120rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
