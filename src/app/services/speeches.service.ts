@@ -207,6 +207,7 @@ export class SpeechesService {
       this.speechReadingLevelInSeconds = 0;
       this.selectedSpeech = speech;
       this.html_audio.src = speech?.link;
+      this.incrementSpeechPlayings(speech)
 
     }
     

@@ -55,10 +55,10 @@ export class PlayingSpeechControlsService {
       this.loading_like_speech = false;
       speech.liked = !speech.liked;
       if (speech.liked) {
-        speech.likes = parseInt(speech.likes) - 1 ;
+        speech.likes = parseInt(speech.likes) + 1 ;
       }
       else {
-        speech.likes = parseInt(speech.likes) + 1 ;
+        speech.likes = parseInt(speech.likes) - 1 ;
       }
     }, 
     error => {
@@ -75,10 +75,10 @@ export class PlayingSpeechControlsService {
       this.loading_like_playlist = false;
       playlist.liked = !playlist.liked;
       if (playlist.liked) {
-        playlist.likes = parseInt(playlist.likes) - 1 ;
+        playlist.likes = parseInt(playlist.likes) + 1 ;
       }
       else {
-        playlist.likes = parseInt(playlist.likes) + 1 ;
+        playlist.likes = parseInt(playlist.likes) - 1 ;
       }
     }, 
     error => {
