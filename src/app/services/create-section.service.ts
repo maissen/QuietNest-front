@@ -21,6 +21,7 @@ export class CreateSectionService {
 
   toggleOverLayContent(): void {
     this.showOverlayContent = !this.showOverlayContent;
+    document.body.classList.toggle('overflow_content_hide');
   }
 
   private updateCurrentUrl(): void {

@@ -85,4 +85,11 @@ export class PlayingSpeechControlsService {
       console.error('Error liking playlist:', error);
     });
   }
+
+  expand_speech_bottom_sheet_content(): void {
+
+    this.expand_speech_bottom_sheet = !this.expand_speech_bottom_sheet;
+    document.body.classList.toggle('overflow_content_hide');
+
+  }
 }

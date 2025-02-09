@@ -11,6 +11,7 @@ import { NavbarService } from './services/navbar.service';
 import { NarratorsService } from './services/narrators.service';
 import { CategoriesService } from './services/categories.service';
 import { CreateSectionSoundsService } from './services/create-section-sounds.service';
+import { PlayingSpeechControlsService } from './services/playing-speech-controls.service';
 
 @Component({
   selector: 'app-root',
@@ -34,6 +35,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     public narratorsService: NarratorsService,
     public categoriesService: CategoriesService,
     public createSectionSounds: CreateSectionSoundsService,
+    public playingSpeechControl: PlayingSpeechControlsService
   ) { }
 
   ngOnInit() {
