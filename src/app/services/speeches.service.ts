@@ -195,23 +195,30 @@ export class SpeechesService {
     );
   }
 
+  
   setSelectedSpeechData(speech: any) {
-
-    this.setSpeechDuration('00:00');
-    this.setSpeechReadingLevel('00:00');
-    this.speechDurationInSeconds = 0;
-    this.speechReadingLevelInSeconds = 0;
-
     this.isSpeechPlaying = true;
-    this.selectedSpeech = speech;
+    
+    if (!this.selectedSpeech || this.selectedSpeech.id !== speech.id) {
 
-    this.html_audio.src = '';
-    this.html_audio.src = speech?.link ;
+      this.setSpeechDuration('00:00');
+      this.setSpeechReadingLevel('00:00');
+      this.speechDurationInSeconds = 0;
+      this.speechReadingLevelInSeconds = 0;
+      this.selectedSpeech = speech;
+      this.html_audio.src = speech?.link;
+
+    }
     
     this.html_audio.play();
-
-    this.updateUserSpeechHistory(this.user.getUser().id, this.getSelectedSpeechData().id);
-  }  
+  
+    const currentUser = this.user.getUser();
+    const selectedSpeech = this.getSelectedSpeechData();
+    if (currentUser && selectedSpeech) {
+      this.updateUserSpeechHistory(currentUser.id, selectedSpeech.id);
+    }
+  }
+  
 
   setAutoSelectedSpeechData(speech: any) {
     
