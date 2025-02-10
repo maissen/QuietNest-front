@@ -1,3 +1,4 @@
 <div class="bg_video">
+    <video muted loop autoplay [src]="this.scenesService.getActiveScene()?.link"></video>
     <div class="overlay" [ngStyle]="{'background-color': this.scenesService.getActiveScene()?.avgColor + 'cc'}"></div>
 </div>
