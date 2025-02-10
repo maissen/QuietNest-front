@@ -13,6 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 export class NarratorProfileComponent {
 
   @Input() narrator: any = null;
+  action_like_narrator_loading: boolean = false;
 
   constructor(
     private user: UserService,
@@ -24,10 +25,11 @@ export class NarratorProfileComponent {
 
   likeNarrator(): void {
     const body = { narratorID: this.narrator.id, userID: this.user.getUser().id };
+    this.action_like_narrator_loading = true;
 
     this.http.post<any>(this.narratorsService.api_user_likes_narrator, body).subscribe({
       next: (response) => {
-        console.log(response);
+        this.action_like_narrator_loading = false;
         if (this.narrator.liked) {
           this.narrator.likes = parseInt(this.narrator.likes) - 1;
         } else {

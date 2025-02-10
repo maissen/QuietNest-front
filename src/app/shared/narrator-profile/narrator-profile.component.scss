@@ -151,3 +151,24 @@
 
     }
 }
+
+
+
+.rotate {
+    animation: rotate 1s infinite linear;
+    color: #FFF !important;
+
+    @keyframes rotate {
+        0% {
+            transform: rotateZ(0deg);
+        }
+        100% {
+            transform: rotateZ(360deg);
+        }
+        
+    }
+}
+
+.hide_while_loading {
+    visibility: hidden;
+}
