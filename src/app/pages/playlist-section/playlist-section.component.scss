@@ -48,6 +48,7 @@
             min-width: 30rem;
             width: var(--content-width);
             height: 100%;
+            max-height: 40rem;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -70,34 +71,7 @@
                 background-size: cover;
                 background-repeat: no-repeat;
                 cursor: pointer;
-
-                .thumb {
-                    height: 6rem;
-                    width: 8.5rem;
-                    margin-right: 1.3rem;
-                    border-radius: .6rem;
-                    flex-shrink: 0;
-                    flex-grow: 0;
-                    position: relative;
-                    overflow: hidden;
-                    z-index: 1;
-
-                    .playingBadge {
-                        height: 100%;
-                        width: 100%;
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        z-index: 2;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        color: #FFF;
-                        background-color: #0000008e;
-                        gap: 1rem;
-                        margin: 0;
-                    }
-                }
+                padding: 1rem;
 
                 .info {
                     .name {

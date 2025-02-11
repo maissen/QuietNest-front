@@ -11,12 +11,10 @@
 
         <div class="body hide-scrollbar">
 
-            <div class="item" *ngFor="let speech of service.getPlayingPlaylist()?.speeches" (click)="speechesService.setSelectedSpeechData(speechesService.getSpeechById(speech))">
-                <div class="thumb" [ngStyle]="{'background-image': 'url(' + speechesService.getSpeechById(speech).img + ')'}">
-                    <p class="playingBadge" *ngIf="speechesService.getSelectedSpeechData().id == speechesService.getSpeechById(speech).id">
-                        Playing
-                    </p>
-                </div>
+            <div
+                *ngFor="let speech of service.getPlayingPlaylist()?.speeches" (click)="speechesService.setSelectedSpeechData(speechesService.getSpeechById(speech))"
+                [ngClass]="{'blurry-bg': speechesService.getSelectedSpeechData().id == speechesService.getSpeechById(speech).id}"
+                class="item" >
                 <div class="info">
                     <div class="name">{{speechesService.getSpeechById(speech).name}}</div>
                     <div class="category">
