@@ -28,11 +28,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-image: var(--currentSceneImg);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        transition: transform 0.3s ease-out;
+        display: block;
+
+        @media all and (min-width: 500px) {
+            display: none;
+        }
+
+        video {
+            height: inherit;
+            width: auto;
+            object-fit: contain;
+        }
     }    
 
     .loaded_content {

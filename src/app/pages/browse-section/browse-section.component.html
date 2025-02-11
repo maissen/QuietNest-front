@@ -6,6 +6,8 @@
         class="bg-video-small"
         [style.transform]="'scale(' + scaleFactor + ')'"
     >
+        <video autoplay loop muted [src]="scenesService.getActiveScene()?.link">
+        </video>
     </div>
 
     <div class="loaded_content add-bottom-spacing-for-playing-speech-banner">
