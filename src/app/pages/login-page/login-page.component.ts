@@ -10,15 +10,22 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-profileID: string = '';
+  profileID: string = '';
   imageSrc: string = '';
 
   isCameraOpen: boolean = false;
-
   expand_user_salutation: boolean = false;
   is_loading: boolean = false;
 
   @ViewChild('camera', { static: false }) cameraScanner!: NgxScannerQrcodeComponent;
+
+  public qrCodeResult: ScannerQRCodeSelectedFiles[] = [];
+  public config: ScannerQRCodeConfig = {
+    constraints: { 
+      video: {}
+    },
+    isBeep: false
+  };
 
   constructor(
     private router: Router, 
@@ -27,49 +34,78 @@ profileID: string = '';
     private toast: ToastService
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     if (this.user.getUser() !== null) {
       this.router.navigate(['/app']);
     }
-  }
-  public qrCodeResult: ScannerQRCodeSelectedFiles[] = [];
 
-  public config: ScannerQRCodeConfig = {
-    constraints: { 
-      video: {
-        facingMode: this.getCameraFacingMode(),
+    await this.setCameraDeviceId();
+  }
+
+  //! Fetches the appropriate camera deviceId and updates the config
+  async setCameraDeviceId() {
+    try {
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
+  
+      //? Find cameras
+      const backCamera = devices.find(device => 
+        device.kind === 'videoinput' && device.label.toLowerCase().includes('back')
+      );
+  
+      const frontCamera = devices.find(device => 
+        device.kind === 'videoinput' && device.label.toLowerCase().includes('front')
+      );
+  
+      //? Choose camera based on device type
+      const selectedCamera = isMobile ? backCamera : frontCamera;
+  
+      if (this.config && this.config.constraints) {
+        if (selectedCamera) {
+          this.config.constraints.video = { deviceId: { exact: selectedCamera.deviceId } };
+        } else {
+          this.config.constraints.video = { facingMode: isMobile ? 'environment' : 'user' }; // Fallback
+        }
       }
-    },
-    isBeep: false 
-  };
-
-  getCameraFacingMode(): string {
-    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-    return isMobile ? 'environment' : 'user';
+    } catch (error) {
+      console.error('Error fetching camera devices:', error);
+      // Ensure config and constraints are defined
+      if (this.config && this.config.constraints) {
+        this.config.constraints.video = { facingMode: 'environment' }; //? Default to back camera
+      }
+    }
   }
   
-  
-  
 
+  //! Starts or stops the camera scanner
   startCamera() {
-    if(this.cameraScanner.isStart) {
+    if (this.cameraScanner.isStart) {
       this.cameraScanner.stop();
       this.isCameraOpen = false;
-    }
-    else {
+    } else {
       this.cameraScanner.start();
       this.isCameraOpen = true;
     }
   }
-
-  // set scanned value by qr image
+  
+  //! set scanned value by qr image
   setScannedValue(event: any) {
     this.profileID = event[0].value;
     this.isCameraOpen = false;
     this.submitLogin();
   }
 
-  // needed to scan uploaded qr codes
+  //! Handles QR code scanning and sets the scanned value
+  cameraScan(event: any) {
+    if (event.length > 0) {
+      this.profileID = event[0].value;
+      this.cameraScanner.stop();
+      this.isCameraOpen = false;
+      this.submitLogin();
+    }
+  }
+
+  //! Handles QR code image uploads
   public onSelects(files: any) {
     this.qrcode.loadFiles(files).subscribe((res: ScannerQRCodeSelectedFiles[]) => {
       this.qrCodeResult = res;
@@ -78,14 +114,7 @@ profileID: string = '';
     });
   }
 
-  // set scanned value by camera
-  cameraScan(event: any) {
-    this.profileID = event[0].value;
-    this.cameraScanner.stop();
-    this.isCameraOpen = false;
-    this.submitLogin();
-  }
-
+  //! Submits the login request
   submitLogin(): void {
     if (this.profileID) {
       this.is_loading = true;
@@ -104,9 +133,8 @@ profileID: string = '';
           this.is_loading = false;
         }
       );
-    }
-    else {
+    } else {
       this.toast.showToast('Please enter your ID', 1, 'Log in failed');
     }
-  }  
+  }
 }
