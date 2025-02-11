@@ -25,8 +25,8 @@
                 </ng-container>
             </button>
             <button class="action">
-                <i class="fa-solid fa-book"></i>
-                {{narrator?.speeches_nbr}} audios
+                <i class="fa-solid fa-microphone"></i>
+                {{number_of_speeches}} audios
             </button>
         </div>
     </div>
@@ -61,10 +61,10 @@
             </ng-container>
         </button>
         <button class="action like">
-            <i class="fa-solid fa-book"></i>
+            <i class="fa-solid fa-microphone"></i>
             <p class="count">
-                {{narrator?.speeches_nbr}}
-                {{ narrator?.speeches_nbr <= 1 ? 'audio' : 'audios' }} 
+                {{number_of_speeches}}
+                {{ number_of_speeches <= 1 ? 'audio' : 'audios' }} 
             </p>
         </button>
 

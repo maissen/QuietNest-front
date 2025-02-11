@@ -61,22 +61,6 @@
                 padding: .5rem 1rem;
                 border-radius: 1.4rem;
                 gap: .7rem;
-                
-                .hideDetail {
-                    display: none;
-
-                    @media all and (min-width: 1000px) {
-                        display: inline-block;
-                    }
-                }
-
-                .hideDetail2 {
-                    display: none;
-
-                    @media all and (min-width: 500px) {
-                        display: inline-block;
-                    }
-                }
             }
         }
     }
