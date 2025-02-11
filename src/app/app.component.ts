@@ -127,7 +127,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     if(this.router.url.startsWith('/app/browse')) {
 
       if(this.narratorsService.trending_narrators.length == 0) {
-        this.app.loadTrendingNarrators(12);
+        this.app.loadTrendingNarrators(4);
       }
       if(this.speechesService.popular_speeches.length == 0) {
         this.app.loadPopularSpeeches(12);
@@ -160,10 +160,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
       if(this.playlistsService.getPlaylists().length == 0) {
         this.app.loadAllPlaylists();
-      }
-
-      if(this.narratorsService.getAllNarrators().length == 0) {
-        this.app.loadAllNarrators();
       }
 
       if(this.categoriesService.getAllCategories().length == 0) {
