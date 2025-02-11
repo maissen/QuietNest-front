@@ -89,9 +89,21 @@ export class SpeechesService {
   setSpeechReadingLevel(level: string) {
     this.speechReadingLevel = level;
   }
+
+  private shuffleArray(arr: any[]): any {
+    for (let i = arr.length - 1; i > 0; i--) {
+      // Get a random index between 0 and i
+      const j = Math.floor(Math.random() * (i + 1));
+      
+      // Swap elements at i and j
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+  
   
   setSpeeches(list: any[]) {
-    this.allSpeches = list;
+    this.allSpeches = this.shuffleArray(list);
   }
 
   getAllSpeeches() {
