@@ -19,7 +19,7 @@
               class="camera"
               #camera="scanner" 
               (event)="cameraScan($event)" 
-              [isBeep]="false" 
+              [config]="config"
               [vibrate]="300"
         ></ngx-scanner-qrcode>
       </div>

@@ -37,10 +37,19 @@ profileID: string = '';
   public config: ScannerQRCodeConfig = {
     constraints: { 
       video: {
-        width: 0
+        facingMode: this.getCameraFacingMode(),
       }
-    } 
+    },
+    isBeep: false 
   };
+
+  getCameraFacingMode(): string {
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    return isMobile ? 'environment' : 'user';
+  }
+  
+  
+  
 
   startCamera() {
     if(this.cameraScanner.isStart) {
