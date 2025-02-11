@@ -8,7 +8,6 @@
     transition: opacity .3s;
     opacity: 0;
     visibility: hidden;
-    backdrop-filter: blur(4px);
     z-index: calc(var(--navbar-zindex) + 1);
 
     &.showUp {
