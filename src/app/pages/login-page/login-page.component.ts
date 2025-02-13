@@ -38,44 +38,7 @@ export class LoginPageComponent implements OnInit {
     if (this.user.getUser() !== null) {
       this.router.navigate(['/app']);
     }
-
-    await this.setCameraDeviceId();
   }
-
-  //! Fetches the appropriate camera deviceId and updates the config
-  async setCameraDeviceId() {
-    try {
-      const devices = await navigator.mediaDevices.enumerateDevices();
-      const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
-  
-      //? Find cameras
-      const backCamera = devices.find(device => 
-        device.kind === 'videoinput' && device.label.toLowerCase().includes('back')
-      );
-  
-      const frontCamera = devices.find(device => 
-        device.kind === 'videoinput' && device.label.toLowerCase().includes('front')
-      );
-  
-      //? Choose camera based on device type
-      const selectedCamera = isMobile ? backCamera : frontCamera;
-  
-      if (this.config && this.config.constraints) {
-        if (selectedCamera) {
-          this.config.constraints.video = { deviceId: { exact: selectedCamera.deviceId } };
-        } else {
-          this.config.constraints.video = { facingMode: isMobile ? 'environment' : 'user' }; // Fallback
-        }
-      }
-    } catch (error) {
-      console.error('Error fetching camera devices:', error);
-      // Ensure config and constraints are defined
-      if (this.config && this.config.constraints) {
-        this.config.constraints.video = { facingMode: 'environment' }; //? Default to back camera
-      }
-    }
-  }
-  
 
   //! Starts or stops the camera scanner
   startCamera() {
