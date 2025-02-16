@@ -51,7 +51,7 @@
       *ngIf="activeCategories.includes('active-sounds')"
     >
       <div>
-        <div class="title">Currently Enjoying</div>
+        <div class="title"> <i class="fa-solid fa-heart"></i> Currently Enjoying</div>
         <div class="audio_items">
           <app-audio-item
             *ngFor="let sound of soundsService.getActiveSounds()"
@@ -70,7 +70,7 @@
       [ngStyle]="{ display: isCategoryActive(category) ? 'block' : 'none' }"
     >
       <div>
-        <div class="title">{{ category.name }}</div>
+        <div class="title"> <i [ngClass]="category.icon"></i>{{ category.name }}</div>
         <div class="audio_items">
           <app-audio-item
             *ngFor="let sound of soundsService.getSoundsByCategory(category.id)"
